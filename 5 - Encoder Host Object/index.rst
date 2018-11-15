@@ -11,8 +11,8 @@ Methods
 -------
 
 
-Run Batch
-*********
+EncoderHost.runBatch()
+****************************************************************
 Starts the render queue.
 
 ``app.getEncoderHost().runBatch()``
@@ -26,8 +26,8 @@ None.
 Result Boolean.
 
 
-Pause Batch
-***********
+EncoderHost.pauseBatch()
+****************************************************************
 Pauses the render queue.
 
 ``app.getEncoderHost().pauseBatch()``
@@ -41,8 +41,8 @@ None.
 Result Boolean.
 
 
-Stop Batch
-**************************
+EncoderHost.stopBatch()
+****************************************************************
 Stops the render queue.
 
 ``app.getEncoderHost().stopBatch()``
@@ -56,8 +56,8 @@ None.
 Result Boolean.
 
 
-Is Batch Running
-****************
+EncoderHost.isBatchRunning()
+****************************************************************
 Checks if the render queue is rendering.
 
 ``app.getEncoderHost().isBatchRunning()``
@@ -71,8 +71,8 @@ None.
 Result Boolean.
 
 
-Get Format List
-****************
+EncoderHost.getFormatList()
+****************************************************************
 Checks if the render queue is rendering.
 
 ``app.getEncoderHost().getFormatList()``
@@ -86,8 +86,8 @@ None.
 Array of Format Names as Strings.
 
 
-Create Encoder for Format*
-**************************
+EncoderHost.createEncoderForFormat()
+****************************************************************
 Creates an Encoder for a given Format
 
 ``app.getEncoderHost().createEncoderForFormat(format)`` *\*untested*
@@ -101,8 +101,8 @@ format: String. format name (H.264, Quicktime, etc.)
 Encoder Object. (encode from there with ``encoder.encode(src,dst)``)
 
 
-Create Media Comparator*
-************************
+EncoderHost.createMediaComparator()*
+****************************************************************
 
 ``app.getEncoderHost().createMediaComparator()`` *\*untested*
 
@@ -115,8 +115,8 @@ Create Media Comparator*
 *unknown*
 
 
-Get Supported Import File Types*
-********************************
+EncoderHost.getSupportedImportFileTypes()*
+****************************************************************
 
 ``app.getEncoderHost().getSupportedImportFileTypes()`` *\*untested*
 
@@ -129,8 +129,8 @@ Get Supported Import File Types*
 *unknown*
 
 
-Get Source Info*
-****************
+EncoderHost.getSourceInfo()*
+****************************************************************
 
 ``app.getEncoderHost().getSourceInfo()`` *\*untested*
 
@@ -143,8 +143,8 @@ Get Source Info*
 *unknown*
 
 
-Get Current Batch Preview Info*
-*******************************
+EncoderHost.getCurrentBatchPreview()*
+****************************************************************
 
 ``app.getEncoderHost().getCurrentBatchPreview()`` *\*untested*
 

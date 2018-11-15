@@ -12,8 +12,8 @@ Attributes
 ----------
 
 
-Output Files
-************
+BatchItem.outputFiles
+************************************************************
 
 ``batchItem.outputFiles``
 
@@ -24,8 +24,8 @@ Contains the output files from the render job once the job is complete.
 Array; read-only.
 
 
-Encode Progress
-***************
+BatchItem.encodeProgress
+************************************************************
 
 ``batchItem.encodeProgress``
 
@@ -36,8 +36,8 @@ The encode progress from 0 - 100 of render job.
 Number; read-only.
 
 
-Output Width*
-*************
+BatchItem.outputWidth*
+************************************************************
 
 ``batchItem.outputWidth`` *\*untested*
 
@@ -48,8 +48,8 @@ Output Width*
 Number;
 
 
-Output Height*
-**************
+BatchItem.outputHeight*
+************************************************************
 
 ``batchItem.outputHeight`` *\*untested*
 
@@ -65,8 +65,8 @@ Methods
 -------
 
 
-Get Encode Progress
-*******************
+BatchItem.getEncodeProgress()
+************************************************************
 Gets the progress from 0 - 100 of the render job.
 
 ``batchItem.getEncodeProgress()``
@@ -81,8 +81,8 @@ None.
 Number.
 
 
-Get Encode Time*
-****************
+BatchItem.getEncodeTime()*
+************************************************************
 
 ``batchItem.getEncodeTime()`` *\*untested*
 
@@ -95,8 +95,8 @@ None.
 Number.
 
 
-Get Current Batch Preview Info*
-*******************************
+BatchItem.getCurrentBatchPreview()*
+************************************************************
 
 ``batchItem.getCurrentBatchPreview()`` *\*untested*
 
@@ -109,8 +109,8 @@ Get Current Batch Preview Info*
 *unknown*
 
 
-Get Preset List*
-****************
+BatchItem.getPresetList()*
+************************************************************
 
 ``batchItem.getPresetList()`` *\*untested*
 
@@ -123,8 +123,8 @@ Get Preset List*
 *unknown*
 
 
-Get Missing Assets*
-*******************
+BatchItem.getMissingAssets()*
+************************************************************
 
 ``batchItem.getMissingAssets()`` *\*untested*
 
@@ -137,8 +137,8 @@ Get Missing Assets*
 *unknown*
 
 
-Load Preset*
-************
+BatchItem.loadPreset()*
+************************************************************
 
 ``batchItem.loadPreset()`` *\*untested*
 
@@ -151,8 +151,8 @@ Load Preset*
 *unknown*
 
 
-Load Format*
-************
+BatchItem.loadFormat()*
+************************************************************
 
 ``batchItem.loadFormat()`` *\*untested*
 
@@ -165,8 +165,8 @@ Load Format*
 *unknown*
 
 
-Set Work Area*
-**************
+BatchItem.setWorkArea()*
+************************************************************
 
 ``batchItem.setWorkArea()`` *\*untested*
 
@@ -179,8 +179,8 @@ Set Work Area*
 *unknown*
 
 
-Set Use Preview Files*
-**********************
+BatchItem.setUsePreviewFiles()*
+************************************************************
 
 ``batchItem.setUsePreviewFiles()`` *\*untested*
 
@@ -193,8 +193,8 @@ Set Use Preview Files*
 *unknown*
 
 
-Set Use Maximum Render Quality*
-*******************************
+BatchItem.setUseMaximumRenderQuality()*
+************************************************************
 
 ``batchItem.setUseMaximumRenderQuality()`` *\*untested*
 
@@ -207,8 +207,8 @@ Set Use Maximum Render Quality*
 *unknown*
 
 
-Set Use Frame Blending*
-***********************
+BatchItem.setUseFrameBlending()*
+************************************************************
 
 ``batchItem.setUseFrameBlending()`` *\*untested*
 
@@ -221,8 +221,8 @@ Set Use Frame Blending*
 *unknown*
 
 
-Set Include Source XMP*
-***********************
+BatchItem.setIncludeSourceXMP()*
+************************************************************
 
 ``batchItem.setIncludeSourceXMP()`` *\*untested*
 
@@ -235,8 +235,8 @@ Set Include Source XMP*
 *unknown*
 
 
-Set Include Source Cue Points*
-******************************
+BatchItem.setIncludeSourceCuePoints()*
+************************************************************
 
 ``batchItem.setIncludeSourceCuePoints()`` *\*untested*
 
@@ -249,8 +249,8 @@ Set Include Source Cue Points*
 *unknown*
 
 
-Set Crop State*
-***************
+BatchItem.setCropState()*
+************************************************************
 
 ``batchItem.setCropState()`` *\*untested*
 
@@ -263,8 +263,8 @@ Set Crop State*
 *unknown*
 
 
-Set Crop Type*
-**************
+BatchItem.setCropType()*
+************************************************************
 
 ``batchItem.setCropType()`` *\*untested*
 
@@ -277,8 +277,8 @@ Set Crop Type*
 *unknown*
 
 
-Set Crop Offsets*
-*****************
+BatchItem.setCropOffsets()*
+************************************************************
 
 ``batchItem.setCropOffsets()`` *\*untested*
 
@@ -291,8 +291,8 @@ Set Crop Offsets*
 *unknown*
 
 
-Set Output Frame Size*
-**********************
+BatchItem.setOutputFrameSize()*
+************************************************************
 
 ``batchItem.setOutputFrameSize()`` *\*untested*
 
@@ -305,8 +305,8 @@ Set Output Frame Size*
 *unknown*
 
 
-Set XMP Data*
-*************
+BatchItem.setXMPData()*
+************************************************************
 
 ``batchItem.setXMPData()`` *\*untested*
 
@@ -319,8 +319,8 @@ Set XMP Data*
 *unknown*
 
 
-Set Cue Point Data*
-*******************
+BatchItem.setCuePointData()*
+************************************************************
 
 ``batchItem.setCuePointData()`` *\*untested*
 
@@ -333,8 +333,8 @@ Set Cue Point Data*
 *unknown*
 
 
-Set Scale Type*
-***************
+BatchItem.setScaleType()*
+************************************************************
 
 ``batchItem.setScaleType()`` *\*untested*
 

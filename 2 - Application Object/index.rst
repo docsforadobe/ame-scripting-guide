@@ -10,8 +10,8 @@ The Application Object is the master object for controlling the application.
 Attributes
 ----------
 
-Launch Time
-***********
+app.launchTime
+****************************************************************
 
 ``app.launchTime``
 
@@ -26,8 +26,8 @@ Methods
 -------
 
 
-Front End Object
-****************
+app.getFrontend()
+****************************************************************
 :ref:`More on the Front End Object <front-end-object>`
 
 ``app.getFrontend()``
@@ -41,8 +41,8 @@ None.
 Front End Object.
 
 
-Exporter Object
-***************
+app.getExporter()
+****************************************************************
 :ref:`More on the Exporter Object <exporter-object>`
 
 ``app.getExporter()``
@@ -56,8 +56,8 @@ None.
 Exporter Object.
 
 
-Encoder Host Object
-*******************
+app.getEncoderHost()
+****************************************************************
 :ref:`More on the Encoder Host Object <encoder-host-object>`
 
 ``app.getEncoderHost()``
@@ -71,8 +71,8 @@ None.
 Encoder Host Object.
 
 
-Quit
-*******************
+app.quit()
+****************************************************************
 Quits the application.
 
 ``app.quit()``
@@ -86,8 +86,8 @@ None.
 None.
 
 
-Get Build Number
-*******************
+app.getBuildNumber()
+****************************************************************
 Gets the application build number.
 
 ``app.getBuildNumber()``
@@ -103,7 +103,7 @@ String. Build number.
 .. _app.scheduleTask:
 
 app.scheduleTask()
-********************************
+****************************************************************
 Schedule a task for a later time. (similar to ``setTimeout()`` in modern JS)
 
 ``app.scheduleTask()``
@@ -126,7 +126,7 @@ Integer, a unique identifier for this task, which can be used to cancel it with 
 .. _app.cancelTask:
 
 app.cancelTask()
-********************************
+****************************************************************
 Removes the specified task from the queue of tasks scheduled for delayed execution.
 
 ``app.cancelTask(taskID)``
@@ -143,8 +143,8 @@ Removes the specified task from the queue of tasks scheduled for delayed executi
 Nothing.
 
 
-Get Watch Folder*
-*****************
+app.getWatchFolder()*
+****************************************************************
 
 ``app.getWatchFolder()`` *\*untested*
 
@@ -158,8 +158,8 @@ Get Watch Folder*
 
 
 
-Wait*
-*****
+app.wait()*
+****************************************************************
 
 ``app.wait()`` *\*untested*
 
@@ -172,8 +172,8 @@ Wait*
 *unknown*
 
 
-Assert to Console*
-******************
+app.assertToConsole()*
+****************************************************************
 
 ``app.assertToConsole()`` *\*untested*
 
@@ -186,8 +186,8 @@ Assert to Console*
 *unknown*
 
 
-Render Frame Sequence*
-**********************
+app.renderFrameSequence()*
+****************************************************************
 
 ``app.renderFrameSequence()`` *\*untested*
 
@@ -200,8 +200,8 @@ Render Frame Sequence*
 *unknown*
 
 
-Is Black Video*
-**********************
+app.isBlackVideo()*
+****************************************************************
 
 ``app.isBlackVideo()`` *\*untested*
 
@@ -214,8 +214,8 @@ Is Black Video*
 *unknown*
 
 
-Is Silent Audio*
-****************
+app.isSilentAudio()*
+****************************************************************
 
 ``app.isSilentAudio()`` *\*untested*
 
@@ -228,8 +228,8 @@ Is Silent Audio*
 *unknown*
 
 
-Simulate UI Events*
-*******************
+app.simulateUIEvents()*
+****************************************************************
 
 ``app.simulateUIEvents()`` *\*untested*
 

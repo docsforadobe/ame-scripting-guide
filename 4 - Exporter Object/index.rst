@@ -11,8 +11,8 @@ Attributes
 ----------
 
 
-Encode ID
-**********
+Exporter.encodeID
+****************************************************************
 
 ``app.getExporter().encodeID``
 
@@ -23,8 +23,8 @@ Gets the current Encode ID.
 String; read-only.
 
 
-Result
-******
+Exporter.result
+****************************************************************
 
 ``app.getExporter().result``
 
@@ -35,8 +35,8 @@ Result
 Boolean; read-only.
 
 
-Elapsed Milliseconds
-********************
+Exporter.elapsedMilliseconds
+****************************************************************
 
 ``app.getExporter().elapsedMilliseconds``
 
@@ -50,8 +50,8 @@ Number; read-only.
 Methods
 -------
 
-Remove All Batch Items
-**********************
+Exporter.removeAllBatchItems()
+****************************************************************
 Removes all items from the render queue.
 
 ``app.getExporter().removeAllBatchItems()``
@@ -67,8 +67,8 @@ Result Boolean.
 *Note: Application will hang until process is complete.*
 
 
-Trim Export for SR*
-*******************
+Exporter.trimExportForSR()*
+****************************************************************
 
 ``app.getExporter().trimExportForSR()`` *\*untested*
 
@@ -81,10 +81,10 @@ Trim Export for SR*
 *unknown*
 
 
-Export Item*
-************
+Exporter.ExportItem()*
+****************************************************************
 
-``app.getExporter().ExportItem()`` *\*untested*
+``app.getExporter().exportItem()`` *\*untested*
 
 **Parameters**
 
@@ -95,10 +95,10 @@ Export Item*
 *unknown*
 
 
-Export Group*
-*************
+Exporter.ExportGroup()*
+****************************************************************
 
-``app.getExporter().ExportGroup()`` *\*untested*
+``app.getExporter().exportGroup()`` *\*untested*
 
 **Parameters**
 
