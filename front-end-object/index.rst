@@ -18,6 +18,7 @@ Add Comp from After Effects or Sequences from Premiere Pro.
 ``app.getFrontend().addDLToBatch(project, format, preset, guid, destination)``
 
 **Parameters**
+
 ===================   ============================================================================
 ``project``           Path to the project file. (e.g. .aep, .prpro)
 ``format``            The name of the format used in the preset EPR. (e.g. H.264, Quicktime, etc.)
@@ -42,11 +43,13 @@ Add Comp from After Effects.
 ``app.getFrontend().addCompToBatch(project, preset, destination)``
 
 **Parameters**
+
 ===================   ============================================================================
 ``project``           Path to the project file. (e.g. .aep, .prpro)
 ``preset``            Path to the EPR preset file.
 ``destination``       Path to the destination file.
 ===================   ============================================================================
+
 
 **Returns**
 
@@ -65,6 +68,7 @@ Add any footage item into the render queue.
 ``app.getFrontend().addItemToBatch(file)``
 
 **Parameters**
+
 ===================   ============================================================================
 ``file``              Path to the media file.
 ===================   ============================================================================
@@ -82,6 +86,7 @@ Add any footage item into the render queue.
 ``app.getFrontend().addFileToBatch(file, format, preset, destination)``
 
 **Parameters**
+
 ===================   ============================================================================
 ``file``              Path to the media file.
 ``format``            The name of the format used in the preset EPR. (e.g. H.264, Quicktime, etc.)
