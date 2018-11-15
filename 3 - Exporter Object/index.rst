@@ -3,7 +3,7 @@
 Exporter Object
 =================
 
-The Exporter Object allows you to add items to the render queue.
+The Exporter Object allows you to access and modify the render queue.
 
 ``app.getExporter()``
 
@@ -50,9 +50,9 @@ Number; read-only.
 Methods
 -------
 
-Add Dynamic Link to Batch
-*************************
-Add Comps from After Effects or Sequences from Premiere Pro.
+Remove All Batch Items
+**********************
+Removes all items from the render queue.
 
 ``app.getExporter().removeAllBatchItems()``
 
@@ -64,7 +64,7 @@ None.
 
 Result Boolean.
 
-Note: Application will hang until process is complete.
+*Note: Application will hang until process is complete.*
 
 
 Trim Export for SR*
