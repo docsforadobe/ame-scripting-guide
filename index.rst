@@ -12,18 +12,30 @@ Welcome to the AME Scripting Guide!
 
 .. toctree::
     :maxdepth: 2
-    :caption: Chapter 2 - Front End Object
+    :caption: Chapter 2 - Application Object
 
-    2 - Front End Object/index
-
-.. toctree::
-    :maxdepth: 2
-    :caption: Chapter 3 - Exporter Object
-
-    3 - Exporter Object/index
+    2 - Application Object/index
 
 .. toctree::
     :maxdepth: 2
-    :caption: Chapter 4 - Encoder Host Object
+    :caption: Chapter 3 - Front End Object
 
-    4 - Encoder Host Object/index
+    3 - Front End Object/index
+
+.. toctree::
+    :maxdepth: 2
+    :caption: Chapter 4 - Exporter Object
+
+    4 - Exporter Object/index
+
+.. toctree::
+    :maxdepth: 2
+    :caption: Chapter 5 - Encoder Host Object
+
+    5 - Encoder Host Object/index
+
+.. toctree::
+    :maxdepth: 2
+    :caption: Chapter 6 - Batch Item Object
+
+    6 - Batch Item Object/index
