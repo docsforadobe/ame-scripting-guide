@@ -186,3 +186,8 @@ Full path to the .prproj file to be examined.
 **Returns**
 
 An array of GUIDs of renderable sequences; Array will be empty if there are none.
+
+If you set format to empty (var format = ""), the format will instead be dictated by the preset.
+If a preset is not provided, then AME will use the most-recently-used preset associated with the given format.
+If both are provided, and they disagree, an error will occur. 
+
