@@ -172,3 +172,17 @@ None.
 **Returns**
 
 Result Boolean.
+
+FrontEnd.getDLItemsAtRoot(projectPath)
+****************************************************************
+Returns a list of renderable sequences contained at the root of the specified .prproj. 
+
+``var listOfRenderableSequences = app.getFrontend().getDLItemsAtRoot('/Users/example/Desktop/example.prproj');``
+
+**Parameters**
+
+Full path to the .prproj file to be examined.
+
+**Returns**
+
+An array of GUIDs of renderable sequences; Array will be empty if there are none.
