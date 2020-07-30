@@ -6,9 +6,6 @@ Welcome to the AME Scripting Guide!
     :caption: Introduction
 
     introduction/index
-    introduction/extendscript-overview
-    introduction/scripting-for-specific-applications
-
 
 .. toctree::
     :maxdepth: 2
