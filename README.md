@@ -1,4 +1,6 @@
-# README #
+# Adobe Media Encoder Scripting Guide
+
+This repo hosts the Adobe Media Encoder Scripting Guide RST docs, linked into a http://readthedocs.io system hosted at https://ame-scripting.docsforadobe.dev/
 
 This is a starter repo for the AME Scripting Guide. Things to note:
 
@@ -7,29 +9,31 @@ This is a starter repo for the AME Scripting Guide. Things to note:
 	- Again, left here just for reference. I've left links in
 	- index.html in each subfolder will be the main page loaded for each 'chapter'
 
-### Building Locally ###
+---
+
+## Building Locally
 
 - Run `make html` in the project directory
 - The project will be built in a subfolder at `_build/html` where you can open index.html in a browser as expected
 - Any issues / warnings will be displayed in the console
 
+---
 
-### Contributing ###
+## Contributing
 
 This project uses reStructuredText for a reference on how to write reStructuredText check out this [quickref](http://docutils.sourceforge.net/docs/user/rst/quickref.html).
 
+---
 
-### How to ###
+## How to
 
-
-#### Text
+### Text
 
 ```
 **bold**, *italics*, ``code``
 ```
 
-
-#### Headers
+### Headers
 
 ```
 H1. line must be at least as long as text
@@ -45,8 +49,7 @@ h4
 ++
 ```
 
-
-#### Bullet lists
+### Bullet lists
 
 ```
 - Bullet point lists must start with one empty line above
@@ -56,8 +59,7 @@ h4
 - Bullet point
 ```
 
-
-#### Paragraphs
+### Paragraphs
 
 ```
 
@@ -71,15 +73,13 @@ Header
 Paragraphs can start directly underneath headers, an empty line is not needed in that case.
 ```
 
+### Links
 
-#### Links
-
-
-##### Making an anchor:
+#### Making an anchor:
 
 At the start of a page or section, this format on its own line defines an anchor: `.. _cross-platform-file-system-access:`
 
-##### Creating a link:
+#### Creating a link:
 
 To refer to the above anchor, you can use either:
 
