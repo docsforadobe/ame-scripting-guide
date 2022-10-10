@@ -1,7 +1,7 @@
 Adobe Media Encoder (AME) Scripting API Reference Guide
 =======================================================
 
-Revision date: 2022-10-05
+Revision date: 2022-10-10
 
 AMEBatchItemCreationFailedEvent
 -------------------------------
@@ -13,10 +13,10 @@ for the following FrontendScriptObject API’s: ‘addFileToBatch’,
 Properties
 ~~~~~~~~~~
 
--  ``error: string`` Get the error string
--  ``onBatchItemCreationFailed: constant string`` Notify when the batch
-   item creation failed.
--  ``srcFilePath: string`` Get the source file path.
+-  ``error: string`` : Get the error string
+-  ``onBatchItemCreationFailed: constant string`` : Notify when the
+   batch item creation failed.
+-  ``srcFilePath: string`` : Get the source file path.
 
 Code Samples
 ~~~~~~~~~~~~
@@ -47,7 +47,7 @@ Code Samples
 
 .. raw:: html
 
-   </details>
+   </details><br>
 
 .. raw:: html
 
@@ -72,7 +72,7 @@ Code Samples
 
 .. raw:: html
 
-   </details>
+   </details><br>
 
 AMEExportEvent
 --------------
@@ -86,37 +86,38 @@ onEncodingItemProgressUpdated, onPostProcessListInitialized**
 Properties
 ~~~~~~~~~~
 
--  ``encodeCompleteStatus: bool`` Returns true after encoding has been
-   completed for a batch item. Can be called for onEncodeComplete event.
--  ``encodeCompleteTime: float`` Returns the encoding time in
+-  ``encodeCompleteStatus: bool`` : Returns true after encoding has
+   been completed for a batch item. Can be called for onEncodeComplete
+   event.
+-  ``encodeCompleteTime: float`` : Returns the encoding time in
    milliseconds. Can be called for onEncodeComplete event.
--  ``groupIndex: unsigned int`` Returns the batch group index. Can be
-   called for onBatchItemStatusChanged event.
--  ``itemIndex: unsigned int`` Returns the batch item index. Can be
-   called for onBatchItemStatusChanged event.
--  ``onBatchItemStatusChanged: constant string`` Notify when batch item
-   status has been changed. You can call the API’s groupIndex, itemIndex
-   and status for more info.
--  ``onEncodeComplete: constant string`` Notify when the batch item has
-   been encoded. You can call the API’s encodeCompleteStatus and
-   encodeCompleteTime for more info.
--  ``onEncodingItemProgressUpdated: constant string`` Notify the
+-  ``groupIndex: unsigned int`` : Returns the batch group index. Can
+   be called for onBatchItemStatusChanged event.
+-  ``itemIndex: unsigned int`` : Returns the batch item index. Can
+   be called for onBatchItemStatusChanged event.
+-  ``onBatchItemStatusChanged: constant string`` : Notify when batch
+   item status has been changed. You can call the API’s groupIndex,
+   itemIndex and status for more info.
+-  ``onEncodeComplete: constant string`` : Notify when the batch
+   item has been encoded. You can call the API’s encodeCompleteStatus
+   and encodeCompleteTime for more info.
+-  ``onEncodingItemProgressUpdated: constant string`` : Notify the
    encoding progress.
--  ``onError: constant string`` Notify when there’s an error while
+-  ``onError: constant string`` : Notify when there’s an error while
    encoding the batch item.
--  ``onItemEncodingStarted: constant string`` Notify when the encoding
-   of a batch item has started.
--  ``onMediaInfoCreated: constant string`` Notify when media info has
-   been created.
--  ``onPostProcessListInitialized: constant string`` Notify when the
-   post process list is initialized.
--  ``progress: float`` Returns the batch item encoding progress value
-   which is between 0 and 1. Can be called for
+-  ``onItemEncodingStarted: constant string`` : Notify when the
+   encoding of a batch item has started.
+-  ``onMediaInfoCreated: constant string`` : Notify when media info
+   has been created.
+-  ``onPostProcessListInitialized: constant string`` : Notify when
+   the post process list is initialized.
+-  ``progress: float`` : Returns the batch item encoding progress
+   value which is between 0 and 1. Can be called for
    onEncodingItemProgressUpdated event
--  ``status: unsigned int`` Returns the batch item status. 0 : Waiting,
-   1 : Done, 2 : Failed, 3 : Skipped, 4 : Encoding, 5 : Paused, 6 :
-   Stopped, 7 : Any, 8 : AutoStart, 9 : Done Warning, 10 : Watch Folder
-   Waiting. Can be called for onBatchItemStatusChanged event.
+-  ``status: unsigned int`` : Returns the batch item status. 0 :
+   Waiting, 1 : Done, 2 : Failed, 3 : Skipped, 4 : Encoding, 5 : Paused,
+   6 : Stopped, 7 : Any, 8 : AutoStart, 9 : Done Warning, 10 : Watch
+   Folder Waiting. Can be called for onBatchItemStatusChanged event.
 
 .. _code-samples-1:
 
@@ -153,7 +154,7 @@ Code Samples
 
 .. raw:: html
 
-   </details>
+   </details><br>
 
 .. raw:: html
 
@@ -185,7 +186,7 @@ Code Samples
 
 .. raw:: html
 
-   </details>
+   </details><br>
 
 .. raw:: html
 
@@ -247,7 +248,7 @@ Code Samples
 
 .. raw:: html
 
-   </details>
+   </details><br>
 
 .. raw:: html
 
@@ -283,14 +284,13 @@ Code Samples
 
 .. raw:: html
 
-   </details>
+   </details><br>
 
 .. raw:: html
 
    <details>
 
-   <summary>onEncodingItemProgressUpdated Example (click to
-expand):</summary>
+   <summary>onEncodingItemProgressUpdated Example (click to expand):</summary>
 
 .. code:: javascript
 
@@ -318,7 +318,7 @@ expand):</summary>
 
 .. raw:: html
 
-   </details>
+   </details><br>
 
 .. raw:: html
 
@@ -352,7 +352,7 @@ expand):</summary>
 
 .. raw:: html
 
-   </details>
+   </details><br>
 
 .. raw:: html
 
@@ -386,7 +386,7 @@ expand):</summary>
 
 .. raw:: html
 
-   </details>
+   </details><br>
 
 .. raw:: html
 
@@ -420,14 +420,13 @@ expand):</summary>
 
 .. raw:: html
 
-   </details>
+   </details><br>
 
 .. raw:: html
 
    <details>
 
-   <summary>onPostProcessListInitialized Example (click to
-expand):</summary>
+   <summary>onPostProcessListInitialized Example (click to expand):</summary>
 
 .. code:: javascript
 
@@ -455,7 +454,7 @@ expand):</summary>
 
 .. raw:: html
 
-   </details>
+   </details><br>
 
 .. raw:: html
 
@@ -488,7 +487,7 @@ expand):</summary>
 
 .. raw:: html
 
-   </details>
+   </details><br>
 
 .. raw:: html
 
@@ -545,7 +544,7 @@ expand):</summary>
 
 .. raw:: html
 
-   </details>
+   </details><br>
 
 AMEFrontendEvent
 ----------------
@@ -558,9 +557,9 @@ successfully.**
 Properties
 ~~~~~~~~~~
 
--  ``onItemAddedToBatch: constant string`` Notify when a batch item has
-   been created successfully. Can be used for all FrontendScriptObject
-   API’s which creates a batch item.
+-  ``onItemAddedToBatch: constant string`` : Notify when a batch
+   item has been created successfully. Can be used for all
+   FrontendScriptObject API’s which creates a batch item.
 
 .. _code-samples-2:
 
@@ -593,7 +592,7 @@ Code Samples
 
 .. raw:: html
 
-   </details>
+   </details><br>
 
 Application
 -----------
@@ -605,54 +604,328 @@ Application
 Properties
 ~~~~~~~~~~
 
--  ``buildNumber: string`` Application build number
--  ``launchTime: float`` Get the launch time
+-  ``buildNumber: string`` : Get application build number
 
 Methods
 ~~~~~~~
 
--  ``assertToConsole(): bool`` Send assert output to console
+-  ``assertToConsole(): bool`` : Redirect assert output to stdout.
 
--  ``bringToFront(): bool`` Bring application to front
+-  ``bringToFront(): bool`` : Bring application to front
 
--  ``cancelTask(taskID: int): bool`` Cancel the task that matches the
-   task ID
+-  ``cancelTask(taskID: int): bool`` : Cancel the task that matches
+   the task ID
 
--  ``getBatchEncoder(): scripting object`` Get the batch encoder object
+-  ``getEncoderHost(): scripting object`` : Get the encoder host
+   object. See EncoderHostScriptObject
 
--  ``getBuildNumber(): string`` Get the build number
+-  ``getExporter(): scripting object`` : Get the exporter object.
+   See ExporterScriptObject
 
--  ``getEncoderHost(): scripting object`` Get the encoder host object
+-  ``getFrontend(): scripting object`` : Get the front end object.
+   See FrontendScriptObject
 
--  ``getExporter(): scripting object`` Get the exporter object
+-  ``getWatchFolder(): scripting object`` : Get the watch folder
+   object. See WatchFolderScriptEvent
 
--  ``getFrontend(): scripting object`` Get the front end object
+-  ``isBlackVideo(sourcePath: string): bool`` : True if all frames
+   are black
 
--  ``getScriptEngineName(): string`` Gets the name of the scripting
-   engine
+-  ``isSilentAudio(sourcePath: string): bool`` : True if audio is
+   silent
 
--  ``getWatchFolder(): scripting object`` Get the watchfolder object
+-  ``quit(): bool`` : Quit the AME app
 
--  ``isBlackVideo(sourcePath: string): bool`` True if all frames are
-   black
+-  ``renderFrameSequence(sourcePath: string, outputPath: string, renderAll: bool, startFrame: int): bool`` : Render
+   still frames for given source
 
--  ``isSilentAudio(sourcePath: string): bool`` True if audio is silent
+-  ``scheduleTask(): None`` : 
 
--  ``quit(): bool`` Quit the app
+-  ``wait(milliseconds: unsigned int): bool`` : Non UI blocking wait
+   in milliseconds
 
--  ``renderFrameSequence(sourcePath: string, outputPath: string, renderAll: bool, startFrame: int): bool``
-   Render still frames for given source
+-  ``write(text: string): bool`` : Write text to std out
 
--  ``scheduleTask(scriptToExecute: string, delayInMilliseconds: int, repeat: bool): int``
-   Schedule a script to run after delay, returns task ID
+.. _code-samples-3:
 
--  ``simulateUIEvents(actionScript: string): bool`` Simulate UI events
-   defined in an action file
+Code Samples
+~~~~~~~~~~~~
 
--  ``wait(milliseconds: unsigned int): bool`` Non UI blocking wait in
-   milliseconds
+.. raw:: html
 
--  ``write(text: string): bool`` Write text to std out
+   <details>
+
+   <summary>getExporter Example (click to expand):</summary>
+
+.. code:: javascript
+
+   var format = "";
+   var presetPath = "C:\\full\\path\\to\\HighQuality720HD.epr";
+   var testfilePath = "C:\\full\\path\to\\weLove.mp4";
+
+   // for WatchFolder object
+   var folder = "C:\\dev\\ExtendScripting\\watchFolder";
+   var preset = "C:\\dev\\ExtendScripting\\HighQuality720HD.epr";
+   var destination = "C:\\dev\\ExtendScripting\\watchFolder";
+
+   try {
+     var frontend = app.getFrontend();
+     if (frontend) {
+       // Either format or preset can be empty, output is optional
+       var encoderWrapper = frontend.addFileToBatch(
+         testfilePath,
+         format,
+         presetPath
+       );
+
+       if (encoderWrapper) {
+         $.writeln(
+           "Frontend script engine added the source file using addFileToBatch-",
+           testfilePath,
+           " successfully"
+         );
+
+         // Starts the encoding
+         var encoderHostWrapper = app.getEncoderHost();
+         if (encoderHostWrapper) {
+           var exporter = app.getExporter();
+           if (exporter) {
+             exporter.addEventListener(
+               "onItemEncodingStarted",
+               function (eventObj) {
+                 $.writeln("onItemEncodingStarted");
+               }
+             );
+
+             exporter.addEventListener("onEncodeComplete", function (eventObj) {
+               $.writeln(
+                 "AMEExportEvent:onEncodeComplete: ",
+                 eventObj.encodeCompleteStatus,
+                 eventObj.encodeCompleteTime
+               );
+             });
+
+             encoderHostWrapper.runBatch();
+           }
+         }
+       }
+     }
+   } catch (error) {
+     $.writeln(
+       "Something went wrong. Line: ",
+       error.line,
+       "\t",
+       error.description
+     );
+   }
+
+.. raw:: html
+
+   </details><br>
+
+.. raw:: html
+
+   <details>
+
+   <summary>getWatchFolder Example (click to expand):</summary>
+
+.. code:: javascript
+
+   // for WatchFolder object
+   var folder = "C:\\full\\path\\to\\watchFolder";
+   var preset = "C:\\full\\path\\to\\HighQuality720HD.epr";
+   var destination = "C:\\full\\path\\to\\watchFolder";
+
+   try {
+     //-----------------------------------------------------------
+     // WatchFolderScriptEvent
+     //----------------------------------------------------------------------------------------------------------------------
+     var watchFolder = app.getWatchFolder();
+     if (watchFolder) {
+       var watchFolderSuccess = watchFolder.createWatchFolder(
+         folder,
+         destination,
+         preset
+       );
+
+       if (watchFolderSuccess) {
+         var date = Date();
+         $.writeln(
+           "WatchfolderScriptObject script engine added the folder to watch: \n",
+           folder,
+           "\t",
+           date
+         );
+
+         // this is a global object that sends an oncomplete event once the whole queue is completed
+         encoderHostWrapper = app.getEncoderHost();
+
+         if (encoderHostWrapper) {
+           encoderHostWrapper.addEventListener(
+             "onItemEncodeComplete",
+             function (eventObj) {
+               $.writeln("encoderHostWrapper.onItemEncodeComplete: success");
+             }
+           );
+
+           encoderHostWrapper.runBatch();
+
+           watchFolder.addEventListener("onEncodeComplete", function (eventObj) {
+             $.writeln("Elapsed Time: " + eventObj.elapsedTime);
+             $.writeln("watchFolder.onEncodeComplete: success");
+           });
+
+           watchFolder.addEventListener("onEncodeError", function (eventObj) {
+             $.writeln("watchFolder.onEncodeError: failed");
+           });
+         }
+       }
+     }
+   } catch (error) {
+     $.writeln(
+       "Something went wrong. Line: ",
+       error.line,
+       "\t",
+       error.description
+     );
+   }
+
+.. raw:: html
+
+   </details><br>
+
+.. raw:: html
+
+   <details>
+
+   <summary>isBlackVideo Example (click to expand):</summary>
+
+.. code:: javascript
+
+   var testfilePath = "C:\\full\\path\\to\\Viddeo en negro.mp4";
+
+   try {
+     //----------------------------------------------------------
+     var blackVideo = app.isBlackVideo(testfilePath);
+     if (blackVideo) {
+       $.writeln("The input file has only black frames");
+     }
+   } catch (error) {
+     $.writeln(
+       "Something went wrong. Line: ",
+       error.line,
+       "\t",
+       error.description
+     );
+   }
+
+.. raw:: html
+
+   </details><br>
+
+.. raw:: html
+
+   <details>
+
+   <summary>isSilentAudio Example (click to expand):</summary>
+
+.. code:: javascript
+
+   var testfilePath = "C:\\full\\path\\to\\NegroImagines Copiar.prproj";
+
+   try {
+     //----------------------------------------------------------
+     var silent = app.isSilentAudio(testfilePath);
+     if (silent) {
+       $.writeln("The input file has no audio");
+     }
+   } catch (error) {
+     $.writeln(
+       "Something went wrong. Line: ",
+       error.line,
+       "\t",
+       error.description
+     );
+   }
+
+.. raw:: html
+
+   </details><br>
+
+.. raw:: html
+
+   <details>
+
+   <summary>renderFrameSequence Example (click to expand):</summary>
+
+.. code:: javascript
+
+   var testfilePath = "C:\\full\\path\to\\weLove.mp4";
+   var outputPath = "C:\\full\\path\\to\\output.mp4";
+
+
+   try {
+     var renderall = true;
+     var startTime = 0;
+     app.renderFrameSequence(testfilePath, outputPath, renderall, startTime);
+   } catch (error) {
+     $.writeln(
+       "Something went wrong. Line: ",
+       error.line,
+       "\t",
+       error.description
+     );
+   }
+
+.. raw:: html
+
+   </details><br>
+
+.. raw:: html
+
+   <details>
+
+   <summary>scheduleTask Example (click to expand):</summary>
+
+.. code:: javascript
+
+   var format = "";
+   var presetPath = "C:\\dev\\ExtendScripting\\HighQuality720HD.epr";
+   var testfilePath = "C:\\full\\path\\to\\weLove.mp4";
+
+   try {
+     $.writeln("Application build number: ", app.buildNumber);
+     var frontend = app.getFrontend();
+     if (frontend) {
+       // Either format or preset can be empty, output is optional
+       var encoderWrapper = frontend.addFileToBatch(
+         testfilePath,
+         format,
+         presetPath
+       );
+
+       if (encoderWrapper) {
+         var taskID = app.scheduleTask(
+           "var e = app.getEncoderHost(); e.runBatch()",
+           5000,
+           false
+         );
+       } else {
+         throw "Frontend object is not valid.";
+       }
+     }
+   } catch (error) {
+     $.writeln(
+       "Something went wrong. Line: ",
+       error.line,
+       "\t",
+       error.description
+     );
+   }
+
+.. raw:: html
+
+   </details><br>
 
 EncoderHostScriptObject
 -----------------------
@@ -665,33 +938,34 @@ pause or stop the batch.**
 Methods
 ~~~~~~~
 
--  ``createEncoderForFormat(inFormatName: string): scripting object``
-   Returns an ‘EncoderWrapper’ script object for the requested format.
+-  ``createEncoderForFormat(inFormatName: string): scripting object`` : Returns
+   an ‘EncoderWrapper’ script object for the requested format.
 
--  ``getCurrentBatchPreview(inOutputPath: string): bool`` Writes out the
-   current batch preview image (tiff format) to the given path.
+-  ``getCurrentBatchPreview(inOutputPath: string): bool`` : Writes
+   out the current batch preview image (tiff format) to the given path.
 
    -  ``inOutputPath``: Path to store a ‘tiff’ file.
 
--  ``getFormatList(): array of strings`` Returns a list of all available
-   formats.
+-  ``getFormatList(): array of strings`` : Returns a list of all
+   available formats.
 
--  ``getSourceInfo(sourcePath: string): scripting object`` Returns a
-   ‘SourceMediaInfo’ script object which can give detailed info about
+-  ``getSourceInfo(sourcePath: string): scripting object`` : Returns
+   a ‘SourceMediaInfo’ script object which can give detailed info about
    the provided source.
 
    -  ``sourcePath``: Media path
 
--  ``getSupportedImportFileTypes(): array of strings`` Returns list of
-   all available formats.
+-  ``getSupportedImportFileTypes(): array of strings`` : Returns
+   list of all available formats.
 
--  ``isBatchRunning(): bool`` Returns true if a batch job is running.
+-  ``isBatchRunning(): bool`` : Returns true if a batch job is
+   running.
 
--  ``pauseBatch(): bool`` Pauses the batch (always returns true).
+-  ``pauseBatch(): bool`` : Pauses the batch (always returns true).
 
--  ``runBatch(): bool`` Runs the batch (always returns true).
+-  ``runBatch(): bool`` : Runs the batch (always returns true).
 
--  ``stopBatch(): bool`` Stops the batch (always returns true).
+-  ``stopBatch(): bool`` : Stops the batch (always returns true).
 
 EncoderHostWrapperEvent
 -----------------------
@@ -706,22 +980,24 @@ event types will be received for all batch items.**
 Properties
 ~~~~~~~~~~
 
--  ``onEncodingItemProgressUpdate: constant string`` Notify of the batch
-   item encoding progress (available since 23.1.).
--  ``onItemEncodeCompleted: constant string`` Notify when the batch item
-   has been encoded.
--  ``onItemEncodingStarted: constant string`` Notify when the batch item
-   encoding started (available since 23.1.).
--  ``outputFilePath: string`` Returns the path of the output file. Can
-   be called for onItemEncodingStarted and onItemEncodeComplete events.
--  ``progress: float`` Returns the encoding progress between 0 and 1.
-   Can be called for onEncodingItemProgressUpdate event.
--  ``result: string`` Returns the encoding result ‘True’ or ‘False’. Can
-   be called for onItemEncodeComplete event.
--  ``sourceFilePath: string`` Returns the path of the source file. Can
-   be called for onItemEncodingStarted and onItemEncodeComplete events.
+-  ``onEncodingItemProgressUpdate: constant string`` : Notify of the
+   batch item encoding progress (available since 23.1.).
+-  ``onItemEncodeCompleted: constant string`` : Notify when the
+   batch item has been encoded.
+-  ``onItemEncodingStarted: constant string`` : Notify when the
+   batch item encoding started (available since 23.1.).
+-  ``outputFilePath: string`` : Returns the path of the output file.
+   Can be called for onItemEncodingStarted and onItemEncodeComplete
+   events.
+-  ``progress: float`` : Returns the encoding progress between 0 and
+   1. Can be called for onEncodingItemProgressUpdate event.
+-  ``result: string`` : Returns the encoding result ‘True’ or
+   ‘False’. Can be called for onItemEncodeComplete event.
+-  ``sourceFilePath: string`` : Returns the path of the source file.
+   Can be called for onItemEncodingStarted and onItemEncodeComplete
+   events.
 
-.. _code-samples-3:
+.. _code-samples-4:
 
 Code Samples
 ~~~~~~~~~~~~
@@ -823,7 +1099,7 @@ Code Samples
 
 .. raw:: html
 
-   </details>
+   </details><br>
 
 EncoderWrapper
 --------------
@@ -835,103 +1111,107 @@ EncoderWrapper
 Properties
 ~~~~~~~~~~
 
--  ``outputFiles: array of strings`` Gets the list of files the encode
-   generated
--  ``outputHeight: float`` Gets the height of the encoded output file
--  ``outputWidth: float`` Gets the width of the encoded output file
+-  ``outputFiles: array of strings`` : Gets the list of files the
+   encode generated
+-  ``outputHeight: float`` : Gets the height of the encoded output
+   file
+-  ``outputWidth: float`` : Gets the width of the encoded output
+   file
 
 .. _methods-2:
 
 Methods
 ~~~~~~~
 
--  ``SetIncludeSourceXMP(includeSourceXMP: bool): bool`` Toggle the
-   inclusion of source XMP [boolean] input value required
+-  ``SetIncludeSourceXMP(includeSourceXMP: bool): bool`` : Toggle
+   the inclusion of source XMP [boolean] input value required
 
--  ``getEncodeProgress(): int`` Returns the encode progress as
+-  ``getEncodeProgress(): int`` : Returns the encode progress as
    percentage
 
--  ``getEncodeTime(): float`` Return the encode time in milliseconds
+-  ``getEncodeTime(): float`` : Return the encode time in
+   milliseconds
 
--  ``getMissingAssets(includeSource: bool, includeOutput: bool): array of strings``
-   Returns a list of missing assets
+-  ``getMissingAssets(includeSource: bool, includeOutput: bool): array of strings`` : Returns
+   a list of missing assets
 
    -  ``includeSource``: Get missing asset list from the source group if
       requested
 
--  ``getPresetList(): array of strings`` Returns the presets available
-   for the assigned format
+-  ``getPresetList(): array of strings`` : Returns the presets
+   available for the assigned format
 
--  ``loadFormat(format: string): bool`` Changes the format for the the
-   batch item
+-  ``loadFormat(format: string): bool`` : Changes the format for the
+   the batch item
 
    -  ``format``: E.g. ‘H.264’ Loads all presets available for the
       assigned format
 
--  ``loadPreset(presetPath: string): bool`` Loads and assigns the preset
-   to the batch item
+-  ``loadPreset(presetPath: string): bool`` : Loads and assigns the
+   preset to the batch item
 
--  ``setCropOffsets(left: unsigned int, top: unsigned int, right: unsigned int, bottom: unsigned int): bool``
-   Sets the crop offsets
+-  ``setCropOffsets(left: unsigned int, top: unsigned int, right: unsigned int, bottom: unsigned int): bool`` : Sets
+   the crop offsets
 
--  ``setCropState(cropState: bool): bool`` Sets the crop state [boolean]
-   input value required
+-  ``setCropState(cropState: bool): bool`` : Sets the crop state
+   [boolean] input value required
 
--  ``setCropType(cropType: unsigned int): bool`` Sets the scale type
+-  ``setCropType(cropType: unsigned int): bool`` : Sets the scale
+   type
 
    -  ``cropType``: 0 ScaleToFit, 1 ScaleToFitBeforeCrop, 2
       SetAsOutputSize, 3 ScaleToFill, 4 ScaleToFillBeforeCrop, 5
       StretchToFill, 6 StretchToFillBeforeCrop
 
--  ``setCuePointData(inCuePointsFilePath: string): bool`` Sets the cue
-   point data
+-  ``setCuePointData(inCuePointsFilePath: string): bool`` : Sets the
+   cue point data
 
--  ``setFrameRate(framerate: string): bool`` Sets the frame rate for the
-   batch item
+-  ``setFrameRate(framerate: string): bool`` : Sets the frame rate
+   for the batch item
 
    -  ``framerate``: E.g. ‘24’ as string
 
--  ``setIncludeSourceCuePoints(includeSourceCuePoints: bool): bool``
-   Toggle the inclusion of cue points [boolean] input value required
+-  ``setIncludeSourceCuePoints(includeSourceCuePoints: bool): bool`` : Toggle
+   the inclusion of cue points [boolean] input value required
 
--  ``setOutputFrameSize(width: unsigned int, height: unsigned int): bool``
-   Sets the output frame size
+-  ``setOutputFrameSize(width: unsigned int, height: unsigned int): bool`` : Sets
+   the output frame size
 
--  ``setRotation(rotationValue: float): bool`` Sets the rotation (in a
-   360 degree system)
+-  ``setRotation(rotationValue: float): bool`` : Sets the rotation
+   (in a 360 degree system)
 
    -  ``rotationValue``: E.g. 0.0 - 360.0
 
--  ``setScaleType(scaleType: unsigned int): bool`` Sets the scale type
+-  ``setScaleType(scaleType: unsigned int): bool`` : Sets the scale
+   type
 
    -  ``scaleType``: 0 ScaleToFit, 1 ScaleToFitBeforeCrop, 2
       SetAsOutputSize, 3 ScaleToFill, 4 ScaleToFillBeforeCrop, 5
       StretchToFill, 6 StretchToFillBeforeCrop
 
--  ``setTimeInterpolationType(interpolationType: unsigned int): bool``
-   Set the time interpolation type
+-  ``setTimeInterpolationType(interpolationType: unsigned int): bool`` : Set
+   the time interpolation type
 
    -  ``interpolationType``: 0 FrameSampling, 1 FrameBlending, 2
       OpticalFlow
 
--  ``setUseFrameBlending(useFrameBlending: bool): bool`` Toggle the use
-   of frame blending [boolean] input value required
+-  ``setUseFrameBlending(useFrameBlending: bool): bool`` : Toggle
+   the use of frame blending [boolean] input value required
 
--  ``setUseMaximumRenderQuality(useMaximumRenderQuality: bool): bool``
-   Toggle the use of maximum render quality [boolean] input value
-   required
+-  ``setUseMaximumRenderQuality(useMaximumRenderQuality: bool): bool`` : Toggle
+   the use of maximum render quality [boolean] input value required
 
--  ``setUsePreviewFiles(usePreviewFiles: bool): bool`` Toggle the use of
-   previews files. [boolean] input value required
+-  ``setUsePreviewFiles(usePreviewFiles: bool): bool`` : Toggle the
+   use of previews files. [boolean] input value required
 
--  ``setWorkArea(workAreaType: unsigned int, startTime: float, endTime: float): bool``
-   Sets the work area type, start and end time for the batch item
+-  ``setWorkArea(workAreaType: unsigned int, startTime: float, endTime: float): bool`` : Sets
+   the work area type, start and end time for the batch item
 
    -  ``workAreaType``: 0 Entire, 1 InToOut, 2 WorkArea, 3 Custom, 4
       UseDefault
 
--  ``setXMPData(templateXMPFilePath: string): bool`` Sets XMP data to
-   given template
+-  ``setXMPData(templateXMPFilePath: string): bool`` : Sets XMP data
+   to given template
 
 EncoderWrapperEvent
 -------------------
@@ -943,16 +1223,16 @@ EncoderWrapperEvent
 Properties
 ~~~~~~~~~~
 
--  ``onEncodeFinished: constant string`` Notify when the batch item has
-   been encoded.
--  ``onEncodeProgress: constant string`` Notify when the batch item
-   encode progress changes.
--  ``result: string`` Returns the encoding result ‘Done!’, ‘Failed!’ or
-   ‘Stopped!’ for the event type onEncodeFinished resp. the encoding
-   progress for the event type onEncodeProgress which is between 0 and
-   100.
+-  ``onEncodeFinished: constant string`` : Notify when the batch
+   item has been encoded.
+-  ``onEncodeProgress: constant string`` : Notify when the batch
+   item encode progress changes.
+-  ``result: string`` : Returns the encoding result ‘Done!’,
+   ‘Failed!’ or ‘Stopped!’ for the event type onEncodeFinished resp. the
+   encoding progress for the event type onEncodeProgress which is
+   between 0 and 100.
 
-.. _code-samples-4:
+.. _code-samples-5:
 
 Code Samples
 ~~~~~~~~~~~~
@@ -987,7 +1267,7 @@ Code Samples
 
 .. raw:: html
 
-   </details>
+   </details><br>
 
 ExporterScriptObject
 --------------------
@@ -1002,18 +1282,19 @@ onEncodingItemProgressUpdated, onPostProcessListInitialized**
 Properties
 ~~~~~~~~~~
 
--  ``elapsedMilliseconds: float`` Returns the encode time in
+-  ``elapsedMilliseconds: float`` : Returns the encode time in
    milliseconds.
--  ``encodeID: string`` Returns the current encode item ID as string.
+-  ``encodeID: string`` : Returns the current encode item ID as
+   string.
 
 .. _methods-3:
 
 Methods
 ~~~~~~~
 
--  ``exportGroup(sourcePath: string, outputPath: string, presetsPath: string, matchSource: bool = false): bool``
-   Export the source with the provided list of presets. Returns true in
-   case of success.
+-  ``exportGroup(sourcePath: string, outputPath: string, presetsPath: string, matchSource: bool = false): bool`` : Export
+   the source with the provided list of presets. Returns true in case of
+   success.
 
    -  ``sourcePath``: Media path (Premiere Pro projects aren’t
       supported).
@@ -1023,8 +1304,8 @@ Methods
       via a \| (e.g. ‘path1|path2|path3’
    -  ``matchSource``: Optional. Default value is false
 
--  ``exportItem(sourcePath: string, outputPath: string, presetPath: string, matchSource: bool = false, writeFramesToDisk: bool = false): scripting object``
-   Export the source with the provided preset. Returns an EncoderWrapper
+-  ``exportItem(sourcePath: string, outputPath: string, presetPath: string, matchSource: bool = false, writeFramesToDisk: bool = false): scripting object`` : Export
+   the source with the provided preset. Returns an EncoderWrapper
    object.
 
    -  ``sourcePath``: Media path or Premiere Pro project path (In case
@@ -1037,9 +1318,9 @@ Methods
       duration. Known issue: Currently it only works with parallel
       encoding disabled.
 
--  ``exportSequence(projectPath: string, outputPath: string, presetPath: string, matchSource: bool = false, writeFramesToDisk: bool = false, leadingFramesToTrim: int = 0, trailingFramesToTrim: int = 0, sequenceName: string = ""): bool``
-   Export the Premiere Pro sequence with the provided preset. Returns
-   true in case of success.
+-  ``exportSequence(projectPath: string, outputPath: string, presetPath: string, matchSource: bool = false, writeFramesToDisk: bool = false, leadingFramesToTrim: int = 0, trailingFramesToTrim: int = 0, sequenceName: string = ""): bool`` : Export
+   the Premiere Pro sequence with the provided preset. Returns true in
+   case of success.
 
    -  ``projectPath``: Premiere Pro project path.
    -  ``outputPath``: If outputPath is empty, then the output file
@@ -1054,15 +1335,15 @@ Methods
    -  ``sequenceName``: Optional. If sequence name is empty then we use
       the last sequence of the project.
 
--  ``getSourceMediaInfo(sourcePath: string): scripting object`` Returns
+-  ``getSourceMediaInfo(sourcePath: string): scripting object`` : Returns
    a SourceMediaInfo object.
 
--  ``removeAllBatchItems(): bool`` Remove all batch items from the
+-  ``removeAllBatchItems(): bool`` : Remove all batch items from the
    queue. Returns true in case of success.
 
--  ``trimExportForSR(sourcePath: string, outputPath: string, presetPath: string, matchSource: bool = false, writeFramesToDisk: bool = false, leadingFramesToTrim: int = 0, trailingFramesToTrim: int = 0): bool``
-   Smart render the source with the provided preset. Returns true in
-   case of success.
+-  ``trimExportForSR(sourcePath: string, outputPath: string, presetPath: string, matchSource: bool = false, writeFramesToDisk: bool = false, leadingFramesToTrim: int = 0, trailingFramesToTrim: int = 0): bool`` : Smart
+   render the source with the provided preset. Returns true in case of
+   success.
 
    -  ``sourcePath``: Media path or Premiere Pro project path (In case
       of a Premiere Pro project the last sequence will be used).
@@ -1076,7 +1357,7 @@ Methods
    -  ``leadingFramesToTrim``: Optional. Default value is 0.
    -  ``trailingFramesToTrim``: Optional. Default value is 0.
 
-.. _code-samples-5:
+.. _code-samples-6:
 
 Code Samples
 ~~~~~~~~~~~~
@@ -1109,7 +1390,7 @@ Code Samples
 
 .. raw:: html
 
-   </details>
+   </details><br>
 
 .. raw:: html
 
@@ -1135,7 +1416,7 @@ Code Samples
 
 .. raw:: html
 
-   </details>
+   </details><br>
 
 .. raw:: html
 
@@ -1225,7 +1506,7 @@ Code Samples
 
 .. raw:: html
 
-   </details>
+   </details><br>
 
 .. raw:: html
 
@@ -1249,7 +1530,7 @@ Code Samples
 
 .. raw:: html
 
-   </details>
+   </details><br>
 
 .. raw:: html
 
@@ -1283,7 +1564,7 @@ Code Samples
 
 .. raw:: html
 
-   </details>
+   </details><br>
 
 .. raw:: html
 
@@ -1302,7 +1583,7 @@ Code Samples
 
 .. raw:: html
 
-   </details>
+   </details><br>
 
 .. raw:: html
 
@@ -1324,7 +1605,7 @@ Code Samples
 
 .. raw:: html
 
-   </details>
+   </details><br>
 
 .. raw:: html
 
@@ -1350,7 +1631,7 @@ Code Samples
 
 .. raw:: html
 
-   </details>
+   </details><br>
 
 FrontendScriptObject
 --------------------
@@ -1362,9 +1643,9 @@ FrontendScriptObject
 Methods
 ~~~~~~~
 
--  ``addCompToBatch(compPath: string, presetPath: string = "", outputPath: string = ""): bool``
-   Adds the first comp of an After Effects project resp. the first
-   sequence of a Premiere Pro project to the batch.
+-  ``addCompToBatch(compPath: string, presetPath: string = "", outputPath: string = ""): bool`` : Adds
+   the first comp of an After Effects project resp. the first sequence
+   of a Premiere Pro project to the batch.
 
    -  ``compPath``: Path to e.g. an After Effects project or Premiere
       Pro project. The first comp resp. sequence will be used.
@@ -1373,9 +1654,9 @@ Methods
    -  ``outputPath``: Optional. If outputPath is empty, then the output
       file name will be generated based on the comp path.
 
--  ``addDLToBatch(projectPath: string, format: string, presetPath: string, guid: string, outputPath: string = ""): scripting object``
-   Adds e.g. an After Effects comp or Premiere Pro sequence to the batch
-   and returns an EncoderWrapper object.
+-  ``addDLToBatch(projectPath: string, format: string, presetPath: string, guid: string, outputPath: string = ""): scripting object`` : Adds
+   e.g. an After Effects comp or Premiere Pro sequence to the batch and
+   returns an EncoderWrapper object.
 
    -  ``projectPath``: E.g. Premiere Pro or After Effects project path.
    -  ``format``: E.g. ‘H.264’
@@ -1387,8 +1668,8 @@ Methods
    -  ``outputPath``: Optional. If outputPath is empty, then the output
       file name will be generated based on the project path.
 
--  ``addFileSequenceToBatch(containingFolder: string, imagePath: string, presetPath: string, outputPath: string = ""): bool``
-   Adds an image sequence to the batch. The images will be sorted in
+-  ``addFileSequenceToBatch(containingFolder: string, imagePath: string, presetPath: string, outputPath: string = ""): bool`` : Adds
+   an image sequence to the batch. The images will be sorted in
    alphabetical order.
 
    -  ``containingFolder``: The folder containing image files.
@@ -1397,8 +1678,8 @@ Methods
    -  ``outputPath``: Optional. If outputPath is empty, then the output
       file name will be generated based on the containingFolder name
 
--  ``addFileToBatch(filePath: string, format: string, presetPath: string, outputPath: string = ""): scripting object``
-   Adds a file to the batch and returns an EncoderWrapper object.
+-  ``addFileToBatch(filePath: string, format: string, presetPath: string, outputPath: string = ""): scripting object`` : Adds
+   a file to the batch and returns an EncoderWrapper object.
 
    -  ``filePath``: File path of a media source.
    -  ``format``: E.g. ‘H.264’
@@ -1408,13 +1689,13 @@ Methods
    -  ``outputPath``: Optional. If outputPath is empty, then the output
       file name will be generated based on the file path.
 
--  ``addItemToBatch(sourcePath: string): bool`` Adds a media source to
-   the batch.
+-  ``addItemToBatch(sourcePath: string): bool`` : Adds a media
+   source to the batch.
 
    -  ``sourcePath``: Path of the media source.
 
--  ``addTeamProjectsItemToBatch(projectsURL: string, format: string, presetPath: string, outputPath: string): scripting object``
-   Adds a team project item to the batch and returns an EncoderWrapper
+-  ``addTeamProjectsItemToBatch(projectsURL: string, format: string, presetPath: string, outputPath: string): scripting object`` : Adds
+   a team project item to the batch and returns an EncoderWrapper
    object.
 
    -  ``projectsURL``: Team Projects URL or Team Projects Snap. You can
@@ -1425,29 +1706,21 @@ Methods
       If no preset is used then the default preset of the specified
       format will be applied.
 
--  ``addXMLToBatch(xmlPath: string, presetPath: string, outputFolderPath: string = ""): bool``
-   Adds Final Cut Pro xml to the batch.
+-  ``addXMLToBatch(xmlPath: string, presetPath: string, outputFolderPath: string = ""): bool`` : Adds
+   Final Cut Pro xml to the batch.
 
    -  ``xmlPath``: Path to a Final Cut Pro xml file.
    -  ``outputFolderPath``: Optional. If outputFolderPath is empty, then
       the output file name will be generated based on the XML file path.
 
--  ``createNewPresetFromExporterSettings(exporterSettingsPath: string, basePresetPath: string, outputPresetPath: string): bool``
-
-   -  ``exporterSettingsPath``: JSON file with the new settings values.
-      We use these values to overwrite the values of the base preset.
-   -  ``basePresetPath``: Path of the base preset which will be
-      modified.
-   -  ``outputPresetPath``: Output path of the modified preset.
-
--  ``getDLItemsAtRoot(projectPath: string): array of strings`` Returns
+-  ``getDLItemsAtRoot(projectPath: string): array of strings`` : Returns
    the list of GUIDs for objects (sequences/comps) at the top/root
    level.
 
    -  ``projectPath``: E.g. Premiere Pro or After Effects project path.
 
--  ``stitchFiles(mediaPaths: string, format: string, presetPath: string, outputPath: string): scripting object``
-   Adds a batch item for the given media and returns an EncoderWrapper
+-  ``stitchFiles(mediaPaths: string, format: string, presetPath: string, outputPath: string): scripting object`` : Adds
+   a batch item for the given media and returns an EncoderWrapper
    object.
 
    -  ``mediaPaths``: Semicolon delimited list of media paths.
@@ -1456,7 +1729,7 @@ Methods
       If no preset is used then the default preset of the specified
       format will be applied.
 
--  ``stopBatch(): bool`` Stops the batch.
+-  ``stopBatch(): bool`` : Stops the batch.
 
 SourceMediaInfo
 ---------------
@@ -1468,24 +1741,27 @@ SourceMediaInfo
 Properties
 ~~~~~~~~~~
 
--  ``audioDuration: string`` Returns the audio duration of the source
--  ``description: string`` Returns embedded description of the source
--  ``dropFrameTimeCode: bool`` Returns true if the timecode is a drop
-   frame timecode
--  ``duration: string`` Returns duration of the source
--  ``fieldType: string`` Returns field type of the source
--  ``frameRate: string`` Returns frame rate of the source
--  ``height: string`` Returns height of the source
--  ``importer: string`` Returns the importer used to decode the source
--  ``numChannels: string`` Returns the number of audio channels of the
+-  ``audioDuration: string`` : Returns the audio duration of the
    source
--  ``parX: string`` Returns the X PAR of the source
--  ``parY: string`` Returns the Y PAR of the source
--  ``sampleRate: string`` Returns sample rate of the source
--  ``width: string`` Returns width of the source
--  ``xmp: string`` Returns xmp xml of the source
+-  ``description: string`` : Returns embedded description of the
+   source
+-  ``dropFrameTimeCode: bool`` : Returns true if the timecode is a
+   drop frame timecode
+-  ``duration: string`` : Returns duration of the source
+-  ``fieldType: string`` : Returns field type of the source
+-  ``frameRate: string`` : Returns frame rate of the source
+-  ``height: string`` : Returns height of the source
+-  ``importer: string`` : Returns the importer used to decode the
+   source
+-  ``numChannels: string`` : Returns the number of audio channels of
+   the source
+-  ``parX: string`` : Returns the X PAR of the source
+-  ``parY: string`` : Returns the Y PAR of the source
+-  ``sampleRate: string`` : Returns sample rate of the source
+-  ``width: string`` : Returns width of the source
+-  ``xmp: string`` : Returns xmp xml of the source
 
-.. _code-samples-6:
+.. _code-samples-7:
 
 Code Samples
 ~~~~~~~~~~~~
@@ -1551,7 +1827,7 @@ Code Samples
 
 .. raw:: html
 
-   </details>
+   </details><br>
 
 WatchFolderScriptEvent
 ----------------------
@@ -1563,12 +1839,12 @@ WatchFolderScriptEvent
 Properties
 ~~~~~~~~~~
 
--  ``elapsedTime: float`` Returns the encoding elapsed time in
+-  ``elapsedTime: float`` : Returns the encoding elapsed time in
    milliseconds.
--  ``onEncodeComplete: constant string`` Notify when the watchfolder job
-   item is complete
--  ``onEncodeError: constant string`` Notify when the watchfolder job
-   encode fails
+-  ``onEncodeComplete: constant string`` : Notify when the
+   watchfolder job item is complete
+-  ``onEncodeError: constant string`` : Notify when the watchfolder
+   job encode fails
 
 WatchFolderScriptObject
 -----------------------
@@ -1580,16 +1856,15 @@ WatchFolderScriptObject
 Methods
 ~~~~~~~
 
--  ``createWatchFolder(folderPath: string, outputPath: string, presetPath: string): bool``
-   Create a watch folder at destination for the preset and add the
-   source
+-  ``createWatchFolder(folderPath: string, outputPath: string, presetPath: string): bool`` : Create
+   a watch folder at destination for the preset and add the source
 
    -  ``folderPath``: The path to the folder which should be added as
       watch folder
 
--  ``removeAllWatchFolders(): bool`` Remove all watch folders
+-  ``removeAllWatchFolders(): bool`` : Remove all watch folders
 
-.. _code-samples-7:
+.. _code-samples-8:
 
 Code Samples
 ~~~~~~~~~~~~
@@ -1662,7 +1937,7 @@ Code Samples
 
 .. raw:: html
 
-   </details>
+   </details><br>
 
 .. raw:: html
 
@@ -1715,4 +1990,4 @@ Code Samples
 
 .. raw:: html
 
-   </details>
+   </details><br>
