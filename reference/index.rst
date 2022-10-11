@@ -1,7 +1,7 @@
-Adobe Media Encoder (AME) Scripting API Reference Guide
+Adobe Media Encoder (AME) Scripting API Reference (A-Z)
 =======================================================
 
-Revision date: 2022-10-10
+Revision date: 2022-10-11
 
 AMEBatchItemCreationFailedEvent
 -------------------------------
@@ -1213,6 +1213,120 @@ Methods
 -  ``setXMPData(templateXMPFilePath: string): bool`` : Sets XMP data
    to given template
 
+.. _code-samples-5:
+
+Code Samples
+~~~~~~~~~~~~
+
+.. raw:: html
+
+   <details>
+
+   <summary>Example (click to expand):</summary>
+
+.. code:: javascript
+
+   var format = "";
+   var presetPath = "C:\\full\\path\\to\\HighQuality720HD.epr";
+   var testfilePath = "C:\\full\\path\\to\\weLove.mp4";
+
+   try {
+     var frontend = app.getFrontend();
+     if (frontend) {
+       // Either format or preset can be empty, output is optional
+       var encoderWrapper = frontend.addFileToBatch(
+         testfilePath,
+         format,
+         presetPath
+       );
+
+       if (encoderWrapper) {
+         $.writeln(
+           "Frontend script engine added the source file using addFileToBatch-",
+           testfilePath,
+           " successfully"
+         );
+
+         $.writeln("width :", encoderWrapper.outputWidth);
+         $.writeln("height:", encoderWrapper.outputHeight);
+         $.writeln("outputFiles:", encoderWrapper.outputFiles);
+
+         //input value is string please use e.g. "25"
+         encoderWrapper.setFrameRate("25");
+
+         //int, 0-Entire, 1-InToOut, 2-WorkArea, 3-Custom, 4:UseDefault
+         encoderWrapper.setWorkArea(0, 0.0, 1.0);
+
+         //[boolean] input value required
+         encoderWrapper.setUsePreviewFiles(true);
+
+         //[boolean] input value required
+         encoderWrapper.setUseMaximumRenderQuality(true);
+
+         //[boolean] input value required
+         encoderWrapper.setUseFrameBlending(true);
+
+         // int-0-FrameSampling, 1-FrameBlending, 2-OpticalFlow
+         encoderWrapper.setTimeInterpolationType(1);
+
+         //[boolean] input value required
+         // be aware that this method first letter is upper case
+         encoderWrapper.SetIncludeSourceXMP(true);
+
+         //[boolean] input value required
+         encoderWrapper.setIncludeSourceCuePoints(false);
+
+         //[boolean] input value required
+         encoderWrapper.setCropState(true);
+
+         //int, 0-ScaleToFit, 1-ScaleToFitBeforeCrop, 2-SetAsOutputSize, 3-ScaleToFill, 4-ScaleToFillBeforeCrop, 5-StretchToFill, 6-StretchToFillBeforeCrop",
+         encoderWrapper.setCropType(4);
+
+         //int, 0-ScaleToFit, 1-ScaleToFitBeforeCrop, 2-SetAsOutputSize, 3-ScaleToFill, 4-ScaleToFillBeforeCrop, 5-StretchToFill, 6-StretchToFillBeforeCrop",
+         encoderWrapper.setScaleType(4);
+
+         encoderWrapper.setRotation(180);
+
+         //left, top, right, bottom
+         encoderWrapper.setCropOffsets(10, 20, 10, 20);
+
+         //width and height
+         encoderWrapper.setOutputFrameSize(1200, 800);
+
+         // default is off - deprecated
+         //encoderWrapper.setCuePointData();
+
+         var encoderHostWrapper = app.getEncoderHost();
+         if (encoderHostWrapper) {
+           encoderHostWrapper.addEventListener(
+             "onItemEncodeComplete",
+             function (eventObj) {
+               $.writeln("Result: " + eventObj.result);
+               $.writeln("Source File Path: " + eventObj.sourceFilePath);
+               $.writeln("Output File Path: " + eventObj.outputFilePath);
+             }
+           );
+           encoderHostWrapper.runBatch();
+         }
+       } else {
+         throw "encoderWrapper is not valid";
+       }
+     } else {
+       throw "frontend obj is not valid";
+     }
+   } catch (error) {
+     $.writeln(
+       "Something went wrong. Line: ",
+       error.line,
+       "\t",
+       error.description
+     );
+   }
+
+.. raw:: html
+
+   </details><br>
+
 EncoderWrapperEvent
 -------------------
 
@@ -1232,7 +1346,7 @@ Properties
    encoding progress for the event type onEncodeProgress which is
    between 0 and 100.
 
-.. _code-samples-5:
+.. _code-samples-6:
 
 Code Samples
 ~~~~~~~~~~~~
@@ -1357,7 +1471,7 @@ Methods
    -  ``leadingFramesToTrim``: Optional. Default value is 0.
    -  ``trailingFramesToTrim``: Optional. Default value is 0.
 
-.. _code-samples-6:
+.. _code-samples-7:
 
 Code Samples
 ~~~~~~~~~~~~
@@ -1400,6 +1514,9 @@ Code Samples
 
 .. code:: javascript
 
+   var source = "C:\\full\\path\\to\\testmedia.mp4";
+   var preset = "C:\\full\\path\\to\\HighQuality720HD.epr";
+   var destination = "C:\\full\\path\\to\\Output";
 
    var exporter = app.getExporter();
 
@@ -1515,6 +1632,11 @@ Code Samples
    <summary>exportItem Example (click to expand):</summary>
 
 .. code:: javascript
+
+   var source = "C:\\full\\path\\to\\testmedia.mp4";
+   var preset = "C:\\full\\path\\to\\HighQuality720HD.epr";
+   var destination = "C:\\full\\path\\to\\Output";
+
 
    try {
      var exporter = app.getExporter();
@@ -1731,6 +1853,384 @@ Methods
 
 -  ``stopBatch(): bool`` : Stops the batch.
 
+.. _code-samples-8:
+
+Code Samples
+~~~~~~~~~~~~
+
+.. raw:: html
+
+   <details>
+
+   <summary>addCompToBatch Example (click to expand):</summary>
+
+.. code:: javascript
+
+   var preset = "C:\\full\\path\\to\\HighQuality720HD.epr";
+   var destination = "C:\\full\\path\\to\\Output";
+   var compItem = "C:\\full\\path\\to\\OpenInPPro.aep";
+
+   try {
+     var exporter = app.getExporter();
+     var frontend = app.getFrontend();
+     exporter.removeAllBatchItems();
+
+     var batchItemSuccess = frontend.addCompToBatch(compItem, preset, destination);
+
+     if (batchItemSuccess) {
+       var date = Date();
+       $.writeln(
+         "Frontend script engine added the source file ",
+         compItem,
+         " successfully ",
+         date
+       );
+
+       frontend.addEventListener("onItemAddedToBatch", function (eventObj) {
+         $.writeln("frontend.onItemAddedToBatch: success");
+       });
+
+       frontend.addEventListener("onBatchItemCreationFailed", function (eventObj) {
+         $.writeln("frontend.onBatchItemCreationFailed: failed");
+       });
+
+       // The EncoderHostWrapper object has some events that can indicate the state of each batch item that are stacked in the queue
+
+       encoderHostWrapper = app.getEncoderHost();
+
+       if (encoderHostWrapper) {
+         encoderHostWrapper.addEventListener(
+           "onItemEncodeComplete",
+           function (eventObj) {
+             $.writeln("encoderHostWrapper.onItemEncodeComplete: success");
+           }
+         );
+
+         encoderHostWrapper.runBatch();
+       }
+     } else {
+       throw "Error. Something went wrong!";
+     }
+   } catch (e) {
+     $.writeln(e);
+   }
+
+.. raw:: html
+
+   </details><br>
+
+.. raw:: html
+
+   <details>
+
+   <summary>addDLToBatch Example (click to expand):</summary>
+
+.. code:: javascript
+
+   var format = "H.264";
+   var presetPath = "C:\\full\\path\\to\\HighQuality720HD.epr";
+   var outputPath = "C:\\full\\path\\to\\Output";
+   var aftereffects_projPath = "C:\\full\\path\\to\\OpenInPPro.aep";
+
+   ///TEST 1
+   // var format = "";
+   // var presetPath = "";
+   // var outputPath = "C:\\dev\\ExtendScripting\\Output";
+   // var aftereffects_projPath = "C:\\dev\\ExtendScripting\\OpenInPPro.aep";
+
+   try {
+     var frontend = app.getFrontend();
+     var result = frontend.getDLItemsAtRoot(aftereffects_projPath);
+
+     var exporter = app.getExporter();
+     exporter.removeAllBatchItems();
+
+     $.writeln(result.length + " ae comps found.");
+     for (var idx = 0; idx < result.length; ++idx) {
+       $.writeln("GUID for item " + idx + " is " + result[idx] + ".");
+
+       var encoderWrapper = frontend.addDLToBatch(
+         aftereffects_projPath,
+         format,
+         presetPath,
+         result[idx],
+         outputPath
+       );
+
+       if (encoderWrapper) {
+         $.writeln(
+           "Frontend script engine added the source file ",
+           aftereffects_projPath,
+           " successfully"
+         );
+
+         encoderWrapper.addEventListener("onEncodeProgress", function (time) {
+           $.writeln("encoderWrapper.onEncodeProgress: success");
+           $.writeln("Encoding progress for batch item: " + time.result);
+         });
+
+         encoderWrapper.addEventListener("onEncodeFinished", function (eventObj) {
+           $.writeln("encoderWrapper.onEncodeFinished: finished");
+         });
+         encoderWrapper.setWorkArea(2, 1.2, 3.5);
+       }
+     }
+
+     // this is a global object that sends an oncomplete signal once the whole queue is completed
+     encoderHostWrapper = app.getEncoderHost();
+
+     if (encoderHostWrapper) {
+       encoderHostWrapper.addEventListener(
+         "onItemEncodeComplete",
+         function (eventObj) {
+           $.writeln("encoderHostWrapper.onItemEncodeComplete: success");
+         }
+       );
+
+       encoderHostWrapper.runBatch();
+     }
+   } catch (error) {
+     $.writeln("Catch Error", error);
+   }
+
+.. raw:: html
+
+   </details><br>
+
+.. raw:: html
+
+   <details>
+
+   <summary>addFileSequenceToBatch Example (click to expand):</summary>
+
+.. code:: javascript
+
+   var preset = "C:\\full\\path\\to\\HighQuality720HD.epr";
+   var destination = "C:\\full\\path\\to\\Output";
+   var inContainingFolder = "C:\\full\\path\\to\\baby";
+   var firstFile = "C:\\full\\path\\to\\DSC_8148.jpg";
+
+   var frontend = app.getFrontend();
+   var batchItemSuccess = frontend.addFileSequenceToBatch(
+     inContainingFolder,
+     firstFile,
+     preset,
+     destination
+   );
+
+   if (batchItemSuccess) {
+     $.writeln("success");
+
+     frontend.addEventListener("onItemAddedToBatch", function (eventObj) {
+       $.writeln("onAddItemToBatch success");
+     });
+
+     frontend.addEventListener("onBatchItemCreationFailed", function (eventObj) {
+       $.writeln("onBatchItemCreationFailed");
+     });
+
+     // this is a global object that sends an oncomplete signal once the whole queue is completed
+     encoderHostWrapper = app.getEncoderHost();
+
+     if (encoderHostWrapper) {
+       encoderHostWrapper.addEventListener(
+         "onItemEncodeComplete",
+         function (eventObj) {
+           $.writeln(
+             "encoderHostWrapper.onItemEncodeComplete completed successfully"
+           );
+         }
+       );
+
+       encoderHostWrapper.runBatch();
+     }
+   } else {
+     $.writeln("Error. Something went wrong!");
+   }
+
+.. raw:: html
+
+   </details><br>
+
+.. raw:: html
+
+   <details>
+
+   <summary>addFileToBatch Example (click to expand):</summary>
+
+.. code:: javascript
+
+   var preset = "C:\\full\\path\\to\\HighQuality720HD.epr";
+   var source = "C:\\full\\path\\to\\weLove.mp4";
+   var destination = "C:\\full\\path\\to\\Output";
+
+   try {
+     var frontend = app.getFrontend();
+     var encoderWrapper = frontend.addFileToBatch(
+       source,
+       "H.264",
+       preset,
+       destination
+     );
+     if (encoderWrapper) {
+       $.writeln(
+         "Frontend script engine added the source file ",
+         source,
+         " successfully"
+       );
+
+       encoderWrapper.addEventListener("onEncodeProgress", function (time) {
+         $.writeln("Encoding progress for batch item: " + time.result);
+       });
+
+       encoderWrapper.addEventListener("onEncodeFinished", function (eventObj) {
+         $.writeln("encoderWrapper.onEncodeFinished: finished");
+       });
+
+       // this is a global object that sends an oncomplete signal once the whole queue is completed
+       encoderHostWrapper = app.getEncoderHost();
+
+       if (encoderHostWrapper) {
+         encoderHostWrapper.addEventListener(
+           "onItemEncodeComplete",
+           function (eventObj) {
+             $.writeln("encoderHostWrapper.onItemEncodeComplete: success");
+           }
+         );
+
+         encoderHostWrapper.runBatch();
+       }
+     } else {
+       $.writeln("Error. Something went wrong!");
+     }
+   } catch (error) {
+     $.writeln("Error. Something went wrong!", error);
+   }
+
+.. raw:: html
+
+   </details><br>
+
+.. raw:: html
+
+   <details>
+
+   <summary>addItemToBatch Example (click to expand):</summary>
+
+.. code:: javascript
+
+   var source = "C:\\full\\path\\to\\weLove.mp4";
+
+
+
+   var frontend = app.getFrontend();
+   var batchItemSuccess = frontend.addItemToBatch(source);
+
+   if (batchItemSuccess) {
+     $.writeln(
+       "Frontend script engine added the source file ",
+       source,
+       " successfully"
+     );
+
+     frontend.addEventListener("onItemAddedToBatch", function (eventObj) {
+       $.writeln("frontend.onItemAddedToBatch: success");
+     });
+
+     frontend.addEventListener("onBatchItemCreationFailed", function (eventObj) {
+       $.writeln("frontend.onBatchItemCreationFailed: failed");
+       $.writeln(
+         "frontend.onBatchItemCreationFailed: failed",
+         eventObj.srcFilePath
+       );
+       $.writeln(
+         "frontend.onBatchItemCreationFailed: failed",
+         eventObj.console.error
+       );
+     });
+
+     // this is a global object that sends an oncomplete signal once the whole queue is completed
+     encoderHostWrapper = app.getEncoderHost();
+
+     if (encoderHostWrapper) {
+       encoderHostWrapper.addEventListener(
+         "onItemEncodeComplete",
+         function (eventObj) {
+           $.writeln("encoderHostWrapper.onItemEncodeComplete: success");
+         }
+       );
+
+       encoderHostWrapper.runBatch();
+     }
+   } else {
+     $.writeln("Error. Something went wrong!");
+   }
+
+.. raw:: html
+
+   </details><br>
+
+.. raw:: html
+
+   <details>
+
+   <summary>addXMLToBatch Example (click to expand):</summary>
+
+.. code:: javascript
+
+   var preset = "C:\\full\\path\\to\\HighQuality720HD.epr";
+   var destination = "C:\\full\\path\\to\\Output";
+   var finalcutproXML = "C:\\full\\path\\to\\FinalCutPro.xml";
+
+
+   try {
+     var exporter = app.getExporter();
+     var frontend = app.getFrontend();
+
+     exporter.removeAllBatchItems();
+
+     var batchItemsuccess = frontend.addXMLToBatch(
+       finalcutproXML,
+       preset,
+       destination
+     );
+
+     if (batchItemsuccess) {
+       $.writeln("success");
+
+       frontend.addEventListener("onItemAddedToBatch", function (eventObj) {
+         $.writeln("onAddItemToBatch success");
+       });
+
+       frontend.addEventListener("onBatchItemCreationFailed", function (eventObj) {
+         $.writeln("onBatchItemCreationFailed");
+       });
+
+       // this is a global object that sends an oncomplete signal once the whole queue is completed
+       encoderHostWrapper = app.getEncoderHost();
+
+       if (encoderHostWrapper) {
+         encoderHostWrapper.addEventListener(
+           "onItemEncodeComplete",
+           function (eventObj) {
+             $.writeln(
+               "encoderHostWrapper.onItemEncodeComplete completeted successfully"
+             );
+           }
+         );
+         encoderHostWrapper.runBatch();
+       }
+     } else {
+       throw "Error. Something went wrong!";
+     }
+   } catch (e) {
+     $.writeln(e);
+   }
+
+.. raw:: html
+
+   </details><br>
+
 SourceMediaInfo
 ---------------
 
@@ -1761,7 +2261,7 @@ Properties
 -  ``width: string`` : Returns width of the source
 -  ``xmp: string`` : Returns xmp xml of the source
 
-.. _code-samples-7:
+.. _code-samples-9:
 
 Code Samples
 ~~~~~~~~~~~~
@@ -1864,7 +2364,7 @@ Methods
 
 -  ``removeAllWatchFolders(): bool`` : Remove all watch folders
 
-.. _code-samples-8:
+.. _code-samples-10:
 
 Code Samples
 ~~~~~~~~~~~~
