@@ -32,26 +32,39 @@ Let's start with a very basic script:
 
 .. code:: javascript
 
-   var source = "C:\\full\\path\\to\\testmedia.mp4";
-   var preset = "C:\\full\\path\\to\\HighQuality720HD.epr";
-   var destination = "C:\\full\\path\\to\\Output";
+   var source = "D:\\full\\path\\to\\camera3.mxf";
+   var preset = "D:\\full\\path\\to\\AME\\MediaIO\\systempresets\\58444341_4d584658\\XDCAMHD 50 PAL 50i.epr";
+   var destination = "C:\\full\\path\\to\\Output\\test";
 
-   try {
-     var exporter = app.getExporter();
-     result = exporter.exportItem(source, destination, preset, false, false);
-     $.writeln("result ", result);
-     if (result){
-       $.writeln("file has been exported succesfully");
-     }
-   } catch (e) {
-     $.writeln("something went wrong")
+   var exporter = app.getExporter();
+
+   if (exporter) {
+      var encoderWrapper  = exporter.exportItem(source, destination, preset);
+
+      exporter.addEventListener("onEncodeComplete", function(eventObj) {
+           // We can get the encoding status from the event or from the exporter
+           $.writeln("Encode Complete Status: " + eventObj.encodeCompleteStatus);
+
+           var encodeSuccess = exporter.encodeSuccess;
+           $.writeln("Encode Complete Status alt: " + encodeSuccess);
+       }, false)
+
+       exporter.addEventListener("onError", function(eventObj) {
+           // We can get the encoding status from the event or from the exporter
+           $.writeln("Error while encoding");
+
+           var encodeSuccess = exporter.encodeSuccess;
+           $.writeln("Encode Complete Status: " + encodeSuccess);
+       }, false)
+
    }
 
 In order to encode a source file in AME, you need to provide the paths of the source file and destination folder, and the preset to be used.
 
+The event listener for ``onEncodeComplete`` will be called once the encode has successfully finished.
+
+
 Where can I ask more questions and get help?
 --------------------------------------------
 
-Got more questions than what is covered here? Head over to the Adobe Media Encoder community here:
-
-https://community.adobe.com/t5/adobe-media-encoder/ct-p/ct-media-encoder
+Got more questions than what is covered here? Head over to the Adobe Media Encoder forum here: https://community.adobe.com/t5/adobe-media-encoder/ct-p/ct-media-encoder

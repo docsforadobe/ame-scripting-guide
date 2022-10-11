@@ -101,28 +101,40 @@
 <section id="what-is-a-good-starting-point-to-understand-the-scripting-objects">
 <h2>What is a good starting point to understand the scripting objects?<a class="headerlink" href="#what-is-a-good-starting-point-to-understand-the-scripting-objects" title="Permalink to this headline">¶</a></h2>
 <p>Let’s start with a very basic script:</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\full\\path\\to\\testmedia.mp4&quot;</span><span class="p">;</span><span class="w"></span>
-<span class="kd">var</span><span class="w"> </span><span class="nx">preset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\full\\path\\to\\HighQuality720HD.epr&quot;</span><span class="p">;</span><span class="w"></span>
-<span class="kd">var</span><span class="w"> </span><span class="nx">destination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\full\\path\\to\\Output&quot;</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;D:\\full\\path\\to\\camera3.mxf&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">preset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;D:\\full\\path\\to\\AME\\MediaIO\\systempresets\\58444341_4d584658\\XDCAMHD 50 PAL 50i.epr&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">destination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\full\\path\\to\\Output\\test&quot;</span><span class="p">;</span><span class="w"></span>
 
-<span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">exporter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">getExporter</span><span class="p">();</span><span class="w"></span>
-<span class="w">  </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">exportItem</span><span class="p">(</span><span class="nx">source</span><span class="p">,</span><span class="w"> </span><span class="nx">destination</span><span class="p">,</span><span class="w"> </span><span class="nx">preset</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;result &quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">result</span><span class="p">){</span><span class="w"></span>
-<span class="w">    </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;file has been exported succesfully&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;something went wrong&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">exporter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">getExporter</span><span class="p">();</span><span class="w"></span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">exporter</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="kd">var</span><span class="w"> </span><span class="nx">encoderWrapper</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">exportItem</span><span class="p">(</span><span class="nx">source</span><span class="p">,</span><span class="w"> </span><span class="nx">destination</span><span class="p">,</span><span class="w"> </span><span class="nx">preset</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">   </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;onEncodeComplete&quot;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">eventObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// We can get the encoding status from the event or from the exporter</span><span class="w"></span>
+<span class="w">        </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Encode Complete Status: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">eventObj</span><span class="p">.</span><span class="nx">encodeCompleteStatus</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nx">encodeSuccess</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">encodeSuccess</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Encode Complete Status alt: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">encodeSuccess</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">    </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;onError&quot;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">eventObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// We can get the encoding status from the event or from the exporter</span><span class="w"></span>
+<span class="w">        </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Error while encoding&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nx">encodeSuccess</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">encodeSuccess</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Encode Complete Status: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">encodeSuccess</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span><span class="w"></span>
+
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>In order to encode a source file in AME, you need to provide the paths of the source file and destination folder, and the preset to be used.</p>
+<p>The event listener for <code class="docutils literal notranslate"><span class="pre">onEncodeComplete</span></code> will be called once the encode has successfully finished.</p>
 </section>
 <section id="where-can-i-ask-more-questions-and-get-help">
 <h2>Where can I ask more questions and get help?<a class="headerlink" href="#where-can-i-ask-more-questions-and-get-help" title="Permalink to this headline">¶</a></h2>
-<p>Got more questions than what is covered here? Head over to the Adobe Media Encoder community here:</p>
-<p><a class="reference external" href="https://community.adobe.com/t5/adobe-media-encoder/ct-p/ct-media-encoder">https://community.adobe.com/t5/adobe-media-encoder/ct-p/ct-media-encoder</a></p>
+<p>Got more questions than what is covered here? Head over to the Adobe Media Encoder forum here: <a class="reference external" href="https://community.adobe.com/t5/adobe-media-encoder/ct-p/ct-media-encoder">https://community.adobe.com/t5/adobe-media-encoder/ct-p/ct-media-encoder</a></p>
 </section>
 </section>
 
