@@ -22,7 +22,9 @@ Example for executing a test script on Mac:
 
 .. code:: bash
 
-   "/Applications/Adobe Media Encoder (Beta)/Adobe Media Encoder (Beta).app/Contents/MacOS/Adobe Media Encoder (Beta)" --console es.processFile /full/path/to/test.js
+  "/Applications/Adobe Media Encoder (Beta)/Adobe Media Encoder (Beta).app/
+   Contents/MacOS/Adobe Media Encoder (Beta)"
+   --console es.processFile ~/Desktop/test.js
 
 
 What is a good starting point to understand the scripting objects?
@@ -32,6 +34,7 @@ Let's start with a very basic script:
 
 .. code:: javascript
 
+   // make sure to replace "\\" by "/" on Mac with a valid path
    var source = "D:\\full\\path\\to\\camera3.mxf";
    var preset = "D:\\full\\path\\to\\AME\\MediaIO\\systempresets\\58444341_4d584658\\XDCAMHD 50 PAL 50i.epr";
    var destination = "C:\\full\\path\\to\\Output\\test";

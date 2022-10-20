@@ -94,14 +94,17 @@
 </pre></div>
 </div>
 <p>Example for executing a test script on Mac:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;/Applications/Adobe Media Encoder (Beta)/Adobe Media Encoder (Beta).app/Contents/MacOS/Adobe Media Encoder (Beta)&quot;</span> --console es.processFile /full/path/to/test.js
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;/Applications/Adobe Media Encoder (Beta)/Adobe Media Encoder (Beta).app/</span>
+<span class="s2"> Contents/MacOS/Adobe Media Encoder (Beta)&quot;</span>
+ --console es.processFile ~/Desktop/test.js
 </pre></div>
 </div>
 </section>
 <section id="what-is-a-good-starting-point-to-understand-the-scripting-objects">
 <h2>What is a good starting point to understand the scripting objects?<a class="headerlink" href="#what-is-a-good-starting-point-to-understand-the-scripting-objects" title="Permalink to this headline">¶</a></h2>
 <p>Let’s start with a very basic script:</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;D:\\full\\path\\to\\camera3.mxf&quot;</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// make sure to replace &quot;\\&quot; by &quot;/&quot; on Mac with a valid path</span><span class="w"></span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;D:\\full\\path\\to\\camera3.mxf&quot;</span><span class="p">;</span><span class="w"></span>
 <span class="kd">var</span><span class="w"> </span><span class="nx">preset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;D:\\full\\path\\to\\AME\\MediaIO\\systempresets\\58444341_4d584658\\XDCAMHD 50 PAL 50i.epr&quot;</span><span class="p">;</span><span class="w"></span>
 <span class="kd">var</span><span class="w"> </span><span class="nx">destination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\full\\path\\to\\Output\\test&quot;</span><span class="p">;</span><span class="w"></span>
 
