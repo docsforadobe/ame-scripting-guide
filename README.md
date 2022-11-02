@@ -2,8 +2,6 @@
 
 This repo hosts the Adobe Media Encoder Scripting Guide RST docs, linked into a http://readthedocs.io system hosted at https://ame-scripting.docsforadobe.dev/
 
-This is a starter repo for the AME Scripting Guide. Things to note:
-
 - `./index.html` is the main Table of Contents, and the root of the site. I've left in entries from the JS Tools Guide for reference on structure.
 - `./1 - Introduction/`
 	- Again, left here just for reference. I've left links in
@@ -23,6 +21,10 @@ You may want to build the HTML locally before pushing, in order to ensure that t
 ---
 
 ## Contributing
+
+Please note that this site is auto-created using scripts. If you have change requests, corrections or additions, please reach out to the repo owners. Thanks!
+
+We can add more static reStructuredText pages with explanations if needed.
 
 This project uses reStructuredText for a reference on how to write reStructuredText check out this [quickref](http://docutils.sourceforge.net/docs/user/rst/quickref.html).
 

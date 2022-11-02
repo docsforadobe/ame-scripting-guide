@@ -51,9 +51,9 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'AME Scripting Guide'
-copyright = u'2020, Adobe Systems Incorporated'
-author = u'Adobe Systems Incorporated'
+project = u'AME Scripting API Guide'
+copyright = u'2022, Adobe Incorporated'
+author = u'Adobe Incorporated'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
