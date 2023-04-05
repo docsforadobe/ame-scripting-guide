@@ -1,7 +1,7 @@
 Adobe Media Encoder (AME) Scripting API Reference (A-Z)
 =======================================================
 
-Revision date: 2022-10-28
+Revision date: 2023-04-04
 
 AMEBatchItemCreationFailedEvent
 -------------------------------
@@ -33,15 +33,15 @@ Code Samples
 
    var frontend = app.getFrontend();
    if (frontend) {
-       frontend.addEventListener("onBatchItemCreationFailed", function (eventObj) {
-           $.writeln("Sourcefile", eventObj.srcFilePath);
-           $.writeln("onBatchItemCreationFailed: error", eventObj.error);
-       });
+     frontend.addEventListener("onBatchItemCreationFailed", function (eventObj) {
+       $.writeln("Sourcefile", eventObj.srcFilePath);
+       $.writeln("onBatchItemCreationFailed: error", eventObj.error);
+     });
 
-       var batchItemSuccess = frontend.addItemToBatch(source);
-       if (batchItemSuccess) {
-           $.writeln(source, " has been added successfully");
-       }
+     var batchItemSuccess = frontend.addItemToBatch(source);
+     if (batchItemSuccess) {
+       $.writeln(source, " has been added successfully");
+     }
    }
 
 .. raw:: html
@@ -108,34 +108,32 @@ Code Samples
 
    var source = "D:\\Media\\camera3.mxf";
    var preset =
-       "D:\\path\\to\\AME\\MediaIO\\systempresets\\58444341_4d584658\\XDCAMHD 50 PAL 50i.epr";
+     "D:\\path\\to\\AME\\MediaIO\\systempresets\\58444341_4d584658\\XDCAMHD 50 PAL 50i.epr";
    var destination = "C:\\full\\path\\to\\Output\\test";
 
    var exporter = app.getExporter();
    if (exporter) {
-       exporter.addEventListener(
-           "onEncodeComplete",
-           function (eventObj) {
-               $.writeln(
-                   "Encode Complete Status: " + eventObj.encodeCompleteStatus
-               );
-           },
-           false
-       );
+     exporter.addEventListener(
+       "onEncodeComplete",
+       function (eventObj) {
+         $.writeln("Encode Complete Status: " + eventObj.encodeCompleteStatus);
+       },
+       false
+     );
 
-       // Alternatively you can access the correct name of that event via the following const property:
-       var encodeCompleteEvent = AMEExportEvent.onEncodeComplete;
-       exporter.addEventListener(
-           encodeCompleteEvent,
-           function (eventObj) {
-               $.writeln(
-                   "Encode Complete Status (alt): " + eventObj.encodeCompleteStatus
-               );
-           },
-           false
-       );
+     // Alternatively you can access the correct name of that event via the following const property:
+     var encodeCompleteEvent = AMEExportEvent.onEncodeComplete;
+     exporter.addEventListener(
+       encodeCompleteEvent,
+       function (eventObj) {
+         $.writeln(
+           "Encode Complete Status (alt): " + eventObj.encodeCompleteStatus
+         );
+       },
+       false
+     );
 
-       var encoderWrapper = exporter.exportItem(source, destination, preset);
+     var encoderWrapper = exporter.exportItem(source, destination, preset);
    }
 
 .. raw:: html
@@ -152,36 +150,35 @@ Code Samples
 
    var source = "D:\\Media\\camera3.mxf";
    var preset =
-       "D:\\full\\path\\to\\AME\\MediaIO\\systempresets\\58444341_4d584658\\XDCAMHD 50 PAL 50i.epr";
+     "D:\\full\\path\\to\\AME\\MediaIO\\systempresets\\58444341_4d584658\\XDCAMHD 50 PAL 50i.epr";
    var destination = "C:\\full\\path\\to\\Output\\test";
 
    var exporter = app.getExporter();
    if (exporter) {
-       exporter.addEventListener(
-           "onEncodeComplete",
-           function (eventObj) {
-               $.writeln(
-                   "Encode Complete Time in milli seconds: " +
-                       eventObj.encodeCompleteTime
-               );
-           },
-           false
-       );
+     exporter.addEventListener(
+       "onEncodeComplete",
+       function (eventObj) {
+         $.writeln(
+           "Encode Complete Time in milli seconds: " + eventObj.encodeCompleteTime
+         );
+       },
+       false
+     );
 
-       // Alternatively you can access the correct name of that event via the following const property:
-       var encodeCompleteEvent = AMEExportEvent.onEncodeComplete;
-       exporter.addEventListener(
-           encodeCompleteEvent,
-           function (eventObj) {
-               $.writeln(
-                   "Encode Complete Time in milli seconds: (alt): " +
-                       eventObj.encodeCompleteTime
-               );
-           },
-           false
-       );
+     // Alternatively you can access the correct name of that event via the following const property:
+     var encodeCompleteEvent = AMEExportEvent.onEncodeComplete;
+     exporter.addEventListener(
+       encodeCompleteEvent,
+       function (eventObj) {
+         $.writeln(
+           "Encode Complete Time in milli seconds: (alt): " +
+             eventObj.encodeCompleteTime
+         );
+       },
+       false
+     );
 
-       var encoderWrapper = exporter.exportItem(source, destination, preset);
+     var encoderWrapper = exporter.exportItem(source, destination, preset);
    }
 
 .. raw:: html
@@ -198,64 +195,64 @@ Code Samples
 
    var batchItemStatusChangedEvent = AMEExportEvent.onBatchItemStatusChanged;
    $.writeln(
-       "Event name is identical with the const property API name ('onBatchItemStatusChanged'): " +
-           batchItemStatusChangedEvent
+     "Event name is identical with the const property API name ('onBatchItemStatusChanged'): " +
+       batchItemStatusChangedEvent
    );
 
    var source = "D:\\Media\\camera3.mxf";
    var preset =
-       "D:\\full\\path\\to\\AME\\MediaIO\\systempresets\\58444341_4d584658\\XDCAMHD 50 PAL 50i.epr";
+     "D:\\full\\path\\to\\AME\\MediaIO\\systempresets\\58444341_4d584658\\XDCAMHD 50 PAL 50i.epr";
    var destination = "C:\\full\\path\\to\\Output\\test";
 
    var exporter = app.getExporter();
 
    if (exporter) {
-       exporter.addEventListener(
-           batchItemStatusChangedEvent,
-           function (eventObj) {
-               $.writeln("Batch group index: " + eventObj.groupIndex);
-               $.writeln("Batch item index: " + eventObj.itemIndex);
-               //Possible status values:
-               //kBatchItemStatus_Waiting = 0,
-               //kBatchItemStatus_Done,
-               //kBatchItemStatus_Failed,
-               //kBatchItemStatus_Skipped,
-               //kBatchItemStatus_Encoding,
-               //kBatchItemStatus_Paused,
-               //kBatchItemStatus_Stopped,
-               //kBatchItemStatus_Any,
-               //kBatchItemStatus_AutoStart,
-               //kBatchItemStatus_Done_Warning,
-               //kBatchItemStatus_WatchFolderWaiting
-               $.writeln("Batch item status: " + eventObj.status);
-           },
-           false
-       );
+     exporter.addEventListener(
+       batchItemStatusChangedEvent,
+       function (eventObj) {
+         $.writeln("Batch group index: " + eventObj.groupIndex);
+         $.writeln("Batch item index: " + eventObj.itemIndex);
+         //Possible status values:
+         //kBatchItemStatus_Waiting = 0,
+         //kBatchItemStatus_Done,
+         //kBatchItemStatus_Failed,
+         //kBatchItemStatus_Skipped,
+         //kBatchItemStatus_Encoding,
+         //kBatchItemStatus_Paused,
+         //kBatchItemStatus_Stopped,
+         //kBatchItemStatus_Any,
+         //kBatchItemStatus_AutoStart,
+         //kBatchItemStatus_Done_Warning,
+         //kBatchItemStatus_WatchFolderWaiting
+         $.writeln("Batch item status: " + eventObj.status);
+       },
+       false
+     );
 
-       // Alternatively you can listen to "onBatchItemStatusChanged"
-       exporter.addEventListener(
-           "onBatchItemStatusChanged",
-           function (eventObj) {
-               $.writeln("Batch group index (alt): " + eventObj.groupIndex);
-               $.writeln("Batch item index (alt): " + eventObj.itemIndex);
-               //Possible status values:
-               //kBatchItemStatus_Waiting = 0,
-               //kBatchItemStatus_Done,
-               //kBatchItemStatus_Failed,
-               //kBatchItemStatus_Skipped,
-               //kBatchItemStatus_Encoding,
-               //kBatchItemStatus_Paused,
-               //kBatchItemStatus_Stopped,
-               //kBatchItemStatus_Any,
-               //kBatchItemStatus_AutoStart,
-               //kBatchItemStatus_Done_Warning,
-               //kBatchItemStatus_WatchFolderWaiting
-               $.writeln("Batch item status (alt): " + eventObj.status);
-           },
-           false
-       );
+     // Alternatively you can listen to "onBatchItemStatusChanged"
+     exporter.addEventListener(
+       "onBatchItemStatusChanged",
+       function (eventObj) {
+         $.writeln("Batch group index (alt): " + eventObj.groupIndex);
+         $.writeln("Batch item index (alt): " + eventObj.itemIndex);
+         //Possible status values:
+         //kBatchItemStatus_Waiting = 0,
+         //kBatchItemStatus_Done,
+         //kBatchItemStatus_Failed,
+         //kBatchItemStatus_Skipped,
+         //kBatchItemStatus_Encoding,
+         //kBatchItemStatus_Paused,
+         //kBatchItemStatus_Stopped,
+         //kBatchItemStatus_Any,
+         //kBatchItemStatus_AutoStart,
+         //kBatchItemStatus_Done_Warning,
+         //kBatchItemStatus_WatchFolderWaiting
+         $.writeln("Batch item status (alt): " + eventObj.status);
+       },
+       false
+     );
 
-       var encoderWrapper = exporter.exportItem(source, destination, preset);
+     var encoderWrapper = exporter.exportItem(source, destination, preset);
    }
 
 .. raw:: html
@@ -272,48 +269,46 @@ Code Samples
 
    var encodeCompleteEvent = AMEExportEvent.onEncodeComplete;
    $.writeln(
-       "Event name is identical with the const property API name ('onEncodeComplete'): " +
-           encodeCompleteEvent
+     "Event name is identical with the const property API name ('onEncodeComplete'): " +
+       encodeCompleteEvent
    );
 
    var source = "D:\\Media\\camera3.mxf";
    var preset =
-       "D:\\full\\path\\to\\AME\\MediaIO\\systempresets\\58444341_4d584658\\XDCAMHD 50 PAL 50i.epr";
+     "D:\\full\\path\\to\\AME\\MediaIO\\systempresets\\58444341_4d584658\\XDCAMHD 50 PAL 50i.epr";
    var destination = "C:\\full\\path\\to\\Output\\test";
 
    var exporter = app.getExporter();
 
    if (exporter) {
-       exporter.addEventListener(
-           encodeCompleteEvent,
-           function (eventObj) {
-               $.writeln(
-                   "Encode Complete Status: " + eventObj.encodeCompleteStatus
-               );
-               $.writeln(
-                   "Encode Complete Time (in milli seconds): " +
-                       eventObj.encodeCompleteTime
-               );
-           },
-           false
-       );
+     exporter.addEventListener(
+       encodeCompleteEvent,
+       function (eventObj) {
+         $.writeln("Encode Complete Status: " + eventObj.encodeCompleteStatus);
+         $.writeln(
+           "Encode Complete Time (in milli seconds): " +
+             eventObj.encodeCompleteTime
+         );
+       },
+       false
+     );
 
-       // Alternatively you can listen to "onEncodeComplete"
-       exporter.addEventListener(
-           "onEncodeComplete",
-           function (eventObj) {
-               $.writeln(
-                   "Encode Complete Status (alt): " + eventObj.encodeCompleteStatus
-               );
-               $.writeln(
-                   "Encode Complete Time in milli seconds (alt): " +
-                       eventObj.encodeCompleteTime
-               );
-           },
-           false
-       );
+     // Alternatively you can listen to "onEncodeComplete"
+     exporter.addEventListener(
+       "onEncodeComplete",
+       function (eventObj) {
+         $.writeln(
+           "Encode Complete Status (alt): " + eventObj.encodeCompleteStatus
+         );
+         $.writeln(
+           "Encode Complete Time in milli seconds (alt): " +
+             eventObj.encodeCompleteTime
+         );
+       },
+       false
+     );
 
-       var encoderWrapper = exporter.exportItem(source, destination, preset);
+     var encoderWrapper = exporter.exportItem(source, destination, preset);
    }
 
 .. raw:: html
@@ -329,40 +324,38 @@ Code Samples
 .. code:: javascript
 
    var encodingItemProgressUpdatedEvent =
-       AMEExportEvent.onEncodingItemProgressUpdated;
+     AMEExportEvent.onEncodingItemProgressUpdated;
    $.writeln(
-       "Event name is identical with the const property API name ('onEncodingItemProgressUpdated'): " +
-           encodingItemProgressUpdatedEvent
+     "Event name is identical with the const property API name ('onEncodingItemProgressUpdated'): " +
+       encodingItemProgressUpdatedEvent
    );
 
    var source = "D:\\Media\\camera3.mxf";
    var preset =
-       "D:\\full\\path\\to\\AME\\MediaIO\\systempresets\\58444341_4d584658\\XDCAMHD 50 PAL 50i.epr";
+     "D:\\full\\path\\to\\AME\\MediaIO\\systempresets\\58444341_4d584658\\XDCAMHD 50 PAL 50i.epr";
    var destination = "C:\\full\\path\\to\\Output\\test";
 
    var exporter = app.getExporter();
 
    if (exporter) {
-       exporter.addEventListener(
-           encodingItemProgressUpdatedEvent,
-           function (eventObj) {
-               $.writeln("Encoding progress for batch item: " + eventObj.progress);
-           },
-           false
-       );
+     exporter.addEventListener(
+       encodingItemProgressUpdatedEvent,
+       function (eventObj) {
+         $.writeln("Encoding progress for batch item: " + eventObj.progress);
+       },
+       false
+     );
 
-       // Alternatively you can listen to "onEncodingItemProgressUpdated"
-       exporter.addEventListener(
-           "onEncodingItemProgressUpdated",
-           function (eventObj) {
-               $.writeln(
-                   "Encoding progress for batch item (alt): " + eventObj.progress
-               );
-           },
-           false
-       );
+     // Alternatively you can listen to "onEncodingItemProgressUpdated"
+     exporter.addEventListener(
+       "onEncodingItemProgressUpdated",
+       function (eventObj) {
+         $.writeln("Encoding progress for batch item (alt): " + eventObj.progress);
+       },
+       false
+     );
 
-       var encoderWrapper = exporter.exportItem(source, destination, preset);
+     var encoderWrapper = exporter.exportItem(source, destination, preset);
    }
 
 .. raw:: html
@@ -379,36 +372,36 @@ Code Samples
 
    var errorEvent = AMEExportEvent.onError;
    $.writeln(
-       "Event name is identical with the const property API name ('onError'): " +
-           errorEvent
+     "Event name is identical with the const property API name ('onError'): " +
+       errorEvent
    );
 
    var source = "D:\\Media\\camera3.mxf";
    var preset =
-       "D:\\full\\path\\to\\AME\\MediaIO\\systempresets\\58444341_4d584658\\XDCAMHD 50 PAL 50i.epr";
+     "D:\\full\\path\\to\\AME\\MediaIO\\systempresets\\58444341_4d584658\\XDCAMHD 50 PAL 50i.epr";
    var destination = "C:\\full\\path\\to\\Output\\test";
 
    var exporter = app.getExporter();
 
    if (exporter) {
-       exporter.addEventListener(
-           errorEvent,
-           function (eventObj) {
-               $.writeln("Error while encoding");
-           },
-           false
-       );
+     exporter.addEventListener(
+       errorEvent,
+       function (eventObj) {
+         $.writeln("Error while encoding");
+       },
+       false
+     );
 
-       // Alternatively you can listen to "onError"
-       exporter.addEventListener(
-           "onError",
-           function (eventObj) {
-               $.writeln("Error while encoding (alt)");
-           },
-           false
-       );
+     // Alternatively you can listen to "onError"
+     exporter.addEventListener(
+       "onError",
+       function (eventObj) {
+         $.writeln("Error while encoding (alt)");
+       },
+       false
+     );
 
-       var encoderWrapper = exporter.exportItem(source, destination, preset);
+     var encoderWrapper = exporter.exportItem(source, destination, preset);
    }
 
 .. raw:: html
@@ -425,36 +418,36 @@ Code Samples
 
    var itemEncodingStartedEvent = AMEExportEvent.onItemEncodingStarted;
    $.writeln(
-       "Event name is identical with the const property API name ('onItemEncodingStarted'): " +
-           itemEncodingStartedEvent
+     "Event name is identical with the const property API name ('onItemEncodingStarted'): " +
+       itemEncodingStartedEvent
    );
 
    var source = "D:\\Media\\camera3.mxf";
    var preset =
-       "D:\\full\\path\\to\\AME\\MediaIO\\systempresets\\58444341_4d584658\\XDCAMHD 50 PAL 50i.epr";
+     "D:\\full\\path\\to\\AME\\MediaIO\\systempresets\\58444341_4d584658\\XDCAMHD 50 PAL 50i.epr";
    var destination = "C:\\fullpath\\to\\Output\\test";
 
    var exporter = app.getExporter();
 
    if (exporter) {
-       exporter.addEventListener(
-           itemEncodingStartedEvent,
-           function (eventObj) {
-               $.writeln("Encoding started for batch item.");
-           },
-           false
-       );
+     exporter.addEventListener(
+       itemEncodingStartedEvent,
+       function (eventObj) {
+         $.writeln("Encoding started for batch item.");
+       },
+       false
+     );
 
-       // Alternatively you can listen to "onItemEncodingStarted"
-       exporter.addEventListener(
-           "onItemEncodingStarted",
-           function (eventObj) {
-               $.writeln("Encoding started for batch item (alt).");
-           },
-           false
-       );
+     // Alternatively you can listen to "onItemEncodingStarted"
+     exporter.addEventListener(
+       "onItemEncodingStarted",
+       function (eventObj) {
+         $.writeln("Encoding started for batch item (alt).");
+       },
+       false
+     );
 
-       var encoderWrapper = exporter.exportItem(source, destination, preset);
+     var encoderWrapper = exporter.exportItem(source, destination, preset);
    }
 
 .. raw:: html
@@ -471,36 +464,36 @@ Code Samples
 
    var mediaInfoCreatedEvent = AMEExportEvent.onMediaInfoCreated;
    $.writeln(
-       "Event name is identical with the const property API name ('onMediaInfoCreated'): " +
-           mediaInfoCreatedEvent
+     "Event name is identical with the const property API name ('onMediaInfoCreated'): " +
+       mediaInfoCreatedEvent
    );
 
    var source = "D:\\Media\\camera3.mxf";
    var preset =
-       "D:\\full\\path\\to\\AME\\MediaIO\\systempresets\\58444341_4d584658\\XDCAMHD 50 PAL 50i.epr";
+     "D:\\full\\path\\to\\AME\\MediaIO\\systempresets\\58444341_4d584658\\XDCAMHD 50 PAL 50i.epr";
    var destination = "C:\\full\\path\\to\\Output\\test";
 
    var exporter = app.getExporter();
 
    if (exporter) {
-       exporter.addEventListener(
-           mediaInfoCreatedEvent,
-           function (eventObj) {
-               $.writeln("Media info created");
-           },
-           false
-       );
+     exporter.addEventListener(
+       mediaInfoCreatedEvent,
+       function (eventObj) {
+         $.writeln("Media info created");
+       },
+       false
+     );
 
-       // Alternatively you can listen to "onMediaInfoCreated"
-       exporter.addEventListener(
-           "onMediaInfoCreated",
-           function (eventObj) {
-               $.writeln("Media info created (alt)");
-           },
-           false
-       );
+     // Alternatively you can listen to "onMediaInfoCreated"
+     exporter.addEventListener(
+       "onMediaInfoCreated",
+       function (eventObj) {
+         $.writeln("Media info created (alt)");
+       },
+       false
+     );
 
-       var encoderWrapper = exporter.exportItem(source, destination, preset);
+     var encoderWrapper = exporter.exportItem(source, destination, preset);
    }
 
 .. raw:: html
@@ -516,38 +509,38 @@ Code Samples
 .. code:: javascript
 
    var postProcessListInitializedEvent =
-       AMEExportEvent.onPostProcessListInitialized;
+     AMEExportEvent.onPostProcessListInitialized;
    $.writeln(
-       "Event name is identical with the const property API name ('onPostProcessListInitialized'): " +
-           postProcessListInitializedEvent
+     "Event name is identical with the const property API name ('onPostProcessListInitialized'): " +
+       postProcessListInitializedEvent
    );
 
    var source = "D:\\Media\\camera3.mxf";
    var preset =
-       "D:\\full\\path\\to\\AME\\MediaIO\\systempresets\\58444341_4d584658\\XDCAMHD 50 PAL 50i.epr";
+     "D:\\full\\path\\to\\AME\\MediaIO\\systempresets\\58444341_4d584658\\XDCAMHD 50 PAL 50i.epr";
    var destination = "C:\\full\\path\\to\\Output\\test";
 
    var exporter = app.getExporter();
 
    if (exporter) {
-       exporter.addEventListener(
-           postProcessListInitializedEvent,
-           function (eventObj) {
-               $.writeln("Post process list has been initialized.");
-           },
-           false
-       );
+     exporter.addEventListener(
+       postProcessListInitializedEvent,
+       function (eventObj) {
+         $.writeln("Post process list has been initialized.");
+       },
+       false
+     );
 
-       // Alternatively you can listen to "onPostProcessListInitialized"
-       exporter.addEventListener(
-           "onPostProcessListInitialized",
-           function (eventObj) {
-               $.writeln("Post process list has been initialized (alt).");
-           },
-           false
-       );
+     // Alternatively you can listen to "onPostProcessListInitialized"
+     exporter.addEventListener(
+       "onPostProcessListInitialized",
+       function (eventObj) {
+         $.writeln("Post process list has been initialized (alt).");
+       },
+       false
+     );
 
-       var encoderWrapper = exporter.exportItem(source, destination, preset);
+     var encoderWrapper = exporter.exportItem(source, destination, preset);
    }
 
 .. raw:: html
@@ -564,34 +557,32 @@ Code Samples
 
    var source = "D:\\Media\\camera3.mxf";
    var preset =
-       "D:\\full\\path\\to\\AME\\MediaIO\\systempresets\\58444341_4d584658\\XDCAMHD 50 PAL 50i.epr";
+     "D:\\full\\path\\to\\AME\\MediaIO\\systempresets\\58444341_4d584658\\XDCAMHD 50 PAL 50i.epr";
    var destination = "C:\\full\\path\\to\\Output\\test";
 
    var exporter = app.getExporter();
 
    if (exporter) {
-       exporter.addEventListener(
-           "onEncodingItemProgressUpdated",
-           function (eventObj) {
-               $.writeln("Encoding progress for batch item: " + eventObj.progress);
-           },
-           false
-       );
+     exporter.addEventListener(
+       "onEncodingItemProgressUpdated",
+       function (eventObj) {
+         $.writeln("Encoding progress for batch item: " + eventObj.progress);
+       },
+       false
+     );
 
-       // Alternatively you can access the correct name of that event via the following const property:
-       var encodingItemProgressUpdatedEvent =
-           AMEExportEvent.onEncodingItemProgressUpdated;
-       exporter.addEventListener(
-           encodingItemProgressUpdatedEvent,
-           function (eventObj) {
-               $.writeln(
-                   "Encoding progress for batch item (alt): " + eventObj.progress
-               );
-           },
-           false
-       );
+     // Alternatively you can access the correct name of that event via the following const property:
+     var encodingItemProgressUpdatedEvent =
+       AMEExportEvent.onEncodingItemProgressUpdated;
+     exporter.addEventListener(
+       encodingItemProgressUpdatedEvent,
+       function (eventObj) {
+         $.writeln("Encoding progress for batch item (alt): " + eventObj.progress);
+       },
+       false
+     );
 
-       var encoderWrapper = exporter.exportItem(source, destination, preset);
+     var encoderWrapper = exporter.exportItem(source, destination, preset);
    }
 
 .. raw:: html
@@ -608,55 +599,55 @@ Code Samples
 
    var source = "D:\\Media\\camera3.mxf";
    var preset =
-       "D:\\full\\path\\to\\AME\\MediaIO\\systempresets\\58444341_4d584658\\XDCAMHD 50 PAL 50i.epr";
+     "D:\\full\\path\\to\\AME\\MediaIO\\systempresets\\58444341_4d584658\\XDCAMHD 50 PAL 50i.epr";
    var destination = "C:\\full\\path\\to\\Output\\test";
 
    var exporter = app.getExporter();
 
    if (exporter) {
-       exporter.addEventListener(
-           "onBatchItemStatusChanged",
-           function (eventObj) {
-               //Possible status values:
-               // 0 : Waiting
-               // 1 : Done
-               // 2 : Failed
-               // 3 : Skipped
-               // 4 : Encoding
-               // 5 : Paused
-               // 6 : Stopped
-               // 7 : Any
-               // 8 : AutoStart
-               // 9 : Done Warning
-               // 10 : Watch Folder Waiting.
-               $.writeln("Batch item status: " + eventObj.status);
-           },
-           false
-       );
+     exporter.addEventListener(
+       "onBatchItemStatusChanged",
+       function (eventObj) {
+         //Possible status values:
+         // 0 : Waiting
+         // 1 : Done
+         // 2 : Failed
+         // 3 : Skipped
+         // 4 : Encoding
+         // 5 : Paused
+         // 6 : Stopped
+         // 7 : Any
+         // 8 : AutoStart
+         // 9 : Done Warning
+         // 10 : Watch Folder Waiting.
+         $.writeln("Batch item status: " + eventObj.status);
+       },
+       false
+     );
 
-       // Alternatively you can access the correct name of that event via the following const property:
-       var batchItemStatusChangedEvent = AMEExportEvent.onBatchItemStatusChanged;
-       exporter.addEventListener(
-           batchItemStatusChangedEvent,
-           function (eventObj) {
-               //Possible status values:
-               // 0 : Waiting
-               // 1 : Done
-               // 2 : Failed
-               // 3 : Skipped
-               // 4 : Encoding
-               // 5 : Paused
-               // 6 : Stopped
-               // 7 : Any
-               // 8 : AutoStart
-               // 9 : Done Warning
-               // 10 : Watch Folder Waiting.
-               $.writeln("Batch item status (alt): " + eventObj.status);
-           },
-           false
-       );
+     // Alternatively you can access the correct name of that event via the following const property:
+     var batchItemStatusChangedEvent = AMEExportEvent.onBatchItemStatusChanged;
+     exporter.addEventListener(
+       batchItemStatusChangedEvent,
+       function (eventObj) {
+         //Possible status values:
+         // 0 : Waiting
+         // 1 : Done
+         // 2 : Failed
+         // 3 : Skipped
+         // 4 : Encoding
+         // 5 : Paused
+         // 6 : Stopped
+         // 7 : Any
+         // 8 : AutoStart
+         // 9 : Done Warning
+         // 10 : Watch Folder Waiting.
+         $.writeln("Batch item status (alt): " + eventObj.status);
+       },
+       false
+     );
 
-       var encoderWrapper = exporter.exportItem(source, destination, preset);
+     var encoderWrapper = exporter.exportItem(source, destination, preset);
    }
 
 .. raw:: html
@@ -694,14 +685,14 @@ Code Samples
    var source = "C:\\full\\path\\to\\testmedia.mp4";
    var frontend = app.getFrontend();
    if (frontend) {
-       frontend.addEventListener("onItemAddedToBatch", function (eventObj) {
-           $.writeln("Item added to Batch");
-       });
+     frontend.addEventListener("onItemAddedToBatch", function (eventObj) {
+       $.writeln("Item added to Batch");
+     });
 
-       var batchItemSuccess = frontend.addItemToBatch(source);
-       if (batchItemSuccess) {
-           $.writeln(source, " has been added successfully");
-       }
+     var batchItemSuccess = frontend.addItemToBatch(source);
+     if (batchItemSuccess) {
+       $.writeln(source, " has been added successfully");
+     }
    }
 
 .. raw:: html
@@ -855,24 +846,24 @@ Code Samples
 
    var frontend = app.getFrontend();
    if (frontend) {
-       // Either format or preset can be empty, output is optional
-       var encoderWrapper = frontend.addFileToBatch(
-           testfilePath,
-           format,
-           presetPath
-       );
+     // Either format or preset can be empty, output is optional
+     var encoderWrapper = frontend.addFileToBatch(
+       testfilePath,
+       format,
+       presetPath
+     );
 
-       if (encoderWrapper) {
-           var taskID = app.scheduleTask(
-               "var e = app.getEncoderHost(); e.runBatch()",
-               5000,
-               false
-           );
-       } else {
-           $.writeln("Encoder wrapper object is not valid.");
-       }
+     if (encoderWrapper) {
+       var taskID = app.scheduleTask(
+         "var e = app.getEncoderHost(); e.runBatch()",
+         5000,
+         false
+       );
+     } else {
+       $.writeln("Encoder wrapper object is not valid.");
+     }
    } else {
-       $.writeln("Frontend object is not valid.");
+     $.writeln("Frontend object is not valid.");
    }
 
 .. raw:: html
@@ -892,6 +883,10 @@ Methods
 
 -  ``createEncoderForFormat(inFormatName: string): scripting object`` : Returns
    an ‘EncoderWrapper’ script object for the requested format.
+
+-  ``getBatchEncoderStatus(): string`` : Returns the current status
+   of the batch encoder. The values are: invalid, paused, running,
+   stopped, stopping (available since 23.3).
 
 -  ``getCurrentBatchPreview(inOutputPath: string): bool`` : Writes
    out the current batch preview image (tiff format) to the given path.
@@ -939,53 +934,68 @@ Code Samples
    var encoderHost = app.getEncoderHost();
 
    if (encoderHost) {
-       // API "getSourceInfo"
-       var sourceMediaInfo = encoderHost.getSourceInfo(sourcePath);
-       if (sourceMediaInfo) {
-           // For 'sourceMediaInfo' you can now call properties of the 'SourceMediaInfo' script object, e.g.:
-           // (See detailed info in the documentation of 'SourceMediaInfo')
-           $.writeln(
-               "Embedded description of the source: " + sourceMediaInfo.description
-           );
+     encoderHost.addEventListener(
+       "onBatchEncoderStatusChanged",
+       function (eventObj) {
+         $.writeln(
+           "onBatchEncoderStatusChanged to status: " + eventObj.batchEncoderStatus
+         );
        }
+     );
 
-       // API "getFormatList"
-       var formatList = encoderHost.getFormatList();
-       $.writeln("formatList: " + formatList);
+     // API "getSourceInfo"
+     var sourceMediaInfo = encoderHost.getSourceInfo(sourcePath);
+     if (sourceMediaInfo) {
+       // For 'sourceMediaInfo' you can now call properties of the 'SourceMediaInfo' script object, e.g.:
+       // (See detailed info in the documentation of 'SourceMediaInfo')
+       $.writeln(
+         "Embedded description of the source: " + sourceMediaInfo.description
+       );
+     }
 
-       // API "createEncoderForFormat"
-       var encoderWrapper = encoderHost.createEncoderForFormat(format);
-       if (encoderWrapper) {
-           // For 'encoder' you can now call properties/methods of the 'EncoderWrapper" script object, e.g.:
-           // (See detailed info in the documentation of 'EncoderWrapper')
-           var frameRate = "25";
-           encoderWrapper.setFrameRate(frameRate);
-       }
+     // API "getFormatList"
+     var formatList = encoderHost.getFormatList();
+     $.writeln("formatList: " + formatList);
 
-       // API "isBatchRunning"
-       var isBatchRunning = encoderHost.isBatchRunning();
-       // With the current script the return value should be 'false' since no batch (job) is running.
-       // After adding batch items (see FrontendScriptObject) and calling encoderHost.runBatch() this method returns 'true' as long as a job is running.
-       $.writeln("isBatchRunning: " + isBatchRunning);
+     // API "createEncoderForFormat"
+     var encoderWrapper = encoderHost.createEncoderForFormat(format);
+     if (encoderWrapper) {
+       // For 'encoder' you can now call properties/methods of the 'EncoderWrapper" script object, e.g.:
+       // (See detailed info in the documentation of 'EncoderWrapper')
+       var frameRate = "25";
+       encoderWrapper.setFrameRate(frameRate);
+     }
 
-       // API "runBatch" (always returns true and therefore it's not necessary to store the result)
-       encoderHost.runBatch();
+     // API "isBatchRunning"
+     var isBatchRunning = encoderHost.isBatchRunning();
+     // With the current script the return value should be 'false' since no batch (job) is running.
+     // After adding batch items (see FrontendScriptObject) and calling encoderHost.runBatch() this method returns 'true' as long as a job is running.
+     $.writeln("isBatchRunning: " + isBatchRunning);
 
-       // API "stopBatch" (always returns true and therefore it's not necessary to store the result)
-       encoderHost.stopBatch();
+     // API "getBatchEncoderStatus"
+     var batchStatus = encoderHost.getBatchEncoderStatus();
+     // expected value is "stopped", because the batch had not been started.
+     // The values are: invalid, paused, running, stopped, stopping
+     $.writeln("batch status is: " + batchStatus);
 
-       // API "pauseBatch" (always returns true and therefore it's not necessary to store the result)
-       encoderHost.pauseBatch();
+     // API "runBatch" (always returns true and therefore it's not necessary to store the result)
+     encoderHost.runBatch();
 
-       // API "getCurrentBatchPreview"
-       var result = encoderHost.getCurrentBatchPreview(outputFile);
-       $.writeln("result: " + result);
+     // API "pauseBatch" (always returns true and therefore it's not necessary to store the result)
+     encoderHost.pauseBatch();
 
-       // API "getSupportedImportFileTypes"
-       var supportedFileTypes = encoderHost.getSupportedImportFileTypes();
-       $.writeln("supportedFileTypes: " + supportedFileTypes);
+     // API "stopBatch" (always returns true and therefore it's not necessary to store the result)
+     encoderHost.stopBatch();
+
+     // API "getCurrentBatchPreview"
+     var result = encoderHost.getCurrentBatchPreview(outputFile);
+     $.writeln("result: " + result);
+
+     // API "getSupportedImportFileTypes"
+     var supportedFileTypes = encoderHost.getSupportedImportFileTypes();
+     $.writeln("supportedFileTypes: " + supportedFileTypes);
    } else {
-       $.writeln("encoderHost script object not defined");
+     $.writeln("encoderHost script object not defined");
    }
 
 .. raw:: html
@@ -995,22 +1005,32 @@ Code Samples
 EncoderHostWrapperEvent
 -----------------------
 
-**Provides the following event types: onItemEncodingStarted,
-onEncodingItemProgressUpdate, onItemEncodeComplete. For multiple batch
-items in the queue we recommend to use this event to ensure that the
-event types will be received for all batch items.**
+**Provides the following event types for items in the batch queue:
+onItemEncodingStarted, onEncodingItemProgressUpdate,
+onItemEncodeComplete. For multiple batch items in the queue we recommend
+to use this event to ensure that the event types will be received for
+all batch items. It provides the following event type for the whole
+batch queue: onBatchEncoderStatusChanged.**
 
 .. _properties-4:
 
 Properties
 ~~~~~~~~~~
 
+-  ``batchEncoderStatus: string`` : Returns the status of the batch
+   encoder, when the event was sent. Can be called for
+   onBatchEncoderStatusChanged event, otherwise the status will be
+   invalid. The values are: invalid, paused, running, stopped, stopping
+   (available since 23.3).
+-  ``onBatchEncoderStatusChanged: constant string`` : Notify when
+   the batch encoder status has changed. Get the new status from the
+   batchEncoderStatus property. (available since 23.3)
 -  ``onEncodingItemProgressUpdate: constant string`` : Notify of the
-   batch item encoding progress (available since 23.1.).
+   batch item encoding progress (available since 23.1).
 -  ``onItemEncodeCompleted: constant string`` : Notify when the
    batch item has been encoded.
 -  ``onItemEncodingStarted: constant string`` : Notify when the
-   batch item encoding started (available since 23.1.).
+   batch item encoding started (available since 23.1).
 -  ``outputFilePath: string`` : Returns the path of the output file.
    Can be called for onItemEncodingStarted and onItemEncodeComplete
    events.
@@ -1043,38 +1063,38 @@ Code Samples
 
    var frontend = app.getFrontend();
    if (frontend) {
-       // listen for batch item added event
-       frontend.addEventListener("onItemAddedToBatch", function (eventObj) {
-           $.writeln("frontend.onItemAddedToBatch: success");
-       });
+     // listen for batch item added event
+     frontend.addEventListener("onItemAddedToBatch", function (eventObj) {
+       $.writeln("frontend.onItemAddedToBatch: success");
+     });
 
-       var batchItemSuccess_1 = frontend.addItemToBatch(source_1);
-       var batchItemSuccess_2 = frontend.addItemToBatch(source_2);
-       var batchItemSuccess_3 = frontend.addItemToBatch(source_3);
-       if (batchItemSuccess_1 && batchItemSuccess_2 && batchItemSuccess_3) {
-           $.writeln(
-               "Batch item added successfully for the source files ",
-               source_1 + " , " + source_2 + " , " + source_3
-           );
+     var batchItemSuccess_1 = frontend.addItemToBatch(source_1);
+     var batchItemSuccess_2 = frontend.addItemToBatch(source_2);
+     var batchItemSuccess_3 = frontend.addItemToBatch(source_3);
+     if (batchItemSuccess_1 && batchItemSuccess_2 && batchItemSuccess_3) {
+       $.writeln(
+         "Batch item added successfully for the source files ",
+         source_1 + " , " + source_2 + " , " + source_3
+       );
 
-           encoderHost = app.getEncoderHost();
-           if (encoderHost) {
-               // listen to the item encoding started event (available since 23.1.)
-               encoderHost.addEventListener(
-                   "onItemEncodingStarted",
-                   function (eventObj) {
-                       $.writeln(
-                           "onItemEncodingStarted: Source File Path: " +
-                               eventObj.sourceFilePath
-                       );
-                       $.writeln(
-                           "onItemEncodingStarted: Output File Path: " +
-                               eventObj.outputFilePath
-                       );
-                   }
-               );
+       encoderHost = app.getEncoderHost();
+       if (encoderHost) {
+         // listen to the item encoding started event (available since 23.1.)
+         encoderHost.addEventListener(
+           "onItemEncodingStarted",
+           function (eventObj) {
+             $.writeln(
+               "onItemEncodingStarted: Source File Path: " +
+                 eventObj.sourceFilePath
+             );
+             $.writeln(
+               "onItemEncodingStarted: Output File Path: " +
+                 eventObj.outputFilePath
+             );
+           }
+         );
 
-               /* for earlier versions (23.0. or older) there's an additional step necessary to listen to the onItemEncodingStarted event
+         /* for earlier versions (23.0. or older) there's an additional step necessary to listen to the onItemEncodingStarted event
            var exporter = app.getExporter();
            if (exporter) {
                exporter.addEventListener(
@@ -1086,18 +1106,18 @@ Code Samples
            }
          */
 
-               // listen to the item encoding progress event (available since 23.1.)
-               encoderHost.addEventListener(
-                   "onEncodingItemProgressUpdate",
-                   function (eventObj) {
-                       $.writeln(
-                           "onEncodingItemProgessUpdate: Encoding Progress: " +
-                               eventObj.progress
-                       );
-                   }
-               );
+         // listen to the item encoding progress event (available since 23.1.)
+         encoderHost.addEventListener(
+           "onEncodingItemProgressUpdate",
+           function (eventObj) {
+             $.writeln(
+               "onEncodingItemProgessUpdate: Encoding Progress: " +
+                 eventObj.progress
+             );
+           }
+         );
 
-               /* for earlier versions (23.0. or older) there's an additional step necessary to listen to the onEncodingItemProgressUpdated event
+         /* for earlier versions (23.0. or older) there's an additional step necessary to listen to the onEncodingItemProgressUpdated event
            var exporter = app.getExporter();
            if (exporter) {
                exporter.addEventListener(
@@ -1109,33 +1129,26 @@ Code Samples
            }
          */
 
-               // listen to the item encoding complete event
-               encoderHost.addEventListener(
-                   "onItemEncodeComplete",
-                   function (eventObj) {
-                       $.writeln(
-                           "onItemEncodeComplete: Result: " + eventObj.result
-                       );
-                       $.writeln(
-                           "onItemEncodeComplete: Source File Path: " +
-                               eventObj.sourceFilePath
-                       );
-                       $.writeln(
-                           "onItemEncodeComplete: Output File Path: " +
-                               eventObj.outputFilePath
-                       );
-                   }
-               );
+         // listen to the item encoding complete event
+         encoderHost.addEventListener("onItemEncodeComplete", function (eventObj) {
+           $.writeln("onItemEncodeComplete: Result: " + eventObj.result);
+           $.writeln(
+             "onItemEncodeComplete: Source File Path: " + eventObj.sourceFilePath
+           );
+           $.writeln(
+             "onItemEncodeComplete: Output File Path: " + eventObj.outputFilePath
+           );
+         });
 
-               encoderHost.runBatch();
-           } else {
-               $.writeln("encoderHost not valid");
-           }
+         encoderHost.runBatch();
        } else {
-           $.writeln("batch item wasn't added successfully");
+         $.writeln("encoderHost not valid");
        }
+     } else {
+       $.writeln("batch item wasn't added successfully");
+     }
    } else {
-       $.writeln("frontend not valid");
+     $.writeln("frontend not valid");
    }
 
 .. raw:: html
@@ -1172,6 +1185,9 @@ Methods
 
 -  ``getEncodeTime(): float`` : Return the encode time in
    milliseconds
+
+-  ``getLogOutput(): string`` : Returns the log output including
+   possible warnings and errors (available since 23.2.).
 
 -  ``getMissingAssets(includeSource: bool, includeOutput: bool): array of strings`` : Returns
    a list of missing assets
@@ -1251,6 +1267,13 @@ Methods
    -  ``workAreaType``: 0 Entire, 1 InToOut, 2 WorkArea, 3 Custom, 4
       UseDefault
 
+-  ``setWorkAreaInTicks(workAreaType: unsigned int, startTime: string, endTime: string): bool`` : Sets
+   the work area type, start and end time in ticks for the batch item
+   (available since 23.3)
+
+   -  ``workAreaType``: 0 Entire, 1 InToOut, 2 WorkArea, 3 Custom, 4
+      UseDefault
+
 -  ``setXMPData(templateXMPFilePath: string): bool`` : Sets XMP data
    to given template
 
@@ -1273,79 +1296,160 @@ Code Samples
 
    var frontend = app.getFrontend();
    if (frontend) {
-       // Either format or preset can be empty, output is optional
-       var encoderWrapper = frontend.addFileToBatch(
-           testfilePath,
-           format,
-           presetPath
+     // Either format or preset can be empty, output is optional
+     var encoderWrapper = frontend.addFileToBatch(
+       testfilePath,
+       format,
+       presetPath
+     );
+
+     if (encoderWrapper) {
+       $.writeln(
+         "Frontend script engine added the source file using addFileToBatch-",
+         testfilePath,
+         " successfully"
        );
 
-       if (encoderWrapper) {
-           $.writeln(
-               "Frontend script engine added the source file using addFileToBatch-",
-               testfilePath,
-               " successfully"
-           );
+       $.writeln("width :", encoderWrapper.outputWidth);
+       $.writeln("height:", encoderWrapper.outputHeight);
+       $.writeln("outputFiles:", encoderWrapper.outputFiles);
 
-           $.writeln("width :", encoderWrapper.outputWidth);
-           $.writeln("height:", encoderWrapper.outputHeight);
-           $.writeln("outputFiles:", encoderWrapper.outputFiles);
+       //input value is string please use e.g. "25"
+       encoderWrapper.setFrameRate("25");
 
-           //input value is string please use e.g. "25"
-           encoderWrapper.setFrameRate("25");
+       //int, 0-Entire, 1-InToOut, 2-WorkArea, 3-Custom, 4:UseDefault
+       encoderWrapper.setWorkArea(0, 0.0, 1.0);
 
-           //int, 0-Entire, 1-InToOut, 2-WorkArea, 3-Custom, 4:UseDefault
-           encoderWrapper.setWorkArea(0, 0.0, 1.0);
+       var usePreviewFiles = true;
+       encoderWrapper.setUsePreviewFiles(usePreviewFiles);
 
-           var usePreviewFiles = true;
-           encoderWrapper.setUsePreviewFiles(usePreviewFiles);
+       var useMaximumRenderQuality = true;
+       encoderWrapper.setUseMaximumRenderQuality(useMaximumRenderQuality);
 
-           var useMaximumRenderQuality = true;
-           encoderWrapper.setUseMaximumRenderQuality(useMaximumRenderQuality);
+       var useFrameBlending = true;
+       encoderWrapper.setUseFrameBlending(useFrameBlending);
 
-           var useFrameBlending = true;
-           encoderWrapper.setUseFrameBlending(useFrameBlending);
+       // int-0-FrameSampling, 1-FrameBlending, 2-OpticalFlow
+       encoderWrapper.setTimeInterpolationType(1);
 
-           // int-0-FrameSampling, 1-FrameBlending, 2-OpticalFlow
-           encoderWrapper.setTimeInterpolationType(1);
+       // be aware that this method first letter is upper case
+       var includeSourceXMP = true;
+       encoderWrapper.SetIncludeSourceXMP(includeSourceXMP);
 
-           // be aware that this method first letter is upper case
-           var includeSourceXMP = true;
-           encoderWrapper.SetIncludeSourceXMP(includeSourceXMP);
+       var includeSourceCuePoints = false;
+       encoderWrapper.setIncludeSourceCuePoints(includeSourceCuePoints);
 
-           var includeSourceCuePoints = false;
-           encoderWrapper.setIncludeSourceCuePoints(includeSourceCuePoints);
+       var cropState = true;
+       encoderWrapper.setCropState(cropState);
 
-           var cropState = true;
-           encoderWrapper.setCropState(cropState);
+       //int, 0-ScaleToFit, 1-ScaleToFitBeforeCrop, 2-SetAsOutputSize, 3-ScaleToFill, 4-ScaleToFillBeforeCrop, 5-StretchToFill, 6-StretchToFillBeforeCrop",
+       encoderWrapper.setCropType(4);
 
-           //int, 0-ScaleToFit, 1-ScaleToFitBeforeCrop, 2-SetAsOutputSize, 3-ScaleToFill, 4-ScaleToFillBeforeCrop, 5-StretchToFill, 6-StretchToFillBeforeCrop",
-           encoderWrapper.setCropType(4);
+       //int, 0-ScaleToFit, 1-ScaleToFitBeforeCrop, 2-SetAsOutputSize, 3-ScaleToFill, 4-ScaleToFillBeforeCrop, 5-StretchToFill, 6-StretchToFillBeforeCrop",
+       encoderWrapper.setScaleType(4);
 
-           //int, 0-ScaleToFit, 1-ScaleToFitBeforeCrop, 2-SetAsOutputSize, 3-ScaleToFill, 4-ScaleToFillBeforeCrop, 5-StretchToFill, 6-StretchToFillBeforeCrop",
-           encoderWrapper.setScaleType(4);
+       // rotate clockwise, input values will be transformed into [0 - 360], so -90 is equal to 270
+       encoderWrapper.setRotation(180);
 
-           // rotate clockwise, input values will be transformed into [0 - 360], so -90 is equal to 270
-           encoderWrapper.setRotation(180);
+       //left, top, right, bottom
+       encoderWrapper.setCropOffsets(10, 20, 10, 20);
 
-           //left, top, right, bottom
-           encoderWrapper.setCropOffsets(10, 20, 10, 20);
+       //width and height
+       encoderWrapper.setOutputFrameSize(1200, 800);
 
-           //width and height
-           encoderWrapper.setOutputFrameSize(1200, 800);
+       // default is off - deprecated
+       //encoderWrapper.setCuePointData();
 
-           // default is off - deprecated
-           //encoderWrapper.setCuePointData();
-
-           var encoderHostWrapper = app.getEncoderHost();
-           if (encoderHostWrapper) {
-               encoderHostWrapper.runBatch();
-           }
-       } else {
-           $.writeln("encoderWrapper is not valid");
+       var encoderHostWrapper = app.getEncoderHost();
+       if (encoderHostWrapper) {
+         encoderHostWrapper.runBatch();
        }
+     } else {
+       $.writeln("encoderWrapper is not valid");
+     }
    } else {
-       $.writeln("frontend obj is not valid");
+     $.writeln("frontend obj is not valid");
+   }
+
+.. raw:: html
+
+   </details><br>
+
+.. raw:: html
+
+   <details>
+
+   <summary>getLogOutput Example (click to expand):</summary>
+
+.. code:: javascript
+
+   var preset = "C:\\path\\to\\HighQuality1080_HD.epr";
+   var source = "C:\\path\\to\\weLove.mp4";
+   var destination = "C:\\path\\to\\Output";
+   var format = "H.264";
+
+   var frontend = app.getFrontend();
+   if (frontend) {
+     /**
+      * getLogOutPut() returns a string in JSON format containing the possible errors and warnings as well as the summary of the batch item
+      * that is added to the queue.
+      *
+      * The getLogOutput() method is implemented in the EncoderWrapperScriptObject.
+      * You can use getLogOutput() method when you have used one of these following methods:
+      *
+      * FrontEndScriptObject:
+      * - addFileToBatch()
+      * - addDLToBatch()
+      * - addTeamProjectsToBatch()
+      * - stitchFiles()
+      * In Addition it is possible to get the batch item status with
+      * encoderWrapper.addListener("onStatusChanged"){...} Here you will get "Done!", "Failed!", "Stopped!"
+      *
+      * ExportScriptObject:
+      * - export()
+      * - getSourceMediaInfo()
+      * In Addition it is possible to get the batch item status with
+      * exporter.addListener("OnBatchItemStatusChanged"){...} Here you will get integer values see ExportScriptObject for the details
+      *
+      * EncoderHostWrapper:
+      * - createEncoderFormat()
+      *
+      * Output format is
+      *    {
+      *        "time": "2023-01-16T12:18:36.617946",
+      *        "error": "",
+      *        "summary": []
+      *    }
+      */
+
+     var encoderWrapper = frontend.addFileToBatch(
+       source,
+       format,
+       preset,
+       destination
+     );
+     if (encoderWrapper) {
+       $.writeln("Batch item is successfully added to the queue: ", source);
+
+       encoderWrapper.addEventListener("onEncodeFinished", function (eventObj) {
+         // return the log output in JSON Format
+         $.writeln(encoderWrapper.getLogOutput());
+       });
+
+       // get encoder host to run batch
+       var encoderHost = app.getEncoderHost();
+       if (encoderHost) {
+         encoderHost.runBatch();
+       } else {
+         $.writeln("EncoderHostScriptObject is not valid");
+       }
+     } else {
+       $.writeln(
+         "EncoderWrapperScriptObject is not valid - batch item wasn't added successfully"
+       );
+     }
+   } else {
+     $.writeln("FrontendScriptObject is not valid");
    }
 
 .. raw:: html
@@ -1366,30 +1470,30 @@ Code Samples
    var format = "";
    var frontend = app.getFrontend();
    if (frontend) {
-       var encoderWrapper = frontend.addFileToBatch(
-           testfilePath,
-           format,
-           presetPath
-       );
+     var encoderWrapper = frontend.addFileToBatch(
+       testfilePath,
+       format,
+       presetPath
+     );
 
-       if (encoderWrapper) {
-           $.writeln(testfilePath, " has been added successfully");
+     if (encoderWrapper) {
+       $.writeln(testfilePath, " has been added successfully");
 
-           /**if you set the format parameter but no presetfilepath then you will
-            * get all related presets to this specific format.
-            *
-            * If you set the presetfilepath but no format, then the
-            * format will be set automatically that matches the current preset */
+       /**if you set the format parameter but no presetfilepath then you will
+        * get all related presets to this specific format.
+        *
+        * If you set the presetfilepath but no format, then the
+        * format will be set automatically that matches the current preset */
 
-           var presetList = encoderWrapper.getPresetList();
-           for (var index = 0; index < presetList.length; index++) {
-               $.writeln(presetList[index]);
-           }
-       } else {
-           $.writeln("encoderWrapper object is not valid");
+       var presetList = encoderWrapper.getPresetList();
+       for (var index = 0; index < presetList.length; index++) {
+         $.writeln(presetList[index]);
        }
+     } else {
+       $.writeln("encoderWrapper object is not valid");
+     }
    } else {
-       $.writeln("Frontend object is not valid");
+     $.writeln("Frontend object is not valid");
    }
 
 .. raw:: html
@@ -1409,18 +1513,18 @@ Code Samples
    var testfilePath = "C:\\full\\path\\to\\weLove.mp4";
    var frontend = app.getFrontend();
    if (frontend) {
-       var encoderWrapper = frontend.addFileToBatch(
-           testfilePath,
-           format,
-           presetPath
-       );
-       if (encoderWrapper) {
-           encoderWrapper.loadFormat("MP3");
-       } else {
-           $.writeln("EncoderWrapper object is not valid");
-       }
+     var encoderWrapper = frontend.addFileToBatch(
+       testfilePath,
+       format,
+       presetPath
+     );
+     if (encoderWrapper) {
+       encoderWrapper.loadFormat("MP3");
+     } else {
+       $.writeln("EncoderWrapper object is not valid");
+     }
    } else {
-       $.writeln("Frontend object is not valid");
+     $.writeln("Frontend object is not valid");
    }
 
 .. raw:: html
@@ -1442,19 +1546,74 @@ Code Samples
 
    var frontend = app.getFrontend();
    if (frontend) {
-       // Either format name or presetPath can be empty, output filepath is optional
-       var encoderWrapper = frontend.addFileToBatch(
-           testfilePath,
-           format,
-           presetPath
-       );
-       if (encoderWrapper) {
-           encoderWrapper.loadPreset(presetPathToLoad);
-       } else {
-           $.writeln("EncoderWrapper object is not valid");
-       }
+     // Either format name or presetPath can be empty, output filepath is optional
+     var encoderWrapper = frontend.addFileToBatch(
+       testfilePath,
+       format,
+       presetPath
+     );
+     if (encoderWrapper) {
+       encoderWrapper.loadPreset(presetPathToLoad);
+     } else {
+       $.writeln("EncoderWrapper object is not valid");
+     }
    } else {
-       $.writeln("Frontend object is not valid");
+     $.writeln("Frontend object is not valid");
+   }
+
+.. raw:: html
+
+   </details><br>
+
+.. raw:: html
+
+   <details>
+
+   <summary>setWorkAreaInTicks Example (click to expand):</summary>
+
+.. code:: javascript
+
+   var sequence2997 = "C:\\path\\to\\weLove.mp4";
+   var format = "H.264";
+   var preset = "C:\\path\\to\\HD 720p.epr";
+   var outputPath = "C:\\path\\to\\Output";
+
+   // The value of ticksPerSecond is predefined in premiere pro and ame. 
+   // For more information please have a look into https://ppro-scripting.docsforadobe.dev/other/time.html
+   var ticksPerSecond = 254016000000;
+   var startTimeInTicks = 20 * ticksPerSecond;
+   var timeToAddInTicks = 30 * ticksPerSecond;
+
+   var startTimeinTicksStr = String(startTimeInTicks);
+   var endTimeInTicksStr = String(timeToAddInTicks);
+
+   var frontend = app.getFrontend();
+   if (frontend) {
+     var encoderWrapper = frontend.addFileToBatch(
+       sequence2997,
+       format,
+       preset,
+       outputPath
+     );
+     if (encoderWrapper) {
+       $.writeln("workarea start time: ", startTimeinTicksStr);
+       $.writeln("workarea end time: ", endTimeInTicksStr);
+       encoderWrapper.setWorkAreaInTicks(
+         2,
+         startTimeinTicksStr,
+         endTimeInTicksStr
+       );
+     } else {
+       $.writeln("encoderWrapper is not valid");
+     }
+     var encoderHost = app.getEncoderHost();
+     if (encoderHost) {
+       encoderHost.runBatch();
+     } else {
+       $.writeln("encoderHost is not valid");
+     }
+   } else {
+     $.writeln("frontend is not valid");
    }
 
 .. raw:: html
@@ -1495,28 +1654,28 @@ Code Samples
 
    var source = "D:\\full\\path\\to\\camera3.mxf";
    var preset =
-       "D:\\full\\path\\to\\AME\\MediaIO\\systempresets\\58444341_4d584658\\XDCAMHD 50 PAL 50i.epr";
+     "D:\\full\\path\\to\\AME\\MediaIO\\systempresets\\58444341_4d584658\\XDCAMHD 50 PAL 50i.epr";
    var destination = "C:\\full\\path\\to\\test";
 
    var exporter = app.getExporter();
    if (exporter) {
-       var encoderWrapper = exporter.exportItem(source, destination, preset);
-       if (encoderWrapper) {
-           encoderWrapper.addEventListener(
-               "onEncodeFinished",
-               function (eventObj) {
-                   $.writeln("Encoding result: " + eventObj.result);
-               },
-               false
-           );
-           encoderWrapper.addEventListener(
-               "onEncodeProgress",
-               function (eventObj) {
-                   $.writeln("Encoding progress: " + eventObj.result);
-               },
-               false
-           );
-       }
+     var encoderWrapper = exporter.exportItem(source, destination, preset);
+     if (encoderWrapper) {
+       encoderWrapper.addEventListener(
+         "onEncodeFinished",
+         function (eventObj) {
+           $.writeln("Encoding result: " + eventObj.result);
+         },
+         false
+       );
+       encoderWrapper.addEventListener(
+         "onEncodeProgress",
+         function (eventObj) {
+           $.writeln("Encoding progress: " + eventObj.result);
+         },
+         false
+       );
+     }
    }
 
 .. raw:: html
@@ -1625,21 +1784,31 @@ Code Samples
 .. code:: javascript
 
    var source = "D:\\full\\path\\to\\camera3.mxf";
-   var preset = "D:\\full\\path\\to\\AME\\MediaIO\\systempresets\\58444341_4d584658\\XDCAMHD 50 PAL 50i.epr";
+   var preset =
+     "D:\\full\\path\\to\\AME\\MediaIO\\systempresets\\58444341_4d584658\\XDCAMHD 50 PAL 50i.epr";
    var destination = "C:\\full\\path\\to\\Output\\test";
 
    var exporter = app.getExporter();
 
    if (exporter) {
-       var encoderWrapper  = exporter.exportItem(source, destination, preset);
+     var encoderWrapper = exporter.exportItem(source, destination, preset);
 
-       exporter.addEventListener("onEncodeComplete", function(eventObj) {
-           // We can get the encoding time from the event or from the exporter
-           $.writeln("Encode Complete Time (in milli seconds): " + eventObj.encodeCompleteTime);
+     exporter.addEventListener(
+       "onEncodeComplete",
+       function (eventObj) {
+         // We can get the encoding time from the event or from the exporter
+         $.writeln(
+           "Encode Complete Time (in milli seconds): " +
+             eventObj.encodeCompleteTime
+         );
 
-           var encodeCompleteTime = exporter.elapsedMilliseconds;
-           $.writeln("Encode Complete Time alt (in milli seconds): " + encodeCompleteTime);
-       }, false)
+         var encodeCompleteTime = exporter.elapsedMilliseconds;
+         $.writeln(
+           "Encode Complete Time alt (in milli seconds): " + encodeCompleteTime
+         );
+       },
+       false
+     );
    }
 
 .. raw:: html
@@ -1655,15 +1824,16 @@ Code Samples
 .. code:: javascript
 
    var source = "D:\\full\\path\\to\\camera3.mxf";
-   var preset = "D:\\full\\path\\to\\AME\\MediaIO\\systempresets\\58444341_4d584658\\XDCAMHD 50 PAL 50i.epr";
+   var preset =
+     "D:\\full\\path\\to\\AME\\MediaIO\\systempresets\\58444341_4d584658\\XDCAMHD 50 PAL 50i.epr";
    var destination = "C:\\full\\path\\to\\Output\\test";
 
    var exporter = app.getExporter();
 
    if (exporter) {
-       var encoderWrapper = exporter.exportItem(source, destination, preset);
-       var encodeID = exporter.encodeID;
-       $.writeln("Encode ID: " + encodeID);
+     var encoderWrapper = exporter.exportItem(source, destination, preset);
+     var encodeID = exporter.encodeID;
+     $.writeln("Encode ID: " + encodeID);
    }
 
 .. raw:: html
@@ -1679,33 +1849,48 @@ Code Samples
 .. code:: javascript
 
    var source = "D:\\full\\path\\to\\camera3.mxf";
-   var preset_1 = "D:\\full\\path\\to\\AME\\MediaIO\\systempresets\\58444341_4d584658\\XDCAMHD 50 PAL 50i.epr";
-   var preset_2 = "D:\\full\\path\\to\\AME\\MediaIO\\systempresets\\58444341_4d584658\\XDCAMHD 50 PAL 25p.epr";
+   var preset_1 =
+     "D:\\full\\path\\to\\AME\\MediaIO\\systempresets\\58444341_4d584658\\XDCAMHD 50 PAL 50i.epr";
+   var preset_2 =
+     "D:\\full\\path\\to\\AME\\MediaIO\\systempresets\\58444341_4d584658\\XDCAMHD 50 PAL 25p.epr";
    var presets = preset_1 + "|" + preset_2;
    var destination = "C:\\full\\path\\to\\Output\\test";
-   var matchSourceSettings = false;  // optional
+   var matchSourceSettings = false; // optional
 
    var exporter = app.getExporter();
 
-   if (exporter) { 
+   if (exporter) {
+     exporter.addEventListener(
+       "onEncodeComplete",
+       function (eventObj) {
+         // We should arrive here two times (for every preset we have one batch item)
+         $.writeln(
+           "Encode Complete Status (always true): " + eventObj.encodeCompleteStatus
+         );
+         // We encode both batch items in parallel and so we don't really get the exact time for each batch item
+         // When we arrive here the second time we get the total encoding time for both batch items (the first
+         // could be ignored)
+         $.writeln(
+           "Encode Complete Time (in milliseconds): " + eventObj.encodeCompleteTime
+         );
+       },
+       false
+     );
 
-       exporter.addEventListener("onEncodeComplete", function(eventObj) {
-           // We should arrive here two times (for every preset we have one batch item)
-           $.writeln("Encode Complete Status (always true): " + eventObj.encodeCompleteStatus);
-           // We encode both batch items in parallel and so we don't really get the exact time for each batch item
-           // When we arrive here the second time we get the total encoding time for both batch items (the first
-           // could be ignored)
-           $.writeln("Encode Complete Time (in milliseconds): " + eventObj.encodeCompleteTime);
-       }, false)
+     exporter.addEventListener(
+       "onError",
+       function (eventObj) {
+         $.writeln("Error while encoding");
+       },
+       false
+     );
 
-       exporter.addEventListener("onError", function(eventObj) {
-           $.writeln("Error while encoding");
-       }, false)
-
-       exporter.addEventListener("onBatchItemStatusChanged", function(eventObj) {
-           $.writeln("Batch group index: " + eventObj.groupIndex);
-           $.writeln("Batch item index: " + eventObj.itemIndex);
-           /*
+     exporter.addEventListener(
+       "onBatchItemStatusChanged",
+       function (eventObj) {
+         $.writeln("Batch group index: " + eventObj.groupIndex);
+         $.writeln("Batch item index: " + eventObj.itemIndex);
+         /*
            Possible status values:
            kBatchItemStatus_Waiting = 0,
            kBatchItemStatus_Done,
@@ -1719,26 +1904,47 @@ Code Samples
            kBatchItemStatus_Done_Warning,
            kBatchItemStatus_WatchFolderWaiting
            */
-           $.writeln("Batch item status: " + eventObj.status);
-       }, false)
+         $.writeln("Batch item status: " + eventObj.status);
+       },
+       false
+     );
 
-       exporter.addEventListener("onItemEncodingStarted", function(eventObj) {
-           $.writeln("Encoding started for batch item.");
-       }, false)
+     exporter.addEventListener(
+       "onItemEncodingStarted",
+       function (eventObj) {
+         $.writeln("Encoding started for batch item.");
+       },
+       false
+     );
 
-       exporter.addEventListener("onMediaInfoCreated", function(eventObj) {
-           $.writeln("Media info created");
-       }, false)
-       
-       exporter.addEventListener("onPostProcessListInitialized", function(eventObj) {
-           $.writeln("Post process list has been initialized.");
-       }, false)
+     exporter.addEventListener(
+       "onMediaInfoCreated",
+       function (eventObj) {
+         $.writeln("Media info created");
+       },
+       false
+     );
 
-       var encodingPreperationSuccess = exporter.exportGroup(source, destination, presets, matchSourceSettings);
-       // Without all optional arguments:
-       // var encodingPreperationSuccess = exporter.exportGroup(source, destination, presets);
+     exporter.addEventListener(
+       "onPostProcessListInitialized",
+       function (eventObj) {
+         $.writeln("Post process list has been initialized.");
+       },
+       false
+     );
 
-       $.writeln ("Encoding preparations were successful: " + encodingPreperationSuccess);
+     var encodingPreperationSuccess = exporter.exportGroup(
+       source,
+       destination,
+       presets,
+       matchSourceSettings
+     );
+     // Without all optional arguments:
+     // var encodingPreperationSuccess = exporter.exportGroup(source, destination, presets);
+
+     $.writeln(
+       "Encoding preparations were successful: " + encodingPreperationSuccess
+     );
    }
 
 .. raw:: html
@@ -1756,7 +1962,8 @@ Code Samples
    // Supported: PR projects (last sequence will be used)
    // var source = "C:\\Users\\marnold\\Documents\\Adobe\\Premiere Pro (Beta)\\22.0\\Two sequences.prproj";
    var source = "D:\\full\\path\\to\\camera3.mxf";
-   var preset = "D:\\full\\path\\to\\AME\\MediaIO\\systempresets\\58444341_4d584658\\XDCAMHD 50 PAL 50i.epr";
+   var preset =
+     "D:\\full\\path\\to\\AME\\MediaIO\\systempresets\\58444341_4d584658\\XDCAMHD 50 PAL 50i.epr";
    var destination = "C:\\full\\path\\to\\Output\\test";
    var matchSourceSettings = false; // optional
    var writeFramesToDisk = false; // optional
@@ -1764,64 +1971,109 @@ Code Samples
    var exporter = app.getExporter();
 
    if (exporter) {
-       
-       // listen to events dispatched by the exporter:
-       exporter.addEventListener("onEncodeComplete", function(eventObj) {
-           $.writeln("Encode Complete Status (always true): " + eventObj.encodeCompleteStatus); // Complete status always true
-           $.writeln("Encode Complete Time (in milliseconds): " + eventObj.encodeCompleteTime);
-       }, false)
-           
-       exporter.addEventListener("onError", function(eventObj) {
-           $.writeln("Error while encoding");
-       }, false)
+     // listen to events dispatched by the exporter:
+     exporter.addEventListener(
+       "onEncodeComplete",
+       function (eventObj) {
+         $.writeln(
+           "Encode Complete Status (always true): " + eventObj.encodeCompleteStatus
+         ); // Complete status always true
+         $.writeln(
+           "Encode Complete Time (in milliseconds): " + eventObj.encodeCompleteTime
+         );
+       },
+       false
+     );
 
-       exporter.addEventListener("onBatchItemStatusChanged", function(eventObj) {
-           $.writeln("Batch group index: " + eventObj.groupIndex);
-           $.writeln("Batch item index: " + eventObj.itemIndex);
-           //Possible status values:
-           //kBatchItemStatus_Waiting = 0,
-           //kBatchItemStatus_Done,
-           //kBatchItemStatus_Failed,
-           //kBatchItemStatus_Skipped,
-           //kBatchItemStatus_Encoding,
-           //kBatchItemStatus_Paused,
-           //kBatchItemStatus_Stopped,
-           //kBatchItemStatus_Any,
-           //kBatchItemStatus_AutoStart,
-           //kBatchItemStatus_Done_Warning,
-           //kBatchItemStatus_WatchFolderWaiting
-           $.writeln("Batch item status: " + eventObj.status);
-       }, false)
+     exporter.addEventListener(
+       "onError",
+       function (eventObj) {
+         $.writeln("Error while encoding");
+       },
+       false
+     );
 
-       exporter.addEventListener("onEncodingItemProgressUpdated", function(eventObj) {
-           $.writeln("Encoding progress for batch item: " + eventObj.progress);
-       }, false)
+     exporter.addEventListener(
+       "onBatchItemStatusChanged",
+       function (eventObj) {
+         $.writeln("Batch group index: " + eventObj.groupIndex);
+         $.writeln("Batch item index: " + eventObj.itemIndex);
+         //Possible status values:
+         //kBatchItemStatus_Waiting = 0,
+         //kBatchItemStatus_Done,
+         //kBatchItemStatus_Failed,
+         //kBatchItemStatus_Skipped,
+         //kBatchItemStatus_Encoding,
+         //kBatchItemStatus_Paused,
+         //kBatchItemStatus_Stopped,
+         //kBatchItemStatus_Any,
+         //kBatchItemStatus_AutoStart,
+         //kBatchItemStatus_Done_Warning,
+         //kBatchItemStatus_WatchFolderWaiting
+         $.writeln("Batch item status: " + eventObj.status);
+       },
+       false
+     );
 
-       exporter.addEventListener("onItemEncodingStarted", function(eventObj) {
-           $.writeln("Encoding started for batch item.");
-       }, false)
+     exporter.addEventListener(
+       "onEncodingItemProgressUpdated",
+       function (eventObj) {
+         $.writeln("Encoding progress for batch item: " + eventObj.progress);
+       },
+       false
+     );
 
-       exporter.addEventListener("onMediaInfoCreated", function(eventObj) {
-           $.writeln("Media info created");
-       }, false)
-           
-       exporter.addEventListener("onPostProcessListInitialized", function(eventObj) {
-           $.writeln("Post process list has been initialized.");
-       }, false)
+     exporter.addEventListener(
+       "onItemEncodingStarted",
+       function (eventObj) {
+         $.writeln("Encoding started for batch item.");
+       },
+       false
+     );
 
-       var encoderWrapper  = exporter.exportItem(source, destination, preset, matchSourceSettings, writeFramesToDisk);
-       // Without all optional arguments:
-       // var encoderWrapper  = exporter.exportItem(source, destination, preset);
+     exporter.addEventListener(
+       "onMediaInfoCreated",
+       function (eventObj) {
+         $.writeln("Media info created");
+       },
+       false
+     );
 
-       if (encoderWrapper) {
-           encoderWrapper.addEventListener("onEncodeFinished", function(eventObj) {
+     exporter.addEventListener(
+       "onPostProcessListInitialized",
+       function (eventObj) {
+         $.writeln("Post process list has been initialized.");
+       },
+       false
+     );
+
+     var encoderWrapper = exporter.exportItem(
+       source,
+       destination,
+       preset,
+       matchSourceSettings,
+       writeFramesToDisk
+     );
+     // Without all optional arguments:
+     // var encoderWrapper  = exporter.exportItem(source, destination, preset);
+
+     if (encoderWrapper) {
+       encoderWrapper.addEventListener(
+         "onEncodeFinished",
+         function (eventObj) {
            $.writeln("Encoding result: " + eventObj.result);
-           }, false)
+         },
+         false
+       );
 
-           encoderWrapper.addEventListener("onEncodeProgress", function(eventObj) {
-               $.writeln("Encoding progress: " + eventObj.result);
-           }, false)
-       }
+       encoderWrapper.addEventListener(
+         "onEncodeProgress",
+         function (eventObj) {
+           $.writeln("Encoding progress: " + eventObj.result);
+         },
+         false
+       );
+     }
    }
 
 .. raw:: html
@@ -1841,24 +2093,32 @@ Code Samples
    var source = "C:\\full\\path\\to\\testmedia.mp4";
    var destination = "C:\\full\\path\\to\\Output";
 
-   var matchSource= false;
+   var matchSource = false;
    var writeFramesToDisk = false;
-   var leadingFramesToTrim = 0;  
+   var leadingFramesToTrim = 0;
    var trailingFramesToTrim = 0;
    var sequenceName = "AME-Test-Sequence";
 
    var exporter = app.getExporter();
 
-   if (exporter) { 
+   if (exporter) {
+     var encodingPreperationSuccess = exporter.exportSequence(
+       projectPath,
+       destination,
+       preset,
+       matchSource,
+       writeFramesToDisk,
+       leadingFramesToTrim,
+       trailingFramesToTrim,
+       sequenceName
+     );
 
-       var encodingPreperationSuccess = exporter.exportSequence(projectPath, destination, preset, matchSource, writeFramesToDisk, leadingFramesToTrim, trailingFramesToTrim, sequenceName);
-      
-       $.writeln ("Encoding preparations were successful: " + encodingPreperationSuccess);
+     $.writeln(
+       "Encoding preparations were successful: " + encodingPreperationSuccess
+     );
 
-       // please see 'exportGroup' how to register events
-    }
-
-    
+     // please see 'exportGroup' how to register events
+   }
 
 .. raw:: html
 
@@ -1875,8 +2135,8 @@ Code Samples
    var exporter = app.getExporter();
 
    if (exporter) {
-       var source = "D:\\full\\path\\to\\camera3.mxf";
-       var sourceMediaInfo = exporter.getSourceMediaInfo(source);
+     var source = "D:\\full\\path\\to\\camera3.mxf";
+     var sourceMediaInfo = exporter.getSourceMediaInfo(source);
    }
 
 .. raw:: html
@@ -1897,8 +2157,8 @@ Code Samples
    var exporter = app.getExporter();
 
    if (exporter) {
-       var success = exporter.removeAllBatchItems();
-       $.writeln("Remove all batch items was successful: " + success);
+     var success = exporter.removeAllBatchItems();
+     $.writeln("Remove all batch items was successful: " + success);
    }
 
 .. raw:: html
@@ -1918,17 +2178,26 @@ Code Samples
    var destination = "C:full\\path\\to\\Output";
    var matchSource = false;
    var writeFramesToDisk = false;
-   var leadingFramesToTrim = 10;  
-   var trailingFramesToTrim = 700; 
+   var leadingFramesToTrim = 10;
+   var trailingFramesToTrim = 700;
 
    var exporter = app.getExporter();
-   if (exporter) { 
-      
-      var encodingPreperationSuccess = exporter.trimExportForSR(source, destination, preset, matchSource, writeFramesToDisk, leadingFramesToTrim, trailingFramesToTrim);
+   if (exporter) {
+     var encodingPreperationSuccess = exporter.trimExportForSR(
+       source,
+       destination,
+       preset,
+       matchSource,
+       writeFramesToDisk,
+       leadingFramesToTrim,
+       trailingFramesToTrim
+     );
 
-      $.writeln ("Encoding preparations were successful: " + encodingPreperationSuccess);
+     $.writeln(
+       "Encoding preparations were successful: " + encodingPreperationSuccess
+     );
 
-      // please see 'exportGroup' how to register events
+     // please see 'exportGroup' how to register events
    }
 
 .. raw:: html
@@ -2052,33 +2321,29 @@ Code Samples
 
    var frontend = app.getFrontend();
    if (frontend) {
-
-      // listen for batch item added event
-      frontend.addEventListener("onItemAddedToBatch", function (eventObj) {
+     // listen for batch item added event
+     frontend.addEventListener("onItemAddedToBatch", function (eventObj) {
        $.writeln("frontend.onItemAddedToBatch: success");
-       });
+     });
 
      var batchItemSuccess = frontend.addCompToBatch(compItem, preset, destination);
      if (batchItemSuccess) {
-         $.writeln(
+       $.writeln(
          "Frontend script engine added the source file ",
          compItem,
          " successfully "
-         );
+       );
 
-         // get encoderHost to be able to listen for the item complete event
+       // get encoderHost to be able to listen for the item complete event
        encoderHost = app.getEncoderHost();
        if (encoderHost) {
-         encoderHost.addEventListener(
-           "onItemEncodeComplete",
-           function (eventObj) {
-             $.writeln("Result: " + eventObj.result);
-             $.writeln("Source File Path: " + eventObj.sourceFilePath);
-             $.writeln("Output File Path: " + eventObj.outputFilePath);
-           }
-         );
+         encoderHost.addEventListener("onItemEncodeComplete", function (eventObj) {
+           $.writeln("Result: " + eventObj.result);
+           $.writeln("Source File Path: " + eventObj.sourceFilePath);
+           $.writeln("Output File Path: " + eventObj.outputFilePath);
+         });
 
-         encoderHost.runBatch();  
+         encoderHost.runBatch();
        } else {
          $.writeln("encoderHost not valid");
        }
@@ -2104,30 +2369,30 @@ Code Samples
    var format = "H.264";
    var presetPath = "C:\\full\\path\\to\\HighQuality720HD.epr";
    var outputPath = "C:\\full\\path\\to\\Output";
-   var aftereffects_projPath = "C:\\full\\path\\to\\OpenInPPro.aep";
+   // The projPath can be a path to an AfterEffects, Premiere Pro or Character Animator project
+   var projPath = "C:\\full\\path\\to\\OpenInPPro.aep";
 
    var frontend = app.getFrontend();
    if (frontend) {
      // first we need the guid of the e.g. ae comps or ppro sequences
-     var result = frontend.getDLItemsAtRoot(aftereffects_projPath);
+     var result = frontend.getDLItemsAtRoot(projPath);
      $.writeln(result.length + " comps / sequences found.");
 
      // import e.g. the first comp / sequence
      if (result.length > 0) {
-
        // listen for batch item added / creation failed event
        frontend.addEventListener("onItemAddedToBatch", function (eventObj) {
          $.writeln("frontend.onItemAddedToBatch: success");
-         });
+       });
 
        frontend.addEventListener("onBatchItemCreationFailed", function (eventObj) {
          $.writeln("frontend.onBatchItemCreationFailed: failed");
          $.writeln("srcFilePath: " + eventObj.srcFilePath);
          $.writeln("error: " + eventObj.error);
-         });
+       });
 
        var encoderWrapper = frontend.addDLToBatch(
-         projectPath,
+         projPath,
          format,
          presetPath,
          result[0],
@@ -2155,10 +2420,10 @@ Code Samples
          if (encoderHost) {
            encoderHost.runBatch();
          } else {
-           $.writeln("encoderHost not valid")
+           $.writeln("encoderHost not valid");
          }
        } else {
-         $.writeln("encoderWrapper not valid")
+         $.writeln("encoderWrapper not valid");
        }
      } else {
        $.writeln("the project doesn't have any comps / sequences");
@@ -2186,7 +2451,6 @@ Code Samples
 
    var frontend = app.getFrontend();
    if (frontend) {
-
      // listen for batch item added event
      frontend.addEventListener("onItemAddedToBatch", function (eventObj) {
        $.writeln("onAddItemToBatch success");
@@ -2205,16 +2469,13 @@ Code Samples
        // get encoderHost to be able to listen for the item complete event
        var encoderHost = app.getEncoderHost();
        if (encoderHost) {
-         encoderHost.addEventListener(
-           "onItemEncodeComplete",
-           function (eventObj) {
-             $.writeln("Result: " + eventObj.result);
-             $.writeln("Source File Path: " + eventObj.sourceFilePath);
-             $.writeln("Output File Path: " + eventObj.outputFilePath);
-           }
-         );
+         encoderHost.addEventListener("onItemEncodeComplete", function (eventObj) {
+           $.writeln("Result: " + eventObj.result);
+           $.writeln("Source File Path: " + eventObj.sourceFilePath);
+           $.writeln("Output File Path: " + eventObj.outputFilePath);
+         });
 
-         encoderHost.runBatch();  
+         encoderHost.runBatch();
        } else {
          $.writeln("encoderHost not valid");
        }
@@ -2243,18 +2504,17 @@ Code Samples
 
    var frontend = app.getFrontend();
    if (frontend) {
-
      // listen for batch item added / creation failed event
      frontend.addEventListener("onItemAddedToBatch", function (eventObj) {
        $.writeln("frontend.onItemAddedToBatch: success");
-       });
+     });
 
-       frontend.addEventListener("onBatchItemCreationFailed", function (eventObj) {
+     frontend.addEventListener("onBatchItemCreationFailed", function (eventObj) {
        $.writeln("frontend.onBatchItemCreationFailed: failed");
        $.writeln("srcFilePath: " + eventObj.srcFilePath);
        $.writeln("error: " + eventObj.error);
-       });
-       
+     });
+
      var encoderWrapper = frontend.addFileToBatch(
        source,
        "H.264",
@@ -2262,10 +2522,7 @@ Code Samples
        destination
      );
      if (encoderWrapper) {
-       $.writeln(
-         "Batch item added successfully for source file  ",
-         source
-       );
+       $.writeln("Batch item added successfully for source file  ", source);
 
        // listen for encode progress and encode finish event
        encoderWrapper.addEventListener("onEncodeProgress", function (eventObj) {
@@ -2282,10 +2539,12 @@ Code Samples
        if (encoderHost) {
          encoderHost.runBatch();
        } else {
-         $.writeln("encoderHost not valid")
+         $.writeln("encoderHost not valid");
        }
      } else {
-       $.writeln("encoderWrapper not valid - batch item wasn't added successfully");
+       $.writeln(
+         "encoderWrapper not valid - batch item wasn't added successfully"
+       );
      }
    } else {
      $.writeln("frontend not valid");
@@ -2307,7 +2566,6 @@ Code Samples
 
    var frontend = app.getFrontend();
    if (frontend) {
-
      // listen for batch item added event
      frontend.addEventListener("onItemAddedToBatch", function (eventObj) {
        $.writeln("frontend.onItemAddedToBatch: success");
@@ -2315,24 +2573,18 @@ Code Samples
 
      var batchItemSuccess = frontend.addItemToBatch(source);
      if (batchItemSuccess) {
-       $.writeln(
-         "Batch item added successfully for the source file ",
-         source
-       );
+       $.writeln("Batch item added successfully for the source file ", source);
 
        // get encoderHost to be able to listen for the item complete event
        encoderHost = app.getEncoderHost();
        if (encoderHost) {
-         encoderHost.addEventListener(
-           "onItemEncodeComplete",
-           function (eventObj) {
-             $.writeln("Result: " + eventObj.result);
-             $.writeln("Source File Path: " + eventObj.sourceFilePath);
-             $.writeln("Output File Path: " + eventObj.outputFilePath);
-           }
-         );
+         encoderHost.addEventListener("onItemEncodeComplete", function (eventObj) {
+           $.writeln("Result: " + eventObj.result);
+           $.writeln("Source File Path: " + eventObj.sourceFilePath);
+           $.writeln("Output File Path: " + eventObj.outputFilePath);
+         });
 
-         encoderHost.runBatch();  
+         encoderHost.runBatch();
        } else {
          $.writeln("encoderHost not valid");
        }
@@ -2356,7 +2608,7 @@ Code Samples
 .. code:: javascript
 
    // use for the projectsURL a valid Team Projects URL or a Team Projects Snap
-   // you can create a tp2snap file in PPro for a ProjectItem via the scripting API saveProjectSnapshot 
+   // you can create a tp2snap file in PPro for a ProjectItem via the scripting API saveProjectSnapshot
    // e.g. projectItem.saveProjectSnapshot("C:\\full\\path\\to\\test.tp2snap");
    var projectsURL = "C:\\full\\path\\to\\test.tp2snap";
    var format = "H.264";
@@ -2365,23 +2617,23 @@ Code Samples
 
    var frontend = app.getFrontend();
    if (frontend) {
-
      // listen for batch item added / creation failed event
      frontend.addEventListener("onItemAddedToBatch", function (eventObj) {
        $.writeln("frontend.onItemAddedToBatch: success");
-       });
+     });
 
      frontend.addEventListener("onBatchItemCreationFailed", function (eventObj) {
        $.writeln("frontend.onBatchItemCreationFailed: failed");
        $.writeln("srcFilePath: " + eventObj.srcFilePath);
        $.writeln("error: " + eventObj.error);
-       });
+     });
 
      var encoderWrapper = frontend.addTeamProjectsItemToBatch(
-       projectsURL, 
-       format, 
-       presetPath, 
-       outputPath);
+       projectsURL,
+       format,
+       presetPath,
+       outputPath
+     );
 
      if (encoderWrapper) {
        $.writeln(
@@ -2404,10 +2656,10 @@ Code Samples
        if (encoderHost) {
          encoderHost.runBatch();
        } else {
-         $.writeln("encoderHost not valid")
+         $.writeln("encoderHost not valid");
        }
      } else {
-       $.writeln("batch item wasn't added successfully")
+       $.writeln("batch item wasn't added successfully");
      }
    } else {
      $.writeln("frontend not valid");
@@ -2436,10 +2688,7 @@ Code Samples
        $.writeln("onAddItemToBatch success");
      });
 
-     var batchItemsuccess = frontend.addXMLToBatch(
-       finalcutproXML,
-       preset
-     );
+     var batchItemsuccess = frontend.addXMLToBatch(finalcutproXML, preset);
 
      if (batchItemsuccess) {
        $.writeln("Added xml file to batch successfully.");
@@ -2447,21 +2696,18 @@ Code Samples
        // get encoder host to listen for onItemEncodeComplete event and run batch
        encoderHost = app.getEncoderHost();
        if (encoderHost) {
-         encoderHost.addEventListener(
-           "onItemEncodeComplete",
-           function (eventObj) {
-             $.writeln("Result: " + eventObj.result);
-             $.writeln("Source File Path: " + eventObj.sourceFilePath);
-             $.writeln("Output File Path: " + eventObj.outputFilePath);
-           }
-         );
+         encoderHost.addEventListener("onItemEncodeComplete", function (eventObj) {
+           $.writeln("Result: " + eventObj.result);
+           $.writeln("Source File Path: " + eventObj.sourceFilePath);
+           $.writeln("Output File Path: " + eventObj.outputFilePath);
+         });
          encoderHost.runBatch();
        } else {
          $.writeln("encoderHost not valid");
        }
      } else {
        $.writeln("batch item wasn't added successfully");
-     } 
+     }
    } else {
      $.writeln("frontend not valid");
    }
@@ -2518,7 +2764,6 @@ Code Samples
 
    var frontend = app.getFrontend();
    if (frontend) {
-
      // listen for batch item added / creation failed event
      frontend.addEventListener("onItemAddedToBatch", function (eventObj) {
        $.writeln("onAddItemToBatch success");
@@ -2536,9 +2781,7 @@ Code Samples
      );
 
      if (encoderWrapper) {
-       $.writeln(
-         "Batch item added successfully"
-       );
+       $.writeln("Batch item added successfully");
 
        // listen for encode progress and encode finish events
        encoderWrapper.addEventListener("onEncodeProgress", function (eventObj) {
@@ -2555,10 +2798,10 @@ Code Samples
        if (encoderHost) {
          encoderHost.runBatch();
        } else {
-         $.writeln("encoderHost not valid")
+         $.writeln("encoderHost not valid");
        }
      } else {
-       $.writeln("encoderWrapper not valid")
+       $.writeln("encoderWrapper not valid");
      }
    } else {
      $.writeln("frontend not valid");
@@ -2585,6 +2828,8 @@ Properties
 -  ``dropFrameTimeCode: bool`` : Returns true if the timecode is a
    drop frame timecode
 -  ``duration: string`` : Returns duration of the source
+-  ``durationInTicks: None`` : Returns duration of the source in
+   ticks (available since 23.3)
 -  ``fieldType: string`` : Returns field type of the source
 -  ``frameRate: string`` : Returns frame rate of the source
 -  ``height: string`` : Returns height of the source
@@ -2615,50 +2860,50 @@ Code Samples
 
    var exporter = app.getExporter();
    if (exporter) {
-       var sourceMediaInfo = exporter.getSourceMediaInfo(source);
-       if (sourceMediaInfo) {
-           var audioDuration = sourceMediaInfo.audioDuration;
-           $.writeln("audio duration of the source: " + audioDuration);
+     var sourceMediaInfo = exporter.getSourceMediaInfo(source);
+     if (sourceMediaInfo) {
+       var audioDuration = sourceMediaInfo.audioDuration;
+       $.writeln("audio duration of the source: " + audioDuration);
 
-           var description = sourceMediaInfo.description;
-           $.writeln("description of the source: " + description);
+       var description = sourceMediaInfo.description;
+       $.writeln("description of the source: " + description);
 
-           var isDropFrame = sourceMediaInfo.dropFrameTimeCode;
-           $.writeln("is drop frame: " + dropFrameTimeCode);
+       var isDropFrame = sourceMediaInfo.dropFrameTimeCode;
+       $.writeln("is drop frame: " + dropFrameTimeCode);
 
-           var duration = sourceMediaInfo.duration;
-           $.writeln("duration of the source: " + duration);
+       var duration = sourceMediaInfo.duration;
+       $.writeln("duration of the source: " + duration);
 
-           var fieldType = sourceMediaInfo.fieldType;
-           $.writeln("field type of the source: " + fieldType);
+       var fieldType = sourceMediaInfo.fieldType;
+       $.writeln("field type of the source: " + fieldType);
 
-           var frameRate = sourceMediaInfo.frameRate;
-           $.writeln("frame rate of the source: " + frameRate);
+       var frameRate = sourceMediaInfo.frameRate;
+       $.writeln("frame rate of the source: " + frameRate);
 
-           var height = sourceMediaInfo.height;
-           $.writeln("height of the source: " + height);
+       var height = sourceMediaInfo.height;
+       $.writeln("height of the source: " + height);
 
-           var importer = sourceMediaInfo.importer;
-           $.writeln("importer of the source: " + importer);
+       var importer = sourceMediaInfo.importer;
+       $.writeln("importer of the source: " + importer);
 
-           var numChannels = sourceMediaInfo.numChannels;
-           $.writeln("num channels of the source: " + numChannels);
+       var numChannels = sourceMediaInfo.numChannels;
+       $.writeln("num channels of the source: " + numChannels);
 
-           var parX = sourceMediaInfo.parX;
-           $.writeln("par X of the source: " + parX);
+       var parX = sourceMediaInfo.parX;
+       $.writeln("par X of the source: " + parX);
 
-           var parY = sourceMediaInfo.parY;
-           $.writeln("par Y of the source: " + parY);
+       var parY = sourceMediaInfo.parY;
+       $.writeln("par Y of the source: " + parY);
 
-           var sampleRate = sourceMediaInfo.sampleRate;
-           $.writeln("sample rate of the source: " + sampleRate);
+       var sampleRate = sourceMediaInfo.sampleRate;
+       $.writeln("sample rate of the source: " + sampleRate);
 
-           var width = sourceMediaInfo.width;
-           $.writeln("width of the source: " + width);
+       var width = sourceMediaInfo.width;
+       $.writeln("width of the source: " + width);
 
-           var xmp = sourceMediaInfo.xmp;
-           $.writeln("xmp of the source: " + xmp);
-       }
+       var xmp = sourceMediaInfo.xmp;
+       $.writeln("xmp of the source: " + xmp);
+     }
    }
 
 .. raw:: html
@@ -2719,35 +2964,32 @@ Code Samples
 
    var watchFolder = app.getWatchFolder();
    if (watchFolder) {
-       var watchFolderSuccess = watchFolder.createWatchFolder(
-           folder,
-           destination,
-           preset
-       );
+     var watchFolderSuccess = watchFolder.createWatchFolder(
+       folder,
+       destination,
+       preset
+     );
 
-       if (watchFolderSuccess) {
-           $.writeln(folder, " added as a watch folder");
-           encoderHostWrapper = app.getEncoderHost();
-           if (encoderHostWrapper) {
-               watchFolder.addEventListener(
-                   "onEncodeComplete",
-                   function (eventObj) {
-                       $.writeln("Elapsed Time: " + eventObj.elapsedTime);
-                       $.writeln("watchFolder.onEncodeComplete");
-                   }
-               );
+     if (watchFolderSuccess) {
+       $.writeln(folder, " added as a watch folder");
+       encoderHostWrapper = app.getEncoderHost();
+       if (encoderHostWrapper) {
+         watchFolder.addEventListener("onEncodeComplete", function (eventObj) {
+           $.writeln("Elapsed Time: " + eventObj.elapsedTime);
+           $.writeln("watchFolder.onEncodeComplete");
+         });
 
-               watchFolder.addEventListener("onEncodeError", function (eventObj) {
-                   $.writeln("watchFolder.onEncodeError");
-               });
+         watchFolder.addEventListener("onEncodeError", function (eventObj) {
+           $.writeln("watchFolder.onEncodeError");
+         });
 
-               encoderHostWrapper.runBatch();
-           } else {
-               $.writeln("EncoderHostWrapper object is not valid");
-           }
+         encoderHostWrapper.runBatch();
        } else {
-           $.writeln("Watch folder was not created");
+         $.writeln("EncoderHostWrapper object is not valid");
        }
+     } else {
+       $.writeln("Watch folder was not created");
+     }
    }
 
 .. raw:: html
@@ -2770,11 +3012,11 @@ Code Samples
 
    var watchFolderObj = app.getWatchFolder();
    if (watchFolderObj) {
-       watchFolder.createWatchFolder(folder, destination, preset);
-       watchFolder.createWatchFolder(folder2, destination2, preset);
-       watchFolderObj.removeAllWatchFolders();
+     watchFolder.createWatchFolder(folder, destination, preset);
+     watchFolder.createWatchFolder(folder2, destination2, preset);
+     watchFolderObj.removeAllWatchFolders();
    } else {
-       $.writeln("Watch folder object is not valid");
+     $.writeln("Watch folder object is not valid");
    }
 
 .. raw:: html
