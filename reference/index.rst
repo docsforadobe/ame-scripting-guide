@@ -1,7 +1,7 @@
 Adobe Media Encoder (AME) Scripting API Reference (A-Z)
 =======================================================
 
-Revision date: 2023-04-04
+Revision date: 2023-09-04
 
 AMEBatchItemCreationFailedEvent
 -------------------------------
@@ -29,7 +29,10 @@ Code Samples
 
 .. code:: javascript
 
-   var source = "C:\\path\\to\\testmedia.mp4";
+   var source = "C:\\testdata\\testmedia.mp4";
+
+   // //sources for mac
+   // var source = "/Users/Shared/testdata/testmedia.mp4"
 
    var frontend = app.getFrontend();
    if (frontend) {
@@ -51,15 +54,21 @@ Code Samples
 AMEExportEvent
 --------------
 
-**Provides the following event types: onEncodeComplete, onError,
-onMediaInfoCreated, onBatchItemStatusChanged, onItemEncodingStarted,
-onEncodingItemProgressUpdated, onPostProcessListInitialized**
+**Provides the following event types: onMediaInfoCreated,
+onBatchItemStatusChanged, onItemEncodingStarted,
+onAudioPreEncodeProgress, onEncodingItemProgressUpdated,
+onEncodeComplete, onError, onPostProcessListInitialized**
 
 .. _properties-1:
 
 Properties
 ~~~~~~~~~~
 
+-  ``audioInfo: string`` : Returns the audio pre-encoding info for
+   the event type onAudioPreEncodeProgress (available since 24.0).
+-  ``audioProgress: float`` : Returns the audio pre-encoding
+   progress for the event type onAudioPreEncodeProgress (available since
+   24.0).
 -  ``encodeCompleteStatus: bool`` : Returns true after encoding has
    been completed for a batch item. Can be called for onEncodeComplete
    event.
@@ -69,6 +78,8 @@ Properties
    be called for onBatchItemStatusChanged event.
 -  ``itemIndex: unsigned int`` : Returns the batch item index. Can
    be called for onBatchItemStatusChanged event.
+-  ``onAudioPreEncodeProgress: constant string`` : Notify when the
+   audio pre-encode progress changes (available since 24.0)
 -  ``onBatchItemStatusChanged: constant string`` : Notify when batch
    item status has been changed. You can call the API’s groupIndex,
    itemIndex and status for more info.
@@ -106,10 +117,14 @@ Code Samples
 
 .. code:: javascript
 
-   var source = "D:\\Media\\camera3.mxf";
-   var preset =
-     "D:\\path\\to\\AME\\MediaIO\\systempresets\\58444341_4d584658\\XDCAMHD 50 PAL 50i.epr";
-   var destination = "C:\\full\\path\\to\\Output\\test";
+   var source = "C:\\testdata\\testmedia3.mxf";
+   var preset = "C:\\testdata\\XDCAMHD 50 PAL 50i.epr";
+   var destination = "C:\\testdata\\outputFolder";
+
+   // //sources for mac
+   // var source = "/Users/Shared/testdata/testmedia3.mxf"
+   // var preset = "/Users/Shared/testdata/XDCAMHD 50 PAL 50i.epr";
+   // var destination = "/Users/Shared/testdata/outputFolder";
 
    var exporter = app.getExporter();
    if (exporter) {
@@ -148,10 +163,14 @@ Code Samples
 
 .. code:: javascript
 
-   var source = "D:\\Media\\camera3.mxf";
-   var preset =
-     "D:\\full\\path\\to\\AME\\MediaIO\\systempresets\\58444341_4d584658\\XDCAMHD 50 PAL 50i.epr";
-   var destination = "C:\\full\\path\\to\\Output\\test";
+   var source = "C:\\testdata\\testmedia3.mxf";
+   var preset = "C:\\testdata\\XDCAMHD 50 PAL 50i.epr";
+   var destination = "C:\\testdata\\outputFolder";
+
+   // //sources for mac
+   // var source = "/Users/Shared/testdata/testmedia3.mxf"
+   // var preset = "/Users/Shared/testdata/XDCAMHD 50 PAL 50i.epr";
+   // var destination = "/Users/Shared/testdata/outputFolder";
 
    var exporter = app.getExporter();
    if (exporter) {
@@ -193,17 +212,20 @@ Code Samples
 
 .. code:: javascript
 
+   var source = "C:\\testdata\\testmedia3.mxf";
+   var preset = "C:\\testdata\\XDCAMHD 50 PAL 50i.epr";
+   var destination = "C:\\testdata\\outputFolder";
+
+   // //sources for mac
+   // var source = "/Users/Shared/testdata/testmedia3.mxf"
+   // var preset = "/Users/Shared/testdata/XDCAMHD 50 PAL 50i.epr";
+   // var destination = "/Users/Shared/testdata/outputFolder";
+
    var batchItemStatusChangedEvent = AMEExportEvent.onBatchItemStatusChanged;
    $.writeln(
      "Event name is identical with the const property API name ('onBatchItemStatusChanged'): " +
        batchItemStatusChangedEvent
    );
-
-   var source = "D:\\Media\\camera3.mxf";
-   var preset =
-     "D:\\full\\path\\to\\AME\\MediaIO\\systempresets\\58444341_4d584658\\XDCAMHD 50 PAL 50i.epr";
-   var destination = "C:\\full\\path\\to\\Output\\test";
-
    var exporter = app.getExporter();
 
    if (exporter) {
@@ -267,17 +289,21 @@ Code Samples
 
 .. code:: javascript
 
+   var source = "C:\\testdata\\testmedia3.mxf";
+   var preset = "C:\\testdata\\XDCAMHD 50 PAL 50i.epr";
+   var destination = "C:\\testdata\\outputFolder";
+
+   // //sources for mac
+   // var source = "/Users/Shared/testdata/testmedia3.mxf"
+   // var preset = "/Users/Shared/testdata/XDCAMHD 50 PAL 50i.epr";
+   // var destination = "/Users/Shared/testdata/outputFolder";
+
    var encodeCompleteEvent = AMEExportEvent.onEncodeComplete;
+
    $.writeln(
      "Event name is identical with the const property API name ('onEncodeComplete'): " +
        encodeCompleteEvent
    );
-
-   var source = "D:\\Media\\camera3.mxf";
-   var preset =
-     "D:\\full\\path\\to\\AME\\MediaIO\\systempresets\\58444341_4d584658\\XDCAMHD 50 PAL 50i.epr";
-   var destination = "C:\\full\\path\\to\\Output\\test";
-
    var exporter = app.getExporter();
 
    if (exporter) {
@@ -323,18 +349,21 @@ Code Samples
 
 .. code:: javascript
 
+   var source = "C:\\testdata\\testmedia3.mxf";
+   var preset = "C:\\testdata\\XDCAMHD 50 PAL 50i.epr";
+   var destination = "C:\\testdata\\outputFolder";
+
+   // //sources for mac
+   // var source = "/Users/Shared/testdata/testmedia3.mxf"
+   // var preset = "/Users/Shared/testdata/XDCAMHD 50 PAL 50i.epr";
+   // var destination = "/Users/Shared/testdata/outputFolder";
+
    var encodingItemProgressUpdatedEvent =
      AMEExportEvent.onEncodingItemProgressUpdated;
    $.writeln(
      "Event name is identical with the const property API name ('onEncodingItemProgressUpdated'): " +
        encodingItemProgressUpdatedEvent
    );
-
-   var source = "D:\\Media\\camera3.mxf";
-   var preset =
-     "D:\\full\\path\\to\\AME\\MediaIO\\systempresets\\58444341_4d584658\\XDCAMHD 50 PAL 50i.epr";
-   var destination = "C:\\full\\path\\to\\Output\\test";
-
    var exporter = app.getExporter();
 
    if (exporter) {
@@ -370,16 +399,20 @@ Code Samples
 
 .. code:: javascript
 
+   var source = "C:\\testdata\\testmedia3.mxf";
+   var preset = "C:\\testdata\\XDCAMHD 50 PAL 50i.epr";
+   var destination = "C:\\testdata\\outputFolder";
+
+   // //sources for mac
+   // var source = "/Users/Shared/testdata/testmedia3.mxf"
+   // var preset = "/Users/Shared/testdata/XDCAMHD 50 PAL 50i.epr";
+   // var destination = "/Users/Shared/testdata/outputFolder";
+
    var errorEvent = AMEExportEvent.onError;
    $.writeln(
      "Event name is identical with the const property API name ('onError'): " +
        errorEvent
    );
-
-   var source = "D:\\Media\\camera3.mxf";
-   var preset =
-     "D:\\full\\path\\to\\AME\\MediaIO\\systempresets\\58444341_4d584658\\XDCAMHD 50 PAL 50i.epr";
-   var destination = "C:\\full\\path\\to\\Output\\test";
 
    var exporter = app.getExporter();
 
@@ -416,17 +449,20 @@ Code Samples
 
 .. code:: javascript
 
+   var source = "C:\\testdata\\testmedia3.mxf";
+   var preset = "C:\\testdata\\XDCAMHD 50 PAL 50i.epr";
+   var destination = "C:\\testdata\\outputFolder";
+
+   // //sources for mac
+   // var source = "/Users/Shared/testdata/testmedia3.mxf"
+   // var preset = "/Users/Shared/testdata/XDCAMHD 50 PAL 50i.epr";
+   // var destination = "/Users/Shared/testdata/outputFolder";
+
    var itemEncodingStartedEvent = AMEExportEvent.onItemEncodingStarted;
    $.writeln(
      "Event name is identical with the const property API name ('onItemEncodingStarted'): " +
        itemEncodingStartedEvent
    );
-
-   var source = "D:\\Media\\camera3.mxf";
-   var preset =
-     "D:\\full\\path\\to\\AME\\MediaIO\\systempresets\\58444341_4d584658\\XDCAMHD 50 PAL 50i.epr";
-   var destination = "C:\\fullpath\\to\\Output\\test";
-
    var exporter = app.getExporter();
 
    if (exporter) {
@@ -462,17 +498,20 @@ Code Samples
 
 .. code:: javascript
 
+   var source = "C:\\testdata\\testmedia3.mxf";
+   var preset = "C:\\testdata\\XDCAMHD 50 PAL 50i.epr";
+   var destination = "C:\\testdata\\outputFolder";
+
+   // //sources for mac
+   // var source = "/Users/Shared/testdata/testmedia3.mxf"
+   // var preset = "/Users/Shared/testdata/XDCAMHD 50 PAL 50i.epr";
+   // var destination = "/Users/Shared/testdata/outputFolder";
+
    var mediaInfoCreatedEvent = AMEExportEvent.onMediaInfoCreated;
    $.writeln(
      "Event name is identical with the const property API name ('onMediaInfoCreated'): " +
        mediaInfoCreatedEvent
    );
-
-   var source = "D:\\Media\\camera3.mxf";
-   var preset =
-     "D:\\full\\path\\to\\AME\\MediaIO\\systempresets\\58444341_4d584658\\XDCAMHD 50 PAL 50i.epr";
-   var destination = "C:\\full\\path\\to\\Output\\test";
-
    var exporter = app.getExporter();
 
    if (exporter) {
@@ -508,18 +547,21 @@ Code Samples
 
 .. code:: javascript
 
+   var source = "C:\\testdata\\testmedia3.mxf";
+   var preset = "C:\\testdata\\XDCAMHD 50 PAL 50i.epr";
+   var destination = "C:\\testdata\\outputFolder";
+
+   // //sources for mac
+   // var source = "/Users/Shared/testdata/testmedia3.mxf"
+   // var preset = "/Users/Shared/testdata/XDCAMHD 50 PAL 50i.epr";
+   // var destination = "/Users/Shared/testdata/outputFolder";
+
    var postProcessListInitializedEvent =
      AMEExportEvent.onPostProcessListInitialized;
    $.writeln(
      "Event name is identical with the const property API name ('onPostProcessListInitialized'): " +
        postProcessListInitializedEvent
    );
-
-   var source = "D:\\Media\\camera3.mxf";
-   var preset =
-     "D:\\full\\path\\to\\AME\\MediaIO\\systempresets\\58444341_4d584658\\XDCAMHD 50 PAL 50i.epr";
-   var destination = "C:\\full\\path\\to\\Output\\test";
-
    var exporter = app.getExporter();
 
    if (exporter) {
@@ -555,10 +597,14 @@ Code Samples
 
 .. code:: javascript
 
-   var source = "D:\\Media\\camera3.mxf";
-   var preset =
-     "D:\\full\\path\\to\\AME\\MediaIO\\systempresets\\58444341_4d584658\\XDCAMHD 50 PAL 50i.epr";
-   var destination = "C:\\full\\path\\to\\Output\\test";
+   var source = "C:\\testdata\\testmedia3.mxf";
+   var preset = "C:\\testdata\\XDCAMHD 50 PAL 50i.epr";
+   var destination = "C:\\testdata\\outputFolder";
+
+   // //sources for mac
+   // var source = "/Users/Shared/testdata/testmedia3.mxf"
+   // var preset = "/Users/Shared/testdata/XDCAMHD 50 PAL 50i.epr";
+   // var destination = "/Users/Shared/testdata/outputFolder";
 
    var exporter = app.getExporter();
 
@@ -597,10 +643,14 @@ Code Samples
 
 .. code:: javascript
 
-   var source = "D:\\Media\\camera3.mxf";
-   var preset =
-     "D:\\full\\path\\to\\AME\\MediaIO\\systempresets\\58444341_4d584658\\XDCAMHD 50 PAL 50i.epr";
-   var destination = "C:\\full\\path\\to\\Output\\test";
+   var source = "C:\\testdata\\testmedia3.mxf";
+   var preset = "C:\\testdata\\XDCAMHD 50 PAL 50i.epr";
+   var destination = "C:\\testdata\\outputFolder";
+
+   // //sources for mac
+   // var source = "/Users/Shared/testdata/testmedia3.mxf"
+   // var preset = "/Users/Shared/testdata/XDCAMHD 50 PAL 50i.epr";
+   // var destination = "/Users/Shared/testdata/outputFolder";
 
    var exporter = app.getExporter();
 
@@ -682,7 +732,11 @@ Code Samples
 
 .. code:: javascript
 
-   var source = "C:\\full\\path\\to\\testmedia.mp4";
+   var source = "C:\\testdata\\testmedia.mp4";
+
+   // //sources for mac
+   // var source = "/Users/Shared/testdata/testmedia.mp4"
+
    var frontend = app.getFrontend();
    if (frontend) {
      frontend.addEventListener("onItemAddedToBatch", function (eventObj) {
@@ -783,9 +837,12 @@ Code Samples
 
 .. code:: javascript
 
-   var testfilePath = "C:\\full\\path\\to\\test.mp4";
+   var source = "C:\\testdata\\testmedia.mp4";
 
-   var blackVideo = app.isBlackVideo(testfilePath);
+   // //sources for mac
+   // var source = "/Users/Shared/testdata/testmedia.mp4"
+
+   var blackVideo = app.isBlackVideo(source);
    if (blackVideo) {
      $.writeln("The input file has only black frames");
    }
@@ -802,9 +859,12 @@ Code Samples
 
 .. code:: javascript
 
-   var testfilePath = "C:\\full\\path\\to\\test.mp4";
+   var source = "C:\\testdata\\testmedia.mp4";
 
-   var silent = app.isSilentAudio(testfilePath);
+   // //sources for mac
+   // var source = "/Users/Shared/testdata/testmedia.mp4"
+
+   var silent = app.isSilentAudio(source);
    if (silent) {
      $.writeln("The input file has no audio");
    }
@@ -821,12 +881,24 @@ Code Samples
 
 .. code:: javascript
 
-   var testfilePath = "C:\\full\\path\to\\weLove.mp4";
-   var outputPath = "C:\\full\\path\\to\\output.mp4";
+   var source = "C:\\testdata\\testmedia4.mp4";
+   var destination = "C:\\testdata\\outputFolder";
+
+   // //sources for mac
+   // var source = "/Users/Shared/testdata/testmedia4.mp4"
+   // var destination = "/Users/Shared/testdata/outputFolder/output.mp4;
 
    var renderall = true;
    var startTime = 0;
-   app.renderFrameSequence(testfilePath, outputPath, renderall, startTime);
+   var success = app.renderFrameSequence(
+     source,
+     destination,
+     renderall,
+     startTime
+   );
+   if (success) {
+     $.writeln("renderFrameSequence() successfully done");
+   }
 
 .. raw:: html
 
@@ -841,17 +913,17 @@ Code Samples
 .. code:: javascript
 
    var format = "";
-   var presetPath = "C:\\dev\\ExtendScripting\\HighQuality720HD.epr";
-   var testfilePath = "C:\\full\\path\\to\\weLove.mp4";
+   var source = "C:\\testdata\\testmedia4.mp4";
+   var preset = "C:\\testdata\\HighQuality720HD.epr";
+
+   // //sources for mac
+   // var source = "/Users/Shared/testdata/testmedia4.mp4"
+   // var preset = "/Users/Shared/testdata/HighQuality720HD.epr";
 
    var frontend = app.getFrontend();
    if (frontend) {
      // Either format or preset can be empty, output is optional
-     var encoderWrapper = frontend.addFileToBatch(
-       testfilePath,
-       format,
-       presetPath
-     );
+     var encoderWrapper = frontend.addFileToBatch(source, format, preset);
 
      if (encoderWrapper) {
        var taskID = app.scheduleTask(
@@ -927,9 +999,13 @@ Code Samples
 
 .. code:: javascript
 
-   var sourcePath = "D:\\full\\path\\to\\camera1.mxf";
    var format = "H.264"; // e.g. H.264
-   var outputFile = "C:\\full\\path\\to\\output.tiff";
+   var source = "C:\\testdata\\testmedia1.mxf";
+   var outputFile = "C:\\testdata\\outputFolder\\output.tiff";
+
+   // //sources for mac
+   // var source = "/Users/Shared/testdata/testmedia1.mxf"
+   // var outputFile = "/Users/Shared/testdata/outputFolder/output.tiff";
 
    var encoderHost = app.getEncoderHost();
 
@@ -944,7 +1020,7 @@ Code Samples
      );
 
      // API "getSourceInfo"
-     var sourceMediaInfo = encoderHost.getSourceInfo(sourcePath);
+     var sourceMediaInfo = encoderHost.getSourceInfo(source);
      if (sourceMediaInfo) {
        // For 'sourceMediaInfo' you can now call properties of the 'SourceMediaInfo' script object, e.g.:
        // (See detailed info in the documentation of 'SourceMediaInfo')
@@ -1006,22 +1082,30 @@ EncoderHostWrapperEvent
 -----------------------
 
 **Provides the following event types for items in the batch queue:
-onItemEncodingStarted, onEncodingItemProgressUpdate,
-onItemEncodeComplete. For multiple batch items in the queue we recommend
-to use this event to ensure that the event types will be received for
-all batch items. It provides the following event type for the whole
-batch queue: onBatchEncoderStatusChanged.**
+onItemEncodingStarted, onAudioPreEncodeProgress,
+onEncodingItemProgressUpdate, onItemEncodeComplete. For multiple batch
+items in the queue we recommend to use this event to ensure that the
+event types will be received for all batch items. It provides the
+following event type for the whole batch queue:
+onBatchEncoderStatusChanged.**
 
 .. _properties-4:
 
 Properties
 ~~~~~~~~~~
 
+-  ``audioInfo: string`` : Returns the audio pre-encoding info for
+   the event type onAudioPreEncodeProgress (available since 24.0).
+-  ``audioProgress: float`` : Returns the audio pre-encoding
+   progress for the event type onAudioPreEncodeProgress (available since
+   24.0).
 -  ``batchEncoderStatus: string`` : Returns the status of the batch
    encoder, when the event was sent. Can be called for
    onBatchEncoderStatusChanged event, otherwise the status will be
    invalid. The values are: invalid, paused, running, stopped, stopping
    (available since 23.3).
+-  ``onAudioPreEncodeProgress: constant string`` : Notify when the
+   audio pre-encode progress changes (available since 24.0).
 -  ``onBatchEncoderStatusChanged: constant string`` : Notify when
    the batch encoder status has changed. Get the new status from the
    batchEncoderStatus property. (available since 23.3)
@@ -1057,9 +1141,14 @@ Code Samples
 
    // Please use this event when you have multiple batch items in the queue (added manually or via a script as below)
    // to ensure you receive all event types
-   var source_1 = "D:\\full\\path\\to\\camera1.mxf";
-   var source_2 = "D:\\full\\path\\to\\camera2.mxf";
-   var source_3 = "D:\\full\\path\\to\\camera3.mxf";
+   var source_1 = "C:\\testdata\\testmedia1.mxf";
+   var source_2 = "C:\\testdata\\testmedia2.mxf";
+   var source_3 = "C:\\testdata\\testmedia3.mxf";
+
+   // //sources for mac
+   // var source_1 = "/Users/Shared/testdata/testmedia1.mxf"
+   // var source_2 = "/Users/Shared/testdata/testmedia2.mxf";
+   // var source_3 = "/Users/Shared/testdata/testmedia3.mxf";
 
    var frontend = app.getFrontend();
    if (frontend) {
@@ -1115,6 +1204,16 @@ Code Samples
                  eventObj.progress
              );
            }
+         );
+
+         // listen to the audio pre-encoding progress event (available since 24.0.)
+         encoderHost.addEventListener(
+           "onAudioPreEncodeProgress",
+           function (eventObj) {
+             $.writeln("Audio pre-encoding info: " + eventObj.audioInfo);
+             $.writeln("Audio pre-encoding progress: " + eventObj.audioProgress);
+           },
+           false
          );
 
          /* for earlier versions (23.0. or older) there's an additional step necessary to listen to the onEncodingItemProgressUpdated event
@@ -1291,22 +1390,22 @@ Code Samples
 .. code:: javascript
 
    var format = "";
-   var presetPath = "C:\\full\\path\\to\\HighQuality720HD.epr";
-   var testfilePath = "C:\\full\\path\\to\\weLove.mp4";
+   var source = "C:\\testdata\\testmedia4.mp4";
+   var preset = "C:\\testdata\\HighQuality720HD.epr";
+
+   // //sources for mac
+   // var source = "/Users/Shared/testdata/testmedia4.mp4"
+   // var preset = "/Users/Shared/testdata/HighQuality720HD.epr";
 
    var frontend = app.getFrontend();
    if (frontend) {
      // Either format or preset can be empty, output is optional
-     var encoderWrapper = frontend.addFileToBatch(
-       testfilePath,
-       format,
-       presetPath
-     );
+     var encoderWrapper = frontend.addFileToBatch(source, format, preset);
 
      if (encoderWrapper) {
        $.writeln(
          "Frontend script engine added the source file using addFileToBatch-",
-         testfilePath,
+         source,
          " successfully"
        );
 
@@ -1318,7 +1417,7 @@ Code Samples
        encoderWrapper.setFrameRate("25");
 
        //int, 0-Entire, 1-InToOut, 2-WorkArea, 3-Custom, 4:UseDefault
-       encoderWrapper.setWorkArea(0, 0.0, 1.0);
+       encoderWrapper.setWorkArea(2, 0.0, 1.0);
 
        var usePreviewFiles = true;
        encoderWrapper.setUsePreviewFiles(usePreviewFiles);
@@ -1383,10 +1482,15 @@ Code Samples
 
 .. code:: javascript
 
-   var preset = "C:\\path\\to\\HighQuality1080_HD.epr";
-   var source = "C:\\path\\to\\weLove.mp4";
-   var destination = "C:\\path\\to\\Output";
    var format = "H.264";
+   var source = "C:\\testdata\\testmedia4.mp4";
+   var preset = "C:\\testdata\\HighQuality1080_HD.epr";
+   var destination = "C:\\testdata\\outputFolder";
+
+   // //sources for mac
+   // var source = "/Users/Shared/testdata/testmedia4.mp4"
+   // var preset = "/Users/Shared/testdata/HighQuality1080_HD.epr";
+   // var destination = "/Users/Shared/testdata/outputFolder";
 
    var frontend = app.getFrontend();
    if (frontend) {
@@ -1464,20 +1568,20 @@ Code Samples
 
 .. code:: javascript
 
-   var presetPath = "C:\\full\\path\\to\\HighQuality720HD.epr";
-   var testfilePath = "C:\\full\\path\\to\\weLove.mp4";
+   var source = "C:\\testdata\\testmedia4.mp4";
+   var preset = "C:\\testdata\\HighQuality720HD.epr";
+
+   // //sources for mac
+   // var source = "/Users/Shared/testdata/testmedia4.mp4"
+   // var preset = "/Users/Shared/testdata/HighQuality720HD.epr";
 
    var format = "";
    var frontend = app.getFrontend();
    if (frontend) {
-     var encoderWrapper = frontend.addFileToBatch(
-       testfilePath,
-       format,
-       presetPath
-     );
+     var encoderWrapper = frontend.addFileToBatch(source, format, preset);
 
      if (encoderWrapper) {
-       $.writeln(testfilePath, " has been added successfully");
+       $.writeln(source, " has been added successfully");
 
        /**if you set the format parameter but no presetfilepath then you will
         * get all related presets to this specific format.
@@ -1509,15 +1613,16 @@ Code Samples
 .. code:: javascript
 
    var format = "";
-   var presetPath = "C:\\full\\path\\to\\HighQuality720HD.epr";
-   var testfilePath = "C:\\full\\path\\to\\weLove.mp4";
+   var source = "C:\\testdata\\testmedia4.mp4";
+   var preset = "C:\\testdata\\HighQuality720HD.epr";
+
+   // //sources for mac
+   // var source = "/Users/Shared/testdata/testmedia4.mp4"
+   // var preset = "/Users/Shared/testdata/HighQuality720HD.epr";
+
    var frontend = app.getFrontend();
    if (frontend) {
-     var encoderWrapper = frontend.addFileToBatch(
-       testfilePath,
-       format,
-       presetPath
-     );
+     var encoderWrapper = frontend.addFileToBatch(source, format, preset);
      if (encoderWrapper) {
        encoderWrapper.loadFormat("MP3");
      } else {
@@ -1540,20 +1645,22 @@ Code Samples
 .. code:: javascript
 
    var format = "";
-   var presetPath = "C:\\full\\path\\to\\HighQuality720HD.epr";
-   var testfilePath = "C:\\full\\path\\to\\weLove.mp4";
-   var presetPathToLoad = "C:\\full\\path\\to\\High Quality 1080 HD.epr";
+   var source = "C:\\testdata\\testmedia4.mp4";
+   var preset = "C:\\testdata\\HighQuality720HD.epr";
+
+   var differentPreset = "C:\\testdata\\High Quality 1080 HD.epr";
+
+   // //sources for mac
+   // var source = "/Users/Shared/testdata/testmedia4.mp4"
+   // var preset = "/Users/Shared/testdata/HighQuality720HD.epr";
+   // var differentPreset = "/Users/Shared/testdata/High Quality 1080 HD.epr";
 
    var frontend = app.getFrontend();
    if (frontend) {
      // Either format name or presetPath can be empty, output filepath is optional
-     var encoderWrapper = frontend.addFileToBatch(
-       testfilePath,
-       format,
-       presetPath
-     );
+     var encoderWrapper = frontend.addFileToBatch(source, format, preset);
      if (encoderWrapper) {
-       encoderWrapper.loadPreset(presetPathToLoad);
+       encoderWrapper.loadPreset(differentPreset);
      } else {
        $.writeln("EncoderWrapper object is not valid");
      }
@@ -1573,12 +1680,18 @@ Code Samples
 
 .. code:: javascript
 
-   var sequence2997 = "C:\\path\\to\\weLove.mp4";
    var format = "H.264";
-   var preset = "C:\\path\\to\\HD 720p.epr";
-   var outputPath = "C:\\path\\to\\Output";
 
-   // The value of ticksPerSecond is predefined in premiere pro and ame. 
+   var source = "C:\\testdata\\testmedia4.mp4";
+   var preset = "C:\\testdata\\HD 720p.epr";
+   var destination = "C:\\testdata\\outputFolder";
+
+   // //sources for mac
+   // var source = "/Users/Shared/testdata/testmedia4.mp4"
+   // var preset = "/Users/Shared/testdata/HD 720p.epr";
+   // var destination = "/Users/Shared/testdata/outputFolder";
+
+   // The value of ticksPerSecond is predefined in premiere pro and ame.
    // For more information please have a look into https://ppro-scripting.docsforadobe.dev/other/time.html
    var ticksPerSecond = 254016000000;
    var startTimeInTicks = 20 * ticksPerSecond;
@@ -1590,10 +1703,10 @@ Code Samples
    var frontend = app.getFrontend();
    if (frontend) {
      var encoderWrapper = frontend.addFileToBatch(
-       sequence2997,
+       source,
        format,
        preset,
-       outputPath
+       destination
      );
      if (encoderWrapper) {
        $.writeln("workarea start time: ", startTimeinTicksStr);
@@ -1630,6 +1743,13 @@ EncoderWrapperEvent
 Properties
 ~~~~~~~~~~
 
+-  ``audioInfo: string`` : Returns the audio pre-encoding info for
+   the event type onAudioPreEncodeProgress (available since 24.0).
+-  ``audioProgress: string`` : Returns the audio pre-encoding
+   progress for the event type onAudioPreEncodeProgress (available since
+   24.0).
+-  ``onAudioPreEncodeProgress: constant string`` : Notify when the
+   audio pre-encode progress changes (available since 24.0).
 -  ``onEncodeFinished: constant string`` : Notify when the batch
    item has been encoded.
 -  ``onEncodeProgress: constant string`` : Notify when the batch
@@ -1652,10 +1772,14 @@ Code Samples
 
 .. code:: javascript
 
-   var source = "D:\\full\\path\\to\\camera3.mxf";
-   var preset =
-     "D:\\full\\path\\to\\AME\\MediaIO\\systempresets\\58444341_4d584658\\XDCAMHD 50 PAL 50i.epr";
-   var destination = "C:\\full\\path\\to\\test";
+   var source = "C:\\testdata\\testmedia3.mxf";
+   var preset = "C:\\testdata\\XDCAMHD 50 PAL 50i.epr";
+   var destination = "C:\\testdata\\outputFolder";
+
+   // //sources for mac
+   // var source = "/Users/Shared/testdata/testmedia3.mxf"
+   // var preset = "/Users/Shared/testdata/HighQuality720HD.epr";
+   // var destination = "/Users/Shared/testdata/outputFolder";
 
    var exporter = app.getExporter();
    if (exporter) {
@@ -1675,6 +1799,16 @@ Code Samples
          },
          false
        );
+
+       // listen to the audio pre-encoding progress event (available since 24.0.)
+       encoderWrapper.addEventListener(
+         "onAudioPreEncodeProgress",
+         function (eventObj) {
+           $.writeln("Audio pre-encoding info: " + eventObj.audioInfo);
+           $.writeln("Audio pre-encoding progress: " + eventObj.audioProgress);
+         },
+         false
+       );
      }
    }
 
@@ -1688,7 +1822,8 @@ ExporterScriptObject
 **Contains several encoding methods. You can listen to different types
 of the AMEExportEvent: onEncodeComplete, onError, onMediaInfoCreated,
 onBatchItemStatusChanged, onItemEncodingStarted,
-onEncodingItemProgressUpdated, onPostProcessListInitialized**
+onEncodingItemProgressUpdated, onAudioPreEncodeProgress,
+onPostProcessListInitialized**
 
 .. _properties-7:
 
@@ -1783,32 +1918,30 @@ Code Samples
 
 .. code:: javascript
 
-   var source = "D:\\full\\path\\to\\camera3.mxf";
-   var preset =
-     "D:\\full\\path\\to\\AME\\MediaIO\\systempresets\\58444341_4d584658\\XDCAMHD 50 PAL 50i.epr";
-   var destination = "C:\\full\\path\\to\\Output\\test";
+   var source = "C:\\testdata\\testmedia3.mxf";
+   var preset = "C:\\testdata\\XDCAMHD 50 PAL 50i.epr";
+   var destination = "C:\\testdata\\outputFolder";
+
+   // //sources for mac
+   // var source = "/Users/Shared/testdata/testmedia3.mxf"
+   // var preset = "/Users/Shared/testdata/XDCAMHD 50 PAL 50i.epr";
+   // var destination = "/Users/Shared/testdata/outputFolder";
 
    var exporter = app.getExporter();
-
    if (exporter) {
-     var encoderWrapper = exporter.exportItem(source, destination, preset);
+     exporter.exportItem(source, destination, preset);
+     exporter.addEventListener("onEncodeComplete", function (eventObj) {
+       // We can get the encoding time from the event or from the exporter
+       $.writeln(
+         "Encode Complete Time (in milli seconds): " + eventObj.encodeCompleteTime
+       );
 
-     exporter.addEventListener(
-       "onEncodeComplete",
-       function (eventObj) {
-         // We can get the encoding time from the event or from the exporter
-         $.writeln(
-           "Encode Complete Time (in milli seconds): " +
-             eventObj.encodeCompleteTime
-         );
-
-         var encodeCompleteTime = exporter.elapsedMilliseconds;
-         $.writeln(
-           "Encode Complete Time alt (in milli seconds): " + encodeCompleteTime
-         );
-       },
-       false
-     );
+       var encodeCompleteTimeMilliseconds = exporter.elapsedMilliseconds;
+       $.writeln(
+         "Encode Complete Time alt (in milli seconds): " +
+           encodeCompleteTimeMilliseconds
+       );
+     });
    }
 
 .. raw:: html
@@ -1823,13 +1956,16 @@ Code Samples
 
 .. code:: javascript
 
-   var source = "D:\\full\\path\\to\\camera3.mxf";
-   var preset =
-     "D:\\full\\path\\to\\AME\\MediaIO\\systempresets\\58444341_4d584658\\XDCAMHD 50 PAL 50i.epr";
-   var destination = "C:\\full\\path\\to\\Output\\test";
+   var source = "C:\\testdata\\testmedia3.mxf";
+   var preset = "C:\\testdata\\XDCAMHD 50 PAL 50i.epr";
+   var destination = "C:\\testdata\\outputFolder";
+
+   // //sources for mac
+   // var source = "/Users/Shared/testdata/testmedia3.mxf"
+   // var preset = "/Users/Shared/testdata/XDCAMHD 50 PAL 50i.epr";
+   // var destination = "/Users/Shared/testdata/outputFolder";
 
    var exporter = app.getExporter();
-
    if (exporter) {
      var encoderWrapper = exporter.exportItem(source, destination, preset);
      var encodeID = exporter.encodeID;
@@ -1848,17 +1984,21 @@ Code Samples
 
 .. code:: javascript
 
-   var source = "D:\\full\\path\\to\\camera3.mxf";
-   var preset_1 =
-     "D:\\full\\path\\to\\AME\\MediaIO\\systempresets\\58444341_4d584658\\XDCAMHD 50 PAL 50i.epr";
-   var preset_2 =
-     "D:\\full\\path\\to\\AME\\MediaIO\\systempresets\\58444341_4d584658\\XDCAMHD 50 PAL 25p.epr";
-   var presets = preset_1 + "|" + preset_2;
-   var destination = "C:\\full\\path\\to\\Output\\test";
+   var source = "C:\\testdata\\testmedia3.mxf";
+   var preset_1 = "C:\\testdata\\XDCAMHD 50 PAL 50i.epr";
+   var preset_2 = "C:\\testdata\\XDCAMHD 50 PAL 25p.epr";
+   var destination = "C:\\testdata\\outputFolder";
+
+   // //sources for mac
+   // var source = "/Users/Shared/testdata/testmedia3.mxf"
+   // var preset_1 = "/Users/Shared/testdata/XDCAMHD 50 PAL 50i.epr";
+   // var preset_2 = "/Users/Shared/testdata/XDCAMHD 50 PAL 25p.epr";
+   // var destination = "/Users/Shared/testdata/outputFolder";
+
    var matchSourceSettings = false; // optional
+   var presets = preset_1 + "|" + preset_2;
 
    var exporter = app.getExporter();
-
    if (exporter) {
      exporter.addEventListener(
        "onEncodeComplete",
@@ -1960,13 +2100,17 @@ Code Samples
 .. code:: javascript
 
    // Supported: PR projects (last sequence will be used)
-   // var source = "C:\\Users\\marnold\\Documents\\Adobe\\Premiere Pro (Beta)\\22.0\\Two sequences.prproj";
-   var source = "D:\\full\\path\\to\\camera3.mxf";
-   var preset =
-     "D:\\full\\path\\to\\AME\\MediaIO\\systempresets\\58444341_4d584658\\XDCAMHD 50 PAL 50i.epr";
-   var destination = "C:\\full\\path\\to\\Output\\test";
+   // var source = "C:\\testdata\\prProjectTest.prproj;
+   var source = "C:\\testdata\\testmedia3.mxf";
+   var preset = "C:\\testdata\\XDCAMHD 50 PAL 50i.epr";
+   var destination = "C:\\testdata\\outputFolder";
    var matchSourceSettings = false; // optional
    var writeFramesToDisk = false; // optional
+
+   // //sources for mac
+   // var source = "/Users/Shared/testdata/testmedia3.mxf"
+   // var preset = "/Users/Shared/testdata/XDCAMHD 50 PAL 50i.epr";
+   // var destination = "/Users/Shared/testdata/outputFolder";
 
    var exporter = app.getExporter();
 
@@ -2019,6 +2163,16 @@ Code Samples
        "onEncodingItemProgressUpdated",
        function (eventObj) {
          $.writeln("Encoding progress for batch item: " + eventObj.progress);
+       },
+       false
+     );
+
+     // listen to the audio pre-encoding progress event (available since 24.0.)
+     exporter.addEventListener(
+       "onAudioPreEncodeProgress",
+       function (eventObj) {
+         $.writeln("Audio pre-encoding info: " + eventObj.audioInfo);
+         $.writeln("Audio pre-encoding progress: " + eventObj.audioProgress);
        },
        false
      );
@@ -2088,10 +2242,14 @@ Code Samples
 
 .. code:: javascript
 
-   var projectPath = "C:\\full\\path\\to\\Validation.prproj";
-   var preset = "C:\\full\\path\\to\\XDCAMHD50PAL25p.epr";
-   var source = "C:\\full\\path\\to\\testmedia.mp4";
-   var destination = "C:\\full\\path\\to\\Output";
+   var preset = "C:\\testdata\\XDCAMHD50PAL25p.epr";
+   var destination = "C:\\testdata\\Output";
+   var projectPath = "C:\\testdata\\prProjectTest.prproj";
+
+   // //sources for mac
+   // var preset = "/Users/Shared/testdata/XDCAMHD50PAL25p.epr";
+   // var destination = "/Users/Shared/testdata/Output";
+   // var projectPath = "/Users/Shared/testdata/prProjectTest.prproj";
 
    var matchSource = false;
    var writeFramesToDisk = false;
@@ -2132,11 +2290,17 @@ Code Samples
 
 .. code:: javascript
 
-   var exporter = app.getExporter();
+   var source = "C:\\testdata\\testmedia3.mxf";
 
+   // //sources for mac
+   // var source = "/Users/Shared/testdata/testmedia3.mxf"
+
+   var exporter = app.getExporter();
    if (exporter) {
-     var source = "D:\\full\\path\\to\\camera3.mxf";
      var sourceMediaInfo = exporter.getSourceMediaInfo(source);
+     if (sourceMediaInfo) {
+       $.writeln("Success");
+     }
    }
 
 .. raw:: html
@@ -2153,9 +2317,7 @@ Code Samples
 
    // Preparation: Be sure there are some batch items in the queue. Otherwise create them via scripting API's or directly in the UI
    // since we need some batch item in the queue to verify the API removeAllBatchItems
-
    var exporter = app.getExporter();
-
    if (exporter) {
      var success = exporter.removeAllBatchItems();
      $.writeln("Remove all batch items was successful: " + success);
@@ -2173,9 +2335,15 @@ Code Samples
 
 .. code:: javascript
 
-   var preset = "C:\\full\\path\\to\\XDCAMHD50PAL25p.epr";
-   var source = "C:\\full\\path\\to\\testmedia.mp4";
-   var destination = "C:full\\path\\to\\Output";
+   var source = "C:\\testdata\\testmedia.mp4";
+   var preset = "C:\\testdata\\XDCAMHD50PAL25p.epr";
+   var destination = "C:\\testdata\\outputFolder";
+
+   // //sources for mac
+   // var source = "/Users/Shared/testdata/testmedia.mp4"
+   // var preset = "/Users/Shared/testdata/XDCAMHD50PAL25p.epr";
+   // var destination = "/Users/Shared/testdata/outputFolder";
+
    var matchSource = false;
    var writeFramesToDisk = false;
    var leadingFramesToTrim = 10;
@@ -2315,9 +2483,14 @@ Code Samples
 
 .. code:: javascript
 
-   var preset = "C:\\full\\path\\to\\HighQuality720HD.epr";
-   var destination = "C:\\full\\path\\to\\Output";
-   var compItem = "C:\\full\\path\\to\\Two comps.aep";
+   var projectPath = "C:\\testdata\\aeCompTest.aep";
+   var preset = "C:\\testdata\\HighQuality720HD.epr";
+   var destination = "C:\\testdata\\outputFolder";
+
+   // //sources for mac
+   // var source = "/Users/Shared/testdata/aeCompTest.aep"
+   // var preset = "/Users/Shared/testdata/HighQuality720HD.epr";
+   // var destination = "/Users/Shared/testdata/outputFolder";
 
    var frontend = app.getFrontend();
    if (frontend) {
@@ -2326,11 +2499,15 @@ Code Samples
        $.writeln("frontend.onItemAddedToBatch: success");
      });
 
-     var batchItemSuccess = frontend.addCompToBatch(compItem, preset, destination);
+     var batchItemSuccess = frontend.addCompToBatch(
+       projectPath,
+       preset,
+       destination
+     );
      if (batchItemSuccess) {
        $.writeln(
          "Frontend script engine added the source file ",
-         compItem,
+         projectPath,
          " successfully "
        );
 
@@ -2366,16 +2543,21 @@ Code Samples
 
 .. code:: javascript
 
+   // The projectPath can be a path to an AfterEffects, Premiere Pro or Character Animator project
    var format = "H.264";
-   var presetPath = "C:\\full\\path\\to\\HighQuality720HD.epr";
-   var outputPath = "C:\\full\\path\\to\\Output";
-   // The projPath can be a path to an AfterEffects, Premiere Pro or Character Animator project
-   var projPath = "C:\\full\\path\\to\\OpenInPPro.aep";
+   var projectPath = "C:\\testdata\\aeCompTest.aep";
+   var preset = "C:\\testdata\\HighQuality720HD.epr";
+   var destination = "C:\\testdata\\outputFolder";
+
+   // //sources for mac
+   // var projectPath = "/Users/Shared/testdata/aeCompTest.aep"
+   // var preset = "/Users/Shared/testdata/HighQuality720HD.epr";
+   // var destination = "/Users/Shared/testdata/outputFolder";
 
    var frontend = app.getFrontend();
    if (frontend) {
      // first we need the guid of the e.g. ae comps or ppro sequences
-     var result = frontend.getDLItemsAtRoot(projPath);
+     var result = frontend.getDLItemsAtRoot(projectPath);
      $.writeln(result.length + " comps / sequences found.");
 
      // import e.g. the first comp / sequence
@@ -2392,11 +2574,11 @@ Code Samples
        });
 
        var encoderWrapper = frontend.addDLToBatch(
-         projPath,
+         projectPath,
          format,
-         presetPath,
+         preset,
          result[0],
-         outputPath
+         destination
        );
 
        if (encoderWrapper) {
@@ -2416,7 +2598,6 @@ Code Samples
 
          // get encoder host to run batch
          var encoderHost = app.getEncoderHost();
-
          if (encoderHost) {
            encoderHost.runBatch();
          } else {
@@ -2444,10 +2625,16 @@ Code Samples
 
 .. code:: javascript
 
-   var preset = "C:\\full\\path\\to\\HighQuality720HD.epr";
-   var destination = "C:\\full\\path\\to\\Output\\output";
-   var inContainingFolder = "C:\\full\\path\\to\\Images";
-   var firstFile = "C:\\full\\path\\to\\Images\\AB-1.jpg";
+   var firstFile = "C:\\testdata\\Images\\AB-1.jpg";
+   var preset = "C:\\testdata\\HighQuality720HD.epr";
+   var destination = "C:\\testdata\\outputFolder";
+   var inContainingFolder = "C:\\testdata\\Images";
+
+   // //sources for mac
+   // var firstFile = "/Users/Shared/testdata/Images/AB-1.jpg"
+   // var preset = "/Users/Shared/testdata/HighQuality720HD.epr";
+   // var destination = "/Users/Shared/testdata/outputFolder";
+   // var inContainingFolder = "/Users/Shared/testdata/Images";
 
    var frontend = app.getFrontend();
    if (frontend) {
@@ -2483,7 +2670,7 @@ Code Samples
        $.writeln("batch item wasn't added successfully");
      }
    } else {
-     $.writeln("frontend not valid");
+       $.writeln("frontend not valid");
    }
 
 .. raw:: html
@@ -2498,9 +2685,14 @@ Code Samples
 
 .. code:: javascript
 
-   var preset = "C:\\full\\path\\to\\HighQuality720HD.epr";
-   var source = "C:\\full\\path\\to\\camera3.mxf";
-   var destination = "C:\\full\\path\\to\\Output\\output";
+   var source = "C:\\testdata\\testmedia3.mxf";
+   var preset = "C:\\testdata\\HighQuality720HD.epr";
+   var destination = "C:\\testdata\\outputFolder";
+
+   // //sources for mac
+   // var source = "/Users/Shared/testdata/testmedia3.mxf"
+   // var preset = "/Users/Shared/testdata/HighQuality720HD.epr";
+   // var destination = "/Users/Shared/testdata/outputFolder";
 
    var frontend = app.getFrontend();
    if (frontend) {
@@ -2535,7 +2727,6 @@ Code Samples
 
        // get encoder host to run batch
        var encoderHost = app.getEncoderHost();
-
        if (encoderHost) {
          encoderHost.runBatch();
        } else {
@@ -2562,7 +2753,10 @@ Code Samples
 
 .. code:: javascript
 
-   var source = "D:\\full\\path\\to\\camera3.mxf";
+   var source = "C:\\testdata\\testmedia3.mxf";
+
+   // //sources for mac
+   // var source = "/Users/Shared/testdata/testmedia3.mxf"
 
    var frontend = app.getFrontend();
    if (frontend) {
@@ -2607,13 +2801,18 @@ Code Samples
 
 .. code:: javascript
 
-   // use for the projectsURL a valid Team Projects URL or a Team Projects Snap
+   // use for the source (projectsURL) a valid Team Projects URL or a Team Projects Snap
    // you can create a tp2snap file in PPro for a ProjectItem via the scripting API saveProjectSnapshot
-   // e.g. projectItem.saveProjectSnapshot("C:\\full\\path\\to\\test.tp2snap");
-   var projectsURL = "C:\\full\\path\\to\\test.tp2snap";
+   // e.g. projectItem.saveProjectSnapshot("C:\\testdata\\test.tp2snap");
    var format = "H.264";
-   var presetPath = "C:\\full\\path\\to\\HighQuality720HD.epr";
-   var outputPath = "C:\\full\\path\\to\\Output";
+   var teamsProjectPath = "C:\\testdata\\test.tp2snap";
+   var preset = "C:\\testdata\\HighQuality720HD.epr";
+   var destination = "C:\\testdata\\outputFolder";
+
+   // //sources for mac
+   // var teamsProjectPath = "/Users/Shared/testdata/test.tp2snap"
+   // var preset = "/Users/Shared/testdata/HighQuality720HD.epr";
+   // var destination = "/Users/Shared/testdata/outputFolder";
 
    var frontend = app.getFrontend();
    if (frontend) {
@@ -2629,16 +2828,16 @@ Code Samples
      });
 
      var encoderWrapper = frontend.addTeamProjectsItemToBatch(
-       projectsURL,
+       teamsProjectPath,
        format,
-       presetPath,
-       outputPath
+       preset,
+       destination
      );
 
      if (encoderWrapper) {
        $.writeln(
          "Batch item added successfully for Team Projects url: ",
-         projectsURL
+         teamsProjectPath
        );
 
        // listen for encode progress and encode finish events
@@ -2677,9 +2876,12 @@ Code Samples
 
 .. code:: javascript
 
-   var preset = "C:\\full\\path\\to\\HighQuality720HD.epr";
-   var destination = "C:\\full\\path\\to\\Output";
-   var finalcutproXML = "C:\\full\\path\\to\\FCP-3.xml";
+   var source = "C:\\testdata\\FCP-3.xml"; // Final Cut Pro xml file
+   var preset = "C:\\testdata\\HighQuality720HD.epr";
+
+   // //sources for mac
+   // var source = "/Users/Shared/testdata/FCP-3.xml"
+   // var preset = "/Users/Shared/testdata/HighQuality720HD.epr";
 
    var frontend = app.getFrontend();
    if (frontend) {
@@ -2688,7 +2890,7 @@ Code Samples
        $.writeln("onAddItemToBatch success");
      });
 
-     var batchItemsuccess = frontend.addXMLToBatch(finalcutproXML, preset);
+     var batchItemsuccess = frontend.addXMLToBatch(source, preset);
 
      if (batchItemsuccess) {
        $.writeln("Added xml file to batch successfully.");
@@ -2724,14 +2926,14 @@ Code Samples
 
 .. code:: javascript
 
-   var format = "H.264";
-   var presetPath = "C:\\full\\path\\to\\HighQuality720HD.epr";
-   var outputPath = "C:\\full\\path\\to\\Output";
-   var aftereffects_projPath = "C:\\full\\path\\to\\OpenInPPro.aep";
+   var projectPath = "C:\\testdata\\aeCompTest.aep"; // project path
+
+   // //sources for mac
+   // var projectPath = "/Users/Shared/testdata/aeCompTest.aep"
 
    var frontend = app.getFrontend();
    if (frontend) {
-     var result = frontend.getDLItemsAtRoot(aftereffects_projPath);
+     var result = frontend.getDLItemsAtRoot(projectPath);
 
      $.writeln(result.length + " ae comps found.");
      for (var idx = 0; idx < result.length; ++idx) {
@@ -2755,12 +2957,19 @@ Code Samples
 
 .. code:: javascript
 
-   var media_1 = "C:\\full\\path\\to\\test.mp4";
-   var media_2 = "C:\\full\\path\\to\\test.avi";
-   var mediaPaths = media_1 + ";" + media_2;
    var format = "H.264";
-   var preset = "C:\\full\\path\\to\\HighQuality720HD.epr";
-   var outputPath = "C:\\full\\path\\to\\Output";
+   var media_1 = "C:\\testdata\\testmedia.mp4";
+   var media_2 = "C:\\testdata\\testmedia2.mp4.";
+   var preset = "C:\\testdata\\HighQuality720HD.epr";
+   var destination = "C:\\testdata\\outputFolder";
+
+   // //sources for mac
+   // var media_1 = "/Users/Shared/testdata/testmedia.mp4"
+   // var media_2 = "/Users/Shared/testdata/testmedia2.avi"
+   // var preset = "/Users/Shared/testdata/HighQuality720HD.epr";
+   // var destination = "/Users/Shared/testdata/outputFolder";
+
+   var mediaPaths = media_1 + ";" + media_2;
 
    var frontend = app.getFrontend();
    if (frontend) {
@@ -2777,7 +2986,7 @@ Code Samples
        mediaPaths,
        format,
        preset,
-       outputPath
+       destination
      );
 
      if (encoderWrapper) {
@@ -2856,7 +3065,10 @@ Code Samples
 
 .. code:: javascript
 
-   var source = "D:\\full\\path\\to\\camera3.mxf";
+   var source = "C:\\testdata\\testmedia3.mxf";
+
+   // //sources for mac
+   // var source = "/Users/Shared/testdata/testmedia3.mxf"
 
    var exporter = app.getExporter();
    if (exporter) {
@@ -2958,9 +3170,14 @@ Code Samples
 
 .. code:: javascript
 
-   var folder = "C:\\full\\path\\to\\watchFolder";
-   var preset = "C:\\full\\path\\to\\HighQuality720HD.epr";
-   var destination = "C:\\full\\path\\to\\watchFolder";
+   var folder = "C:\\testdata\\watchFolder";
+   var preset = "C:\\testdata\\HighQuality720HD.epr";
+   var destination = "C:\\testdata\\outputFolder";
+
+   // //sources for mac
+   // var folder = "/Users/Shared/testdata/watchFolder"
+   // var preset = "/Users/Shared/testdata/HighQuality720HD.epr";
+   // var destination = "/Users/Shared/testdata/outputFolder";
 
    var watchFolder = app.getWatchFolder();
    if (watchFolder) {
@@ -3004,11 +3221,18 @@ Code Samples
 
 .. code:: javascript
 
-   var folder = "C:\\full\\path\\to\\watchFolder";
-   var preset = "C:\\full\\path\\to\\HighQuality720HD.epr";
-   var destination = "C:\\full\\path\\to\\watchFolder";
-   var folder2 = "C:\\full\\path\\to\\watchFolder2";
-   var destination2 = "C:\\full\\path\\to\\watchFolder2";
+   var folder = "C:\\testdata\\watchFolder";
+   var preset = "C:\\testdata\\HighQuality720HD.epr";
+   var destination = "C:\\testdata\\outputWatchfolder1";
+   var folder2 = "C:\\testdata\\watchFolder2";
+   var destination2 = "C:\\testdata\\outputWatchfolder2";
+
+   // //sources for mac
+   // var folder = "/Users/Shared/testdata/watchFolder"
+   // var preset = "/Users/Shared/testdata/HighQuality720HD.epr";
+   // var destination = "/Users/Shared/testdata/outputWatchfolder1";
+   // var folder2 = "/Users/Shared/testdata/watchFolder2"
+   // var destination2 = "/Users/Shared/testdata/outputWatchfolder2";
 
    var watchFolderObj = app.getWatchFolder();
    if (watchFolderObj) {
