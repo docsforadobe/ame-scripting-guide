@@ -1,6 +1,4 @@
-<a id="introduction"></a>
-
-# AME Scripting Guide
+# Overview
 
 This is a community-created and -maintained project documenting Extendscript usage for Adobe Media Encoder.
 
@@ -8,7 +6,7 @@ This is a community-created and -maintained project documenting Extendscript usa
 
 Similarly to Premiere Pro, you can use Visual Studio Code and the “ExtendScript Debugger” extension to send scripts from VS Code to AME and debug them in the app. Open the script, select the target and run or debug the script.
 
-You can also launch scripts from the command line on Mac and Windows, like this
+You can also launch scripts from the command line on Mac and Windows, like this:
 
 ```bash
 <fullPathToAMEbinary> --console es.processFile <fullPathToScript>
