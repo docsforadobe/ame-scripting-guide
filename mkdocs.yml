@@ -1,0 +1,63 @@
+# Site metadata
+site_name: Adobe Media Encoder Scripting Guide
+site_url: https://ame-scripting.docsforadobe.dev/
+repo_url: https://github.com/docsforadobe/ame-scripting-guide/
+repo_name: "ame-scripting-guide"
+extra:
+    homepage: https://docsforadobe.dev
+
+# Customize navigation
+nav:
+    - Home: index.md
+    - Window:
+        - Window object: window/window.md
+    - Document:
+        - Document object: document/document.md
+    - App:
+        - Application object: app/app.md
+
+
+# Do not touch below-- shared for all docs
+
+theme:
+    name: material
+    custom_dir: overrides
+    features:
+        - content.action.edit
+        - content.action.view
+        - search.highlight
+        - search.suggest
+        - toc.follow
+    palette:
+        # Palette toggle for dark mode
+        - media: "(prefers-color-scheme: dark)"
+          primary: black
+          scheme: slate
+          toggle:
+              icon: material/brightness-4
+              name: Switch to light mode
+
+        # Palette toggle for light mode
+        - media: "(prefers-color-scheme: light)"
+          primary: white
+          scheme: default
+          toggle:
+              icon: material/brightness-7
+              name: Switch to dark mode
+
+extra_css:
+    - _static/extra.css
+    - _static/syntax-highlight.css
+
+markdown_extensions:
+    - admonition
+    - pymdownx.superfences
+    - toc:
+        title: Page Contents
+        permalink: true
+        toc_depth: 3
+
+plugins:
+    - git-revision-date-localized
+    - search:
+        separator: '[\s\-,\.:!=\[\]()"/]+'

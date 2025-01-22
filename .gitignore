@@ -1,3 +1,6 @@
+.vscode
+*.sublime-project
+*.sublime-workspace
 .DS_Store
-.python-version
-python3.10/
+site/
+venv/
