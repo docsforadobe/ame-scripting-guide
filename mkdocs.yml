@@ -9,12 +9,10 @@ extra:
 # Customize navigation
 nav:
     - Home: index.md
-    - Window:
-        - Window object: window/window.md
-    - Document:
-        - Document object: document/document.md
-    - App:
-        - Application object: app/app.md
+    - Introduction:
+        - Overview: introduction/overview.md
+    - Reference:
+        - Scripting API: reference/reference.md
 
 
 # Do not touch below-- shared for all docs
