@@ -21,6 +21,7 @@ nav:
     - Reference:
         - Application: reference/Application.md
         - EncoderHostScript Object: reference/EncoderHostScript.md
+        - EncoderWrapper Object: reference/EncoderWrapper.md
     - _todo: reference/reference.md
 
 
