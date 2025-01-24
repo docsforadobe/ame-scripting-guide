@@ -1,142 +1,6 @@
 # Scripting API Reference
 
-## Application
 
-**Top level app object**
-
-<a id="properties-3"></a>
-
-### Properties
-
-- `buildNumber: string` : Get application build number
-
-### Methods
-
-- `assertToConsole(): bool` : Redirect assert output to stdout.
-- `bringToFront(): bool` : Bring application to front
-- `cancelTask(taskID: int): bool` : Cancel the task that matches
-  the task ID
-- `getEncoderHost(): scripting object` : Get the encoder host
-  object. See EncoderHostScriptObject
-- `getExporter(): scripting object` : Get the exporter object.
-  See ExporterScriptObject
-- `getFrontend(): scripting object` : Get the front end object.
-  See FrontendScriptObject
-- `getWatchFolder(): scripting object` : Get the watch folder
-  object. See WatchFolderScriptObject
-- `isBlackVideo(sourcePath: string): bool` : True if all frames
-  are black
-- `isSilentAudio(sourcePath: string): bool` : True if audio is
-  silent
-- `quit(): bool` : Quit the AME app
-- `renderFrameSequence(sourcePath: string, outputPath: string, renderAll: bool, startFrame: int): bool` : Render
-  still frames for given source
-- `scheduleTask(scriptToExecute: string, delayInMilliseconds: int, repeat: bool): int` : Schedule
-  a script to run after delay, returns task ID
-  - `scriptToExecute`: Put your script as text,
-    e.g. `app.getEncoderHost().runBatch()`.
-- `wait(milliseconds: unsigned int): bool` : Non UI blocking wait
-  in milliseconds
-- `write(text: string): bool` : Write text to std out
-
-<a id="code-samples-3"></a>
-
-### Code Samples
-
-<details>
-
-<summary>getExporter Example (click to expand):</summary>
-```javascript
-var exporter = app.getExporter();
-// check ExporterScriptObject to see which methods/properties you can apply
-```
-
-</details><br><details>
-
-<summary>isBlackVideo Example (click to expand):</summary>
-```javascript
-var source = "C:\\testdata\\testmedia.mp4";
-
-// //sources for mac
-// var source = "/Users/Shared/testdata/testmedia.mp4"
-
-var blackVideo = app.isBlackVideo(source);
-if (blackVideo) {
-  $.writeln("The input file has only black frames");
-}
-```
-
-</details><br><details>
-
-<summary>isSilentAudio Example (click to expand):</summary>
-```javascript
-var source = "C:\\testdata\\testmedia.mp4";
-
-// //sources for mac
-// var source = "/Users/Shared/testdata/testmedia.mp4"
-
-var silent = app.isSilentAudio(source);
-if (silent) {
-  $.writeln("The input file has no audio");
-}
-```
-
-</details><br><details>
-
-<summary>renderFrameSequence Example (click to expand):</summary>
-```javascript
-var source = "C:\\testdata\\testmedia4.mp4";
-var destination = "C:\\testdata\\outputFolder";
-
-// //sources for mac
-// var source = "/Users/Shared/testdata/testmedia4.mp4"
-// var destination = "/Users/Shared/testdata/outputFolder/output.mp4;
-
-var renderall = true;
-var startTime = 0;
-var success = app.renderFrameSequence(
-  source,
-  destination,
-  renderall,
-  startTime
-);
-if (success) {
-  $.writeln("renderFrameSequence() successfully done");
-}
-```
-
-</details><br><details>
-
-<summary>scheduleTask Example (click to expand):</summary>
-```javascript
-var format = "";
-var source = "C:\\testdata\\testmedia4.mp4";
-var preset = "C:\\testdata\\HighQuality720HD.epr";
-
-// //sources for mac
-// var source = "/Users/Shared/testdata/testmedia4.mp4"
-// var preset = "/Users/Shared/testdata/HighQuality720HD.epr";
-
-var frontend = app.getFrontend();
-if (frontend) {
-  // Either format or preset can be empty, output is optional
-  var encoderWrapper = frontend.addFileToBatch(source, format, preset);
-
-  if (encoderWrapper) {
-    var taskID = app.scheduleTask(
-      "var e = app.getEncoderHost(); e.runBatch()",
-      5000,
-      false
-    );
-  } else {
-    $.writeln("Encoder wrapper object is not valid.");
-  }
-} else {
-  $.writeln("Frontend object is not valid.");
-}
-```
-
-</details><br>
 
 ## EncoderHostScriptObject
 
@@ -152,7 +16,7 @@ pause or stop the batch.**
 - `getBatchEncoderStatus(): string` : Returns the current status
   of the batch encoder. The values are: invalid, paused, running,
   stopped, stopping (available since 23.3).
-- `getCurrentBatchPreview(inOutputPath: string): bool` : Writes
+- `getCurrentBatchPreview(inOutputPath: string): boolean` : Writes
   out the current batch preview image (tiff format) to the given path.
   - `inOutputPath`: Path to store a `tiff` file.
 - `getFormatList(): array of strings` : Returns a list of all
@@ -163,11 +27,11 @@ pause or stop the batch.**
   - `sourcePath`: Media path
 - `getSupportedImportFileTypes(): array of strings` : Returns
   list of all available formats.
-- `isBatchRunning(): bool` : Returns true if a batch job is
+- `isBatchRunning(): boolean` : Returns true if a batch job is
   running.
-- `pauseBatch(): bool` : Pauses the batch (always returns true).
-- `runBatch(): bool` : Runs the batch (always returns true).
-- `stopBatch(): bool` : Stops the batch (always returns true).
+- `pauseBatch(): boolean` : Pauses the batch (always returns true).
+- `runBatch(): boolean` : Runs the batch (always returns true).
+- `stopBatch(): boolean` : Stops the batch (always returns true).
 
 <a id="code-samples-4"></a>
 
@@ -274,7 +138,7 @@ if (encoderHost) {
 
 ### Methods
 
-- `SetIncludeSourceXMP(includeSourceXMP: bool): bool` : Toggle
+- `SetIncludeSourceXMP(includeSourceXMP: boolean): boolean` : Toggle
   the inclusion of source XMP [boolean] input value required
 - `getEncodeProgress(): int` : Returns the encode progress as
   percentage
@@ -282,64 +146,64 @@ if (encoderHost) {
   milliseconds
 - `getLogOutput(): string` : Returns the log output including
   possible warnings and errors (available since 23.2.).
-- `getMissingAssets(includeSource: bool, includeOutput: bool): array of strings` : Returns
+- `getMissingAssets(includeSource: boolean, includeOutput: boolean): array of strings` : Returns
   a list of missing assets
   - `includeSource`: Get missing asset list from the source group if
     requested
 - `getPresetList(): array of strings` : Returns the presets
   available for the assigned format
-- `loadFormat(format: string): bool` : Changes the format for the
+- `loadFormat(format: string): boolean` : Changes the format for the
   batch item
   - `format`: E.g. `"H.264"` Loads all presets available for the
     assigned format
-- `loadPreset(presetPath: string): bool` : Loads and assigns the
+- `loadPreset(presetPath: string): boolean` : Loads and assigns the
   preset to the batch item
-- `setCropOffsets(left: unsigned int, top: unsigned int, right: unsigned int, bottom: unsigned int): bool` : Sets
+- `setCropOffsets(left: unsigned int, top: unsigned int, right: unsigned int, bottom: unsigned int): boolean` : Sets
   the crop offsets
-- `setCropState(cropState: bool): bool` : Sets the crop state
+- `setCropState(cropState: boolean): boolean` : Sets the crop state
   [boolean] input value required
-- `setCropType(cropType: unsigned int): bool` : Sets the scale
+- `setCropType(cropType: unsigned int): boolean` : Sets the scale
   type
   - `cropType`: 0 ScaleToFit, 1 ScaleToFitBeforeCrop, 2
     SetAsOutputSize, 3 ScaleToFill, 4 ScaleToFillBeforeCrop, 5
     StretchToFill, 6 StretchToFillBeforeCrop
-- `setCuePointData(inCuePointsFilePath: string): bool` : Sets the
+- `setCuePointData(inCuePointsFilePath: string): boolean` : Sets the
   cue point data
-- `setFrameRate(framerate: string): bool` : Sets the frame rate
+- `setFrameRate(framerate: string): boolean` : Sets the frame rate
   for the batch item
   - `framerate`: E.g. `"24"` as string
-- `setIncludeSourceCuePoints(includeSourceCuePoints: bool): bool` : Toggle
+- `setIncludeSourceCuePoints(includeSourceCuePoints: boolean): boolean` : Toggle
   the inclusion of cue points [boolean] input value required
-- `setOutputFrameSize(width: unsigned int, height: unsigned int): bool` : Sets
+- `setOutputFrameSize(width: unsigned int, height: unsigned int): boolean` : Sets
   the output frame size
-- `setRotation(rotationValue: float): bool` : Sets the rotation
+- `setRotation(rotationValue: float): boolean` : Sets the rotation
   (in a 360 degree system)
   - `rotationValue`: E.g. 0.0 - 360.0
-- `setScaleType(scaleType: unsigned int): bool` : Sets the scale
+- `setScaleType(scaleType: unsigned int): boolean` : Sets the scale
   type
   - `scaleType`: 0 ScaleToFit, 1 ScaleToFitBeforeCrop, 2
     SetAsOutputSize, 3 ScaleToFill, 4 ScaleToFillBeforeCrop, 5
     StretchToFill, 6 StretchToFillBeforeCrop
-- `setTimeInterpolationType(interpolationType: unsigned int): bool` : Set
+- `setTimeInterpolationType(interpolationType: unsigned int): boolean` : Set
   the time interpolation type
   - `interpolationType`: 0 FrameSampling, 1 FrameBlending, 2
     OpticalFlow
-- `setUseFrameBlending(useFrameBlending: bool): bool` : Toggle
+- `setUseFrameBlending(useFrameBlending: boolean): boolean` : Toggle
   the use of frame blending [boolean] input value required
-- `setUseMaximumRenderQuality(useMaximumRenderQuality: bool): bool` : Toggle
+- `setUseMaximumRenderQuality(useMaximumRenderQuality: boolean): boolean` : Toggle
   the use of maximum render quality [boolean] input value required
-- `setUsePreviewFiles(usePreviewFiles: bool): bool` : Toggle the
+- `setUsePreviewFiles(usePreviewFiles: boolean): boolean` : Toggle the
   use of previews files. [boolean] input value required
-- `setWorkArea(workAreaType: unsigned int, startTime: float, endTime: float): bool` : Sets
+- `setWorkArea(workAreaType: unsigned int, startTime: float, endTime: float): boolean` : Sets
   the work area type, start and end time for the batch item
   - `workAreaType`: 0 Entire, 1 InToOut, 2 WorkArea, 3 Custom, 4
     UseDefault
-- `setWorkAreaInTicks(workAreaType: unsigned int, startTime: string, endTime: string): bool` : Sets
+- `setWorkAreaInTicks(workAreaType: unsigned int, startTime: string, endTime: string): boolean` : Sets
   the work area type, start and end time in ticks for the batch item
   (available since 23.3)
   - `workAreaType`: 0 Entire, 1 InToOut, 2 WorkArea, 3 Custom, 4
     UseDefault
-- `setXMPData(templateXMPFilePath: string): bool` : Sets XMP data
+- `setXMPData(templateXMPFilePath: string): boolean` : Sets XMP data
   to given template
 
 <a id="code-samples-6"></a>
@@ -683,17 +547,17 @@ onPostProcessListInitialized**
 
 ### Methods
 
-- `exportGroup(sourcePath: string, outputPath: string, presetsPath: string, matchSource: bool = false): bool` : Export the source with the provided list of presets. Returns `true` in case of success.
+- `exportGroup(sourcePath: string, outputPath: string, presetsPath: string, matchSource: boolean = false): boolean` : Export the source with the provided list of presets. Returns `true` in case of success.
   - `sourcePath`: Media path (Premiere Pro projects aren't supported).
   - `outputPath`: If `outputPath` is empty, then the output file location will be generated based on the source location.
   - `presetsPath`: Multiple preset paths can be provided separated via a | (e.g. `"path1|path2|path3"`)
   - `matchSource`: Optional. Default value is false
-- `exportItem(sourcePath: string, outputPath: string, presetPath: string, matchSource: bool = false, writeFramesToDisk: bool = false): scripting object` : Export the source with the provided preset. Returns an `EncoderWrapper` object.
+- `exportItem(sourcePath: string, outputPath: string, presetPath: string, matchSource: boolean = false, writeFramesToDisk: boolean = false): scripting object` : Export the source with the provided preset. Returns an `EncoderWrapper` object.
   - `sourcePath`: Media path or Premiere Pro project path (In case of a Premiere Pro project the last sequence will be used).
   - `outputPath`: If `outputPath` is empty, then the output file location will be generated based on the source location.
   - `matchSource`: Optional. Default value is `false`
   - `writeFramesToDisk`: Optional. Default value is `false`. `true` writes five frames at 0%, 25%, 50%, 75% and 100% of the full duration.<br />Known issue: Currently it only works with parallel encoding disabled.
-- `exportSequence(projectPath: string, outputPath: string, presetPath: string, matchSource: bool = false, writeFramesToDisk: bool = false, leadingFramesToTrim: int = 0, trailingFramesToTrim: int = 0, sequenceName: string = ""): bool` : Export the Premiere Pro sequence with the provided preset. Returns `true` in case of success.
+- `exportSequence(projectPath: string, outputPath: string, presetPath: string, matchSource: boolean = false, writeFramesToDisk: boolean = false, leadingFramesToTrim: int = 0, trailingFramesToTrim: int = 0, sequenceName: string = ""): boolean` : Export the Premiere Pro sequence with the provided preset. Returns `true` in case of success.
   - `projectPath`: Premiere Pro project path.
   - `outputPath`: If `outputPath` is empty, then the output file location will be generated based on the source location.
   - `matchSource`: Optional. Default value is `false`.
@@ -702,8 +566,8 @@ onPostProcessListInitialized**
   - `trailingFramesToTrim`: Optional. Default value is `0`.
   - `sequenceName`: Optional. If sequence name is empty then we use the last sequence of the project.
 - `getSourceMediaInfo(sourcePath: string): scripting object` : Returns a `SourceMediaInfo` object.
-- `removeAllBatchItems(): bool` : Remove all batch items from the queue. Returns `true` in case of success.
-- `trimExportForSR(sourcePath: string, outputPath: string, presetPath: string, matchSource: bool = false, writeFramesToDisk: bool = false, leadingFramesToTrim: int = 0, trailingFramesToTrim: int = 0): bool` : Smart
+- `removeAllBatchItems(): boolean` : Remove all batch items from the queue. Returns `true` in case of success.
+- `trimExportForSR(sourcePath: string, outputPath: string, presetPath: string, matchSource: boolean = false, writeFramesToDisk: boolean = false, leadingFramesToTrim: int = 0, trailingFramesToTrim: int = 0): boolean` : Smart
   render the source with the provided preset. Returns true in case of
   success.
   - `sourcePath`: Media path or Premiere Pro project path (In case
@@ -1138,7 +1002,7 @@ if (exporter) {
 
 ### Methods
 
-- `addCompToBatch(compPath: string, presetPath: string = "", outputPath: string = ""): bool` : Adds the first comp of an After Effects project resp. the first sequence of a Premiere Pro project to the batch.
+- `addCompToBatch(compPath: string, presetPath: string = "", outputPath: string = ""): boolean` : Adds the first comp of an After Effects project resp. the first sequence of a Premiere Pro project to the batch.
   - `compPath`: Path to e.g. an After Effects project or Premiere Pro project. The first comp resp. sequence will be used.
   - `presetPath`: Optional. If `presetPath` is empty, then the default preset will be applied.
   - `outputPath`: Optional. If `outputPath` is empty, then the output file name will be generated based on the comp path.
@@ -1149,7 +1013,7 @@ if (exporter) {
   - `presetPath`: Either a preset or a format input must be present. If no preset is used then the default preset of the specified format will be applied.
   - `guid`: The unique id of e.g. a Premiere Pro sequence or After Effects composition.
   - `outputPath`: Optional. If `outputPath` is empty, then the output file name will be generated based on the project path.
-- `addFileSequenceToBatch(containingFolder: string, imagePath: string, presetPath: string, outputPath: string = ""): bool` : Adds an image sequence to the batch. The images will be sorted in alphabetical order.
+- `addFileSequenceToBatch(containingFolder: string, imagePath: string, presetPath: string, outputPath: string = ""): boolean` : Adds an image sequence to the batch. The images will be sorted in alphabetical order.
   - `containingFolder`: The folder containing image files.
   - `imagePath`: All images from the containing folder with the same extension will be added to the output file.
   - `outputPath`: Optional. If `outputPath` is empty, then the output
@@ -1159,7 +1023,7 @@ if (exporter) {
   - `format`: E.g. `"H.264"`
   - `presetPath`: Either a preset or a format input must be present. If no preset is used then the default preset of the specified format will be applied.
   - `outputPath`: Optional. If `outputPath` is empty, then the output file name will be generated based on the file path.
-- `addItemToBatch(sourcePath: string): bool` : Adds a media source to the batch.
+- `addItemToBatch(sourcePath: string): boolean` : Adds a media source to the batch.
   - `sourcePath`: Path of the media source.
 - `addTeamProjectsItemToBatch(projectsURL: string, format: string, presetPath: string, outputPath: string): scripting object` : Adds a team project item to the batch and returns an `EncoderWrapper` object.
   - `projectsURL`: Team Projects URL or Team Projects Snap. You can
@@ -1167,7 +1031,7 @@ if (exporter) {
     API saveProjectSnapshot.
   - `format`: E.g. `"H.264"`
   - `presetPath`: Either a preset or a format input must be present. If no preset is used then the default preset of the specified format will be applied.
-- `addXMLToBatch(xmlPath: string, presetPath: string, outputFolderPath: string = ""): bool` : Adds
+- `addXMLToBatch(xmlPath: string, presetPath: string, outputFolderPath: string = ""): boolean` : Adds
   Final Cut Pro xml to the batch.
   - `xmlPath`: Path to a Final Cut Pro xml file.
   - `outputFolderPath`: Optional. If outputFolderPath is empty, then the output file name will be generated based on the XML file path.
@@ -1177,7 +1041,7 @@ if (exporter) {
   - `mediaPaths`: Semicolon delimited list of media paths.
   - `format`: E.g. `"H.264"`
   - `presetPath`: Either a preset or a format input must be present. If no preset is used then the default preset of the specified format will be applied.
-- `stopBatch(): bool` : Stops the batch.
+- `stopBatch(): boolean` : Stops the batch.
 
 <a id="code-samples-9"></a>
 
@@ -1679,7 +1543,7 @@ if (frontend) {
   source
 - `description: string` : Returns embedded description of the
   source
-- `dropFrameTimeCode: bool` : Returns true if the timecode is a
+- `dropFrameTimeCode: boolean` : Returns true if the timecode is a
   drop frame timecode
 - `duration: string` : Returns duration of the source
 - `durationInTicks: None` : Returns duration of the source in
@@ -1771,11 +1635,11 @@ if (exporter) {
 
 ### Methods
 
-- `createWatchFolder(folderPath: string, outputPath: string, presetPath: string): bool` : Create
+- `createWatchFolder(folderPath: string, outputPath: string, presetPath: string): boolean` : Create
   a watch folder at destination for the preset and add the source
   - `folderPath`: The path to the folder which should be added as
     watch folder
-- `removeAllWatchFolders(): bool` : Remove all watch folders
+- `removeAllWatchFolders(): boolean` : Remove all watch folders
 
 <a id="code-samples-11"></a>
 

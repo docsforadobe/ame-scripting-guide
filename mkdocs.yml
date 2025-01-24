@@ -18,7 +18,9 @@ nav:
         - EncoderWrapperEvent: events/EncoderWrapperEvent.md
         - ItemAddedToBatchEvent: events/ItemAddedToBatchEvent.md
         - WatchFolderScriptEvent: events/WatchFolderScriptEvent.md
-    - Reference Scripting API: reference/reference.md
+    - Reference:
+        - Application: reference/Application.md
+        - Reference: reference/reference.md
 
 
 # Do not touch below-- shared for all docs
