@@ -110,3 +110,31 @@ if (watchFolderObj) {
   $.writeln("Watch folder object is not valid");
 }
 ```
+
+---
+
+## Events
+
+### onEncodeComplete
+
+`app.getWatchFolder().addEventListener("onEncodeComplete")`
+
+#### Description
+
+Notify when the watchfolder job item is complete.
+
+#### Properties
+
+|   Property    |  Type  |     Description      |
+| ------------- | ------ | -------------------- |
+| `elapsedTime` | Float | The encoding elapsed time, in milliseconds |
+
+---
+
+### onEncodeError
+
+`app.getWatchFolder().addEventListener("onEncodeError")`
+
+#### Description
+
+Notify when the watchfolder job encode fails.

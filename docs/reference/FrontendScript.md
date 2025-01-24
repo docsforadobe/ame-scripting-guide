@@ -698,6 +698,8 @@ Boolean
 
 `app.getFrontend().addEventListener("onBatchItemCreationFailed")`
 
+#### Description
+
 The event will be sent after batch item creation failed.
 
 Can be used for the following [FrontendScript Object](#frontendscriptobject) APIs:
@@ -740,6 +742,8 @@ if (frontend) {
 ### onItemAddedToBatch
 
 `app.getFrontend().addEventListener("onItemAddedToBatch")`
+
+#### Description
 
 The event will be sent after a batch item has been created successfully.
 
