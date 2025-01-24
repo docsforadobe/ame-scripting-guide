@@ -153,7 +153,7 @@ Checks whether all frames of a video are black.
 
 Boolean; `true` if all frames are black
 
-### Example
+#### Example
 
 ```javascript
 var source = "C:\\testdata\\testmedia.mp4";

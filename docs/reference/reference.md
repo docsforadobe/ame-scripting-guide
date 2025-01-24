@@ -35,7 +35,7 @@ pause or stop the batch.**
 
 <a id="code-samples-4"></a>
 
-### Code Samples
+### Examples
 
 <details>
 
@@ -208,7 +208,7 @@ if (encoderHost) {
 
 <a id="code-samples-6"></a>
 
-### Code Samples
+### Examples
 
 <details>
 
@@ -584,7 +584,7 @@ onPostProcessListInitialized**
 
 <a id="code-samples-8"></a>
 
-### Code Samples
+### Examples
 
 <details>
 
@@ -1045,7 +1045,7 @@ if (exporter) {
 
 <a id="code-samples-9"></a>
 
-### Code Samples
+### Examples
 
 <details>
 
@@ -1563,7 +1563,7 @@ if (frontend) {
 
 <a id="code-samples-10"></a>
 
-### Code Samples
+### Examples
 
 <details>
 
@@ -1643,7 +1643,7 @@ if (exporter) {
 
 <a id="code-samples-11"></a>
 
-### Code Samples
+### Examples
 
 <details>
 
