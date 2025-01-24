@@ -1,61 +1,33 @@
-# Scripting API Reference
+# FrontendScriptObject
 
-## FrontendScriptObject
+Scripting methods for the frontend.
 
-**Scripting methods to the frontend**
+---
 
-<a id="methods-4"></a>
+## Methods
 
-### Methods
+### FrontendScript.addCompToBatch()
 
-- `addCompToBatch(compPath: string, presetPath: string = "", outputPath: string = ""): boolean` : Adds the first comp of an After Effects project resp. the first sequence of a Premiere Pro project to the batch.
-  - `compPath`: Path to e.g. an After Effects project or Premiere Pro project. The first comp resp. sequence will be used.
-  - `presetPath`: Optional. If `presetPath` is empty, then the default preset will be applied.
-  - `outputPath`: Optional. If `outputPath` is empty, then the output file name will be generated based on the comp path.
-- `addDLToBatch(projectPath: string, format: string, presetPath: string, guid: string, outputPath: string = ""): [EncoderWrapper object](./todo.md)` : Adds
-  e.g. an After Effects comp or Premiere Pro sequence to the batch and returns an [EncoderWrapper](./todo.md) object.
-  - `projectPath`: E.g. Premiere Pro or After Effects project path.
-  - `format`: E.g. `"H.264"`
-  - `presetPath`: Either a preset or a format input must be present. If no preset is used then the default preset of the specified format will be applied.
-  - `guid`: The unique id of e.g. a Premiere Pro sequence or After Effects composition.
-  - `outputPath`: Optional. If `outputPath` is empty, then the output file name will be generated based on the project path.
-- `addFileSequenceToBatch(containingFolder: string, imagePath: string, presetPath: string, outputPath: string = ""): boolean` : Adds an image sequence to the batch. The images will be sorted in alphabetical order.
-  - `containingFolder`: The folder containing image files.
-  - `imagePath`: All images from the containing folder with the same extension will be added to the output file.
-  - `outputPath`: Optional. If `outputPath` is empty, then the output
-    file name will be generated based on the containingFolder name
-- `addFileToBatch(filePath: string, format: string, presetPath: string, outputPath: string = ""): [EncoderWrapper object](./todo.md)` : Adds a file to the batch and returns an [EncoderWrapper](./todo.md) object.
-  - `filePath`: File path of a media source.
-  - `format`: E.g. `"H.264"`
-  - `presetPath`: Either a preset or a format input must be present. If no preset is used then the default preset of the specified format will be applied.
-  - `outputPath`: Optional. If `outputPath` is empty, then the output file name will be generated based on the file path.
-- `addItemToBatch(sourcePath: string): boolean` : Adds a media source to the batch.
-  - `sourcePath`: Path of the media source.
-- `addTeamProjectsItemToBatch(projectsURL: string, format: string, presetPath: string, outputPath: string): [EncoderWrapper object](./todo.md)` : Adds a team project item to the batch and returns an [EncoderWrapper](./todo.md) object.
-  - `projectsURL`: Team Projects URL or Team Projects Snap. You can
-    create a tp2snap file in PPro for a ProjectItem via the scripting
-    API saveProjectSnapshot.
-  - `format`: E.g. `"H.264"`
-  - `presetPath`: Either a preset or a format input must be present. If no preset is used then the default preset of the specified format will be applied.
-- `addXMLToBatch(xmlPath: string, presetPath: string, outputFolderPath: string = ""): boolean` : Adds
-  Final Cut Pro xml to the batch.
-  - `xmlPath`: Path to a Final Cut Pro xml file.
-  - `outputFolderPath`: Optional. If outputFolderPath is empty, then the output file name will be generated based on the XML file path.
-- `getDLItemsAtRoot(projectPath: string): array of strings` : Returns the list of GUIDs for objects (sequences/comps) at the top/root level.
-  - `projectPath`: E.g. Premiere Pro or After Effects project path.
-- `stitchFiles(mediaPaths: string, format: string, presetPath: string, outputPath: string): [EncoderWrapper object](./todo.md)` : Adds a batch item for the given media and returns an [EncoderWrapper](./todo.md) object.
-  - `mediaPaths`: Semicolon delimited list of media paths.
-  - `format`: E.g. `"H.264"`
-  - `presetPath`: Either a preset or a format input must be present. If no preset is used then the default preset of the specified format will be applied.
-- `stopBatch(): boolean` : Stops the batch.
+`app.getFrontend().addCompToBatch(compPath, [presetPath], [outputPath])`
 
-<a id="code-samples-9"></a>
+#### Description
 
-### Examples
+Adds the first comp of an After Effects project resp. the first sequence of a Premiere Pro project to the batch.
 
-<details>
+#### Parameters
 
-<summary>addCompToBatch Example (click to expand):</summary>
+|  Parameter   |  Type  |                                                Description                                                 |
+| ------------ | ------ | ---------------------------------------------------------------------------------------------------------- |
+| `compPath`   | String | Path to e.g. an After Effects project or Premiere Pro project. The first comp resp. sequence will be used. |
+| `presetPath` | String | Optional. If `presetPath` is empty, then the default preset will be applied.                               |
+| `outputPath` | String | Optional. If `outputPath` is empty, then the output file name will be generated based on the comp path.    |
+
+#### Returns
+
+Boolean
+
+#### Example
+
 ```javascript
 var projectPath = "C:\\testdata\\aeCompTest.aep";
 var preset = "C:\\testdata\\HighQuality720HD.epr";
@@ -106,9 +78,33 @@ if (frontend) {
 }
 ```
 
-</details><br><details>
 
-<summary>addDLToBatch Example (click to expand):</summary>
+---
+
+### FrontendScript.addDLToBatch()
+
+`app.getFrontend().addDLToBatch(projectPath, format, presetPath, guid, [outputPath])`
+
+#### Description
+
+Adds e.g. an After Effects comp or Premiere Pro sequence to the batch and returns an [EncoderWrapper](./todo.md).
+
+#### Parameters
+
+|   Parameter   |  Type  |                                                               Description                                                                |
+| ------------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| `projectPath` | String | E.g. Premiere Pro or After Effects project path.                                                                                         |
+| `format`      | String | E.g. `"H.264"`                                                                                                                           |
+| `presetPath`  | String | Either a preset or a format input must be present. If no preset is used then the default preset of the specified format will be applied. |
+| `guid`        | String | The unique id of e.g. a Premiere Pro sequence or After Effects composition.                                                              |
+| `outputPath`  | String | Optional. If `outputPath` is empty, then the output file name will be generated based on the project path.                               |
+
+#### Returns
+
+[EncoderWrapper object](./todo.md)
+
+#### Example
+
 ```javascript
 // The projectPath can be a path to an AfterEffects, Premiere Pro or Character Animator project
 var format = "H.264";
@@ -181,9 +177,31 @@ if (frontend) {
 }
 ```
 
-</details><br><details>
+---
 
-<summary>addFileSequenceToBatch Example (click to expand):</summary>
+### FrontendScript.addFileSequenceToBatch()
+
+`app.getFrontend().addFileSequenceToBatch(containingFolder, imagePath, presetPath, [outputPath])`
+
+#### Description
+
+Adds an image sequence to the batch. The images will be sorted in alphabetical order.
+
+#### Parameters
+
+|     Parameter      |  Type  |                                                               Description                                                                |
+| ------------------ | ------ | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| `containingFolder` | String | The folder containing image files.                                                                                                       |
+| `imagePath`        | String | All images from the containing folder with the same extension will be added to the output file.                                          |
+| `presetPath`       | String | Either a preset or a format input must be present. If no preset is used then the default preset of the specified format will be applied. |
+| `outputPath`       | String | Optional. If `outputPath` is empty, then the output file name will be generated based on the containingFolder name.                      |
+
+#### Returns
+
+Boolean
+
+#### Example
+
 ```javascript
 var firstFile = "C:\\testdata\\Images\\AB-1.jpg";
 var preset = "C:\\testdata\\HighQuality720HD.epr";
@@ -234,9 +252,31 @@ if (frontend) {
 }
 ```
 
-</details><br><details>
+---
 
-<summary>addFileToBatch Example (click to expand):</summary>
+### FrontendScript.addFileToBatch()
+
+`app.getFrontend().addFileToBatch(filePath, format, presetPath, [outputPath])`
+
+#### Description
+
+Adds a file to the batch and returns an [EncoderWrapper](./todo.md).
+
+#### Parameters
+
+|  Parameter   |  Type  |                                                               Description                                                                |
+| ------------ | ------ | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| `filePath`   | String | File path of a media source.                                                                                                             |
+| `format`     | String | E.g. `"H.264"`                                                                                                                           |
+| `presetPath` | String | Either a preset or a format input must be present. If no preset is used then the default preset of the specified format will be applied. |
+| `outputPath` | String | Optional. If `outputPath` is empty, then the output file name will be generated based on the file path.                                  |
+
+#### Returns
+
+[EncoderWrapper object](./todo.md)
+
+#### Example
+
 ```javascript
 var source = "C:\\testdata\\testmedia3.mxf";
 var preset = "C:\\testdata\\HighQuality720HD.epr";
@@ -295,9 +335,28 @@ if (frontend) {
 }
 ```
 
-</details><br><details>
+---
 
-<summary>addItemToBatch Example (click to expand):</summary>
+### FrontendScript.addItemToBatch()
+
+`app.getFrontend().addItemToBatch(sourcePath)`
+
+#### Description
+
+Adds a media source to the batch.
+
+#### Parameters
+
+|  Parameter   |  Type  |        Description        |
+| ------------ | ------ | ------------------------- |
+| `sourcePath` | String | Path of the media source. |
+
+#### Returns
+
+Boolean
+
+#### Example
+
 ```javascript
 var source = "C:\\testdata\\testmedia3.mxf";
 
@@ -336,9 +395,31 @@ if (frontend) {
 }
 ```
 
-</details><br><details>
+---
 
-<summary>addTeamProjectsItemToBatch Example (click to expand):</summary>
+### FrontendScript.addTeamProjectsItemToBatch()
+
+`app.getFrontend().addTeamProjectsItemToBatch(projectsURL, format, presetPath, [outputPath])`
+
+#### Description
+
+Adds a team project item to the batch and returns an [EncoderWrapper](./todo.md).
+
+#### Parameters
+
+|   Parameter   |  Type  |                                                                 Description                                                                 |
+| ------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| `projectsURL` | String | Team Projects URL or Team Projects Snap. You can create a tp2snap file in PPro for a ProjectItem via the scripting API saveProjectSnapshot. |
+| `format`      | String | E.g. `"H.264"`                                                                                                                              |
+| `presetPath`  | String | Either a preset or a format input must be present. If no preset is used then the default preset of the specified format will be applied.    |
+| `outputPath`  | String | Optional. If `outputPath` is empty, then the output file name will be generated based on the comp path.                                     |
+
+#### Returns
+
+[EncoderWrapper object](./todo.md)
+
+#### Example
+
 ```javascript
 // use for the source (projectsURL) a valid Team Projects URL or a Team Projects Snap
 // you can create a tp2snap file in PPro for a ProjectItem via the scripting API saveProjectSnapshot
@@ -404,9 +485,29 @@ if (frontend) {
 }
 ```
 
-</details><br><details>
+---
 
-<summary>addXMLToBatch Example (click to expand):</summary>
+### FrontendScript.addXMLToBatch()
+
+`app.getFrontend().addXMLToBatch(xmlPath, presetPath, [outputFolderPath])`
+
+#### Description
+
+Adds Final Cut Pro xml to the batch.
+
+#### Parameters
+
+|     Parameter      |  Type  |                                                    Description                                                    |
+| ------------------ | ------ | ----------------------------------------------------------------------------------------------------------------- |
+| `xmlPath`          | String | Path to a Final Cut Pro xml file.                                                                                 |
+| `outputFolderPath` | String | Optional. If `outputFolderPath` is empty, then the output file name will be generated based on the XML file path. |
+
+#### Returns
+
+Boolean
+
+#### Example
+
 ```javascript
 var source = "C:\\testdata\\FCP-3.xml"; // Final Cut Pro xml file
 var preset = "C:\\testdata\\HighQuality720HD.epr";
@@ -447,9 +548,28 @@ if (frontend) {
 }
 ```
 
-</details><br><details>
+---
 
-<summary>getDLItemsAtRoot Example (click to expand):</summary>
+### FrontendScript.getDLItemsAtRoot()
+
+`app.getFrontend().getDLItemsAtRoot(projectPath)`
+
+#### Description
+
+Returns the list of GUIDs for objects (sequences/comps) at the top/root level.
+
+#### Parameters
+
+|   Parameter   |  Type  |                   Description                    |
+| ------------- | ------ | ------------------------------------------------ |
+| `projectPath` | String | E.g. Premiere Pro or After Effects project path. |
+
+#### Returns
+
+Array of strings
+
+#### Example
+
 ```javascript
 var projectPath = "C:\\testdata\\aeCompTest.aep"; // project path
 
@@ -471,9 +591,31 @@ if (frontend) {
 }
 ```
 
-</details><br><details>
+---
 
-<summary>stitchFiles Example (click to expand):</summary>
+### FrontendScript.stitchFiles()
+
+`app.getFrontend().stitchFiles(mediaPaths, format, presetPath, [outputPath])`
+
+#### Description
+
+Adds a batch item for the given media and returns an [EncoderWrapper](./todo.md).
+
+#### Parameters
+
+|  Parameter   |  Type  |                                                               Description                                                                |
+| ------------ | ------ | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| `mediaPaths` | String | Semicolon delimited list of media paths.                                                                                                 |
+| `format`     | String | E.g. `"H.264"`                                                                                                                           |
+| `presetPath` | String | Either a preset or a format input must be present. If no preset is used then the default preset of the specified format will be applied. |
+| `outputPath` | String | Optional. If `outputPath` is empty, then the output file name will be generated based on the comp path.                                  |
+
+#### Returns
+
+[EncoderWrapper object](./todo.md)
+
+#### Example
+
 ```javascript
 var format = "H.264";
 var media_1 = "C:\\testdata\\testmedia.mp4";
@@ -534,3 +676,17 @@ if (frontend) {
   $.writeln("frontend not valid");
 }
 ```
+
+---
+
+### FrontendScript.stopBatch()
+
+`app.getFrontend().stopBatch()`
+
+#### Description
+
+Stops the batch.
+
+#### Returns
+
+Boolean

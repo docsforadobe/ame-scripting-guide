@@ -21,11 +21,11 @@ nav:
     - Reference:
         - Application Object: reference/Application.md
         - EncoderHostScript Object: reference/EncoderHostScript.md
-        - ExporterScript Object: reference/ExporterScript.md
         - EncoderWrapper Object: reference/EncoderWrapper.md
+        - ExporterScript Object: reference/ExporterScript.md
+        - FrontendScript Object: reference/FrontendScript.md
         - SourceMediaInfo Object: reference/SourceMediaInfo.md
         - WatchFolderScript Object: reference/WatchFolderScript.md
-    - _todo: reference/reference.md
 
 
 # Do not touch below-- shared for all docs
