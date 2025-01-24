@@ -8,7 +8,7 @@ Top level app object
 
 ## Attributes
 
-### app.buildNumber
+### Application.buildNumber
 
 `app.buildNumber`
 
@@ -24,7 +24,7 @@ String
 
 ## Methods
 
-### app.assertToConsole()
+### Application.assertToConsole()
 
 `app.assertToConsole()`
 
@@ -38,7 +38,7 @@ Boolean
 
 ---
 
-### app.bringToFront()
+### Application.bringToFront()
 
 `app.bringToFront()`
 
@@ -52,7 +52,7 @@ Boolean
 
 ---
 
-### app.cancelTask()
+### Application.cancelTask()
 
 `app.cancelTask(taskID)`
 
@@ -72,7 +72,7 @@ Boolean
 
 ---
 
-### app.getEncoderHost()
+### Application.getEncoderHost()
 
 `app.getEncoderHost()`
 
@@ -86,7 +86,7 @@ Get the encoder host object.
 
 ---
 
-### app.getExporter()
+### Application.getExporter()
 
 `app.getExporter()`
 
@@ -107,7 +107,7 @@ var exporter = app.getExporter();
 
 ---
 
-### app.getFrontend()
+### Application.getFrontend()
 
 `app.getFrontend()`
 
@@ -121,7 +121,7 @@ Get the front end object.
 
 ---
 
-### app.getWatchFolder()
+### Application.getWatchFolder()
 
 `app.getWatchFolder()`
 
@@ -131,11 +131,11 @@ Get the watch folder object.
 
 #### Returns
 
-[WatchFolderScript Object](./todo)
+[WatchFolderScript Object](./todo.md)
 
 ---
 
-### app.isBlackVideo()
+### Application.isBlackVideo()
 
 `app.isBlackVideo(sourcePath)`
 
@@ -169,7 +169,7 @@ if (blackVideo) {
 
 ---
 
-### app.isSilentAudio()
+### Application.isSilentAudio()
 
 `app.isSilentAudio(sourcePath)`
 
@@ -203,7 +203,7 @@ if (silent) {
 
 ---
 
-### app.quit()
+### Application.quit()
 
 `app.quit()`
 
@@ -217,7 +217,7 @@ Boolean
 
 ---
 
-### app.renderFrameSequence()
+### Application.renderFrameSequence()
 
 `app.renderFrameSequence(sourcePath, outputPath, renderAll, startFrame)`
 
@@ -263,7 +263,7 @@ if (success) {
 
 ---
 
-### app.scheduleTask()
+### Application.scheduleTask()
 
 `app.scheduleTask(scriptToExecute, delayInMilliseconds, repeat)`
 
@@ -315,7 +315,7 @@ if (frontend) {
 
 ---
 
-### app.wait()
+### Application.wait()
 
 `app.wait(milliseconds)`
 
@@ -335,7 +335,7 @@ Boolean
 
 ---
 
-### app.write()
+### Application.write()
 
 `app.write(text)`
 

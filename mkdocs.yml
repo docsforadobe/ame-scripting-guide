@@ -23,6 +23,7 @@ nav:
         - EncoderHostScript Object: reference/EncoderHostScript.md
         - EncoderWrapper Object: reference/EncoderWrapper.md
         - SourceMediaInfo Object: reference/SourceMediaInfo.md
+        - WatchFolderScript Object: reference/WatchFolderScript.md
     - _todo: reference/reference.md
 
 
