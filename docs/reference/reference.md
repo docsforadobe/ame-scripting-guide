@@ -1761,20 +1761,7 @@ if (exporter) {
 
 </details><br>
 
-## WatchFolderScriptEvent
 
-**An event to inform of batch item import completion**
-
-<a id="properties-9"></a>
-
-### Properties
-
-- `elapsedTime: float` : Returns the encoding elapsed time in
-  milliseconds.
-- `onEncodeComplete: constant string` : Notify when the
-  watchfolder job item is complete
-- `onEncodeError: constant string` : Notify when the watchfolder
-  job encode fails
 
 ## WatchFolderScriptObject
 
