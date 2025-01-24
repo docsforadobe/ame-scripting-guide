@@ -78,7 +78,6 @@ if (frontend) {
 }
 ```
 
-
 ---
 
 ### FrontendScript.addDLToBatch()
