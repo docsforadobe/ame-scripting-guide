@@ -11,6 +11,8 @@ nav:
     - Home: index.md
     - Introduction:
         - Overview: introduction/overview.md
+    - Events:
+        - BatchItemCreationFailed: events/BatchItemCreationFailed.md
     - Reference:
         - Scripting API: reference/reference.md
 

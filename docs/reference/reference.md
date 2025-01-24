@@ -1,44 +1,6 @@
 # Scripting API Reference
 
-## AMEBatchItemCreationFailedEvent
-
-**The event will be sent after batch item creation failed. Can be used
-for the following FrontendScriptObject API’s: ‘addFileToBatch’,
-‘addTeamProjectsItemToBatch’ and ‘addDLToBatch’.**
-
-### Properties
-
-- `error: string` : Get the error string
-- `onBatchItemCreationFailed: constant string` : Notify when the
-  batch item creation failed.
-- `srcFilePath: string` : Get the source file path.
-
-### Code Samples
-
-<details>
-
-<summary>onBatchItemCreationFailed Example (click to expand):</summary>
-```javascript
-var source = "C:\\testdata\\testmedia.mp4";
-
-// //sources for mac
-// var source = "/Users/Shared/testdata/testmedia.mp4"
-
-var frontend = app.getFrontend();
-if (frontend) {
-  frontend.addEventListener("onBatchItemCreationFailed", function (eventObj) {
-    $.writeln("Sourcefile", eventObj.srcFilePath);
-    $.writeln("onBatchItemCreationFailed: error", eventObj.error);
-  });
-
-  var batchItemSuccess = frontend.addItemToBatch(source);
-  if (batchItemSuccess) {
-    $.writeln(source, " has been added successfully");
-  }
-}
-```
-
-</details><br>
+<br>
 
 ## AMEExportEvent
 
@@ -68,10 +30,10 @@ onEncodeComplete, onError, onPostProcessListInitialized**
 - `onAudioPreEncodeProgress: constant string` : Notify when the
   audio pre-encode progress changes (available since 24.0)
 - `onBatchItemStatusChanged: constant string` : Notify when batch
-  item status has been changed. You can call the API’s groupIndex,
+  item status has been changed. You can call the API's groupIndex,
   itemIndex and status for more info.
 - `onEncodeComplete: constant string` : Notify when the batch
-  item has been encoded. You can call the API’s encodeCompleteStatus
+  item has been encoded. You can call the API's encodeCompleteStatus
   and encodeCompleteTime for more info.
 - `onEncodingItemProgressUpdated: constant string` : Notify the
   encoding progress.
@@ -626,7 +588,7 @@ successfully.**
 
 - `onItemAddedToBatch: constant string` : Notify when a batch
   item has been created successfully. Can be used for all
-  FrontendScriptObject API’s which creates a batch item.
+  FrontendScriptObject API's which creates a batch item.
 
 <a id="code-samples-2"></a>
 
