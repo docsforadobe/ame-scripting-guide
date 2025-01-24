@@ -19,9 +19,10 @@ nav:
         - ItemAddedToBatchEvent: events/ItemAddedToBatchEvent.md
         - WatchFolderScriptEvent: events/WatchFolderScriptEvent.md
     - Reference:
-        - Application: reference/Application.md
+        - Application Object: reference/Application.md
         - EncoderHostScript Object: reference/EncoderHostScript.md
         - EncoderWrapper Object: reference/EncoderWrapper.md
+        - SourceMediaInfo Object: reference/SourceMediaInfo.md
     - _todo: reference/reference.md
 
 

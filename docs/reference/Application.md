@@ -1,4 +1,4 @@
-# Application
+# Application Object
 
 `app`
 
@@ -26,7 +26,7 @@ String
 
 ### app.assertToConsole()
 
-`assertToConsole()`
+`app.assertToConsole()`
 
 #### Description
 
@@ -40,7 +40,7 @@ Boolean
 
 ### app.bringToFront()
 
-`bringToFront()`
+`app.bringToFront()`
 
 #### Description
 
@@ -54,7 +54,7 @@ Boolean
 
 ### app.cancelTask()
 
-`cancelTask(taskID)`
+`app.cancelTask(taskID)`
 
 #### Description
 
@@ -74,7 +74,7 @@ Boolean
 
 ### app.getEncoderHost()
 
-`getEncoderHost()`
+`app.getEncoderHost()`
 
 #### Description
 
@@ -88,7 +88,7 @@ Get the encoder host object.
 
 ### app.getExporter()
 
-`getExporter()`
+`app.getExporter()`
 
 #### Description
 
@@ -109,7 +109,7 @@ var exporter = app.getExporter();
 
 ### app.getFrontend()
 
-`getFrontend()`
+`app.getFrontend()`
 
 #### Description
 
@@ -123,7 +123,7 @@ Get the front end object.
 
 ### app.getWatchFolder()
 
-`getWatchFolder()`
+`app.getWatchFolder()`
 
 #### Description
 
@@ -137,7 +137,7 @@ Get the watch folder object.
 
 ### app.isBlackVideo()
 
-`isBlackVideo(sourcePath)`
+`app.isBlackVideo(sourcePath)`
 
 #### Description
 
@@ -171,7 +171,7 @@ if (blackVideo) {
 
 ### app.isSilentAudio()
 
-`isSilentAudio(sourcePath)`
+`app.isSilentAudio(sourcePath)`
 
 #### Description
 
@@ -205,7 +205,7 @@ if (silent) {
 
 ### app.quit()
 
-`quit()`
+`app.quit()`
 
 #### Description
 
@@ -219,7 +219,7 @@ Boolean
 
 ### app.renderFrameSequence()
 
-`renderFrameSequence(sourcePath, outputPath, renderAll, startFrame)`
+`app.renderFrameSequence(sourcePath, outputPath, renderAll, startFrame)`
 
 #### Description
 
@@ -265,7 +265,7 @@ if (success) {
 
 ### app.scheduleTask()
 
-`scheduleTask(scriptToExecute, delayInMilliseconds, repeat)`
+`app.scheduleTask(scriptToExecute, delayInMilliseconds, repeat)`
 
 #### Description
 
@@ -317,7 +317,7 @@ if (frontend) {
 
 ### app.wait()
 
-`wait(milliseconds)`
+`app.wait(milliseconds)`
 
 #### Description
 
@@ -337,7 +337,7 @@ Boolean
 
 ### app.write()
 
-`write(text)`
+`app.write(text)`
 
 #### Description
 
