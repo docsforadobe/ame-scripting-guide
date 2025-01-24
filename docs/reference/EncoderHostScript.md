@@ -15,7 +15,7 @@ pause or stop the batch.
 
 #### Description
 
-Creates an [EncoderWrapper](./todo.md) for the requested format.
+Creates an [EncoderWrapper](./EncoderWrapper.md) for the requested format.
 
 #### Parameters
 
@@ -25,7 +25,7 @@ Creates an [EncoderWrapper](./todo.md) for the requested format.
 
 #### Returns
 
-[EncoderWrapper object](./todo.md)
+[EncoderWrapper object](./EncoderWrapper.md)
 
 ---
 
@@ -102,7 +102,7 @@ Gets detailed info about a provided source.
 
 #### Returns
 
-[SourceMediaInfo object](./todo.md)
+[SourceMediaInfo object](./SourceMediaInfo.md)
 
 ---
 

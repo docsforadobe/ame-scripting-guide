@@ -82,7 +82,7 @@ Get the encoder host object.
 
 #### Returns
 
-[EncoderHostScript Object](./todo.md)
+[EncoderHostScript Object](./EncoderHostScript.md)
 
 ---
 
@@ -96,7 +96,7 @@ Get the exporter object.
 
 #### Returns
 
-[ExporterScript Object](./todo.md)
+[ExporterScript Object](./ExporterScript.md)
 
 #### Example
 
@@ -117,7 +117,7 @@ Get the front end object.
 
 #### Returns
 
-[FrontendScript Object](./todo.md)
+[FrontendScript Object](./FrontendScript.md)
 
 ---
 
@@ -131,7 +131,7 @@ Get the watch folder object.
 
 #### Returns
 
-[WatchFolderScript Object](./todo.md)
+[WatchFolderScript Object](./WatchFolderScript.md)
 
 ---
 

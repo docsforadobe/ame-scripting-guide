@@ -238,7 +238,7 @@ Export the source with the provided preset.
 
 #### Returns
 
-[EncoderWrapper object](./todo.md)
+[EncoderWrapper object](./EncoderWrapper.md)
 
 #### Example
 
@@ -446,11 +446,11 @@ if (exporter) {
 
 ### ExporterScript.getSourceMediaInfo()
 
-`app.getExporter().getSourceMediaInfo(sourcePath): [SourceMediaInfo object](./todo.md)`
+`app.getExporter().getSourceMediaInfo(sourcePath)`
 
 #### Description
 
-Returns a [SourceMediaInfo](./todo.md) object.
+Returns a [SourceMediaInfo](./SourceMediaInfo.md) object.
 
 #### Parameters
 
@@ -460,7 +460,7 @@ Returns a [SourceMediaInfo](./todo.md) object.
 
 #### Returns
 
-[SourceMediaInfo object](./todo.md)
+[SourceMediaInfo object](./SourceMediaInfo.md)
 
 #### Example
 

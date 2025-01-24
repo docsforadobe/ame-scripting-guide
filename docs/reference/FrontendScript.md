@@ -88,7 +88,7 @@ if (frontend) {
 
 #### Description
 
-Adds e.g. an After Effects comp or Premiere Pro sequence to the batch and returns an [EncoderWrapper](./todo.md).
+Adds e.g. an After Effects comp or Premiere Pro sequence to the batch and returns an [EncoderWrapper](./EncoderWrapper.md).
 
 #### Parameters
 
@@ -102,7 +102,7 @@ Adds e.g. an After Effects comp or Premiere Pro sequence to the batch and retur
 
 #### Returns
 
-[EncoderWrapper object](./todo.md)
+[EncoderWrapper object](./EncoderWrapper.md)
 
 #### Example
 
@@ -261,7 +261,7 @@ if (frontend) {
 
 #### Description
 
-Adds a file to the batch and returns an [EncoderWrapper](./todo.md).
+Adds a file to the batch and returns an [EncoderWrapper](./EncoderWrapper.md).
 
 #### Parameters
 
@@ -274,7 +274,7 @@ Adds a file to the batch and returns an [EncoderWrapper](./todo.md).
 
 #### Returns
 
-[EncoderWrapper object](./todo.md)
+[EncoderWrapper object](./EncoderWrapper.md)
 
 #### Example
 
@@ -404,7 +404,7 @@ if (frontend) {
 
 #### Description
 
-Adds a team project item to the batch and returns an [EncoderWrapper](./todo.md).
+Adds a team project item to the batch and returns an [EncoderWrapper](./EncoderWrapper.md).
 
 #### Parameters
 
@@ -417,7 +417,7 @@ Adds a team project item to the batch and returns an [EncoderWrapper](./todo.md)
 
 #### Returns
 
-[EncoderWrapper object](./todo.md)
+[EncoderWrapper object](./EncoderWrapper.md)
 
 #### Example
 
@@ -600,7 +600,7 @@ if (frontend) {
 
 #### Description
 
-Adds a batch item for the given media and returns an [EncoderWrapper](./todo.md).
+Adds a batch item for the given media and returns an [EncoderWrapper](./EncoderWrapper.md).
 
 #### Parameters
 
@@ -613,7 +613,7 @@ Adds a batch item for the given media and returns an [EncoderWrapper](./todo.md)
 
 #### Returns
 
-[EncoderWrapper object](./todo.md)
+[EncoderWrapper object](./EncoderWrapper.md)
 
 #### Example
 
@@ -704,7 +704,7 @@ Boolean
 
 The event will be sent after batch item creation failed.
 
-Can be used for the following [FrontendScript Object](#frontendscriptobject) APIs:
+Can be used for the following [FrontendScript Object](#frontendscript-object) APIs:
 
 - [FrontendScript.addFileToBatch()](#frontendscriptaddfiletobatch)
 - [FrontendScript.addTeamProjectsItemToBatch()](#frontendscriptaddteamprojectsitemtobatch)
@@ -749,7 +749,7 @@ if (frontend) {
 
 The event will be sent after a batch item has been created successfully.
 
-Can be used for all [FrontendScript Object](#frontendscriptobject) APIs which creates a batch item.
+Can be used for all [FrontendScript Object](#frontendscript-object) APIs which creates a batch item.
 
 #### Example
 
