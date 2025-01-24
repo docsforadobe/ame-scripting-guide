@@ -8,6 +8,91 @@
 
 Queue item object to set encode properties
 
+#### Example
+
+```javascript
+var format = "";
+var source = "C:\\testdata\\testmedia4.mp4";
+var preset = "C:\\testdata\\HighQuality720HD.epr";
+
+// //sources for mac
+// var source = "/Users/Shared/testdata/testmedia4.mp4"
+// var preset = "/Users/Shared/testdata/HighQuality720HD.epr";
+
+var frontend = app.getFrontend();
+if (frontend) {
+  // Either format or preset can be empty, output is optional
+  var encoderWrapper = frontend.addFileToBatch(source, format, preset);
+
+  if (encoderWrapper) {
+    $.writeln(
+      "Frontend script engine added the source file using addFileToBatch-",
+      source,
+      " successfully"
+    );
+
+    $.writeln("width :", encoderWrapper.outputWidth);
+    $.writeln("height:", encoderWrapper.outputHeight);
+    $.writeln("outputFiles:", encoderWrapper.outputFiles);
+
+    //input value is string please use e.g. "25"
+    encoderWrapper.setFrameRate("25");
+
+    //int, 0-Entire, 1-InToOut, 2-WorkArea, 3-Custom, 4:UseDefault
+    encoderWrapper.setWorkArea(2, 0.0, 1.0);
+
+    var usePreviewFiles = true;
+    encoderWrapper.setUsePreviewFiles(usePreviewFiles);
+
+    var useMaximumRenderQuality = true;
+    encoderWrapper.setUseMaximumRenderQuality(useMaximumRenderQuality);
+
+    var useFrameBlending = true;
+    encoderWrapper.setUseFrameBlending(useFrameBlending);
+
+    // int-0-FrameSampling, 1-FrameBlending, 2-OpticalFlow
+    encoderWrapper.setTimeInterpolationType(1);
+
+    // be aware that this method first letter is upper case
+    var includeSourceXMP = true;
+    encoderWrapper.SetIncludeSourceXMP(includeSourceXMP);
+
+    var includeSourceCuePoints = false;
+    encoderWrapper.setIncludeSourceCuePoints(includeSourceCuePoints);
+
+    var cropState = true;
+    encoderWrapper.setCropState(cropState);
+
+    //int, 0-ScaleToFit, 1-ScaleToFitBeforeCrop, 2-SetAsOutputSize, 3-ScaleToFill, 4-ScaleToFillBeforeCrop, 5-StretchToFill, 6-StretchToFillBeforeCrop",
+    encoderWrapper.setCropType(4);
+
+    //int, 0-ScaleToFit, 1-ScaleToFitBeforeCrop, 2-SetAsOutputSize, 3-ScaleToFill, 4-ScaleToFillBeforeCrop, 5-StretchToFill, 6-StretchToFillBeforeCrop",
+    encoderWrapper.setScaleType(4);
+
+    // rotate clockwise, input values will be transformed into [0 - 360], so -90 is equal to 270
+    encoderWrapper.setRotation(180);
+
+    //left, top, right, bottom
+    encoderWrapper.setCropOffsets(10, 20, 10, 20);
+
+    //width and height
+    encoderWrapper.setOutputFrameSize(1200, 800);
+
+    // default is off - deprecated
+    //encoderWrapper.setCuePointData();
+
+    var encoderHostWrapper = app.getEncoderHost();
+    if (encoderHostWrapper) {
+      encoderHostWrapper.runBatch();
+    }
+  } else {
+    $.writeln("encoderWrapper is not valid");
+  }
+} else {
+  $.writeln("frontend obj is not valid");
+}
+```
+
 ---
 
 ## Attributes
@@ -119,6 +204,84 @@ Returns the log output including possible warnings and errors.
 
 String
 
+#### Example
+
+```javascript
+var format = "H.264";
+var source = "C:\\testdata\\testmedia4.mp4";
+var preset = "C:\\testdata\\HighQuality1080_HD.epr";
+var destination = "C:\\testdata\\outputFolder";
+
+// //sources for mac
+// var source = "/Users/Shared/testdata/testmedia4.mp4"
+// var preset = "/Users/Shared/testdata/HighQuality1080_HD.epr";
+// var destination = "/Users/Shared/testdata/outputFolder";
+
+var frontend = app.getFrontend();
+if (frontend) {
+  /**
+   * getLogOutPut() returns a string in JSON format containing the possible errors and warnings as well as the summary of the batch item
+   * that is added to the queue.
+   *
+   * The getLogOutput() method is implemented in the EncoderWrapperScriptObject.
+   * You can use getLogOutput() method when you have used one of these following methods:
+   *
+   * FrontEndScriptObject:
+   * - addFileToBatch()
+   * - addDLToBatch()
+   * - addTeamProjectsToBatch()
+   * - stitchFiles()
+   * In Addition it is possible to get the batch item status with
+   * encoderWrapper.addListener("onStatusChanged"){...} Here you will get "Done!", "Failed!", "Stopped!"
+   *
+   * ExportScriptObject:
+   * - export()
+   * - getSourceMediaInfo()
+   * In Addition it is possible to get the batch item status with
+   * exporter.addListener("OnBatchItemStatusChanged"){...} Here you will get integer values see ExportScriptObject for the details
+   *
+   * EncoderHostWrapper:
+   * - createEncoderFormat()
+   *
+   * Output format is
+   *    {
+   *        "time": "2023-01-16T12:18:36.617946",
+   *        "error": "",
+   *        "summary": []
+   *    }
+   */
+
+  var encoderWrapper = frontend.addFileToBatch(
+    source,
+    format,
+    preset,
+    destination
+  );
+  if (encoderWrapper) {
+    $.writeln("Batch item is successfully added to the queue: ", source);
+
+    encoderWrapper.addEventListener("onEncodeFinished", function (eventObj) {
+      // return the log output in JSON Format
+      $.writeln(encoderWrapper.getLogOutput());
+    });
+
+    // get encoder host to run batch
+    var encoderHost = app.getEncoderHost();
+    if (encoderHost) {
+      encoderHost.runBatch();
+    } else {
+      $.writeln("EncoderHostScriptObject is not valid");
+    }
+  } else {
+    $.writeln(
+      "EncoderWrapperScriptObject is not valid - batch item wasn't added successfully"
+    );
+  }
+} else {
+  $.writeln("FrontendScriptObject is not valid");
+}
+```
+
 ---
 
 ### EncoderWrapper.getMissingAssets()
@@ -154,6 +317,42 @@ Returns the presets available for the assigned format
 
 Array of strings
 
+#### Example
+
+```javascript
+var source = "C:\\testdata\\testmedia4.mp4";
+var preset = "C:\\testdata\\HighQuality720HD.epr";
+
+// //sources for mac
+// var source = "/Users/Shared/testdata/testmedia4.mp4"
+// var preset = "/Users/Shared/testdata/HighQuality720HD.epr";
+
+var format = "";
+var frontend = app.getFrontend();
+if (frontend) {
+  var encoderWrapper = frontend.addFileToBatch(source, format, preset);
+
+  if (encoderWrapper) {
+    $.writeln(source, " has been added successfully");
+
+    /**if you set the format parameter but no presetfilepath then you will
+     * get all related presets to this specific format.
+     *
+     * If you set the presetfilepath but no format, then the
+     * format will be set automatically that matches the current preset */
+
+    var presetList = encoderWrapper.getPresetList();
+    for (var index = 0; index < presetList.length; index++) {
+      $.writeln(presetList[index]);
+    }
+  } else {
+    $.writeln("encoderWrapper object is not valid");
+  }
+} else {
+  $.writeln("Frontend object is not valid");
+}
+```
+
 ---
 
 ### EncoderWrapper.loadFormat()
@@ -174,6 +373,30 @@ Changes the format for the batch item
 
 Boolean
 
+#### Example
+
+```javascript
+var format = "";
+var source = "C:\\testdata\\testmedia4.mp4";
+var preset = "C:\\testdata\\HighQuality720HD.epr";
+
+// //sources for mac
+// var source = "/Users/Shared/testdata/testmedia4.mp4"
+// var preset = "/Users/Shared/testdata/HighQuality720HD.epr";
+
+var frontend = app.getFrontend();
+if (frontend) {
+  var encoderWrapper = frontend.addFileToBatch(source, format, preset);
+  if (encoderWrapper) {
+    encoderWrapper.loadFormat("MP3");
+  } else {
+    $.writeln("EncoderWrapper object is not valid");
+  }
+} else {
+  $.writeln("Frontend object is not valid");
+}
+```
+
 ---
 
 ### EncoderWrapper.loadPreset()
@@ -193,6 +416,34 @@ Loads and assigns the preset to the batch item
 #### Returns
 
 Boolean
+
+#### Example
+
+```javascript
+var format = "";
+var source = "C:\\testdata\\testmedia4.mp4";
+var preset = "C:\\testdata\\HighQuality720HD.epr";
+
+var differentPreset = "C:\\testdata\\High Quality 1080 HD.epr";
+
+// //sources for mac
+// var source = "/Users/Shared/testdata/testmedia4.mp4"
+// var preset = "/Users/Shared/testdata/HighQuality720HD.epr";
+// var differentPreset = "/Users/Shared/testdata/High Quality 1080 HD.epr";
+
+var frontend = app.getFrontend();
+if (frontend) {
+  // Either format name or presetPath can be empty, output filepath is optional
+  var encoderWrapper = frontend.addFileToBatch(source, format, preset);
+  if (encoderWrapper) {
+    encoderWrapper.loadPreset(differentPreset);
+  } else {
+    $.writeln("EncoderWrapper object is not valid");
+  }
+} else {
+  $.writeln("Frontend object is not valid");
+}
+```
 
 ---
 
@@ -505,290 +756,7 @@ Sets the work area type, start and end time in ticks for the batch item
 
 Boolean
 
----
-
-### EncoderWrapper.setXMPData()
-
-`app.getFrontend().addFileToBatch(...).setXMPData(templateXMPFilePath)`
-
-#### Description
-
-Sets XMP data to given template
-
-#### Parameters
-
-|       Parameter       |  Type  |          Description          |
-| --------------------- | ------ | ----------------------------- |
-| `templateXMPFilePath` | String | File path to the XMP template |
-
-#### Returns
-
-Boolean
-
----
-
-### Examples
-
-```javascript
-var format = "";
-var source = "C:\\testdata\\testmedia4.mp4";
-var preset = "C:\\testdata\\HighQuality720HD.epr";
-
-// //sources for mac
-// var source = "/Users/Shared/testdata/testmedia4.mp4"
-// var preset = "/Users/Shared/testdata/HighQuality720HD.epr";
-
-var frontend = app.getFrontend();
-if (frontend) {
-  // Either format or preset can be empty, output is optional
-  var encoderWrapper = frontend.addFileToBatch(source, format, preset);
-
-  if (encoderWrapper) {
-    $.writeln(
-      "Frontend script engine added the source file using addFileToBatch-",
-      source,
-      " successfully"
-    );
-
-    $.writeln("width :", encoderWrapper.outputWidth);
-    $.writeln("height:", encoderWrapper.outputHeight);
-    $.writeln("outputFiles:", encoderWrapper.outputFiles);
-
-    //input value is string please use e.g. "25"
-    encoderWrapper.setFrameRate("25");
-
-    //int, 0-Entire, 1-InToOut, 2-WorkArea, 3-Custom, 4:UseDefault
-    encoderWrapper.setWorkArea(2, 0.0, 1.0);
-
-    var usePreviewFiles = true;
-    encoderWrapper.setUsePreviewFiles(usePreviewFiles);
-
-    var useMaximumRenderQuality = true;
-    encoderWrapper.setUseMaximumRenderQuality(useMaximumRenderQuality);
-
-    var useFrameBlending = true;
-    encoderWrapper.setUseFrameBlending(useFrameBlending);
-
-    // int-0-FrameSampling, 1-FrameBlending, 2-OpticalFlow
-    encoderWrapper.setTimeInterpolationType(1);
-
-    // be aware that this method first letter is upper case
-    var includeSourceXMP = true;
-    encoderWrapper.SetIncludeSourceXMP(includeSourceXMP);
-
-    var includeSourceCuePoints = false;
-    encoderWrapper.setIncludeSourceCuePoints(includeSourceCuePoints);
-
-    var cropState = true;
-    encoderWrapper.setCropState(cropState);
-
-    //int, 0-ScaleToFit, 1-ScaleToFitBeforeCrop, 2-SetAsOutputSize, 3-ScaleToFill, 4-ScaleToFillBeforeCrop, 5-StretchToFill, 6-StretchToFillBeforeCrop",
-    encoderWrapper.setCropType(4);
-
-    //int, 0-ScaleToFit, 1-ScaleToFitBeforeCrop, 2-SetAsOutputSize, 3-ScaleToFill, 4-ScaleToFillBeforeCrop, 5-StretchToFill, 6-StretchToFillBeforeCrop",
-    encoderWrapper.setScaleType(4);
-
-    // rotate clockwise, input values will be transformed into [0 - 360], so -90 is equal to 270
-    encoderWrapper.setRotation(180);
-
-    //left, top, right, bottom
-    encoderWrapper.setCropOffsets(10, 20, 10, 20);
-
-    //width and height
-    encoderWrapper.setOutputFrameSize(1200, 800);
-
-    // default is off - deprecated
-    //encoderWrapper.setCuePointData();
-
-    var encoderHostWrapper = app.getEncoderHost();
-    if (encoderHostWrapper) {
-      encoderHostWrapper.runBatch();
-    }
-  } else {
-    $.writeln("encoderWrapper is not valid");
-  }
-} else {
-  $.writeln("frontend obj is not valid");
-}
-```
-
----
-
-### getLogOutput Example
-
-```javascript
-var format = "H.264";
-var source = "C:\\testdata\\testmedia4.mp4";
-var preset = "C:\\testdata\\HighQuality1080_HD.epr";
-var destination = "C:\\testdata\\outputFolder";
-
-// //sources for mac
-// var source = "/Users/Shared/testdata/testmedia4.mp4"
-// var preset = "/Users/Shared/testdata/HighQuality1080_HD.epr";
-// var destination = "/Users/Shared/testdata/outputFolder";
-
-var frontend = app.getFrontend();
-if (frontend) {
-  /**
-   * getLogOutPut() returns a string in JSON format containing the possible errors and warnings as well as the summary of the batch item
-   * that is added to the queue.
-   *
-   * The getLogOutput() method is implemented in the EncoderWrapperScriptObject.
-   * You can use getLogOutput() method when you have used one of these following methods:
-   *
-   * FrontEndScriptObject:
-   * - addFileToBatch()
-   * - addDLToBatch()
-   * - addTeamProjectsToBatch()
-   * - stitchFiles()
-   * In Addition it is possible to get the batch item status with
-   * encoderWrapper.addListener("onStatusChanged"){...} Here you will get "Done!", "Failed!", "Stopped!"
-   *
-   * ExportScriptObject:
-   * - export()
-   * - getSourceMediaInfo()
-   * In Addition it is possible to get the batch item status with
-   * exporter.addListener("OnBatchItemStatusChanged"){...} Here you will get integer values see ExportScriptObject for the details
-   *
-   * EncoderHostWrapper:
-   * - createEncoderFormat()
-   *
-   * Output format is
-   *    {
-   *        "time": "2023-01-16T12:18:36.617946",
-   *        "error": "",
-   *        "summary": []
-   *    }
-   */
-
-  var encoderWrapper = frontend.addFileToBatch(
-    source,
-    format,
-    preset,
-    destination
-  );
-  if (encoderWrapper) {
-    $.writeln("Batch item is successfully added to the queue: ", source);
-
-    encoderWrapper.addEventListener("onEncodeFinished", function (eventObj) {
-      // return the log output in JSON Format
-      $.writeln(encoderWrapper.getLogOutput());
-    });
-
-    // get encoder host to run batch
-    var encoderHost = app.getEncoderHost();
-    if (encoderHost) {
-      encoderHost.runBatch();
-    } else {
-      $.writeln("EncoderHostScriptObject is not valid");
-    }
-  } else {
-    $.writeln(
-      "EncoderWrapperScriptObject is not valid - batch item wasn't added successfully"
-    );
-  }
-} else {
-  $.writeln("FrontendScriptObject is not valid");
-}
-```
-
----
-
-### getPresetList Example
-
-```javascript
-var source = "C:\\testdata\\testmedia4.mp4";
-var preset = "C:\\testdata\\HighQuality720HD.epr";
-
-// //sources for mac
-// var source = "/Users/Shared/testdata/testmedia4.mp4"
-// var preset = "/Users/Shared/testdata/HighQuality720HD.epr";
-
-var format = "";
-var frontend = app.getFrontend();
-if (frontend) {
-  var encoderWrapper = frontend.addFileToBatch(source, format, preset);
-
-  if (encoderWrapper) {
-    $.writeln(source, " has been added successfully");
-
-    /**if you set the format parameter but no presetfilepath then you will
-     * get all related presets to this specific format.
-     *
-     * If you set the presetfilepath but no format, then the
-     * format will be set automatically that matches the current preset */
-
-    var presetList = encoderWrapper.getPresetList();
-    for (var index = 0; index < presetList.length; index++) {
-      $.writeln(presetList[index]);
-    }
-  } else {
-    $.writeln("encoderWrapper object is not valid");
-  }
-} else {
-  $.writeln("Frontend object is not valid");
-}
-```
-
----
-
-### loadFormat Example
-
-```javascript
-var format = "";
-var source = "C:\\testdata\\testmedia4.mp4";
-var preset = "C:\\testdata\\HighQuality720HD.epr";
-
-// //sources for mac
-// var source = "/Users/Shared/testdata/testmedia4.mp4"
-// var preset = "/Users/Shared/testdata/HighQuality720HD.epr";
-
-var frontend = app.getFrontend();
-if (frontend) {
-  var encoderWrapper = frontend.addFileToBatch(source, format, preset);
-  if (encoderWrapper) {
-    encoderWrapper.loadFormat("MP3");
-  } else {
-    $.writeln("EncoderWrapper object is not valid");
-  }
-} else {
-  $.writeln("Frontend object is not valid");
-}
-```
-
----
-
-### loadPreset Example
-
-```javascript
-var format = "";
-var source = "C:\\testdata\\testmedia4.mp4";
-var preset = "C:\\testdata\\HighQuality720HD.epr";
-
-var differentPreset = "C:\\testdata\\High Quality 1080 HD.epr";
-
-// //sources for mac
-// var source = "/Users/Shared/testdata/testmedia4.mp4"
-// var preset = "/Users/Shared/testdata/HighQuality720HD.epr";
-// var differentPreset = "/Users/Shared/testdata/High Quality 1080 HD.epr";
-
-var frontend = app.getFrontend();
-if (frontend) {
-  // Either format name or presetPath can be empty, output filepath is optional
-  var encoderWrapper = frontend.addFileToBatch(source, format, preset);
-  if (encoderWrapper) {
-    encoderWrapper.loadPreset(differentPreset);
-  } else {
-    $.writeln("EncoderWrapper object is not valid");
-  }
-} else {
-  $.writeln("Frontend object is not valid");
-}
-```
-
----
-
-### setWorkAreaInTicks Example
+#### Example
 
 ```javascript
 var format = "H.264";
@@ -840,3 +808,23 @@ if (frontend) {
   $.writeln("frontend is not valid");
 }
 ```
+
+---
+
+### EncoderWrapper.setXMPData()
+
+`app.getFrontend().addFileToBatch(...).setXMPData(templateXMPFilePath)`
+
+#### Description
+
+Sets XMP data to given template
+
+#### Parameters
+
+|       Parameter       |  Type  |          Description          |
+| --------------------- | ------ | ----------------------------- |
+| `templateXMPFilePath` | String | File path to the XMP template |
+
+#### Returns
+
+Boolean
