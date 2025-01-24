@@ -1,46 +1,5 @@
 # Scripting API Reference
 
-## AMEFrontendEvent
-
-**The event will be sent after a batch item has been created
-successfully.**
-
-<a id="properties-2"></a>
-
-### Properties
-
-- `onItemAddedToBatch: constant string` : Notify when a batch
-  item has been created successfully. Can be used for all
-  FrontendScriptObject API's which creates a batch item.
-
-<a id="code-samples-2"></a>
-
-### Code Samples
-
-<details>
-
-<summary>onItemAddedToBatch Example (click to expand):</summary>
-```javascript
-var source = "C:\\testdata\\testmedia.mp4";
-
-// //sources for mac
-// var source = "/Users/Shared/testdata/testmedia.mp4"
-
-var frontend = app.getFrontend();
-if (frontend) {
-  frontend.addEventListener("onItemAddedToBatch", function (eventObj) {
-    $.writeln("Item added to Batch");
-  });
-
-  var batchItemSuccess = frontend.addItemToBatch(source);
-  if (batchItemSuccess) {
-    $.writeln(source, " has been added successfully");
-  }
-}
-```
-
-</details><br>
-
 ## Application
 
 **Top level app object**

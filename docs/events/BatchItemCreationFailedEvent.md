@@ -19,7 +19,9 @@ Can be used for the following FrontendScriptObject APIs:
 
 ## Examples
 
-```js
+### onBatchItemCreationFailed Example
+
+```javascript
 var source = "C:\\testdata\\testmedia.mp4";
 
 // sources for mac

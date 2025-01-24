@@ -14,6 +14,7 @@ nav:
     - Events:
         - AMEExportEvent: events/AMEExportEvent.md
         - BatchItemCreationFailedEvent: events/BatchItemCreationFailedEvent.md
+        - ItemAddedToBatchEvent: events/ItemAddedToBatchEvent.md
     - Reference:
         - Scripting API: reference/reference.md
 
