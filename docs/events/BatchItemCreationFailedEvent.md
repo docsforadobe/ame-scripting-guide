@@ -6,9 +6,9 @@ The event will be sent after batch item creation failed.
 
 Can be used for the following FrontendScriptObject APIs:
 
-- `addFileToBatch`
-- `addTeamProjectsItemToBatch`
-- `addDLToBatch`
+- [addFileToBatch](./todo.md)
+- [addTeamProjectsItemToBatch](./todo.md)
+- [addDLToBatch](./todo.md)
 
 ---
 
