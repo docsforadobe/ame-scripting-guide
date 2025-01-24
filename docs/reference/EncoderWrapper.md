@@ -833,6 +833,8 @@ Boolean
 
 ## Events
 
+An event to inform of encode progress and completion.
+
 ### Example
 
 ```javascript
