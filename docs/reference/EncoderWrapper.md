@@ -99,7 +99,7 @@ if (frontend) {
 
 ### EncoderWrapper.outputFiles
 
-`app.getFrontend().addFileToBatch(...).outputFiles`
+`app.getFrontend().exportItem(...).outputFiles`
 
 #### Description
 
@@ -113,7 +113,7 @@ Array of strings
 
 ### EncoderWrapper.outputHeight
 
-`app.getFrontend().addFileToBatch(...).outputHeight`
+`app.getFrontend().exportItem(...).outputHeight`
 
 #### Description
 
@@ -127,7 +127,7 @@ Float
 
 ### EncoderWrapper.outputWidth
 
-`app.getFrontend().addFileToBatch(...).outputWidth`
+`app.getFrontend().exportItem(...).outputWidth`
 
 #### Description
 
@@ -143,7 +143,7 @@ Float
 
 ### EncoderWrapper.SetIncludeSourceXMP()
 
-`app.getFrontend().addFileToBatch(...).SetIncludeSourceXMP(includeSourceXMP)`
+`app.getFrontend().exportItem(...).SetIncludeSourceXMP(includeSourceXMP)`
 
 #### Description
 
@@ -163,7 +163,7 @@ Boolean
 
 ### EncoderWrapper.getEncodeProgress()
 
-`app.getFrontend().addFileToBatch(...).getEncodeProgress()`
+`app.getFrontend().exportItem(...).getEncodeProgress()`
 
 #### Description
 
@@ -177,7 +177,7 @@ Integer
 
 ### EncoderWrapper.getEncodeTime()
 
-`app.getFrontend().addFileToBatch(...).getEncodeTime()`
+`app.getFrontend().exportItem(...).getEncodeTime()`
 
 #### Description
 
@@ -191,7 +191,7 @@ Float
 
 ### EncoderWrapper.getLogOutput()
 
-`app.getFrontend().addFileToBatch(...).getLogOutput()`
+`app.getFrontend().exportItem(...).getLogOutput()`
 
 !!! note
     This functionality was added in Media Encoder 23.2
@@ -286,7 +286,7 @@ if (frontend) {
 
 ### EncoderWrapper.getMissingAssets()
 
-`app.getFrontend().addFileToBatch(...).getMissingAssets(includeSource, includeOutput)`
+`app.getFrontend().exportItem(...).getMissingAssets(includeSource, includeOutput)`
 
 #### Description
 
@@ -307,7 +307,7 @@ Array of strings
 
 ### EncoderWrapper.getPresetList()
 
-`app.getFrontend().addFileToBatch(...).getPresetList()`
+`app.getFrontend().exportItem(...).getPresetList()`
 
 #### Description
 
@@ -357,7 +357,7 @@ if (frontend) {
 
 ### EncoderWrapper.loadFormat()
 
-`app.getFrontend().addFileToBatch(...).loadFormat(format)`
+`app.getFrontend().exportItem(...).loadFormat(format)`
 
 #### Description
 
@@ -401,7 +401,7 @@ if (frontend) {
 
 ### EncoderWrapper.loadPreset()
 
-`app.getFrontend().addFileToBatch(...).loadPreset(presetPath)`
+`app.getFrontend().exportItem(...).loadPreset(presetPath)`
 
 #### Description
 
@@ -449,7 +449,7 @@ if (frontend) {
 
 ### EncoderWrapper.setCropOffsets()
 
-`app.getFrontend().addFileToBatch(...).setCropOffsets(left, top, right, bottom)`
+`app.getFrontend().exportItem(...).setCropOffsets(left, top, right, bottom)`
 
 #### Description
 
@@ -472,7 +472,7 @@ Boolean
 
 ### EncoderWrapper.setCropState()
 
-`app.getFrontend().addFileToBatch(...).setCropState(cropState)`
+`app.getFrontend().exportItem(...).setCropState(cropState)`
 
 #### Description
 
@@ -492,7 +492,7 @@ Boolean
 
 ### EncoderWrapper.setCropType()
 
-`app.getFrontend().addFileToBatch(...).setCropType(cropType)`
+`app.getFrontend().exportItem(...).setCropType(cropType)`
 
 #### Description
 
@@ -512,7 +512,7 @@ Boolean
 
 ### EncoderWrapper.setCuePointData()
 
-`app.getFrontend().addFileToBatch(...).setCuePointData(inCuePointsFilePath)`
+`app.getFrontend().exportItem(...).setCuePointData(inCuePointsFilePath)`
 
 #### Description
 
@@ -532,7 +532,7 @@ Boolean
 
 ### EncoderWrapper.setFrameRate()
 
-`app.getFrontend().addFileToBatch(...).setFrameRate(framerate)`
+`app.getFrontend().exportItem(...).setFrameRate(framerate)`
 
 #### Description
 
@@ -552,7 +552,7 @@ Boolean
 
 ### EncoderWrapper.setIncludeSourceCuePoints()
 
-`app.getFrontend().addFileToBatch(...).setIncludeSourceCuePoints(includeSourceCuePoints)`
+`app.getFrontend().exportItem(...).setIncludeSourceCuePoints(includeSourceCuePoints)`
 
 #### Description
 
@@ -572,7 +572,7 @@ Boolean
 
 ### EncoderWrapper.setOutputFrameSize()
 
-`app.getFrontend().addFileToBatch(...).setOutputFrameSize(width, height)`
+`app.getFrontend().exportItem(...).setOutputFrameSize(width, height)`
 
 #### Description
 
@@ -593,7 +593,7 @@ Boolean
 
 ### EncoderWrapper.setRotation()
 
-`app.getFrontend().addFileToBatch(...).setRotation(rotationValue)`
+`app.getFrontend().exportItem(...).setRotation(rotationValue)`
 
 #### Description
 
@@ -613,7 +613,7 @@ Boolean
 
 ### EncoderWrapper.setScaleType()
 
-`app.getFrontend().addFileToBatch(...).setScaleType(scaleType)`
+`app.getFrontend().exportItem(...).setScaleType(scaleType)`
 
 #### Description
 
@@ -633,7 +633,7 @@ Boolean
 
 ### EncoderWrapper.setTimeInterpolationType()
 
-`app.getFrontend().addFileToBatch(...).setTimeInterpolationType(interpolationType)`
+`app.getFrontend().exportItem(...).setTimeInterpolationType(interpolationType)`
 
 #### Description
 
@@ -653,7 +653,7 @@ Boolean
 
 ### EncoderWrapper.setUseFrameBlending()
 
-`app.getFrontend().addFileToBatch(...).setUseFrameBlending(useFrameBlending)`
+`app.getFrontend().exportItem(...).setUseFrameBlending(useFrameBlending)`
 
 #### Description
 
@@ -673,7 +673,7 @@ Boolean
 
 ### EncoderWrapper.setUseMaximumRenderQuality()
 
-`app.getFrontend().addFileToBatch(...).setUseMaximumRenderQuality(useMaximumRenderQuality)`
+`app.getFrontend().exportItem(...).setUseMaximumRenderQuality(useMaximumRenderQuality)`
 
 #### Description
 
@@ -693,7 +693,7 @@ Boolean
 
 ### EncoderWrapper.setUsePreviewFiles()
 
-`app.getFrontend().addFileToBatch(...).setUsePreviewFiles(usePreviewFiles)`
+`app.getFrontend().exportItem(...).setUsePreviewFiles(usePreviewFiles)`
 
 #### Description
 
@@ -713,7 +713,7 @@ Boolean
 
 ### EncoderWrapper.setWorkArea()
 
-`app.getFrontend().addFileToBatch(...).setWorkArea(workAreaType, startTime, endTime)`
+`app.getFrontend().exportItem(...).setWorkArea(workAreaType, startTime, endTime)`
 
 #### Description
 
@@ -735,7 +735,7 @@ Boolean
 
 ### EncoderWrapper.setWorkAreaInTicks()
 
-`app.getFrontend().addFileToBatch(...).setWorkAreaInTicks(workAreaType, startTime, endTime)`
+`app.getFrontend().exportItem(...).setWorkAreaInTicks(workAreaType, startTime, endTime)`
 
 !!! note
     This functionality was added in Media Encoder 23.3
@@ -813,7 +813,7 @@ if (frontend) {
 
 ### EncoderWrapper.setXMPData()
 
-`app.getFrontend().addFileToBatch(...).setXMPData(templateXMPFilePath)`
+`app.getFrontend().exportItem(...).setXMPData(templateXMPFilePath)`
 
 #### Description
 
@@ -828,3 +828,103 @@ Sets XMP data to given template
 #### Returns
 
 Boolean
+
+---
+
+## Events
+
+### Example
+
+```javascript
+var source = "C:\\testdata\\testmedia3.mxf";
+var preset = "C:\\testdata\\XDCAMHD 50 PAL 50i.epr";
+var destination = "C:\\testdata\\outputFolder";
+
+// //sources for mac
+// var source = "/Users/Shared/testdata/testmedia3.mxf"
+// var preset = "/Users/Shared/testdata/HighQuality720HD.epr";
+// var destination = "/Users/Shared/testdata/outputFolder";
+
+var exporter = app.getExporter();
+if (exporter) {
+  var encoderWrapper = exporter.exportItem(source, destination, preset);
+  if (encoderWrapper) {
+    encoderWrapper.addEventListener(
+      "onEncodeFinished",
+      function (eventObj) {
+        $.writeln("Encoding result: " + eventObj.result);
+      },
+      false
+    );
+    encoderWrapper.addEventListener(
+      "onEncodeProgress",
+      function (eventObj) {
+        $.writeln("Encoding progress: " + eventObj.result);
+      },
+      false
+    );
+
+    // listen to the audio pre-encoding progress event (available since 24.0.)
+    encoderWrapper.addEventListener(
+      "onAudioPreEncodeProgress",
+      function (eventObj) {
+        $.writeln("Audio pre-encoding info: " + eventObj.audioInfo);
+        $.writeln("Audio pre-encoding progress: " + eventObj.audioProgress);
+      },
+      false
+    );
+  }
+}
+```
+
+---
+
+### onAudioPreEncodeProgress
+
+`app.getFrontend().exportItem(...).addEventListener("onAudioPreEncodeProgress")`
+
+!!! note
+    This functionality was added in Media Encoder 24.0
+
+#### Description
+
+Notify when the audio pre-encode progress changes.
+
+#### Properties
+
+|    Property     |  Type  |               Description               |
+| --------------- | ------ | --------------------------------------- |
+| `audioInfo`     | String | Returns the audio pre-encoding info     |
+| `audioProgress` | String | Returns the audio pre-encoding progress |
+
+---
+
+### onEncodeFinished
+
+`app.getFrontend().exportItem(...).addEventListener("onEncodeFinished")`
+
+#### Description
+
+Notify when the batch item has been encoded.
+
+#### Properties
+
+| Property |  Type  |                                               Description                                                |
+| -------- | ------ | -------------------------------------------------------------------------------------------------------- |
+| `result` | String | Returns the encoding result, one of:<ul><li>`"Done!"`</li><li>`"Failed!"`</li><li>`"Stopped!"`</li></ul> |
+
+---
+
+### onEncodeProgress
+
+`app.getFrontend().exportItem(...).addEventListener("onEncodeProgress")`
+
+#### Description
+
+Notify when the batch item encode progress changes.
+
+#### Properties
+
+| Property |  Type  |                     Description                      |
+| -------- | ------ | ---------------------------------------------------- |
+| `result` | String | Returns the encoding result, in the range `[0..100]` |

@@ -735,6 +735,8 @@ if (frontend) {
 }
 ```
 
+---
+
 ### onItemAddedToBatch
 
 `app.getFrontend().addEventListener("onItemAddedToBatch")`
