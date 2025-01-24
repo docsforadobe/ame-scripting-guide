@@ -689,3 +689,77 @@ Stops the batch.
 #### Returns
 
 Boolean
+
+---
+
+## Events
+
+### onBatchItemCreationFailed
+
+`app.getFrontend().addEventListener("onBatchItemCreationFailed")`
+
+The event will be sent after batch item creation failed.
+
+Can be used for the following [FrontendScript Object](#frontendscriptobject) APIs:
+
+- [FrontendScript.addFileToBatch()](#frontendscriptaddfiletobatch)
+- [FrontendScript.addTeamProjectsItemToBatch()](#frontendscriptaddteamprojectsitemtobatch)
+- [FrontendScript.addDLToBatch()](#frontendscriptadddltobatch)
+
+#### Properties
+
+|   Property    |  Type  |     Description      |
+| ------------- | ------ | -------------------- |
+| `error`       | String | The error string     |
+| `srcFilePath` | String | The source file path |
+
+#### Example
+
+```javascript
+var source = "C:\\testdata\\testmedia.mp4";
+
+// sources for mac
+// var source = "/Users/Shared/testdata/testmedia.mp4"
+
+var frontend = app.getFrontend();
+if (frontend) {
+  frontend.addEventListener("onBatchItemCreationFailed", function (eventObj) {
+    $.writeln("Sourcefile", eventObj.srcFilePath);
+    $.writeln("onBatchItemCreationFailed: error", eventObj.error);
+  });
+
+  var batchItemSuccess = frontend.addItemToBatch(source);
+  if (batchItemSuccess) {
+    $.writeln(source, " has been added successfully");
+  }
+}
+```
+
+### onItemAddedToBatch
+
+`app.getFrontend().addEventListener("onItemAddedToBatch")`
+
+The event will be sent after a batch item has been created successfully.
+
+Can be used for all [FrontendScript Object](#frontendscriptobject) APIs which creates a batch item.
+
+#### Example
+
+```javascript
+var source = "C:\\testdata\\testmedia.mp4";
+
+// //sources for mac
+// var source = "/Users/Shared/testdata/testmedia.mp4"
+
+var frontend = app.getFrontend();
+if (frontend) {
+  frontend.addEventListener("onItemAddedToBatch", function (eventObj) {
+    $.writeln("Item added to Batch");
+  });
+
+  var batchItemSuccess = frontend.addItemToBatch(source);
+  if (batchItemSuccess) {
+    $.writeln(source, " has been added successfully");
+  }
+}
+```
