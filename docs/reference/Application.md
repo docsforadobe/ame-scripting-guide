@@ -54,11 +54,17 @@ Boolean
 
 ### app.cancelTask()
 
-`cancelTask(taskID: int)`
+`cancelTask(taskID)`
 
 #### Description
 
 Cancel the task that matches the task ID
+
+#### Parameters
+
+| Parameter |  Type   |      Description      |
+| --------- | ------- | --------------------- |
+| `taskID`  | Integer | The task ID to cancel |
 
 #### Returns
 
@@ -72,11 +78,11 @@ Boolean
 
 #### Description
 
-Get the encoder host object. See EncoderHostScriptObject
+Get the encoder host object.
 
 #### Returns
 
-Scripting object
+[EncoderHostScript Object](./todo.md)
 
 ---
 
@@ -86,11 +92,18 @@ Scripting object
 
 #### Description
 
-Get the exporter object. See `ExporterScriptObject`
+Get the exporter object.
 
 #### Returns
 
-Scripting object
+[ExporterScript Object](./todo.md)
+
+#### Example
+
+```javascript
+var exporter = app.getExporter();
+// check ExporterScriptObject to see which methods/properties you can apply
+```
 
 ---
 
@@ -100,11 +113,11 @@ Scripting object
 
 #### Description
 
-Get the front end object. See `FrontendScriptObject`
+Get the front end object.
 
 #### Returns
 
-Scripting object
+[FrontendScript Object](./todo.md)
 
 ---
 
@@ -114,39 +127,79 @@ Scripting object
 
 #### Description
 
-Get the watch folder object. See `WatchFolderScriptObject`
+Get the watch folder object.
 
 #### Returns
 
-Scripting object
+[WatchFolderScript Object](./todo)
 
 ---
 
 ### app.isBlackVideo()
 
-`isBlackVideo(sourcePath: string)`
+`isBlackVideo(sourcePath)`
 
 #### Description
 
-True if all frames are black
+Checks whether all frames of a video are black.
+
+#### Parameters
+
+|  Parameter   |  Type  |          Description          |
+| ------------ | ------ | ----------------------------- |
+| `sourcePath` | String | Source path of video to check |
 
 #### Returns
 
-Boolean
+Boolean; `true` if all frames are black
+
+### Example
+
+```javascript
+var source = "C:\\testdata\\testmedia.mp4";
+
+// //sources for mac
+// var source = "/Users/Shared/testdata/testmedia.mp4"
+
+var blackVideo = app.isBlackVideo(source);
+if (blackVideo) {
+  $.writeln("The input file has only black frames");
+}
+```
 
 ---
 
 ### app.isSilentAudio()
 
-`isSilentAudio(sourcePath: string)`
+`isSilentAudio(sourcePath)`
 
 #### Description
 
-True if audio is silent
+Checks whether a file has no audio
+
+#### Parameters
+
+|  Parameter   |  Type  |         Description          |
+| ------------ | ------ | ---------------------------- |
+| `sourcePath` | String | Source path of file to check |
 
 #### Returns
 
-Boolean
+Boolean; `true` if audio is silent
+
+#### Example
+
+```javascript
+var source = "C:\\testdata\\testmedia.mp4";
+
+// //sources for mac
+// var source = "/Users/Shared/testdata/testmedia.mp4"
+
+var silent = app.isSilentAudio(source);
+if (silent) {
+  $.writeln("The input file has no audio");
+}
+```
 
 ---
 
@@ -166,100 +219,26 @@ Boolean
 
 ### app.renderFrameSequence()
 
-`renderFrameSequence(sourcePath: string, outputPath: string, renderAll: boolean, startFrame: int)`
+`renderFrameSequence(sourcePath, outputPath, renderAll, startFrame)`
 
 #### Description
 
 Render still frames for given source
 
-#### Returns
+#### Parameters
 
-Boolean
-
----
-
-### app.scheduleTask()
-
-`scheduleTask(scriptToExecute: string, delayInMilliseconds: int, repeat: boolean)`
-
-#### Description
-
-Schedule a script to run after delay, returns task ID
-
-`scriptToExecute`: Put your script as text, e.g. `app.getEncoderHost().runBatch()`.
-
-#### Returns
-
-Int
-
----
-
-### app.wait()
-
-`wait(milliseconds: unsigned int)`
-
-#### Description
-
-Non UI blocking wait in milliseconds
+|  Parameter   |  Type   |          Description          |
+| ------------ | ------- | ----------------------------- |
+| `sourcePath` | String  | Source path of file to render |
+| `outputPath` | String  | Output path to render to      |
+| `renderAll`  | Boolean | Whether to render all frames  |
+| `startFrame` | Integer | Start frame to render from    |
 
 #### Returns
 
 Boolean
 
----
-
-### app.write()
-
-`write(text: string)`
-
-#### Description
-
-Write text to std out
-
-#### Returns
-
-Boolean
-
----
-
-## Examples
-
-### getExporter Example
-
-```javascript
-var exporter = app.getExporter();
-// check ExporterScriptObject to see which methods/properties you can apply
-```
-
-### isBlackVideo Example
-
-```javascript
-var source = "C:\\testdata\\testmedia.mp4";
-
-// //sources for mac
-// var source = "/Users/Shared/testdata/testmedia.mp4"
-
-var blackVideo = app.isBlackVideo(source);
-if (blackVideo) {
-  $.writeln("The input file has only black frames");
-}
-```
-
-### isSilentAudio Example
-
-```javascript
-var source = "C:\\testdata\\testmedia.mp4";
-
-// //sources for mac
-// var source = "/Users/Shared/testdata/testmedia.mp4"
-
-var silent = app.isSilentAudio(source);
-if (silent) {
-  $.writeln("The input file has no audio");
-}
-```
-
-### renderFrameSequence Example
+#### Example
 
 ```javascript
 var source = "C:\\testdata\\testmedia4.mp4";
@@ -282,7 +261,29 @@ if (success) {
 }
 ```
 
-### scheduleTask Example
+---
+
+### app.scheduleTask()
+
+`scheduleTask(scriptToExecute, delayInMilliseconds, repeat)`
+
+#### Description
+
+Schedule a script to run after delay
+
+#### Parameters
+
+|       Parameter       |  Type   |                         Description                         |
+| --------------------- | ------- | ----------------------------------------------------------- |
+| `scriptToExecute`     | String  | Your script as text, e.g. `app.getEncoderHost().runBatch()` |
+| `delayInMilliseconds` | Integer | Number of milliseconds to delay before rendering            |
+| `repeat`              | Boolean | Whether to repeat the schedule                              |
+
+#### Returns
+
+Integer, the task ID
+
+#### Example
 
 ```javascript
 var format = "";
@@ -311,3 +312,43 @@ if (frontend) {
   $.writeln("Frontend object is not valid.");
 }
 ```
+
+---
+
+### app.wait()
+
+`wait(milliseconds)`
+
+#### Description
+
+Non UI blocking
+
+#### Parameters
+
+|   Parameter    |     Type     |            Description             |
+| -------------- | ------------ | ---------------------------------- |
+| `milliseconds` | Unsigned int | The number of milliseconds to wait |
+
+#### Returns
+
+Boolean
+
+---
+
+### app.write()
+
+`write(text)`
+
+#### Description
+
+Write text to std out
+
+#### Parameters
+
+| Parameter |  Type  |    Description    |
+| --------- | ------ | ----------------- |
+| `text`    | String | The text to write |
+
+#### Returns
+
+Boolean

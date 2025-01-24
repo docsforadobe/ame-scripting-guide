@@ -140,7 +140,7 @@ if (encoderHost) {
 
 - `SetIncludeSourceXMP(includeSourceXMP: boolean): boolean` : Toggle
   the inclusion of source XMP [boolean] input value required
-- `getEncodeProgress(): int` : Returns the encode progress as
+- `getEncodeProgress(): integer` : Returns the encode progress as
   percentage
 - `getEncodeTime(): float` : Return the encode time in
   milliseconds
