@@ -22,7 +22,7 @@ Example for executing a test script on Mac:
 
 ## What is a good starting point to understand the scripting objects?
 
-Let’s start with a very basic script:
+Lets start with a very basic script:
 
 ```javascript
 // make sure to replace "\\" by "/" on Mac with a valid path
