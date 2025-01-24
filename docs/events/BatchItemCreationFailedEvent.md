@@ -1,4 +1,4 @@
-# BatchItemCreationFailed Event
+# BatchItemCreationFailedEvent
 
 `onBatchItemCreationFailed`
 
@@ -10,14 +10,14 @@ Can be used for the following FrontendScriptObject APIs:
 - `addTeamProjectsItemToBatch`
 - `addDLToBatch`
 
-### Properties
+## Properties
 
 |   Property    |  Type  |     Description      |
 | ------------- | ------ | -------------------- |
 | `error`       | String | The error string     |
 | `srcFilePath` | String | The source file path |
 
-### Example
+## Examples
 
 ```js
 var source = "C:\\testdata\\testmedia.mp4";

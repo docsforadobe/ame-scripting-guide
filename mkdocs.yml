@@ -12,7 +12,8 @@ nav:
     - Introduction:
         - Overview: introduction/overview.md
     - Events:
-        - BatchItemCreationFailed: events/BatchItemCreationFailed.md
+        - AMEExportEvent: events/AMEExportEvent.md
+        - BatchItemCreationFailedEvent: events/BatchItemCreationFailedEvent.md
     - Reference:
         - Scripting API: reference/reference.md
 
