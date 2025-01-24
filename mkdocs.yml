@@ -15,6 +15,7 @@ nav:
         - AMEExportEvent: events/AMEExportEvent.md
         - BatchItemCreationFailedEvent: events/BatchItemCreationFailedEvent.md
         - EncoderHostWrapperEvent: events/EncoderHostWrapperEvent.md
+        - EncoderWrapperEvent: events/EncoderWrapperEvent.md
         - ItemAddedToBatchEvent: events/ItemAddedToBatchEvent.md
     - Reference Scripting API: reference/reference.md
 
