@@ -1,4 +1,4 @@
-# EncoderWrapper
+# EncoderWrapper Object
 
 `app.getFrontend().addDLToBatch(...)`,
 `app.getFrontend().addFileToBatch(...)`,

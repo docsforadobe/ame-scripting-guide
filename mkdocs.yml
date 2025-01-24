@@ -9,23 +9,14 @@ extra:
 # Customize navigation
 nav:
     - Home: index.md
-    - Introduction:
-        - Overview: introduction/overview.md
-    - Events:
-        - AMEExportEvent: events/AMEExportEvent.md
-        - BatchItemCreationFailedEvent: events/BatchItemCreationFailedEvent.md
-        - EncoderHostWrapperEvent: events/EncoderHostWrapperEvent.md
-        - EncoderWrapperEvent: events/EncoderWrapperEvent.md
-        - ItemAddedToBatchEvent: events/ItemAddedToBatchEvent.md
-        - WatchFolderScriptEvent: events/WatchFolderScriptEvent.md
-    - Reference:
-        - Application Object: reference/Application.md
-        - EncoderHostScript Object: reference/EncoderHostScript.md
-        - EncoderWrapper Object: reference/EncoderWrapper.md
-        - ExporterScript Object: reference/ExporterScript.md
-        - FrontendScript Object: reference/FrontendScript.md
-        - SourceMediaInfo Object: reference/SourceMediaInfo.md
-        - WatchFolderScript Object: reference/WatchFolderScript.md
+    - Overview: introduction/overview.md
+    - Application Object: reference/Application.md
+    - EncoderHostScript Object: reference/EncoderHostScript.md
+    - EncoderWrapper Object: reference/EncoderWrapper.md
+    - ExporterScript Object: reference/ExporterScript.md
+    - FrontendScript Object: reference/FrontendScript.md
+    - SourceMediaInfo Object: reference/SourceMediaInfo.md
+    - WatchFolderScript Object: reference/WatchFolderScript.md
 
 
 # Do not touch below-- shared for all docs

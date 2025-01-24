@@ -1,4 +1,6 @@
-# FrontendScriptObject
+# FrontendScript Object
+
+`app.getFrontend()`
 
 Scripting methods for the frontend.
 

@@ -1,5 +1,7 @@
 # EncoderHostScript Object
 
+`app.getEncoderHost()`
+
 Provides several utility methods including batch commands to run,
 pause or stop the batch.
 
