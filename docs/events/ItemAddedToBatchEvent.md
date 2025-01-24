@@ -4,11 +4,11 @@
 
 The event will be sent after a batch item has been created successfully.
 
-Can be used for all FrontendScriptObject API's which creates a batch item.
+Can be used for all FrontendScriptObject APIs which creates a batch item.
+
+---
 
 ## Examples
-
-### onItemAddedToBatch Example
 
 ```javascript
 var source = "C:\\testdata\\testmedia.mp4";

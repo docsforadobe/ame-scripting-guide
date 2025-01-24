@@ -13,6 +13,8 @@ Provides the following event types:
 - `onError`
 - `onPostProcessListInitialized`
 
+---
+
 ## Properties
 
 |            Property             |      Type       |                                                                                                                                                        Description                                                                                                                                                         |
@@ -27,12 +29,14 @@ Provides the following event types:
 | `onBatchItemStatusChanged`      | Constant string | Notify when batch item status has been changed. You can call the API's `groupIndex`, `itemIndex` and `status` for more info.                                                                                                                                                                                               |
 | `onEncodeComplete`              | Constant string | Notify when the batch item has been encoded. You can call the API's `encodeCompleteStatus` and `encodeCompleteTime` for more info.                                                                                                                                                                                         |
 | `onEncodingItemProgressUpdated` | Constant string | Notify the encoding progress.                                                                                                                                                                                                                                                                                              |
-| `onError`                       | Constant string | Notify when there’s an error while encoding the batch item.                                                                                                                                                                                                                                                                |
+| `onError`                       | Constant string | Notify when there's an error while encoding the batch item.                                                                                                                                                                                                                                                                |
 | `onItemEncodingStarted`         | Constant string | Notify when the encoding of a batch item has started.                                                                                                                                                                                                                                                                      |
 | `onMediaInfoCreated`            | Constant string | Notify when media info has been created.                                                                                                                                                                                                                                                                                   |
 | `onPostProcessListInitialized`  | Constant string | Notify when the post process list is initialized.                                                                                                                                                                                                                                                                          |
 | `progress`                      | Float           | Returns the batch item encoding progress value which is between 0 and 1. Can be called for `onEncodingItemProgressUpdated` event                                                                                                                                                                                           |
 | `status`                        | Unsigned int    | Returns the batch item status. <ul><li>0: Waiting</li><li>1: Done</li><li>2: Failed</li><li>3: Skipped</li><li>4: Encoding</li><li>5: Paused</li><li>6: Stopped</li><li>7: Any</li><li>8: AutoStart</li><li>9: Done Warning</li><li>10 : Watch Folder Waiting</li></ul>Can be called for `onBatchItemStatusChanged` event. |
+
+---
 
 ## Examples
 

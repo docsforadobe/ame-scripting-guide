@@ -34,7 +34,7 @@
 - `scheduleTask(scriptToExecute: string, delayInMilliseconds: int, repeat: bool): int` : Schedule
   a script to run after delay, returns task ID
   - `scriptToExecute`: Put your script as text,
-    e.g. ‘app.getEncoderHost().runBatch()’.
+    e.g. `app.getEncoderHost().runBatch()`.
 - `wait(milliseconds: unsigned int): bool` : Non UI blocking wait
   in milliseconds
 - `write(text: string): bool` : Write text to std out
@@ -148,17 +148,17 @@ pause or stop the batch.**
 ### Methods
 
 - `createEncoderForFormat(inFormatName: string): scripting object` : Returns
-  an ‘EncoderWrapper’ script object for the requested format.
+  an `EncoderWrapper` script object for the requested format.
 - `getBatchEncoderStatus(): string` : Returns the current status
   of the batch encoder. The values are: invalid, paused, running,
   stopped, stopping (available since 23.3).
 - `getCurrentBatchPreview(inOutputPath: string): bool` : Writes
   out the current batch preview image (tiff format) to the given path.
-  - `inOutputPath`: Path to store a ‘tiff’ file.
+  - `inOutputPath`: Path to store a `tiff` file.
 - `getFormatList(): array of strings` : Returns a list of all
   available formats.
 - `getSourceInfo(sourcePath: string): scripting object` : Returns
-  a ‘SourceMediaInfo’ script object which can give detailed info about
+  a `SourceMediaInfo` script object which can give detailed info about
   the provided source.
   - `sourcePath`: Media path
 - `getSupportedImportFileTypes(): array of strings` : Returns
@@ -255,174 +255,6 @@ if (encoderHost) {
 
 </details><br>
 
-## EncoderHostWrapperEvent
-
-**Provides the following event types for items in the batch queue:
-onItemEncodingStarted, onAudioPreEncodeProgress,
-onEncodingItemProgressUpdate, onItemEncodeComplete. For multiple batch
-items in the queue we recommend to use this event to ensure that the
-event types will be received for all batch items. It provides the
-following event type for the whole batch queue:
-onBatchEncoderStatusChanged.**
-
-<a id="properties-4"></a>
-
-### Properties
-
-- `audioInfo: string` : Returns the audio pre-encoding info for
-  the event type onAudioPreEncodeProgress (available since 24.0).
-- `audioProgress: float` : Returns the audio pre-encoding
-  progress for the event type onAudioPreEncodeProgress (available since
-  24.0).
-- `batchEncoderStatus: string` : Returns the status of the batch
-  encoder, when the event was sent. Can be called for
-  onBatchEncoderStatusChanged event, otherwise the status will be
-  invalid. The values are: invalid, paused, running, stopped, stopping
-  (available since 23.3).
-- `onAudioPreEncodeProgress: constant string` : Notify when the
-  audio pre-encode progress changes (available since 24.0).
-- `onBatchEncoderStatusChanged: constant string` : Notify when
-  the batch encoder status has changed. Get the new status from the
-  batchEncoderStatus property. (available since 23.3)
-- `onEncodingItemProgressUpdate: constant string` : Notify of the
-  batch item encoding progress (available since 23.1).
-- `onItemEncodeCompleted: constant string` : Notify when the
-  batch item has been encoded.
-- `onItemEncodingStarted: constant string` : Notify when the
-  batch item encoding started (available since 23.1).
-- `outputFilePath: string` : Returns the path of the output file.
-  Can be called for onItemEncodingStarted and onItemEncodeComplete
-  events.
-- `progress: float` : Returns the encoding progress between 0 and
-  1. Can be called for onEncodingItemProgressUpdate event.
-- `result: string` : Returns the encoding result ‘True’ or
-  ‘False’. Can be called for onItemEncodeComplete event.
-- `sourceFilePath: string` : Returns the path of the source file.
-  Can be called for onItemEncodingStarted and onItemEncodeComplete
-  events.
-
-<a id="code-samples-5"></a>
-
-### Code Samples
-
-<details>
-
-<summary>Example (click to expand):</summary>
-```javascript
-// Please use this event when you have multiple batch items in the queue (added manually or via a script as below)
-// to ensure you receive all event types
-var source_1 = "C:\\testdata\\testmedia1.mxf";
-var source_2 = "C:\\testdata\\testmedia2.mxf";
-var source_3 = "C:\\testdata\\testmedia3.mxf";
-
-// //sources for mac
-// var source_1 = "/Users/Shared/testdata/testmedia1.mxf"
-// var source_2 = "/Users/Shared/testdata/testmedia2.mxf";
-// var source_3 = "/Users/Shared/testdata/testmedia3.mxf";
-
-var frontend = app.getFrontend();
-if (frontend) {
-  // listen for batch item added event
-  frontend.addEventListener("onItemAddedToBatch", function (eventObj) {
-    $.writeln("frontend.onItemAddedToBatch: success");
-  });
-
-  var batchItemSuccess_1 = frontend.addItemToBatch(source_1);
-  var batchItemSuccess_2 = frontend.addItemToBatch(source_2);
-  var batchItemSuccess_3 = frontend.addItemToBatch(source_3);
-  if (batchItemSuccess_1 && batchItemSuccess_2 && batchItemSuccess_3) {
-    $.writeln(
-      "Batch item added successfully for the source files ",
-      source_1 + " , " + source_2 + " , " + source_3
-    );
-
-    encoderHost = app.getEncoderHost();
-    if (encoderHost) {
-      // listen to the item encoding started event (available since 23.1.)
-      encoderHost.addEventListener(
-        "onItemEncodingStarted",
-        function (eventObj) {
-          $.writeln(
-            "onItemEncodingStarted: Source File Path: " +
-              eventObj.sourceFilePath
-          );
-          $.writeln(
-            "onItemEncodingStarted: Output File Path: " +
-              eventObj.outputFilePath
-          );
-        }
-      );
-
-      /* for earlier versions (23.0. or older) there's an additional step necessary to listen to the onItemEncodingStarted event
-        var exporter = app.getExporter();
-        if (exporter) {
-            exporter.addEventListener(
-                "onItemEncodingStarted",
-                function (eventObj) {
-                $.writeln("onItemEncodingStarted");
-                }
-            );
-        }
-      */
-
-      // listen to the item encoding progress event (available since 23.1.)
-      encoderHost.addEventListener(
-        "onEncodingItemProgressUpdate",
-        function (eventObj) {
-          $.writeln(
-            "onEncodingItemProgessUpdate: Encoding Progress: " +
-              eventObj.progress
-          );
-        }
-      );
-
-      // listen to the audio pre-encoding progress event (available since 24.0.)
-      encoderHost.addEventListener(
-        "onAudioPreEncodeProgress",
-        function (eventObj) {
-          $.writeln("Audio pre-encoding info: " + eventObj.audioInfo);
-          $.writeln("Audio pre-encoding progress: " + eventObj.audioProgress);
-        },
-        false
-      );
-
-      /* for earlier versions (23.0. or older) there's an additional step necessary to listen to the onEncodingItemProgressUpdated event
-        var exporter = app.getExporter();
-        if (exporter) {
-            exporter.addEventListener(
-                "onEncodingItemProgressUpdated",
-                function (eventObj) {
-                $.writeln("onEncodingItemProgessUpdated: Encoding Progress: " + eventObj.progress);
-                }
-            );
-        }
-      */
-
-      // listen to the item encoding complete event
-      encoderHost.addEventListener("onItemEncodeComplete", function (eventObj) {
-        $.writeln("onItemEncodeComplete: Result: " + eventObj.result);
-        $.writeln(
-          "onItemEncodeComplete: Source File Path: " + eventObj.sourceFilePath
-        );
-        $.writeln(
-          "onItemEncodeComplete: Output File Path: " + eventObj.outputFilePath
-        );
-      });
-
-      encoderHost.runBatch();
-    } else {
-      $.writeln("encoderHost not valid");
-    }
-  } else {
-    $.writeln("batch item wasn't added successfully");
-  }
-} else {
-  $.writeln("frontend not valid");
-}
-```
-
-</details><br>
-
 ## EncoderWrapper
 
 **Queue item object to set encode properties**
@@ -458,7 +290,7 @@ if (frontend) {
   available for the assigned format
 - `loadFormat(format: string): bool` : Changes the format for the
   batch item
-  - `format`: E.g. ‘H.264’ Loads all presets available for the
+  - `format`: E.g. `"H.264"` Loads all presets available for the
     assigned format
 - `loadPreset(presetPath: string): bool` : Loads and assigns the
   preset to the batch item
@@ -475,7 +307,7 @@ if (frontend) {
   cue point data
 - `setFrameRate(framerate: string): bool` : Sets the frame rate
   for the batch item
-  - `framerate`: E.g. ‘24’ as string
+  - `framerate`: E.g. `"24"` as string
 - `setIncludeSourceCuePoints(includeSourceCuePoints: bool): bool` : Toggle
   the inclusion of cue points [boolean] input value required
 - `setOutputFrameSize(width: unsigned int, height: unsigned int): bool` : Sets
@@ -845,8 +677,8 @@ if (frontend) {
   item has been encoded.
 - `onEncodeProgress: constant string` : Notify when the batch
   item encode progress changes.
-- `result: string` : Returns the encoding result ‘Done!’,
-  ‘Failed!’ or ‘Stopped!’ for the event type onEncodeFinished resp. the
+- `result: string` : Returns the encoding result `"Done!"`,
+  `"Failed!"` or `"Stopped!"` for the event type onEncodeFinished resp. the
   encoding progress for the event type onEncodeProgress which is
   between 0 and 100.
 
@@ -922,47 +754,26 @@ onPostProcessListInitialized**
 
 ### Methods
 
-- `exportGroup(sourcePath: string, outputPath: string, presetsPath: string, matchSource: bool = false): bool` : Export
-  the source with the provided list of presets. Returns true in case of
-  success.
-  - `sourcePath`: Media path (Premiere Pro projects aren’t
-    supported).
-  - `outputPath`: If outputPath is empty, then the output file
-    location will be generated based on the source location.
-  - `presetsPath`: Multiple preset paths can be provided separated
-    via a | (e.g. ‘path1|path2|path3’
+- `exportGroup(sourcePath: string, outputPath: string, presetsPath: string, matchSource: bool = false): bool` : Export the source with the provided list of presets. Returns `true` in case of success.
+  - `sourcePath`: Media path (Premiere Pro projects aren't supported).
+  - `outputPath`: If `outputPath` is empty, then the output file location will be generated based on the source location.
+  - `presetsPath`: Multiple preset paths can be provided separated via a | (e.g. `"path1|path2|path3"`)
   - `matchSource`: Optional. Default value is false
-- `exportItem(sourcePath: string, outputPath: string, presetPath: string, matchSource: bool = false, writeFramesToDisk: bool = false): scripting object` : Export
-  the source with the provided preset. Returns an EncoderWrapper
-  object.
-  - `sourcePath`: Media path or Premiere Pro project path (In case
-    of a Premiere Pro project the last sequence will be used).
-  - `outputPath`: If outputPath is empty, then the output file
-    location will be generated based on the source location.
-  - `matchSource`: Optional. Default value is false
-  - `writeFramesToDisk`: Optional. Default value is false. True
-    writes five frames at 0%, 25%, 50%, 75% and 100% of the full
-    duration. Known issue: Currently it only works with parallel
-    encoding disabled.
-- `exportSequence(projectPath: string, outputPath: string, presetPath: string, matchSource: bool = false, writeFramesToDisk: bool = false, leadingFramesToTrim: int = 0, trailingFramesToTrim: int = 0, sequenceName: string = ""): bool` : Export
-  the Premiere Pro sequence with the provided preset. Returns true in
-  case of success.
+- `exportItem(sourcePath: string, outputPath: string, presetPath: string, matchSource: bool = false, writeFramesToDisk: bool = false): scripting object` : Export the source with the provided preset. Returns an `EncoderWrapper` object.
+  - `sourcePath`: Media path or Premiere Pro project path (In case of a Premiere Pro project the last sequence will be used).
+  - `outputPath`: If `outputPath` is empty, then the output file location will be generated based on the source location.
+  - `matchSource`: Optional. Default value is `false`
+  - `writeFramesToDisk`: Optional. Default value is `false`. `true` writes five frames at 0%, 25%, 50%, 75% and 100% of the full duration.<br />Known issue: Currently it only works with parallel encoding disabled.
+- `exportSequence(projectPath: string, outputPath: string, presetPath: string, matchSource: bool = false, writeFramesToDisk: bool = false, leadingFramesToTrim: int = 0, trailingFramesToTrim: int = 0, sequenceName: string = ""): bool` : Export the Premiere Pro sequence with the provided preset. Returns `true` in case of success.
   - `projectPath`: Premiere Pro project path.
-  - `outputPath`: If outputPath is empty, then the output file
-    location will be generated based on the source location.
-  - `matchSource`: Optional. Default value is false.
-  - `writeFramesToDisk`: Optional. Default value is false. True
-    writes five frames at 0%, 25%, 50%, 75% and 100% of the full
-    duration. Known issue: Currently it only works with parallel
-    encoding disabled.
-  - `leadingFramesToTrim`: Optional. Default value is 0.
-  - `trailingFramesToTrim`: Optional. Default value is 0.
-  - `sequenceName`: Optional. If sequence name is empty then we use
-    the last sequence of the project.
-- `getSourceMediaInfo(sourcePath: string): scripting object` : Returns
-  a SourceMediaInfo object.
-- `removeAllBatchItems(): bool` : Remove all batch items from the
-  queue. Returns true in case of success.
+  - `outputPath`: If `outputPath` is empty, then the output file location will be generated based on the source location.
+  - `matchSource`: Optional. Default value is `false`.
+  - `writeFramesToDisk`: Optional. Default value is `false`. `true` writes five frames at 0%, 25%, 50%, 75% and 100% of the full duration.<br />Known issue: Currently it only works with parallel encoding disabled.
+  - `leadingFramesToTrim`: Optional. Default value is `0`.
+  - `trailingFramesToTrim`: Optional. Default value is `0`.
+  - `sequenceName`: Optional. If sequence name is empty then we use the last sequence of the project.
+- `getSourceMediaInfo(sourcePath: string): scripting object` : Returns a `SourceMediaInfo` object.
+- `removeAllBatchItems(): bool` : Remove all batch items from the queue. Returns `true` in case of success.
 - `trimExportForSR(sourcePath: string, outputPath: string, presetPath: string, matchSource: bool = false, writeFramesToDisk: bool = false, leadingFramesToTrim: int = 0, trailingFramesToTrim: int = 0): bool` : Smart
   render the source with the provided preset. Returns true in case of
   success.
@@ -1341,7 +1152,7 @@ if (exporter) {
 
 <summary>removeAllBatchItems Example (click to expand):</summary>
 ```javascript
-// Preparation: Be sure there are some batch items in the queue. Otherwise create them via scripting API's or directly in the UI
+// Preparation: Be sure there are some batch items in the queue. Otherwise create them via scripting APIs or directly in the UI
 // since we need some batch item in the queue to verify the API removeAllBatchItems
 var exporter = app.getExporter();
 if (exporter) {
@@ -1398,74 +1209,45 @@ if (exporter) {
 
 ### Methods
 
-- `addCompToBatch(compPath: string, presetPath: string = "", outputPath: string = ""): bool` : Adds
-  the first comp of an After Effects project resp. the first sequence
-  of a Premiere Pro project to the batch.
-  - `compPath`: Path to e.g. an After Effects project or Premiere
-    Pro project. The first comp resp. sequence will be used.
-  - `presetPath`: Optional. If presetPath is empty, then the default
-    preset will be applied.
-  - `outputPath`: Optional. If outputPath is empty, then the output
-    file name will be generated based on the comp path.
+- `addCompToBatch(compPath: string, presetPath: string = "", outputPath: string = ""): bool` : Adds the first comp of an After Effects project resp. the first sequence of a Premiere Pro project to the batch.
+  - `compPath`: Path to e.g. an After Effects project or Premiere Pro project. The first comp resp. sequence will be used.
+  - `presetPath`: Optional. If `presetPath` is empty, then the default preset will be applied.
+  - `outputPath`: Optional. If `outputPath` is empty, then the output file name will be generated based on the comp path.
 - `addDLToBatch(projectPath: string, format: string, presetPath: string, guid: string, outputPath: string = ""): scripting object` : Adds
-  e.g. an After Effects comp or Premiere Pro sequence to the batch and
-  returns an EncoderWrapper object.
+  e.g. an After Effects comp or Premiere Pro sequence to the batch and returns an `EncoderWrapper` object.
   - `projectPath`: E.g. Premiere Pro or After Effects project path.
-  - `format`: E.g. ‘H.264’
-  - `presetPath`: Either a preset or a format input must be present.
-    If no preset is used then the default preset of the specified
-    format will be applied.
-  - `guid`: The unique id of e.g. a Premiere Pro sequence or After
-    Effects composition.
-  - `outputPath`: Optional. If outputPath is empty, then the output
-    file name will be generated based on the project path.
-- `addFileSequenceToBatch(containingFolder: string, imagePath: string, presetPath: string, outputPath: string = ""): bool` : Adds
-  an image sequence to the batch. The images will be sorted in
-  alphabetical order.
+  - `format`: E.g. `"H.264"`
+  - `presetPath`: Either a preset or a format input must be present. If no preset is used then the default preset of the specified format will be applied.
+  - `guid`: The unique id of e.g. a Premiere Pro sequence or After Effects composition.
+  - `outputPath`: Optional. If `outputPath` is empty, then the output file name will be generated based on the project path.
+- `addFileSequenceToBatch(containingFolder: string, imagePath: string, presetPath: string, outputPath: string = ""): bool` : Adds an image sequence to the batch. The images will be sorted in alphabetical order.
   - `containingFolder`: The folder containing image files.
-  - `imagePath`: All images from the containing folder with the same
-    extension will be added to the output file.
-  - `outputPath`: Optional. If outputPath is empty, then the output
+  - `imagePath`: All images from the containing folder with the same extension will be added to the output file.
+  - `outputPath`: Optional. If `outputPath` is empty, then the output
     file name will be generated based on the containingFolder name
-- `addFileToBatch(filePath: string, format: string, presetPath: string, outputPath: string = ""): scripting object` : Adds
-  a file to the batch and returns an EncoderWrapper object.
+- `addFileToBatch(filePath: string, format: string, presetPath: string, outputPath: string = ""): scripting object` : Adds a file to the batch and returns an `EncoderWrapper` object.
   - `filePath`: File path of a media source.
-  - `format`: E.g. ‘H.264’
-  - `presetPath`: Either a preset or a format input must be present.
-    If no preset is used then the default preset of the specified
-    format will be applied.
-  - `outputPath`: Optional. If outputPath is empty, then the output
-    file name will be generated based on the file path.
-- `addItemToBatch(sourcePath: string): bool` : Adds a media
-  source to the batch.
+  - `format`: E.g. `"H.264"`
+  - `presetPath`: Either a preset or a format input must be present. If no preset is used then the default preset of the specified format will be applied.
+  - `outputPath`: Optional. If `outputPath` is empty, then the output file name will be generated based on the file path.
+- `addItemToBatch(sourcePath: string): bool` : Adds a media source to the batch.
   - `sourcePath`: Path of the media source.
-- `addTeamProjectsItemToBatch(projectsURL: string, format: string, presetPath: string, outputPath: string): scripting object` : Adds
-  a team project item to the batch and returns an EncoderWrapper
-  object.
+- `addTeamProjectsItemToBatch(projectsURL: string, format: string, presetPath: string, outputPath: string): scripting object` : Adds a team project item to the batch and returns an `EncoderWrapper` object.
   - `projectsURL`: Team Projects URL or Team Projects Snap. You can
     create a tp2snap file in PPro for a ProjectItem via the scripting
     API saveProjectSnapshot.
-  - `format`: E.g. ‘H.264’
-  - `presetPath`: Either a preset or a format input must be present.
-    If no preset is used then the default preset of the specified
-    format will be applied.
+  - `format`: E.g. `"H.264"`
+  - `presetPath`: Either a preset or a format input must be present. If no preset is used then the default preset of the specified format will be applied.
 - `addXMLToBatch(xmlPath: string, presetPath: string, outputFolderPath: string = ""): bool` : Adds
   Final Cut Pro xml to the batch.
   - `xmlPath`: Path to a Final Cut Pro xml file.
-  - `outputFolderPath`: Optional. If outputFolderPath is empty, then
-    the output file name will be generated based on the XML file path.
-- `getDLItemsAtRoot(projectPath: string): array of strings` : Returns
-  the list of GUIDs for objects (sequences/comps) at the top/root
-  level.
+  - `outputFolderPath`: Optional. If outputFolderPath is empty, then the output file name will be generated based on the XML file path.
+- `getDLItemsAtRoot(projectPath: string): array of strings` : Returns the list of GUIDs for objects (sequences/comps) at the top/root level.
   - `projectPath`: E.g. Premiere Pro or After Effects project path.
-- `stitchFiles(mediaPaths: string, format: string, presetPath: string, outputPath: string): scripting object` : Adds
-  a batch item for the given media and returns an EncoderWrapper
-  object.
+- `stitchFiles(mediaPaths: string, format: string, presetPath: string, outputPath: string): scripting object` : Adds a batch item for the given media and returns an `EncoderWrapper` object.
   - `mediaPaths`: Semicolon delimited list of media paths.
-  - `format`: E.g. ‘H.264’
-  - `presetPath`: Either a preset or a format input must be present.
-    If no preset is used then the default preset of the specified
-    format will be applied.
+  - `format`: E.g. `"H.264"`
+  - `presetPath`: Either a preset or a format input must be present. If no preset is used then the default preset of the specified format will be applied.
 - `stopBatch(): bool` : Stops the batch.
 
 <a id="code-samples-9"></a>

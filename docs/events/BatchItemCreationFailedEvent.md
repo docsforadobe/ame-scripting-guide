@@ -10,6 +10,8 @@ Can be used for the following FrontendScriptObject APIs:
 - `addTeamProjectsItemToBatch`
 - `addDLToBatch`
 
+---
+
 ## Properties
 
 |   Property    |  Type  |     Description      |
@@ -17,9 +19,9 @@ Can be used for the following FrontendScriptObject APIs:
 | `error`       | String | The error string     |
 | `srcFilePath` | String | The source file path |
 
-## Examples
+---
 
-### onBatchItemCreationFailed Example
+## Examples
 
 ```javascript
 var source = "C:\\testdata\\testmedia.mp4";
