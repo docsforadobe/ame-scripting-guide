@@ -1,0 +1,2431 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://ame-scripting.docsforadobe.dev/reference/ExporterScript/">
+      
+      
+        <link rel="prev" href="../EncoderWrapper/">
+      
+      
+        <link rel="next" href="../FrontendScript/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+    
+    
+      
+        <title>ExporterScript Object - Adobe Media Encoder Scripting Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.a40c8224.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/print-site-enum-headings1.css">
+    
+      <link rel="stylesheet" href="../../css/print-site-enum-headings2.css">
+    
+      <link rel="stylesheet" href="../../css/print-site-enum-headings3.css">
+    
+      <link rel="stylesheet" href="../../css/print-site-enum-headings4.css">
+    
+      <link rel="stylesheet" href="../../css/print-site-enum-headings5.css">
+    
+      <link rel="stylesheet" href="../../css/print-site-enum-headings6.css">
+    
+      <link rel="stylesheet" href="../../css/print-site.css">
+    
+      <link rel="stylesheet" href="../../css/print-site-material.css">
+    
+      <link rel="stylesheet" href="https://docsforadobe.dev/_global/global.css">
+    
+      <link rel="stylesheet" href="https://docsforadobe.dev/_global/global-syntax-highlight.css">
+    
+      <link rel="stylesheet" href="../../_static/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#exporterscript-object" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+              <button class="md-banner__button md-icon" aria-label="Don't show this again">
+                
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+              </button>
+            
+            
+  Welcome to the new scripting guide!
+
+  This is a work in progress.
+
+  Please provide all feedback via
+  <a ref="me" href="https://github.com/orgs/docsforadobe/discussions">
+    <span class="twemoji">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.061l-2.574 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1M1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.75.75 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25m13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.458 1.458 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h1a.25.25 0 0 0 .25-.25Z"/></svg>
+    </span>
+    <strong>the org's discussion forum</strong>
+  </a>.
+
+          </div>
+          
+            <script>var el=document.querySelector("[data-md-component=announce]");if(el){var content=el.querySelector(".md-typeset");__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0)}</script>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="https://docsforadobe.dev" title="Adobe Media Encoder Scripting Guide" class="md-header__button md-logo" aria-label="Adobe Media Encoder Scripting Guide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Adobe Media Encoder Scripting Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ExporterScript Object
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/docsforadobe/ame-scripting-guide/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ame-scripting-guide
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://docsforadobe.dev" title="Adobe Media Encoder Scripting Guide" class="md-nav__button md-logo" aria-label="Adobe Media Encoder Scripting Guide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Adobe Media Encoder Scripting Guide
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/docsforadobe/ame-scripting-guide/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ame-scripting-guide
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../introduction/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Application/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Application Object
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EncoderHostScript/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    EncoderHostScript Object
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EncoderWrapper/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    EncoderWrapper Object
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    ExporterScript Object
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    ExporterScript Object
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="Page Contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Page Contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+	<a href="#attributes" class="md-nav__link">
+		<span class="md-ellipsis">
+			Attributes
+		</span>
+	</a>
+
+	<!-- Table of contents list -->
+	
+		<nav class="md-nav" aria-label="Attributes">
+			<ul class="md-nav__list">
+				
+				
+					<li class="md-nav__item">
+	<a href="#exporterscriptelapsedmilliseconds" class="md-nav__link">
+		<span class="md-ellipsis">
+			ExporterScript.elapsedMilliseconds
+		</span>
+	</a>
+
+	<!-- Table of contents list -->
+	
+</li>
+				
+				
+				
+					<li class="md-nav__item">
+	<a href="#exporterscriptencodeid" class="md-nav__link">
+		<span class="md-ellipsis">
+			ExporterScript.encodeID
+		</span>
+	</a>
+
+	<!-- Table of contents list -->
+	
+</li>
+				
+				
+			</ul>
+		</nav>
+	
+</li>
+      
+        <li class="md-nav__item">
+	<a href="#methods" class="md-nav__link">
+		<span class="md-ellipsis">
+			Methods
+		</span>
+	</a>
+
+	<!-- Table of contents list -->
+	
+		<nav class="md-nav" aria-label="Methods">
+			<ul class="md-nav__list">
+				
+				
+					<li class="md-nav__item">
+	<a href="#exporterscriptexportgroup" class="md-nav__link">
+		<span class="md-ellipsis">
+			ExporterScript.exportGroup()
+		</span>
+	</a>
+
+	<!-- Table of contents list -->
+	
+</li>
+				
+				
+				
+					<li class="md-nav__item">
+	<a href="#exporterscriptexportitem" class="md-nav__link">
+		<span class="md-ellipsis">
+			ExporterScript.exportItem()
+		</span>
+	</a>
+
+	<!-- Table of contents list -->
+	
+</li>
+				
+				
+				
+					<li class="md-nav__item">
+	<a href="#exporterscriptexportsequence" class="md-nav__link">
+		<span class="md-ellipsis">
+			ExporterScript.exportSequence()
+		</span>
+	</a>
+
+	<!-- Table of contents list -->
+	
+</li>
+				
+				
+				
+					<li class="md-nav__item">
+	<a href="#exporterscriptgetsourcemediainfo" class="md-nav__link">
+		<span class="md-ellipsis">
+			ExporterScript.getSourceMediaInfo()
+		</span>
+	</a>
+
+	<!-- Table of contents list -->
+	
+</li>
+				
+				
+				
+					<li class="md-nav__item">
+	<a href="#exporterscriptremoveallbatchitems" class="md-nav__link">
+		<span class="md-ellipsis">
+			ExporterScript.removeAllBatchItems()
+		</span>
+	</a>
+
+	<!-- Table of contents list -->
+	
+</li>
+				
+				
+				
+					<li class="md-nav__item">
+	<a href="#exporterscripttrimexportforsr" class="md-nav__link">
+		<span class="md-ellipsis">
+			ExporterScript.trimExportForSR()
+		</span>
+	</a>
+
+	<!-- Table of contents list -->
+	
+</li>
+				
+				
+			</ul>
+		</nav>
+	
+</li>
+      
+        <li class="md-nav__item">
+	<a href="#events" class="md-nav__link">
+		<span class="md-ellipsis">
+			Events
+		</span>
+	</a>
+
+	<!-- Table of contents list -->
+	
+		<nav class="md-nav" aria-label="Events">
+			<ul class="md-nav__list">
+				
+				
+					<li class="md-nav__item">
+	<a href="#onaudiopreencodeprogress" class="md-nav__link">
+		<span class="md-ellipsis">
+			onAudioPreEncodeProgress
+		</span>
+	</a>
+
+	<!-- Table of contents list -->
+	
+</li>
+				
+				
+				
+					<li class="md-nav__item">
+	<a href="#onbatchitemstatuschanged" class="md-nav__link">
+		<span class="md-ellipsis">
+			onBatchItemStatusChanged
+		</span>
+	</a>
+
+	<!-- Table of contents list -->
+	
+</li>
+				
+				
+				
+					<li class="md-nav__item">
+	<a href="#onencodecomplete" class="md-nav__link">
+		<span class="md-ellipsis">
+			onEncodeComplete
+		</span>
+	</a>
+
+	<!-- Table of contents list -->
+	
+</li>
+				
+				
+				
+					<li class="md-nav__item">
+	<a href="#onencodingitemprogressupdated" class="md-nav__link">
+		<span class="md-ellipsis">
+			onEncodingItemProgressUpdated
+		</span>
+	</a>
+
+	<!-- Table of contents list -->
+	
+</li>
+				
+				
+				
+					<li class="md-nav__item">
+	<a href="#onerror" class="md-nav__link">
+		<span class="md-ellipsis">
+			onError
+		</span>
+	</a>
+
+	<!-- Table of contents list -->
+	
+</li>
+				
+				
+				
+					<li class="md-nav__item">
+	<a href="#onitemencodingstarted" class="md-nav__link">
+		<span class="md-ellipsis">
+			onItemEncodingStarted
+		</span>
+	</a>
+
+	<!-- Table of contents list -->
+	
+</li>
+				
+				
+				
+					<li class="md-nav__item">
+	<a href="#onmediainfocreated" class="md-nav__link">
+		<span class="md-ellipsis">
+			onMediaInfoCreated
+		</span>
+	</a>
+
+	<!-- Table of contents list -->
+	
+</li>
+				
+				
+				
+					<li class="md-nav__item">
+	<a href="#onpostprocesslistinitialized" class="md-nav__link">
+		<span class="md-ellipsis">
+			onPostProcessListInitialized
+		</span>
+	</a>
+
+	<!-- Table of contents list -->
+	
+</li>
+				
+				
+			</ul>
+		</nav>
+	
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FrontendScript/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FrontendScript Object
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SourceMediaInfo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SourceMediaInfo Object
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../WatchFolderScript/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    WatchFolderScript Object
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="Page Contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Page Contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+	<a href="#attributes" class="md-nav__link">
+		<span class="md-ellipsis">
+			Attributes
+		</span>
+	</a>
+
+	<!-- Table of contents list -->
+	
+		<nav class="md-nav" aria-label="Attributes">
+			<ul class="md-nav__list">
+				
+				
+					<li class="md-nav__item">
+	<a href="#exporterscriptelapsedmilliseconds" class="md-nav__link">
+		<span class="md-ellipsis">
+			ExporterScript.elapsedMilliseconds
+		</span>
+	</a>
+
+	<!-- Table of contents list -->
+	
+</li>
+				
+				
+				
+					<li class="md-nav__item">
+	<a href="#exporterscriptencodeid" class="md-nav__link">
+		<span class="md-ellipsis">
+			ExporterScript.encodeID
+		</span>
+	</a>
+
+	<!-- Table of contents list -->
+	
+</li>
+				
+				
+			</ul>
+		</nav>
+	
+</li>
+      
+        <li class="md-nav__item">
+	<a href="#methods" class="md-nav__link">
+		<span class="md-ellipsis">
+			Methods
+		</span>
+	</a>
+
+	<!-- Table of contents list -->
+	
+		<nav class="md-nav" aria-label="Methods">
+			<ul class="md-nav__list">
+				
+				
+					<li class="md-nav__item">
+	<a href="#exporterscriptexportgroup" class="md-nav__link">
+		<span class="md-ellipsis">
+			ExporterScript.exportGroup()
+		</span>
+	</a>
+
+	<!-- Table of contents list -->
+	
+</li>
+				
+				
+				
+					<li class="md-nav__item">
+	<a href="#exporterscriptexportitem" class="md-nav__link">
+		<span class="md-ellipsis">
+			ExporterScript.exportItem()
+		</span>
+	</a>
+
+	<!-- Table of contents list -->
+	
+</li>
+				
+				
+				
+					<li class="md-nav__item">
+	<a href="#exporterscriptexportsequence" class="md-nav__link">
+		<span class="md-ellipsis">
+			ExporterScript.exportSequence()
+		</span>
+	</a>
+
+	<!-- Table of contents list -->
+	
+</li>
+				
+				
+				
+					<li class="md-nav__item">
+	<a href="#exporterscriptgetsourcemediainfo" class="md-nav__link">
+		<span class="md-ellipsis">
+			ExporterScript.getSourceMediaInfo()
+		</span>
+	</a>
+
+	<!-- Table of contents list -->
+	
+</li>
+				
+				
+				
+					<li class="md-nav__item">
+	<a href="#exporterscriptremoveallbatchitems" class="md-nav__link">
+		<span class="md-ellipsis">
+			ExporterScript.removeAllBatchItems()
+		</span>
+	</a>
+
+	<!-- Table of contents list -->
+	
+</li>
+				
+				
+				
+					<li class="md-nav__item">
+	<a href="#exporterscripttrimexportforsr" class="md-nav__link">
+		<span class="md-ellipsis">
+			ExporterScript.trimExportForSR()
+		</span>
+	</a>
+
+	<!-- Table of contents list -->
+	
+</li>
+				
+				
+			</ul>
+		</nav>
+	
+</li>
+      
+        <li class="md-nav__item">
+	<a href="#events" class="md-nav__link">
+		<span class="md-ellipsis">
+			Events
+		</span>
+	</a>
+
+	<!-- Table of contents list -->
+	
+		<nav class="md-nav" aria-label="Events">
+			<ul class="md-nav__list">
+				
+				
+					<li class="md-nav__item">
+	<a href="#onaudiopreencodeprogress" class="md-nav__link">
+		<span class="md-ellipsis">
+			onAudioPreEncodeProgress
+		</span>
+	</a>
+
+	<!-- Table of contents list -->
+	
+</li>
+				
+				
+				
+					<li class="md-nav__item">
+	<a href="#onbatchitemstatuschanged" class="md-nav__link">
+		<span class="md-ellipsis">
+			onBatchItemStatusChanged
+		</span>
+	</a>
+
+	<!-- Table of contents list -->
+	
+</li>
+				
+				
+				
+					<li class="md-nav__item">
+	<a href="#onencodecomplete" class="md-nav__link">
+		<span class="md-ellipsis">
+			onEncodeComplete
+		</span>
+	</a>
+
+	<!-- Table of contents list -->
+	
+</li>
+				
+				
+				
+					<li class="md-nav__item">
+	<a href="#onencodingitemprogressupdated" class="md-nav__link">
+		<span class="md-ellipsis">
+			onEncodingItemProgressUpdated
+		</span>
+	</a>
+
+	<!-- Table of contents list -->
+	
+</li>
+				
+				
+				
+					<li class="md-nav__item">
+	<a href="#onerror" class="md-nav__link">
+		<span class="md-ellipsis">
+			onError
+		</span>
+	</a>
+
+	<!-- Table of contents list -->
+	
+</li>
+				
+				
+				
+					<li class="md-nav__item">
+	<a href="#onitemencodingstarted" class="md-nav__link">
+		<span class="md-ellipsis">
+			onItemEncodingStarted
+		</span>
+	</a>
+
+	<!-- Table of contents list -->
+	
+</li>
+				
+				
+				
+					<li class="md-nav__item">
+	<a href="#onmediainfocreated" class="md-nav__link">
+		<span class="md-ellipsis">
+			onMediaInfoCreated
+		</span>
+	</a>
+
+	<!-- Table of contents list -->
+	
+</li>
+				
+				
+				
+					<li class="md-nav__item">
+	<a href="#onpostprocesslistinitialized" class="md-nav__link">
+		<span class="md-ellipsis">
+			onPostProcessListInitialized
+		</span>
+	</a>
+
+	<!-- Table of contents list -->
+	
+</li>
+				
+				
+			</ul>
+		</nav>
+	
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/docsforadobe/ame-scripting-guide/edit/master/docs/reference/ExporterScript.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/docsforadobe/ame-scripting-guide/raw/master/docs/reference/ExporterScript.md" title="View source of this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
+    </a>
+  
+
+
+<h1 id="exporterscript-object">ExporterScript Object<a class="headerlink" href="#exporterscript-object" title="Permanent link">&para;</a></h1>
+<p><code>app.getExporter()</code></p>
+<p>Contains several encoding methods.</p>
+<hr />
+<h2 id="attributes">Attributes<a class="headerlink" href="#attributes" title="Permanent link">&para;</a></h2>
+<h3 id="exporterscriptelapsedmilliseconds">ExporterScript.elapsedMilliseconds<a class="headerlink" href="#exporterscriptelapsedmilliseconds" title="Permanent link">&para;</a></h3>
+<p><code>app.getExporter().elapsedMilliseconds</code></p>
+<h4 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h4>
+<p>Returns the encode time in milliseconds.</p>
+<h4 id="type">Type<a class="headerlink" href="#type" title="Permanent link">&para;</a></h4>
+<p>Float</p>
+<h4 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\testmedia3.mxf&quot;</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">preset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\XDCAMHD 50 PAL 50i.epr&quot;</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">destination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\outputFolder&quot;</span><span class="p">;</span>
+
+<span class="c1">// //sources for mac</span>
+<span class="c1">// var source = &quot;/Users/Shared/testdata/testmedia3.mxf&quot;</span>
+<span class="c1">// var preset = &quot;/Users/Shared/testdata/XDCAMHD 50 PAL 50i.epr&quot;;</span>
+<span class="c1">// var destination = &quot;/Users/Shared/testdata/outputFolder&quot;;</span>
+
+<span class="kd">var</span><span class="w"> </span><span class="nx">exporter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">getExporter</span><span class="p">();</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">exporter</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">exportItem</span><span class="p">(</span><span class="nx">source</span><span class="p">,</span><span class="w"> </span><span class="nx">destination</span><span class="p">,</span><span class="w"> </span><span class="nx">preset</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;onEncodeComplete&quot;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">eventObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// We can get the encoding time from the event or from the exporter</span>
+<span class="w">    </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span>
+<span class="w">      </span><span class="s2">&quot;Encode Complete Time (in milli seconds): &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">eventObj</span><span class="p">.</span><span class="nx">encodeCompleteTime</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">encodeCompleteTimeMilliseconds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">elapsedMilliseconds</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span>
+<span class="w">      </span><span class="s2">&quot;Encode Complete Time alt (in milli seconds): &quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">        </span><span class="nx">encodeCompleteTimeMilliseconds</span>
+<span class="w">    </span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h3 id="exporterscriptencodeid">ExporterScript.encodeID<a class="headerlink" href="#exporterscriptencodeid" title="Permanent link">&para;</a></h3>
+<p><code>app.getExporter().encodeID</code></p>
+<h4 id="description_1">Description<a class="headerlink" href="#description_1" title="Permanent link">&para;</a></h4>
+<p>Returns the current encode item ID as string.</p>
+<h4 id="type_1">Type<a class="headerlink" href="#type_1" title="Permanent link">&para;</a></h4>
+<p>String</p>
+<h4 id="example_1">Example<a class="headerlink" href="#example_1" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\testmedia3.mxf&quot;</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">preset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\XDCAMHD 50 PAL 50i.epr&quot;</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">destination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\outputFolder&quot;</span><span class="p">;</span>
+
+<span class="c1">// //sources for mac</span>
+<span class="c1">// var source = &quot;/Users/Shared/testdata/testmedia3.mxf&quot;</span>
+<span class="c1">// var preset = &quot;/Users/Shared/testdata/XDCAMHD 50 PAL 50i.epr&quot;;</span>
+<span class="c1">// var destination = &quot;/Users/Shared/testdata/outputFolder&quot;;</span>
+
+<span class="kd">var</span><span class="w"> </span><span class="nx">exporter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">getExporter</span><span class="p">();</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">exporter</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">encoderWrapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">exportItem</span><span class="p">(</span><span class="nx">source</span><span class="p">,</span><span class="w"> </span><span class="nx">destination</span><span class="p">,</span><span class="w"> </span><span class="nx">preset</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">encodeID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">encodeID</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Encode ID: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">encodeID</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h2>
+<h3 id="exporterscriptexportgroup">ExporterScript.exportGroup()<a class="headerlink" href="#exporterscriptexportgroup" title="Permanent link">&para;</a></h3>
+<p><code>app.getExporter().exportGroup(sourcePath, outputPath, presetsPath, matchSource)</code></p>
+<h4 id="description_2">Description<a class="headerlink" href="#description_2" title="Permanent link">&para;</a></h4>
+<p>Export the source with the provided list of presets.</p>
+<h4 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sourcePath</code></td>
+<td>String</td>
+<td>Media path (Premiere Pro projects aren't supported).</td>
+</tr>
+<tr>
+<td><code>outputPath</code></td>
+<td>String</td>
+<td>If <code>outputPath</code> is empty, then the output file location will be generated based on the source location.</td>
+</tr>
+<tr>
+<td><code>presetsPath</code></td>
+<td>String</td>
+<td>Multiple preset paths can be provided separated via a <code>&#124;</code> (e.g. <code>"path1&#124;path2&#124;path3"</code>)</td>
+</tr>
+<tr>
+<td><code>matchSource</code></td>
+<td>Boolean</td>
+<td>Optional. Default value is <code>false</code>.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="returns">Returns<a class="headerlink" href="#returns" title="Permanent link">&para;</a></h4>
+<p>Boolean; <code>true</code> in case of success.</p>
+<h4 id="example_2">Example<a class="headerlink" href="#example_2" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\testmedia3.mxf&quot;</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">preset_1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\XDCAMHD 50 PAL 50i.epr&quot;</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">preset_2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\XDCAMHD 50 PAL 25p.epr&quot;</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">destination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\outputFolder&quot;</span><span class="p">;</span>
+
+<span class="c1">// //sources for mac</span>
+<span class="c1">// var source = &quot;/Users/Shared/testdata/testmedia3.mxf&quot;</span>
+<span class="c1">// var preset_1 = &quot;/Users/Shared/testdata/XDCAMHD 50 PAL 50i.epr&quot;;</span>
+<span class="c1">// var preset_2 = &quot;/Users/Shared/testdata/XDCAMHD 50 PAL 25p.epr&quot;;</span>
+<span class="c1">// var destination = &quot;/Users/Shared/testdata/outputFolder&quot;;</span>
+
+<span class="kd">var</span><span class="w"> </span><span class="nx">matchSourceSettings</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span><span class="w"> </span><span class="c1">// optional</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">presets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">preset_1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;|&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">preset_2</span><span class="p">;</span>
+
+<span class="kd">var</span><span class="w"> </span><span class="nx">exporter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">getExporter</span><span class="p">();</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">exporter</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span>
+<span class="w">    </span><span class="s2">&quot;onEncodeComplete&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">eventObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">// We should arrive here two times (for every preset we have one batch item)</span>
+<span class="w">      </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span>
+<span class="w">        </span><span class="s2">&quot;Encode Complete Status (always true): &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">eventObj</span><span class="p">.</span><span class="nx">encodeCompleteStatus</span>
+<span class="w">      </span><span class="p">);</span>
+<span class="w">      </span><span class="c1">// We encode both batch items in parallel and so we don&#39;t really get the exact time for each batch item</span>
+<span class="w">      </span><span class="c1">// When we arrive here the second time we get the total encoding time for both batch items (the first</span>
+<span class="w">      </span><span class="c1">// could be ignored)</span>
+<span class="w">      </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span>
+<span class="w">        </span><span class="s2">&quot;Encode Complete Time (in milliseconds): &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">eventObj</span><span class="p">.</span><span class="nx">encodeCompleteTime</span>
+<span class="w">      </span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="kc">false</span>
+<span class="w">  </span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span>
+<span class="w">    </span><span class="s2">&quot;onError&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">eventObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Error while encoding&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="kc">false</span>
+<span class="w">  </span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span>
+<span class="w">    </span><span class="s2">&quot;onBatchItemStatusChanged&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">eventObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Batch group index: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">eventObj</span><span class="p">.</span><span class="nx">groupIndex</span><span class="p">);</span>
+<span class="w">      </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Batch item index: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">eventObj</span><span class="p">.</span><span class="nx">itemIndex</span><span class="p">);</span>
+<span class="w">      </span><span class="cm">/*</span>
+<span class="cm">        Possible status values:</span>
+<span class="cm">        kBatchItemStatus_Waiting = 0,</span>
+<span class="cm">        kBatchItemStatus_Done,</span>
+<span class="cm">        kBatchItemStatus_Failed,</span>
+<span class="cm">        kBatchItemStatus_Skipped,</span>
+<span class="cm">        kBatchItemStatus_Encoding,</span>
+<span class="cm">        kBatchItemStatus_Paused,</span>
+<span class="cm">        kBatchItemStatus_Stopped,</span>
+<span class="cm">        kBatchItemStatus_Any,</span>
+<span class="cm">        kBatchItemStatus_AutoStart,</span>
+<span class="cm">        kBatchItemStatus_Done_Warning,</span>
+<span class="cm">        kBatchItemStatus_WatchFolderWaiting</span>
+<span class="cm">        */</span>
+<span class="w">      </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Batch item status: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">eventObj</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="kc">false</span>
+<span class="w">  </span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span>
+<span class="w">    </span><span class="s2">&quot;onItemEncodingStarted&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">eventObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Encoding started for batch item.&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="kc">false</span>
+<span class="w">  </span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span>
+<span class="w">    </span><span class="s2">&quot;onMediaInfoCreated&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">eventObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Media info created&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="kc">false</span>
+<span class="w">  </span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span>
+<span class="w">    </span><span class="s2">&quot;onPostProcessListInitialized&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">eventObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Post process list has been initialized.&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="kc">false</span>
+<span class="w">  </span><span class="p">);</span>
+
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">encodingPreperationSuccess</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">exportGroup</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">source</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">destination</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">presets</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">matchSourceSettings</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="w">  </span><span class="c1">// Without all optional arguments:</span>
+<span class="w">  </span><span class="c1">// var encodingPreperationSuccess = exporter.exportGroup(source, destination, presets);</span>
+
+<span class="w">  </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span>
+<span class="w">    </span><span class="s2">&quot;Encoding preparations were successful: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">encodingPreperationSuccess</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h3 id="exporterscriptexportitem">ExporterScript.exportItem()<a class="headerlink" href="#exporterscriptexportitem" title="Permanent link">&para;</a></h3>
+<p><code>app.getExporter().exportItem(sourcePath, outputPath, presetsPath, matchSource, writeFramesToDisk)</code></p>
+<h4 id="description_3">Description<a class="headerlink" href="#description_3" title="Permanent link">&para;</a></h4>
+<p>Export the source with the provided preset.</p>
+<h4 id="parameters_1">Parameters<a class="headerlink" href="#parameters_1" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sourcePath</code></td>
+<td>String</td>
+<td>Media path or Premiere Pro project path (In case of a Premiere Pro project, the last sequence will be used).</td>
+</tr>
+<tr>
+<td><code>outputPath</code></td>
+<td>String</td>
+<td>If <code>outputPath</code> is empty, then the output file location will be generated based on the source location.</td>
+</tr>
+<tr>
+<td><code>presetsPath</code></td>
+<td>String</td>
+<td>Multiple preset paths can be provided separated via a <code>&#124;</code> (e.g. <code>"path1&#124;path2&#124;path3"</code>)</td>
+</tr>
+<tr>
+<td><code>matchSource</code></td>
+<td>Boolean</td>
+<td>Optional. Default value is <code>false</code>.</td>
+</tr>
+<tr>
+<td><code>writeFramesToDisk</code></td>
+<td>Boolean</td>
+<td>Optional. Default value is <code>false</code>. <code>true</code> writes five frames at 0%, 25%, 50%, 75% and 100% of the full duration.<br />Known issue: Currently it only works with parallel encoding disabled.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="returns_1">Returns<a class="headerlink" href="#returns_1" title="Permanent link">&para;</a></h4>
+<p><a href="../EncoderWrapper/">EncoderWrapper object</a></p>
+<h4 id="example_3">Example<a class="headerlink" href="#example_3" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">// Supported: PR projects (last sequence will be used)</span>
+<span class="c1">// var source = &quot;C:\\testdata\\prProjectTest.prproj;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\testmedia3.mxf&quot;</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">preset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\XDCAMHD 50 PAL 50i.epr&quot;</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">destination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\outputFolder&quot;</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">matchSourceSettings</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span><span class="w"> </span><span class="c1">// optional</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">writeFramesToDisk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span><span class="w"> </span><span class="c1">// optional</span>
+
+<span class="c1">// //sources for mac</span>
+<span class="c1">// var source = &quot;/Users/Shared/testdata/testmedia3.mxf&quot;</span>
+<span class="c1">// var preset = &quot;/Users/Shared/testdata/XDCAMHD 50 PAL 50i.epr&quot;;</span>
+<span class="c1">// var destination = &quot;/Users/Shared/testdata/outputFolder&quot;;</span>
+
+<span class="kd">var</span><span class="w"> </span><span class="nx">exporter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">getExporter</span><span class="p">();</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">exporter</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// listen to events dispatched by the exporter:</span>
+<span class="w">  </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span>
+<span class="w">    </span><span class="s2">&quot;onEncodeComplete&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">eventObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span>
+<span class="w">        </span><span class="s2">&quot;Encode Complete Status (always true): &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">eventObj</span><span class="p">.</span><span class="nx">encodeCompleteStatus</span>
+<span class="w">      </span><span class="p">);</span><span class="w"> </span><span class="c1">// Complete status always true</span>
+<span class="w">      </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span>
+<span class="w">        </span><span class="s2">&quot;Encode Complete Time (in milliseconds): &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">eventObj</span><span class="p">.</span><span class="nx">encodeCompleteTime</span>
+<span class="w">      </span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="kc">false</span>
+<span class="w">  </span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span>
+<span class="w">    </span><span class="s2">&quot;onError&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">eventObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Error while encoding&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="kc">false</span>
+<span class="w">  </span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span>
+<span class="w">    </span><span class="s2">&quot;onBatchItemStatusChanged&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">eventObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Batch group index: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">eventObj</span><span class="p">.</span><span class="nx">groupIndex</span><span class="p">);</span>
+<span class="w">      </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Batch item index: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">eventObj</span><span class="p">.</span><span class="nx">itemIndex</span><span class="p">);</span>
+<span class="w">      </span><span class="c1">//Possible status values:</span>
+<span class="w">      </span><span class="c1">//kBatchItemStatus_Waiting = 0,</span>
+<span class="w">      </span><span class="c1">//kBatchItemStatus_Done,</span>
+<span class="w">      </span><span class="c1">//kBatchItemStatus_Failed,</span>
+<span class="w">      </span><span class="c1">//kBatchItemStatus_Skipped,</span>
+<span class="w">      </span><span class="c1">//kBatchItemStatus_Encoding,</span>
+<span class="w">      </span><span class="c1">//kBatchItemStatus_Paused,</span>
+<span class="w">      </span><span class="c1">//kBatchItemStatus_Stopped,</span>
+<span class="w">      </span><span class="c1">//kBatchItemStatus_Any,</span>
+<span class="w">      </span><span class="c1">//kBatchItemStatus_AutoStart,</span>
+<span class="w">      </span><span class="c1">//kBatchItemStatus_Done_Warning,</span>
+<span class="w">      </span><span class="c1">//kBatchItemStatus_WatchFolderWaiting</span>
+<span class="w">      </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Batch item status: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">eventObj</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="kc">false</span>
+<span class="w">  </span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span>
+<span class="w">    </span><span class="s2">&quot;onEncodingItemProgressUpdated&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">eventObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Encoding progress for batch item: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">eventObj</span><span class="p">.</span><span class="nx">progress</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="kc">false</span>
+<span class="w">  </span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// listen to the audio pre-encoding progress event (available since 24.0.)</span>
+<span class="w">  </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span>
+<span class="w">    </span><span class="s2">&quot;onAudioPreEncodeProgress&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">eventObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Audio pre-encoding info: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">eventObj</span><span class="p">.</span><span class="nx">audioInfo</span><span class="p">);</span>
+<span class="w">      </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Audio pre-encoding progress: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">eventObj</span><span class="p">.</span><span class="nx">audioProgress</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="kc">false</span>
+<span class="w">  </span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span>
+<span class="w">    </span><span class="s2">&quot;onItemEncodingStarted&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">eventObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Encoding started for batch item.&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="kc">false</span>
+<span class="w">  </span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span>
+<span class="w">    </span><span class="s2">&quot;onMediaInfoCreated&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">eventObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Media info created&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="kc">false</span>
+<span class="w">  </span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span>
+<span class="w">    </span><span class="s2">&quot;onPostProcessListInitialized&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">eventObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Post process list has been initialized.&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="kc">false</span>
+<span class="w">  </span><span class="p">);</span>
+
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">encoderWrapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">exportItem</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">source</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">destination</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">preset</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">matchSourceSettings</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">writeFramesToDisk</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="w">  </span><span class="c1">// Without all optional arguments:</span>
+<span class="w">  </span><span class="c1">// var encoderWrapper  = exporter.exportItem(source, destination, preset);</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">encoderWrapper</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">encoderWrapper</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span>
+<span class="w">      </span><span class="s2">&quot;onEncodeFinished&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">eventObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Encoding result: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">eventObj</span><span class="p">.</span><span class="nx">result</span><span class="p">);</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="kc">false</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="nx">encoderWrapper</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span>
+<span class="w">      </span><span class="s2">&quot;onEncodeProgress&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">eventObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Encoding progress: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">eventObj</span><span class="p">.</span><span class="nx">result</span><span class="p">);</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="kc">false</span>
+<span class="w">    </span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h3 id="exporterscriptexportsequence">ExporterScript.exportSequence()<a class="headerlink" href="#exporterscriptexportsequence" title="Permanent link">&para;</a></h3>
+<p><code>app.getExporter().exportSequence(projectPath, outputPath, presetsPath, matchSource, writeFramesToDisk, leadingFramesToTrim, trailingFramesToTrim, sequenceName)</code></p>
+<h4 id="description_4">Description<a class="headerlink" href="#description_4" title="Permanent link">&para;</a></h4>
+<p>Export the Premiere Pro sequence with the provided preset.</p>
+<h4 id="parameters_2">Parameters<a class="headerlink" href="#parameters_2" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>projectPath</code></td>
+<td>String</td>
+<td>Premiere Pro project path.</td>
+</tr>
+<tr>
+<td><code>outputPath</code></td>
+<td>String</td>
+<td>If <code>outputPath</code> is empty, then the output file location will be generated based on the source location.</td>
+</tr>
+<tr>
+<td><code>presetsPath</code></td>
+<td>String</td>
+<td>Multiple preset paths can be provided separated via a <code>&#124;</code> (e.g. <code>"path1&#124;path2&#124;path3"</code>)</td>
+</tr>
+<tr>
+<td><code>matchSource</code></td>
+<td>Boolean</td>
+<td>Optional. Default value is <code>false</code>.</td>
+</tr>
+<tr>
+<td><code>writeFramesToDisk</code></td>
+<td>Boolean</td>
+<td>Optional. Default value is <code>false</code>. <code>true</code> writes five frames at 0%, 25%, 50%, 75% and 100% of the full duration.<br />Known issue: Currently it only works with parallel encoding disabled.</td>
+</tr>
+<tr>
+<td><code>leadingFramesToTrim</code></td>
+<td>Integer</td>
+<td>Optional. Default value is <code>0</code>.</td>
+</tr>
+<tr>
+<td><code>trailingFramesToTrim</code></td>
+<td>Integer</td>
+<td>Optional. Default value is <code>0</code>.</td>
+</tr>
+<tr>
+<td><code>sequenceName</code></td>
+<td>String</td>
+<td>Optional. If sequence name is empty, then we use the last sequence of the project.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="returns_2">Returns<a class="headerlink" href="#returns_2" title="Permanent link">&para;</a></h4>
+<p>Boolean; <code>true</code> in case of success.</p>
+<h4 id="example_4">Example<a class="headerlink" href="#example_4" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">preset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\XDCAMHD50PAL25p.epr&quot;</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">destination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\Output&quot;</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">projectPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\prProjectTest.prproj&quot;</span><span class="p">;</span>
+
+<span class="c1">// //sources for mac</span>
+<span class="c1">// var preset = &quot;/Users/Shared/testdata/XDCAMHD50PAL25p.epr&quot;;</span>
+<span class="c1">// var destination = &quot;/Users/Shared/testdata/Output&quot;;</span>
+<span class="c1">// var projectPath = &quot;/Users/Shared/testdata/prProjectTest.prproj&quot;;</span>
+
+<span class="kd">var</span><span class="w"> </span><span class="nx">matchSource</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">writeFramesToDisk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">leadingFramesToTrim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">trailingFramesToTrim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">sequenceName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;AME-Test-Sequence&quot;</span><span class="p">;</span>
+
+<span class="kd">var</span><span class="w"> </span><span class="nx">exporter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">getExporter</span><span class="p">();</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">exporter</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">encodingPreperationSuccess</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">exportSequence</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">projectPath</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">destination</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">preset</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">matchSource</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">writeFramesToDisk</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">leadingFramesToTrim</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">trailingFramesToTrim</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">sequenceName</span>
+<span class="w">  </span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span>
+<span class="w">    </span><span class="s2">&quot;Encoding preparations were successful: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">encodingPreperationSuccess</span>
+<span class="w">  </span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// please see &#39;exportGroup&#39; how to register events</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h3 id="exporterscriptgetsourcemediainfo">ExporterScript.getSourceMediaInfo()<a class="headerlink" href="#exporterscriptgetsourcemediainfo" title="Permanent link">&para;</a></h3>
+<p><code>app.getExporter().getSourceMediaInfo(sourcePath)</code></p>
+<h4 id="description_5">Description<a class="headerlink" href="#description_5" title="Permanent link">&para;</a></h4>
+<p>Returns a <a href="../SourceMediaInfo/">SourceMediaInfo</a> object.</p>
+<h4 id="parameters_3">Parameters<a class="headerlink" href="#parameters_3" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sourcePath</code></td>
+<td>String</td>
+<td>Media path or Premiere Pro project path (In case of a Premiere Pro project the last sequence will be used).</td>
+</tr>
+</tbody>
+</table>
+<h4 id="returns_3">Returns<a class="headerlink" href="#returns_3" title="Permanent link">&para;</a></h4>
+<p><a href="../SourceMediaInfo/">SourceMediaInfo object</a></p>
+<h4 id="example_5">Example<a class="headerlink" href="#example_5" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\testmedia3.mxf&quot;</span><span class="p">;</span>
+
+<span class="c1">// //sources for mac</span>
+<span class="c1">// var source = &quot;/Users/Shared/testdata/testmedia3.mxf&quot;</span>
+
+<span class="kd">var</span><span class="w"> </span><span class="nx">exporter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">getExporter</span><span class="p">();</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">exporter</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">sourceMediaInfo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">getSourceMediaInfo</span><span class="p">(</span><span class="nx">source</span><span class="p">);</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">sourceMediaInfo</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Success&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h3 id="exporterscriptremoveallbatchitems">ExporterScript.removeAllBatchItems()<a class="headerlink" href="#exporterscriptremoveallbatchitems" title="Permanent link">&para;</a></h3>
+<p><code>app.getExporter().removeAllBatchItems()</code></p>
+<h4 id="description_6">Description<a class="headerlink" href="#description_6" title="Permanent link">&para;</a></h4>
+<p>Remove all batch items from the queue.</p>
+<h4 id="returns_4">Returns<a class="headerlink" href="#returns_4" title="Permanent link">&para;</a></h4>
+<p>Boolean; <code>true</code> in case of success.</p>
+<h4 id="example_6">Example<a class="headerlink" href="#example_6" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">// Preparation: Be sure there are some batch items in the queue. Otherwise create them via scripting APIs or directly in the UI</span>
+<span class="c1">// since we need some batch item in the queue to verify the API removeAllBatchItems</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">exporter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">getExporter</span><span class="p">();</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">exporter</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">removeAllBatchItems</span><span class="p">();</span>
+<span class="w">  </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Remove all batch items was successful: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">success</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h3 id="exporterscripttrimexportforsr">ExporterScript.trimExportForSR()<a class="headerlink" href="#exporterscripttrimexportforsr" title="Permanent link">&para;</a></h3>
+<p><code>app.getExporter().trimExportForSR(sourcePath, outputPath, presetsPath, matchSource, writeFramesToDisk, leadingFramesToTrim, trailingFramesToTrim)</code></p>
+<h4 id="description_7">Description<a class="headerlink" href="#description_7" title="Permanent link">&para;</a></h4>
+<p>Smart render the source with the provided preset.</p>
+<h4 id="parameters_4">Parameters<a class="headerlink" href="#parameters_4" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sourcePath</code></td>
+<td>String</td>
+<td>Media path or Premiere Pro project path (In case of a Premiere Pro project the last sequence will be used).</td>
+</tr>
+<tr>
+<td><code>outputPath</code></td>
+<td>String</td>
+<td>If outputPath is empty, then the output file location will be generated based on the source location.</td>
+</tr>
+<tr>
+<td><code>presetsPath</code></td>
+<td>String</td>
+<td>Multiple preset paths can be provided separated via a <code>&#124;</code> (e.g. <code>"path1&#124;path2&#124;path3"</code>)</td>
+</tr>
+<tr>
+<td><code>matchSource</code></td>
+<td>Boolean</td>
+<td>Optional. Default value is <code>false</code>.</td>
+</tr>
+<tr>
+<td><code>writeFramesToDisk</code></td>
+<td>Boolean</td>
+<td>Optional. Default value is <code>false</code>. <code>true</code> writes five frames at 0%, 25%, 50%, 75% and 100% of the full duration.<br />Known issue: Currently it only works with parallel encoding disabled.</td>
+</tr>
+<tr>
+<td><code>leadingFramesToTrim</code></td>
+<td>Integer</td>
+<td>Optional. Default value is <code>0</code>.</td>
+</tr>
+<tr>
+<td><code>trailingFramesToTrim</code></td>
+<td>Integer</td>
+<td>Optional. Default value is <code>0</code>.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="returns_5">Returns<a class="headerlink" href="#returns_5" title="Permanent link">&para;</a></h4>
+<p>Boolean; <code>true</code> in case of success.</p>
+<h4 id="example_7">Example<a class="headerlink" href="#example_7" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\testmedia.mp4&quot;</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">preset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\XDCAMHD50PAL25p.epr&quot;</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">destination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\outputFolder&quot;</span><span class="p">;</span>
+
+<span class="c1">// //sources for mac</span>
+<span class="c1">// var source = &quot;/Users/Shared/testdata/testmedia.mp4&quot;</span>
+<span class="c1">// var preset = &quot;/Users/Shared/testdata/XDCAMHD50PAL25p.epr&quot;;</span>
+<span class="c1">// var destination = &quot;/Users/Shared/testdata/outputFolder&quot;;</span>
+
+<span class="kd">var</span><span class="w"> </span><span class="nx">matchSource</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">writeFramesToDisk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">leadingFramesToTrim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">10</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">trailingFramesToTrim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">700</span><span class="p">;</span>
+
+<span class="kd">var</span><span class="w"> </span><span class="nx">exporter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">getExporter</span><span class="p">();</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">exporter</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">encodingPreperationSuccess</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">trimExportForSR</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">source</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">destination</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">preset</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">matchSource</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">writeFramesToDisk</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">leadingFramesToTrim</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">trailingFramesToTrim</span>
+<span class="w">  </span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span>
+<span class="w">    </span><span class="s2">&quot;Encoding preparations were successful: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">encodingPreperationSuccess</span>
+<span class="w">  </span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// please see &#39;exportGroup&#39; how to register events</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="events">Events<a class="headerlink" href="#events" title="Permanent link">&para;</a></h2>
+<p>Note that in addition to accessing these events by string, they can also be accessed via the following const property:</p>
+<ul>
+<li><a href="#onaudiopreencodeprogress"><code>AMEExportEvent.onAudioPreEncodeProgress</code></a></li>
+<li><a href="#onbatchitemstatuschanged"><code>AMEExportEvent.onBatchItemStatusChanged</code></a></li>
+<li><a href="#onencodecomplete"><code>AMEExportEvent.onEncodeComplete</code></a></li>
+<li><a href="#onencodingitemprogressupdated"><code>AMEExportEvent.onEncodingItemProgressUpdated</code></a></li>
+<li><a href="#onerror"><code>AMEExportEvent.onError</code></a></li>
+<li><a href="#onitemencodingstarted"><code>AMEExportEvent.onItemEncodingStarted</code></a></li>
+<li><a href="#onmediainfocreated"><code>AMEExportEvent.onMediaInfoCreated</code></a></li>
+<li><a href="#onpostprocesslistinitialized"><code>AMEExportEvent.onPostProcessListInitialized</code></a></li>
+</ul>
+<hr />
+<h3 id="onaudiopreencodeprogress">onAudioPreEncodeProgress<a class="headerlink" href="#onaudiopreencodeprogress" title="Permanent link">&para;</a></h3>
+<p><code>app.getExporter().addEventListener("onAudioPreEncodeProgress")</code></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This functionality was added in Media Encoder 24.0</p>
+</div>
+<h4 id="description_8">Description<a class="headerlink" href="#description_8" title="Permanent link">&para;</a></h4>
+<p>Notify when the audio pre-encode progress changes.</p>
+<h4 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>audioInfo</code></td>
+<td>String</td>
+<td>Returns the audio pre-encoding info</td>
+</tr>
+<tr>
+<td><code>audioProgress</code></td>
+<td>Float</td>
+<td>Returns the audio pre-encoding progress</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="onbatchitemstatuschanged">onBatchItemStatusChanged<a class="headerlink" href="#onbatchitemstatuschanged" title="Permanent link">&para;</a></h3>
+<p><code>app.getExporter().addEventListener("onBatchItemStatusChanged")</code></p>
+<h4 id="description_9">Description<a class="headerlink" href="#description_9" title="Permanent link">&para;</a></h4>
+<p>Notify when batch item status has been changed.</p>
+<h4 id="properties_1">Properties<a class="headerlink" href="#properties_1" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>groupIndex</code></td>
+<td>Unsigned int</td>
+<td>Returns the batch group index.</td>
+</tr>
+<tr>
+<td><code>itemIndex</code></td>
+<td>Unsigned int</td>
+<td>Returns the batch item index.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td>Unsigned int</td>
+<td>Returns the batch item status, one of: <ul><li>0 – Waiting</li><li>1 – Done</li><li>2 – Failed</li><li>3 – Skipped</li><li>4 – Encoding</li><li>5 – Paused</li><li>6 – Stopped</li><li>7 – Any</li><li>8 – AutoStart</li><li>9 – Done Warning</li><li>10 – Watch Folder Waiting</li></ul></td>
+</tr>
+</tbody>
+</table>
+<h4 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\testmedia3.mxf&quot;</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">preset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\XDCAMHD 50 PAL 50i.epr&quot;</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">destination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\outputFolder&quot;</span><span class="p">;</span>
+
+<span class="c1">// //sources for mac</span>
+<span class="c1">// var source = &quot;/Users/Shared/testdata/testmedia3.mxf&quot;</span>
+<span class="c1">// var preset = &quot;/Users/Shared/testdata/XDCAMHD 50 PAL 50i.epr&quot;;</span>
+<span class="c1">// var destination = &quot;/Users/Shared/testdata/outputFolder&quot;;</span>
+
+<span class="kd">var</span><span class="w"> </span><span class="nx">batchItemStatusChangedEvent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">AMEExportEvent</span><span class="p">.</span><span class="nx">onBatchItemStatusChanged</span><span class="p">;</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span>
+<span class="w">  </span><span class="s2">&quot;Event name is identical with the const property API name (&#39;onBatchItemStatusChanged&#39;): &quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">    </span><span class="nx">batchItemStatusChangedEvent</span>
+<span class="p">);</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">exporter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">getExporter</span><span class="p">();</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">exporter</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">batchItemStatusChangedEvent</span><span class="p">,</span>
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">eventObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Batch group index: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">eventObj</span><span class="p">.</span><span class="nx">groupIndex</span><span class="p">);</span>
+<span class="w">      </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Batch item index: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">eventObj</span><span class="p">.</span><span class="nx">itemIndex</span><span class="p">);</span>
+<span class="w">      </span><span class="c1">//Possible status values:</span>
+<span class="w">      </span><span class="c1">//kBatchItemStatus_Waiting = 0,</span>
+<span class="w">      </span><span class="c1">//kBatchItemStatus_Done,</span>
+<span class="w">      </span><span class="c1">//kBatchItemStatus_Failed,</span>
+<span class="w">      </span><span class="c1">//kBatchItemStatus_Skipped,</span>
+<span class="w">      </span><span class="c1">//kBatchItemStatus_Encoding,</span>
+<span class="w">      </span><span class="c1">//kBatchItemStatus_Paused,</span>
+<span class="w">      </span><span class="c1">//kBatchItemStatus_Stopped,</span>
+<span class="w">      </span><span class="c1">//kBatchItemStatus_Any,</span>
+<span class="w">      </span><span class="c1">//kBatchItemStatus_AutoStart,</span>
+<span class="w">      </span><span class="c1">//kBatchItemStatus_Done_Warning,</span>
+<span class="w">      </span><span class="c1">//kBatchItemStatus_WatchFolderWaiting</span>
+<span class="w">      </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Batch item status: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">eventObj</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="kc">false</span>
+<span class="w">  </span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// Alternatively you can listen to &quot;onBatchItemStatusChanged&quot;</span>
+<span class="w">  </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span>
+<span class="w">    </span><span class="s2">&quot;onBatchItemStatusChanged&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">eventObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Batch group index (alt): &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">eventObj</span><span class="p">.</span><span class="nx">groupIndex</span><span class="p">);</span>
+<span class="w">      </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Batch item index (alt): &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">eventObj</span><span class="p">.</span><span class="nx">itemIndex</span><span class="p">);</span>
+<span class="w">      </span><span class="c1">//Possible status values:</span>
+<span class="w">      </span><span class="c1">//kBatchItemStatus_Waiting = 0,</span>
+<span class="w">      </span><span class="c1">//kBatchItemStatus_Done,</span>
+<span class="w">      </span><span class="c1">//kBatchItemStatus_Failed,</span>
+<span class="w">      </span><span class="c1">//kBatchItemStatus_Skipped,</span>
+<span class="w">      </span><span class="c1">//kBatchItemStatus_Encoding,</span>
+<span class="w">      </span><span class="c1">//kBatchItemStatus_Paused,</span>
+<span class="w">      </span><span class="c1">//kBatchItemStatus_Stopped,</span>
+<span class="w">      </span><span class="c1">//kBatchItemStatus_Any,</span>
+<span class="w">      </span><span class="c1">//kBatchItemStatus_AutoStart,</span>
+<span class="w">      </span><span class="c1">//kBatchItemStatus_Done_Warning,</span>
+<span class="w">      </span><span class="c1">//kBatchItemStatus_WatchFolderWaiting</span>
+<span class="w">      </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Batch item status (alt): &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">eventObj</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="kc">false</span>
+<span class="w">  </span><span class="p">);</span>
+
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">encoderWrapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">exportItem</span><span class="p">(</span><span class="nx">source</span><span class="p">,</span><span class="w"> </span><span class="nx">destination</span><span class="p">,</span><span class="w"> </span><span class="nx">preset</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h5 id="status-example">status Example<a class="headerlink" href="#status-example" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\testmedia3.mxf&quot;</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">preset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\XDCAMHD 50 PAL 50i.epr&quot;</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">destination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\outputFolder&quot;</span><span class="p">;</span>
+
+<span class="c1">// //sources for mac</span>
+<span class="c1">// var source = &quot;/Users/Shared/testdata/testmedia3.mxf&quot;</span>
+<span class="c1">// var preset = &quot;/Users/Shared/testdata/XDCAMHD 50 PAL 50i.epr&quot;;</span>
+<span class="c1">// var destination = &quot;/Users/Shared/testdata/outputFolder&quot;;</span>
+
+<span class="kd">var</span><span class="w"> </span><span class="nx">exporter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">getExporter</span><span class="p">();</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">exporter</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span>
+<span class="w">    </span><span class="s2">&quot;onBatchItemStatusChanged&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">eventObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">//Possible status values:</span>
+<span class="w">      </span><span class="c1">// 0 : Waiting</span>
+<span class="w">      </span><span class="c1">// 1 : Done</span>
+<span class="w">      </span><span class="c1">// 2 : Failed</span>
+<span class="w">      </span><span class="c1">// 3 : Skipped</span>
+<span class="w">      </span><span class="c1">// 4 : Encoding</span>
+<span class="w">      </span><span class="c1">// 5 : Paused</span>
+<span class="w">      </span><span class="c1">// 6 : Stopped</span>
+<span class="w">      </span><span class="c1">// 7 : Any</span>
+<span class="w">      </span><span class="c1">// 8 : AutoStart</span>
+<span class="w">      </span><span class="c1">// 9 : Done Warning</span>
+<span class="w">      </span><span class="c1">// 10 : Watch Folder Waiting.</span>
+<span class="w">      </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Batch item status: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">eventObj</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="kc">false</span>
+<span class="w">  </span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// Alternatively you can access the correct name of that event via the following const property:</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">batchItemStatusChangedEvent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">AMEExportEvent</span><span class="p">.</span><span class="nx">onBatchItemStatusChanged</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">batchItemStatusChangedEvent</span><span class="p">,</span>
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">eventObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">//Possible status values:</span>
+<span class="w">      </span><span class="c1">// 0 : Waiting</span>
+<span class="w">      </span><span class="c1">// 1 : Done</span>
+<span class="w">      </span><span class="c1">// 2 : Failed</span>
+<span class="w">      </span><span class="c1">// 3 : Skipped</span>
+<span class="w">      </span><span class="c1">// 4 : Encoding</span>
+<span class="w">      </span><span class="c1">// 5 : Paused</span>
+<span class="w">      </span><span class="c1">// 6 : Stopped</span>
+<span class="w">      </span><span class="c1">// 7 : Any</span>
+<span class="w">      </span><span class="c1">// 8 : AutoStart</span>
+<span class="w">      </span><span class="c1">// 9 : Done Warning</span>
+<span class="w">      </span><span class="c1">// 10 : Watch Folder Waiting.</span>
+<span class="w">      </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Batch item status (alt): &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">eventObj</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="kc">false</span>
+<span class="w">  </span><span class="p">);</span>
+
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">encoderWrapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">exportItem</span><span class="p">(</span><span class="nx">source</span><span class="p">,</span><span class="w"> </span><span class="nx">destination</span><span class="p">,</span><span class="w"> </span><span class="nx">preset</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h3 id="onencodecomplete">onEncodeComplete<a class="headerlink" href="#onencodecomplete" title="Permanent link">&para;</a></h3>
+<p><code>app.getExporter().addEventListener("onEncodeComplete")</code></p>
+<h4 id="description_10">Description<a class="headerlink" href="#description_10" title="Permanent link">&para;</a></h4>
+<p>Notify when the batch item has been encoded.</p>
+<h4 id="properties_2">Properties<a class="headerlink" href="#properties_2" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>encodeCompleteStatus</code></td>
+<td>Boolean</td>
+<td>Returns <code>true</code> after encoding has been completed for a batch item.</td>
+</tr>
+<tr>
+<td><code>encodeCompleteTime</code></td>
+<td>Float</td>
+<td>Returns the encoding time in milliseconds.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="examples_1">Examples<a class="headerlink" href="#examples_1" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\testmedia3.mxf&quot;</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">preset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\XDCAMHD 50 PAL 50i.epr&quot;</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">destination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\outputFolder&quot;</span><span class="p">;</span>
+
+<span class="c1">// //sources for mac</span>
+<span class="c1">// var source = &quot;/Users/Shared/testdata/testmedia3.mxf&quot;</span>
+<span class="c1">// var preset = &quot;/Users/Shared/testdata/XDCAMHD 50 PAL 50i.epr&quot;;</span>
+<span class="c1">// var destination = &quot;/Users/Shared/testdata/outputFolder&quot;;</span>
+
+<span class="kd">var</span><span class="w"> </span><span class="nx">encodeCompleteEvent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">AMEExportEvent</span><span class="p">.</span><span class="nx">onEncodeComplete</span><span class="p">;</span>
+
+<span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span>
+<span class="w">  </span><span class="s2">&quot;Event name is identical with the const property API name (&#39;onEncodeComplete&#39;): &quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">    </span><span class="nx">encodeCompleteEvent</span>
+<span class="p">);</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">exporter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">getExporter</span><span class="p">();</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">exporter</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">encodeCompleteEvent</span><span class="p">,</span>
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">eventObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Encode Complete Status: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">eventObj</span><span class="p">.</span><span class="nx">encodeCompleteStatus</span><span class="p">);</span>
+<span class="w">      </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span>
+<span class="w">        </span><span class="s2">&quot;Encode Complete Time (in milli seconds): &quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">          </span><span class="nx">eventObj</span><span class="p">.</span><span class="nx">encodeCompleteTime</span>
+<span class="w">      </span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="kc">false</span>
+<span class="w">  </span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// Alternatively you can listen to &quot;onEncodeComplete&quot;</span>
+<span class="w">  </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span>
+<span class="w">    </span><span class="s2">&quot;onEncodeComplete&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">eventObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span>
+<span class="w">        </span><span class="s2">&quot;Encode Complete Status (alt): &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">eventObj</span><span class="p">.</span><span class="nx">encodeCompleteStatus</span>
+<span class="w">      </span><span class="p">);</span>
+<span class="w">      </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span>
+<span class="w">        </span><span class="s2">&quot;Encode Complete Time in milli seconds (alt): &quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">          </span><span class="nx">eventObj</span><span class="p">.</span><span class="nx">encodeCompleteTime</span>
+<span class="w">      </span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="kc">false</span>
+<span class="w">  </span><span class="p">);</span>
+
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">encoderWrapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">exportItem</span><span class="p">(</span><span class="nx">source</span><span class="p">,</span><span class="w"> </span><span class="nx">destination</span><span class="p">,</span><span class="w"> </span><span class="nx">preset</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h5 id="encodecompletestatus-example">encodeCompleteStatus Example<a class="headerlink" href="#encodecompletestatus-example" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\testmedia3.mxf&quot;</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">preset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\XDCAMHD 50 PAL 50i.epr&quot;</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">destination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\outputFolder&quot;</span><span class="p">;</span>
+
+<span class="c1">// //sources for mac</span>
+<span class="c1">// var source = &quot;/Users/Shared/testdata/testmedia3.mxf&quot;</span>
+<span class="c1">// var preset = &quot;/Users/Shared/testdata/XDCAMHD 50 PAL 50i.epr&quot;;</span>
+<span class="c1">// var destination = &quot;/Users/Shared/testdata/outputFolder&quot;;</span>
+
+<span class="kd">var</span><span class="w"> </span><span class="nx">exporter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">getExporter</span><span class="p">();</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">exporter</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span>
+<span class="w">    </span><span class="s2">&quot;onEncodeComplete&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">eventObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Encode Complete Status: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">eventObj</span><span class="p">.</span><span class="nx">encodeCompleteStatus</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="kc">false</span>
+<span class="w">  </span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// Alternatively you can access the correct name of that event via the following const property:</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">encodeCompleteEvent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">AMEExportEvent</span><span class="p">.</span><span class="nx">onEncodeComplete</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">encodeCompleteEvent</span><span class="p">,</span>
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">eventObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span>
+<span class="w">        </span><span class="s2">&quot;Encode Complete Status (alt): &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">eventObj</span><span class="p">.</span><span class="nx">encodeCompleteStatus</span>
+<span class="w">      </span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="kc">false</span>
+<span class="w">  </span><span class="p">);</span>
+
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">encoderWrapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">exportItem</span><span class="p">(</span><span class="nx">source</span><span class="p">,</span><span class="w"> </span><span class="nx">destination</span><span class="p">,</span><span class="w"> </span><span class="nx">preset</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h5 id="encodecompletetime-example">encodeCompleteTime Example<a class="headerlink" href="#encodecompletetime-example" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\testmedia3.mxf&quot;</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">preset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\XDCAMHD 50 PAL 50i.epr&quot;</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">destination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\outputFolder&quot;</span><span class="p">;</span>
+
+<span class="c1">// //sources for mac</span>
+<span class="c1">// var source = &quot;/Users/Shared/testdata/testmedia3.mxf&quot;</span>
+<span class="c1">// var preset = &quot;/Users/Shared/testdata/XDCAMHD 50 PAL 50i.epr&quot;;</span>
+<span class="c1">// var destination = &quot;/Users/Shared/testdata/outputFolder&quot;;</span>
+
+<span class="kd">var</span><span class="w"> </span><span class="nx">exporter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">getExporter</span><span class="p">();</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">exporter</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span>
+<span class="w">    </span><span class="s2">&quot;onEncodeComplete&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">eventObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span>
+<span class="w">        </span><span class="s2">&quot;Encode Complete Time in milli seconds: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">eventObj</span><span class="p">.</span><span class="nx">encodeCompleteTime</span>
+<span class="w">      </span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="kc">false</span>
+<span class="w">  </span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// Alternatively you can access the correct name of that event via the following const property:</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">encodeCompleteEvent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">AMEExportEvent</span><span class="p">.</span><span class="nx">onEncodeComplete</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">encodeCompleteEvent</span><span class="p">,</span>
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">eventObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span>
+<span class="w">        </span><span class="s2">&quot;Encode Complete Time in milli seconds: (alt): &quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">          </span><span class="nx">eventObj</span><span class="p">.</span><span class="nx">encodeCompleteTime</span>
+<span class="w">      </span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="kc">false</span>
+<span class="w">  </span><span class="p">);</span>
+
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">encoderWrapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">exportItem</span><span class="p">(</span><span class="nx">source</span><span class="p">,</span><span class="w"> </span><span class="nx">destination</span><span class="p">,</span><span class="w"> </span><span class="nx">preset</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h3 id="onencodingitemprogressupdated">onEncodingItemProgressUpdated<a class="headerlink" href="#onencodingitemprogressupdated" title="Permanent link">&para;</a></h3>
+<p><code>app.getExporter().addEventListener("onEncodingItemProgressUpdated")</code></p>
+<h4 id="description_11">Description<a class="headerlink" href="#description_11" title="Permanent link">&para;</a></h4>
+<p>Notify the encoding progress.</p>
+<h4 id="properties_3">Properties<a class="headerlink" href="#properties_3" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>progress</code></td>
+<td>Float</td>
+<td>Returns the batch item encoding progress value which is between 0 and 1.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="examples_2">Examples<a class="headerlink" href="#examples_2" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\testmedia3.mxf&quot;</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">preset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\XDCAMHD 50 PAL 50i.epr&quot;</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">destination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\outputFolder&quot;</span><span class="p">;</span>
+
+<span class="c1">// //sources for mac</span>
+<span class="c1">// var source = &quot;/Users/Shared/testdata/testmedia3.mxf&quot;</span>
+<span class="c1">// var preset = &quot;/Users/Shared/testdata/XDCAMHD 50 PAL 50i.epr&quot;;</span>
+<span class="c1">// var destination = &quot;/Users/Shared/testdata/outputFolder&quot;;</span>
+
+<span class="kd">var</span><span class="w"> </span><span class="nx">encodingItemProgressUpdatedEvent</span><span class="w"> </span><span class="o">=</span>
+<span class="w">  </span><span class="nx">AMEExportEvent</span><span class="p">.</span><span class="nx">onEncodingItemProgressUpdated</span><span class="p">;</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span>
+<span class="w">  </span><span class="s2">&quot;Event name is identical with the const property API name (&#39;onEncodingItemProgressUpdated&#39;): &quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">    </span><span class="nx">encodingItemProgressUpdatedEvent</span>
+<span class="p">);</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">exporter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">getExporter</span><span class="p">();</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">exporter</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">encodingItemProgressUpdatedEvent</span><span class="p">,</span>
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">eventObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Encoding progress for batch item: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">eventObj</span><span class="p">.</span><span class="nx">progress</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="kc">false</span>
+<span class="w">  </span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// Alternatively you can listen to &quot;onEncodingItemProgressUpdated&quot;</span>
+<span class="w">  </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span>
+<span class="w">    </span><span class="s2">&quot;onEncodingItemProgressUpdated&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">eventObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Encoding progress for batch item (alt): &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">eventObj</span><span class="p">.</span><span class="nx">progress</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="kc">false</span>
+<span class="w">  </span><span class="p">);</span>
+
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">encoderWrapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">exportItem</span><span class="p">(</span><span class="nx">source</span><span class="p">,</span><span class="w"> </span><span class="nx">destination</span><span class="p">,</span><span class="w"> </span><span class="nx">preset</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h5 id="progress-example">progress Example<a class="headerlink" href="#progress-example" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\testmedia3.mxf&quot;</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">preset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\XDCAMHD 50 PAL 50i.epr&quot;</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">destination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\outputFolder&quot;</span><span class="p">;</span>
+
+<span class="c1">// //sources for mac</span>
+<span class="c1">// var source = &quot;/Users/Shared/testdata/testmedia3.mxf&quot;</span>
+<span class="c1">// var preset = &quot;/Users/Shared/testdata/XDCAMHD 50 PAL 50i.epr&quot;;</span>
+<span class="c1">// var destination = &quot;/Users/Shared/testdata/outputFolder&quot;;</span>
+
+<span class="kd">var</span><span class="w"> </span><span class="nx">exporter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">getExporter</span><span class="p">();</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">exporter</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span>
+<span class="w">    </span><span class="s2">&quot;onEncodingItemProgressUpdated&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">eventObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Encoding progress for batch item: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">eventObj</span><span class="p">.</span><span class="nx">progress</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="kc">false</span>
+<span class="w">  </span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// Alternatively you can access the correct name of that event via the following const property:</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">encodingItemProgressUpdatedEvent</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="nx">AMEExportEvent</span><span class="p">.</span><span class="nx">onEncodingItemProgressUpdated</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">encodingItemProgressUpdatedEvent</span><span class="p">,</span>
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">eventObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Encoding progress for batch item (alt): &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">eventObj</span><span class="p">.</span><span class="nx">progress</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="kc">false</span>
+<span class="w">  </span><span class="p">);</span>
+
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">encoderWrapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">exportItem</span><span class="p">(</span><span class="nx">source</span><span class="p">,</span><span class="w"> </span><span class="nx">destination</span><span class="p">,</span><span class="w"> </span><span class="nx">preset</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h3 id="onerror">onError<a class="headerlink" href="#onerror" title="Permanent link">&para;</a></h3>
+<p><code>app.getExporter().addEventListener("onError")</code></p>
+<h4 id="description_12">Description<a class="headerlink" href="#description_12" title="Permanent link">&para;</a></h4>
+<p>Notify when there's an error while encoding the batch item.</p>
+<h4 id="examples_3">Examples<a class="headerlink" href="#examples_3" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\testmedia3.mxf&quot;</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">preset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\XDCAMHD 50 PAL 50i.epr&quot;</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">destination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\outputFolder&quot;</span><span class="p">;</span>
+
+<span class="c1">// //sources for mac</span>
+<span class="c1">// var source = &quot;/Users/Shared/testdata/testmedia3.mxf&quot;</span>
+<span class="c1">// var preset = &quot;/Users/Shared/testdata/XDCAMHD 50 PAL 50i.epr&quot;;</span>
+<span class="c1">// var destination = &quot;/Users/Shared/testdata/outputFolder&quot;;</span>
+
+<span class="kd">var</span><span class="w"> </span><span class="nx">errorEvent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">AMEExportEvent</span><span class="p">.</span><span class="nx">onError</span><span class="p">;</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span>
+<span class="w">  </span><span class="s2">&quot;Event name is identical with the const property API name (&#39;onError&#39;): &quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">    </span><span class="nx">errorEvent</span>
+<span class="p">);</span>
+
+<span class="kd">var</span><span class="w"> </span><span class="nx">exporter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">getExporter</span><span class="p">();</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">exporter</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">errorEvent</span><span class="p">,</span>
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">eventObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Error while encoding&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="kc">false</span>
+<span class="w">  </span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// Alternatively you can listen to &quot;onError&quot;</span>
+<span class="w">  </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span>
+<span class="w">    </span><span class="s2">&quot;onError&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">eventObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Error while encoding (alt)&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="kc">false</span>
+<span class="w">  </span><span class="p">);</span>
+
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">encoderWrapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">exportItem</span><span class="p">(</span><span class="nx">source</span><span class="p">,</span><span class="w"> </span><span class="nx">destination</span><span class="p">,</span><span class="w"> </span><span class="nx">preset</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h3 id="onitemencodingstarted">onItemEncodingStarted<a class="headerlink" href="#onitemencodingstarted" title="Permanent link">&para;</a></h3>
+<p><code>app.getExporter().addEventListener("onItemEncodingStarted")</code></p>
+<h4 id="description_13">Description<a class="headerlink" href="#description_13" title="Permanent link">&para;</a></h4>
+<p>Notify when the encoding of a batch item has started.</p>
+<h4 id="examples_4">Examples<a class="headerlink" href="#examples_4" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\testmedia3.mxf&quot;</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">preset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\XDCAMHD 50 PAL 50i.epr&quot;</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">destination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\outputFolder&quot;</span><span class="p">;</span>
+
+<span class="c1">// //sources for mac</span>
+<span class="c1">// var source = &quot;/Users/Shared/testdata/testmedia3.mxf&quot;</span>
+<span class="c1">// var preset = &quot;/Users/Shared/testdata/XDCAMHD 50 PAL 50i.epr&quot;;</span>
+<span class="c1">// var destination = &quot;/Users/Shared/testdata/outputFolder&quot;;</span>
+
+<span class="kd">var</span><span class="w"> </span><span class="nx">itemEncodingStartedEvent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">AMEExportEvent</span><span class="p">.</span><span class="nx">onItemEncodingStarted</span><span class="p">;</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span>
+<span class="w">  </span><span class="s2">&quot;Event name is identical with the const property API name (&#39;onItemEncodingStarted&#39;): &quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">    </span><span class="nx">itemEncodingStartedEvent</span>
+<span class="p">);</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">exporter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">getExporter</span><span class="p">();</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">exporter</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">itemEncodingStartedEvent</span><span class="p">,</span>
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">eventObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Encoding started for batch item.&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="kc">false</span>
+<span class="w">  </span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// Alternatively you can listen to &quot;onItemEncodingStarted&quot;</span>
+<span class="w">  </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span>
+<span class="w">    </span><span class="s2">&quot;onItemEncodingStarted&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">eventObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Encoding started for batch item (alt).&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="kc">false</span>
+<span class="w">  </span><span class="p">);</span>
+
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">encoderWrapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">exportItem</span><span class="p">(</span><span class="nx">source</span><span class="p">,</span><span class="w"> </span><span class="nx">destination</span><span class="p">,</span><span class="w"> </span><span class="nx">preset</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h3 id="onmediainfocreated">onMediaInfoCreated<a class="headerlink" href="#onmediainfocreated" title="Permanent link">&para;</a></h3>
+<p><code>app.getExporter().addEventListener("onMediaInfoCreated")</code></p>
+<h4 id="description_14">Description<a class="headerlink" href="#description_14" title="Permanent link">&para;</a></h4>
+<p>Notify when media info has been created.</p>
+<h4 id="examples_5">Examples<a class="headerlink" href="#examples_5" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\testmedia3.mxf&quot;</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">preset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\XDCAMHD 50 PAL 50i.epr&quot;</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">destination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\outputFolder&quot;</span><span class="p">;</span>
+
+<span class="c1">// //sources for mac</span>
+<span class="c1">// var source = &quot;/Users/Shared/testdata/testmedia3.mxf&quot;</span>
+<span class="c1">// var preset = &quot;/Users/Shared/testdata/XDCAMHD 50 PAL 50i.epr&quot;;</span>
+<span class="c1">// var destination = &quot;/Users/Shared/testdata/outputFolder&quot;;</span>
+
+<span class="kd">var</span><span class="w"> </span><span class="nx">mediaInfoCreatedEvent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">AMEExportEvent</span><span class="p">.</span><span class="nx">onMediaInfoCreated</span><span class="p">;</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span>
+<span class="w">  </span><span class="s2">&quot;Event name is identical with the const property API name (&#39;onMediaInfoCreated&#39;): &quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">    </span><span class="nx">mediaInfoCreatedEvent</span>
+<span class="p">);</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">exporter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">getExporter</span><span class="p">();</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">exporter</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">mediaInfoCreatedEvent</span><span class="p">,</span>
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">eventObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Media info created&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="kc">false</span>
+<span class="w">  </span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// Alternatively you can listen to &quot;onMediaInfoCreated&quot;</span>
+<span class="w">  </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span>
+<span class="w">    </span><span class="s2">&quot;onMediaInfoCreated&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">eventObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Media info created (alt)&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="kc">false</span>
+<span class="w">  </span><span class="p">);</span>
+
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">encoderWrapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">exportItem</span><span class="p">(</span><span class="nx">source</span><span class="p">,</span><span class="w"> </span><span class="nx">destination</span><span class="p">,</span><span class="w"> </span><span class="nx">preset</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h3 id="onpostprocesslistinitialized">onPostProcessListInitialized<a class="headerlink" href="#onpostprocesslistinitialized" title="Permanent link">&para;</a></h3>
+<p><code>app.getExporter().addEventListener("onPostProcessListInitialized")</code></p>
+<h4 id="description_15">Description<a class="headerlink" href="#description_15" title="Permanent link">&para;</a></h4>
+<p>Notify when the post process list is initialized.</p>
+<h4 id="examples_6">Examples<a class="headerlink" href="#examples_6" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\testmedia3.mxf&quot;</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">preset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\XDCAMHD 50 PAL 50i.epr&quot;</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">destination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\outputFolder&quot;</span><span class="p">;</span>
+
+<span class="c1">// //sources for mac</span>
+<span class="c1">// var source = &quot;/Users/Shared/testdata/testmedia3.mxf&quot;</span>
+<span class="c1">// var preset = &quot;/Users/Shared/testdata/XDCAMHD 50 PAL 50i.epr&quot;;</span>
+<span class="c1">// var destination = &quot;/Users/Shared/testdata/outputFolder&quot;;</span>
+
+<span class="kd">var</span><span class="w"> </span><span class="nx">postProcessListInitializedEvent</span><span class="w"> </span><span class="o">=</span>
+<span class="w">  </span><span class="nx">AMEExportEvent</span><span class="p">.</span><span class="nx">onPostProcessListInitialized</span><span class="p">;</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span>
+<span class="w">  </span><span class="s2">&quot;Event name is identical with the const property API name (&#39;onPostProcessListInitialized&#39;): &quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">    </span><span class="nx">postProcessListInitializedEvent</span>
+<span class="p">);</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">exporter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">getExporter</span><span class="p">();</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">exporter</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">postProcessListInitializedEvent</span><span class="p">,</span>
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">eventObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Post process list has been initialized.&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="kc">false</span>
+<span class="w">  </span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// Alternatively you can listen to &quot;onPostProcessListInitialized&quot;</span>
+<span class="w">  </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span>
+<span class="w">    </span><span class="s2">&quot;onPostProcessListInitialized&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">eventObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Post process list has been initialized (alt).&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="kc">false</span>
+<span class="w">  </span><span class="p">);</span>
+
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">encoderWrapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">exportItem</span><span class="p">(</span><span class="nx">source</span><span class="p">,</span><span class="w"> </span><span class="nx">destination</span><span class="p">,</span><span class="w"> </span><span class="nx">preset</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">January 24, 2025</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      All content is copyright Adobe Systems Incorporated.
+    </div>
+  
+  
+    Made with
+    <a
+      href="https://squidfunk.github.io/mkdocs-material/"
+      target="_blank" rel="noopener"
+    >
+      Material for MkDocs
+    </a>
+  
+</div>
+
+<!-- Print button -->
+<div class="md-copyright">
+  
+  <a href="../../print_page/" title="Print Site" class="md-content__button md-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 3H6v4h12m1 5a1 1 0 0 1-1-1 1 1 0 0 1 1-1 1 1 0 0 1 1 1 1 1 0 0 1-1 1m-3 7H8v-5h8m3-6H5a3 3 0 0 0-3 3v6h4v4h12v-4h4v-6a3 3 0 0 0-3-3"/></svg>
+  </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["announce.dismiss", "content.action.edit", "content.action.view", "search.highlight", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+        <script src="../../js/print-site.js"></script>
+      
+    
+  </body>
+</html>
