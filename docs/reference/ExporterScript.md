@@ -615,11 +615,27 @@ Notify when batch item status has been changed.
 
 #### Properties
 
-|   Property   |     Type     |                                                                                                                                        Description                                                                                                                                        |
-| ------------ | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `groupIndex` | Unsigned int | Returns the batch group index.                                                                                                                                                                                                                                                            |
-| `itemIndex`  | Unsigned int | Returns the batch item index.                                                                                                                                                                                                                                                             |
-| `status`     | Unsigned int | Returns the batch item status, one of: <ul><li>0 – Waiting</li><li>1 – Done</li><li>2 – Failed</li><li>3 – Skipped</li><li>4 – Encoding</li><li>5 – Paused</li><li>6 – Stopped</li><li>7 – Any</li><li>8 – AutoStart</li><li>9 – Done Warning</li><li>10 – Watch Folder Waiting</li></ul> |
++--------------+--------------+----------------------------------------+
+|   Property   |     Type     |              Description               |
++==============+==============+========================================+
+| `groupIndex` | Unsigned int | Returns the batch group index.         |
++--------------+--------------+----------------------------------------+
+| `itemIndex`  | Unsigned int | Returns the batch item index.          |
++--------------+--------------+----------------------------------------+
+| `status`     | Unsigned int | Returns the batch item status, one of: |
+|              |              |                                        |
+|              |              | - 0 - Waiting                          |
+|              |              | - 1 - Done                             |
+|              |              | - 2 - Failed                           |
+|              |              | - 3 - Skipped                          |
+|              |              | - 4 - Encoding                         |
+|              |              | - 5 - Paused                           |
+|              |              | - 6 - Stopped                          |
+|              |              | - 7 - Any                              |
+|              |              | - 8 - AutoStart                        |
+|              |              | - 9 - Done Warning                     |
+|              |              | - 10 - Watch Folder Waiting            |
++--------------+--------------+----------------------------------------+
 
 #### Examples
 

@@ -422,9 +422,17 @@ Notify when the batch encoder status has changed. Get the new status from the `b
 
 #### Properties
 
-|       Property       |  Type  |                                                                                          Description                                                                                           |
-| -------------------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `batchEncoderStatus` | String | Returns the status of the batch encoder, when the event was sent. The values are:<ul><li>`"invalid"`</li><li>`"paused"`</li><li>`"running"`</li><li>`"stopped"`</li><li>`"stopping"`</li></ul> |
++----------------------+--------+-----------------------------------------------------------------------------------+
+|       Property       |  Type  |                                    Description                                    |
++======================+========+===================================================================================+
+| `batchEncoderStatus` | String | Returns the status of the batch encoder, when the event was sent. The values are: |
+|                      |        |                                                                                   |
+|                      |        | - `"invalid"`                                                                     |
+|                      |        | - `"paused"`                                                                      |
+|                      |        | - `"running"`                                                                     |
+|                      |        | - `"stopped"`                                                                     |
+|                      |        | - `"stopping"`                                                                    |
++----------------------+--------+-----------------------------------------------------------------------------------+
 
 ---
 

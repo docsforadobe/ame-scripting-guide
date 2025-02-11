@@ -504,9 +504,19 @@ Sets the crop type
 
 #### Parameters
 
-| Parameter  |     Type     |                                                                                                          Description                                                                                                           |
-| ---------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `cropType` | Unsigned int | <ul><li>0 – `ScaleToFit`</li><li>1 – `ScaleToFitBeforeCrop`</li><li>2 – `SetAsOutputSize`</li><li>3 – `ScaleToFill`</li><li>4 – `ScaleToFillBeforeCrop`</li><li>5 – `StretchToFill`</li><li>6 – `StretchToFillBeforeCrop`</ul> |
++------------+--------------+---------------------------------+
+| Parameter  |     Type     |           Description           |
++============+==============+=================================+
+| `cropType` | Unsigned int | One of:                         |
+|            |              |                                 |
+|            |              | - 0 - `ScaleToFit`              |
+|            |              | - 1 - `ScaleToFitBeforeCrop`    |
+|            |              | - 2 - `SetAsOutputSize`         |
+|            |              | - 3 - `ScaleToFill`             |
+|            |              | - 4 - `ScaleToFillBeforeCrop`   |
+|            |              | - 5 - `StretchToFill`           |
+|            |              | - 6 - `StretchToFillBeforeCrop` |
++------------+--------------+---------------------------------+
 
 #### Returns
 
@@ -625,9 +635,19 @@ Sets the scale type
 
 #### Parameters
 
-|  Parameter  |     Type     |                                                                                                          Description                                                                                                           |
-| ----------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `scaleType` | Unsigned int | <ul><li>0 – `ScaleToFit`</li><li>1 – `ScaleToFitBeforeCrop`</li><li>2 – `SetAsOutputSize`</li><li>3 – `ScaleToFill`</li><li>4 – `ScaleToFillBeforeCrop`</li><li>5 – `StretchToFill`</li><li>6 – `StretchToFillBeforeCrop`</ul> |
++-------------+--------------+---------------------------------+
+|  Parameter  |     Type     |           Description           |
++=============+==============+=================================+
+| `scaleType` | Unsigned int | One of:                         |
+|             |              |                                 |
+|             |              | - 0 - `ScaleToFit`              |
+|             |              | - 1 - `ScaleToFitBeforeCrop`    |
+|             |              | - 2 - `SetAsOutputSize`         |
+|             |              | - 3 - `ScaleToFill`             |
+|             |              | - 4 - `ScaleToFillBeforeCrop`   |
+|             |              | - 5 - `StretchToFill`           |
+|             |              | - 6 - `StretchToFillBeforeCrop` |
++-------------+--------------+---------------------------------+
 
 #### Returns
 
@@ -645,9 +665,16 @@ Set the time interpolation type
 
 #### Parameters
 
-|      Parameter      |     Type     |                                      Description                                      |
-| ------------------- | ------------ | ------------------------------------------------------------------------------------- |
-| `interpolationType` | Unsigned int | <ul><li>0 – FrameSampling</li><li>1 – FrameBlending</li><li>2 – OpticalFlow</li></ul> |
++---------------------+--------------+-----------------------+
+|      Parameter      |     Type     |      Description      |
++=====================+==============+=======================+
+| `interpolationType` | Unsigned int | One of:               |
+|                     |              |                       |
+|                     |              | - 0 - `FrameSampling` |
+|                     |              | - 1 - `FrameBlending` |
+|                     |              | - 2 - `OpticalFlow`   |
++---------------------+--------------+-----------------------+
+
 
 #### Returns
 
@@ -725,11 +752,21 @@ Sets the work area type, start and end time for the batch item.
 
 #### Parameters
 
-|   Parameter    |     Type     |                                                   Description                                                   |
-| -------------- | ------------ | --------------------------------------------------------------------------------------------------------------- |
-| `workAreaType` | Unsigned int | <ul><li>0 – Entire</li><li>1 – InToOut</li><li>2 – WorkArea</li><li>3 – Custom</li><li>4 – UseDefault</li></ul> |
-| `startTime`    | Float        | Start time                                                                                                      |
-| `endTime`      | Float        | End time                                                                                                        |
++----------------+--------------+--------------------+
+|   Parameter    |     Type     |    Description     |
++================+==============+====================+
+| `workAreaType` | Unsigned int | One of:            |
+|                |              |                    |
+|                |              | - 0 - `Entire`     |
+|                |              | - 1 - `InToOut`    |
+|                |              | - 2 - `WorkArea`   |
+|                |              | - 3 - `Custom`     |
+|                |              | - 4 - `UseDefault` |
++----------------+--------------+--------------------+
+| `startTime`    | Float        | Start time         |
++----------------+--------------+--------------------+
+| `endTime`      | Float        | End time           |
++----------------+--------------+--------------------+
 
 #### Returns
 
@@ -750,11 +787,22 @@ Sets the work area type, start and end time in ticks for the batch item
 
 #### Parameters
 
-|   Parameter    |     Type     |                                                   Description                                                   |
-| -------------- | ------------ | --------------------------------------------------------------------------------------------------------------- |
-| `workAreaType` | Unsigned int | <ul><li>0 – Entire</li><li>1 – InToOut</li><li>2 – WorkArea</li><li>3 – Custom</li><li>4 – UseDefault</li></ul> |
-| `startTime`    | Float        | Start time, in ticks                                                                                            |
-| `endTime`      | Float        | End time, in ticks                                                                                              |
++----------------+--------------+----------------------+
+|   Parameter    |     Type     |     Description      |
++================+==============+======================+
+| `workAreaType` | Unsigned int | One of:              |
+|                |              |                      |
+|                |              | - 0 - `Entire`       |
+|                |              | - 1 - `InToOut`      |
+|                |              | - 2 - `WorkArea`     |
+|                |              | - 3 - `Custom`       |
+|                |              | - 4 - `UseDefault`   |
+|                |              |                      |
++----------------+--------------+----------------------+
+| `startTime`    | Float        | Start time, in ticks |
++----------------+--------------+----------------------+
+| `endTime`      | Float        | End time, in ticks   |
++----------------+--------------+----------------------+
 
 #### Returns
 
@@ -915,9 +963,15 @@ Notify when the batch item has been encoded.
 
 #### Properties
 
-| Property |  Type  |                                               Description                                                |
-| -------- | ------ | -------------------------------------------------------------------------------------------------------- |
-| `result` | String | Returns the encoding result, one of:<ul><li>`"Done!"`</li><li>`"Failed!"`</li><li>`"Stopped!"`</li></ul> |
++----------+--------+--------------------------------------+
+| Property |  Type  |             Description              |
++==========+========+======================================+
+| `result` | String | Returns the encoding result, one of: |
+|          |        |                                      |
+|          |        | - `"Done!"`                          |
+|          |        | - `"Failed!"`                        |
+|          |        | - `"Stopped!"`                       |
++----------+--------+--------------------------------------+
 
 ---
 
