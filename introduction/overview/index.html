@@ -660,43 +660,43 @@
 <h2 id="how-do-i-run-scripts-in-ame">How do I run scripts in AME?<a class="headerlink" href="#how-do-i-run-scripts-in-ame" title="Permanent link">&para;</a></h2>
 <p>Similarly to Premiere Pro, you can use Visual Studio Code and the “ExtendScript Debugger” extension to send scripts from VS Code to AME and debug them in the app. Open the script, select the target and run or debug the script.</p>
 <p>You can also launch scripts from the command line on Mac and Windows, like this:</p>
-<div class="highlight"><pre><span></span><code>&lt;fullPathToAMEbinary&gt;<span class="w"> </span>--console<span class="w"> </span>es.processFile<span class="w"> </span>&lt;fullPathToScript&gt;
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1">&lt;fullPathToAMEbinary&gt;<span class="w"> </span>--console<span class="w"> </span>es.processFile<span class="w"> </span>&lt;fullPathToScript&gt;
+</span></code></pre></div>
 <p>Example for executing a test script on Mac:</p>
-<div class="highlight"><pre><span></span><code><span class="s2">&quot;/Applications/Adobe Media Encoder (Beta)/Adobe Media Encoder (Beta).app/</span>
-<span class="s2"> Contents/MacOS/Adobe Media Encoder (Beta)&quot;</span>
-<span class="w"> </span>--console<span class="w"> </span>es.processFile<span class="w"> </span>~/Desktop/test.js
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><span class="s2">&quot;/Applications/Adobe Media Encoder (Beta)/Adobe Media Encoder (Beta).app/</span>
+</span><span id="__span-1-2"><span class="s2"> Contents/MacOS/Adobe Media Encoder (Beta)&quot;</span>
+</span><span id="__span-1-3"><span class="w"> </span>--console<span class="w"> </span>es.processFile<span class="w"> </span>~/Desktop/test.js
+</span></code></pre></div>
 <h2 id="what-is-a-good-starting-point-to-understand-the-scripting-objects">What is a good starting point to understand the scripting objects?<a class="headerlink" href="#what-is-a-good-starting-point-to-understand-the-scripting-objects" title="Permanent link">&para;</a></h2>
 <p>Lets start with a very basic script:</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// make sure to replace &quot;\\&quot; by &quot;/&quot; on Mac with a valid path</span>
-<span class="kd">var</span><span class="w"> </span><span class="nx">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;D:\\full\\path\\to\\camera3.mxf&quot;</span><span class="p">;</span>
-<span class="kd">var</span><span class="w"> </span><span class="nx">preset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;D:\\full\\path\\to\\AME\\MediaIO\\systempresets\\58444341_4d584658\\XDCAMHD 50 PAL 50i.epr&quot;</span><span class="p">;</span>
-<span class="kd">var</span><span class="w"> </span><span class="nx">destination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\full\\path\\to\\Output\\test&quot;</span><span class="p">;</span>
-
-<span class="kd">var</span><span class="w"> </span><span class="nx">exporter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">getExporter</span><span class="p">();</span>
-
-<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">exporter</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">   </span><span class="kd">var</span><span class="w"> </span><span class="nx">encoderWrapper</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">exportItem</span><span class="p">(</span><span class="nx">source</span><span class="p">,</span><span class="w"> </span><span class="nx">destination</span><span class="p">,</span><span class="w"> </span><span class="nx">preset</span><span class="p">);</span>
-
-<span class="w">   </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;onEncodeComplete&quot;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">eventObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="c1">// We can get the encoding status from the event or from the exporter</span>
-<span class="w">        </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Encode Complete Status: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">eventObj</span><span class="p">.</span><span class="nx">encodeCompleteStatus</span><span class="p">);</span>
-
-<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nx">encodeSuccess</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">encodeSuccess</span><span class="p">;</span>
-<span class="w">        </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Encode Complete Status alt: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">encodeSuccess</span><span class="p">);</span>
-<span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span>
-
-<span class="w">    </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;onError&quot;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">eventObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="c1">// We can get the encoding status from the event or from the exporter</span>
-<span class="w">        </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Error while encoding&quot;</span><span class="p">);</span>
-
-<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nx">encodeSuccess</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">encodeSuccess</span><span class="p">;</span>
-<span class="w">        </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Encode Complete Status: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">encodeSuccess</span><span class="p">);</span>
-<span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span>
-
-<span class="p">}</span>
-</code></pre></div>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-2-1"><span class="c1">// make sure to replace &quot;\\&quot; by &quot;/&quot; on Mac with a valid path</span>
+</span><span id="__span-2-2"><span class="kd">var</span><span class="w"> </span><span class="nx">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;D:\\full\\path\\to\\camera3.mxf&quot;</span><span class="p">;</span>
+</span><span id="__span-2-3"><span class="kd">var</span><span class="w"> </span><span class="nx">preset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;D:\\full\\path\\to\\AME\\MediaIO\\systempresets\\58444341_4d584658\\XDCAMHD 50 PAL 50i.epr&quot;</span><span class="p">;</span>
+</span><span id="__span-2-4"><span class="kd">var</span><span class="w"> </span><span class="nx">destination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\full\\path\\to\\Output\\test&quot;</span><span class="p">;</span>
+</span><span id="__span-2-5">
+</span><span id="__span-2-6"><span class="kd">var</span><span class="w"> </span><span class="nx">exporter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">getExporter</span><span class="p">();</span>
+</span><span id="__span-2-7">
+</span><span id="__span-2-8"><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">exporter</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-9"><span class="w">   </span><span class="kd">var</span><span class="w"> </span><span class="nx">encoderWrapper</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">exportItem</span><span class="p">(</span><span class="nx">source</span><span class="p">,</span><span class="w"> </span><span class="nx">destination</span><span class="p">,</span><span class="w"> </span><span class="nx">preset</span><span class="p">);</span>
+</span><span id="__span-2-10">
+</span><span id="__span-2-11"><span class="w">   </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;onEncodeComplete&quot;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">eventObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-12"><span class="w">        </span><span class="c1">// We can get the encoding status from the event or from the exporter</span>
+</span><span id="__span-2-13"><span class="w">        </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Encode Complete Status: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">eventObj</span><span class="p">.</span><span class="nx">encodeCompleteStatus</span><span class="p">);</span>
+</span><span id="__span-2-14">
+</span><span id="__span-2-15"><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nx">encodeSuccess</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">encodeSuccess</span><span class="p">;</span>
+</span><span id="__span-2-16"><span class="w">        </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Encode Complete Status alt: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">encodeSuccess</span><span class="p">);</span>
+</span><span id="__span-2-17"><span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span>
+</span><span id="__span-2-18">
+</span><span id="__span-2-19"><span class="w">    </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;onError&quot;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">eventObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-20"><span class="w">        </span><span class="c1">// We can get the encoding status from the event or from the exporter</span>
+</span><span id="__span-2-21"><span class="w">        </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Error while encoding&quot;</span><span class="p">);</span>
+</span><span id="__span-2-22">
+</span><span id="__span-2-23"><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nx">encodeSuccess</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">exporter</span><span class="p">.</span><span class="nx">encodeSuccess</span><span class="p">;</span>
+</span><span id="__span-2-24"><span class="w">        </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Encode Complete Status: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">encodeSuccess</span><span class="p">);</span>
+</span><span id="__span-2-25"><span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span>
+</span><span id="__span-2-26">
+</span><span id="__span-2-27"><span class="p">}</span>
+</span></code></pre></div>
 <p>In order to encode a source file in AME, you need to provide the paths of the source file and destination folder, and the preset to be used.</p>
 <p>The event listener for <code>onEncodeComplete</code> will be called once the encode has successfully finished.</p>
 <h2 id="where-can-i-ask-more-questions-and-get-help">Where can I ask more questions and get help?<a class="headerlink" href="#where-can-i-ask-more-questions-and-get-help" title="Permanent link">&para;</a></h2>
@@ -784,7 +784,7 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["announce.dismiss", "content.action.edit", "content.action.view", "search.highlight", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["announce.dismiss", "content.action.edit", "content.action.view", "content.code.copy", "search.highlight", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
       <script src="../../assets/javascripts/bundle.f1b6f286.min.js"></script>

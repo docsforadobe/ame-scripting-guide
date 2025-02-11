@@ -798,45 +798,45 @@
 <h4 id="returns">Returns<a class="headerlink" href="#returns" title="Permanent link">&para;</a></h4>
 <p>Boolean</p>
 <h4 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">folder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\watchFolder&quot;</span><span class="p">;</span>
-<span class="kd">var</span><span class="w"> </span><span class="nx">preset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\HighQuality720HD.epr&quot;</span><span class="p">;</span>
-<span class="kd">var</span><span class="w"> </span><span class="nx">destination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\outputFolder&quot;</span><span class="p">;</span>
-
-<span class="c1">// //sources for mac</span>
-<span class="c1">// var folder = &quot;/Users/Shared/testdata/watchFolder&quot;</span>
-<span class="c1">// var preset = &quot;/Users/Shared/testdata/HighQuality720HD.epr&quot;;</span>
-<span class="c1">// var destination = &quot;/Users/Shared/testdata/outputFolder&quot;;</span>
-
-<span class="kd">var</span><span class="w"> </span><span class="nx">watchFolder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">getWatchFolder</span><span class="p">();</span>
-<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">watchFolder</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">watchFolderSuccess</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">watchFolder</span><span class="p">.</span><span class="nx">createWatchFolder</span><span class="p">(</span>
-<span class="w">    </span><span class="nx">folder</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">destination</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">preset</span>
-<span class="w">  </span><span class="p">);</span>
-
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">watchFolderSuccess</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="nx">folder</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot; added as a watch folder&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="nx">encoderHostWrapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">getEncoderHost</span><span class="p">();</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">encoderHostWrapper</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">watchFolder</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;onEncodeComplete&quot;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">eventObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Elapsed Time: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">eventObj</span><span class="p">.</span><span class="nx">elapsedTime</span><span class="p">);</span>
-<span class="w">        </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;watchFolder.onEncodeComplete&quot;</span><span class="p">);</span>
-<span class="w">      </span><span class="p">});</span>
-
-<span class="w">      </span><span class="nx">watchFolder</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;onEncodeError&quot;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">eventObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;watchFolder.onEncodeError&quot;</span><span class="p">);</span>
-<span class="w">      </span><span class="p">});</span>
-
-<span class="w">      </span><span class="nx">encoderHostWrapper</span><span class="p">.</span><span class="nx">runBatch</span><span class="p">();</span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;EncoderHostWrapper object is not valid&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Watch folder was not created&quot;</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-0-1"><span class="kd">var</span><span class="w"> </span><span class="nx">folder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\watchFolder&quot;</span><span class="p">;</span>
+</span><span id="__span-0-2"><span class="kd">var</span><span class="w"> </span><span class="nx">preset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\HighQuality720HD.epr&quot;</span><span class="p">;</span>
+</span><span id="__span-0-3"><span class="kd">var</span><span class="w"> </span><span class="nx">destination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\outputFolder&quot;</span><span class="p">;</span>
+</span><span id="__span-0-4">
+</span><span id="__span-0-5"><span class="c1">// //sources for mac</span>
+</span><span id="__span-0-6"><span class="c1">// var folder = &quot;/Users/Shared/testdata/watchFolder&quot;</span>
+</span><span id="__span-0-7"><span class="c1">// var preset = &quot;/Users/Shared/testdata/HighQuality720HD.epr&quot;;</span>
+</span><span id="__span-0-8"><span class="c1">// var destination = &quot;/Users/Shared/testdata/outputFolder&quot;;</span>
+</span><span id="__span-0-9">
+</span><span id="__span-0-10"><span class="kd">var</span><span class="w"> </span><span class="nx">watchFolder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">getWatchFolder</span><span class="p">();</span>
+</span><span id="__span-0-11"><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">watchFolder</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-12"><span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">watchFolderSuccess</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">watchFolder</span><span class="p">.</span><span class="nx">createWatchFolder</span><span class="p">(</span>
+</span><span id="__span-0-13"><span class="w">    </span><span class="nx">folder</span><span class="p">,</span>
+</span><span id="__span-0-14"><span class="w">    </span><span class="nx">destination</span><span class="p">,</span>
+</span><span id="__span-0-15"><span class="w">    </span><span class="nx">preset</span>
+</span><span id="__span-0-16"><span class="w">  </span><span class="p">);</span>
+</span><span id="__span-0-17">
+</span><span id="__span-0-18"><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">watchFolderSuccess</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-19"><span class="w">    </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="nx">folder</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot; added as a watch folder&quot;</span><span class="p">);</span>
+</span><span id="__span-0-20"><span class="w">    </span><span class="nx">encoderHostWrapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">getEncoderHost</span><span class="p">();</span>
+</span><span id="__span-0-21"><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">encoderHostWrapper</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-22"><span class="w">      </span><span class="nx">watchFolder</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;onEncodeComplete&quot;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">eventObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-23"><span class="w">        </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Elapsed Time: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">eventObj</span><span class="p">.</span><span class="nx">elapsedTime</span><span class="p">);</span>
+</span><span id="__span-0-24"><span class="w">        </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;watchFolder.onEncodeComplete&quot;</span><span class="p">);</span>
+</span><span id="__span-0-25"><span class="w">      </span><span class="p">});</span>
+</span><span id="__span-0-26">
+</span><span id="__span-0-27"><span class="w">      </span><span class="nx">watchFolder</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;onEncodeError&quot;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">eventObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-28"><span class="w">        </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;watchFolder.onEncodeError&quot;</span><span class="p">);</span>
+</span><span id="__span-0-29"><span class="w">      </span><span class="p">});</span>
+</span><span id="__span-0-30">
+</span><span id="__span-0-31"><span class="w">      </span><span class="nx">encoderHostWrapper</span><span class="p">.</span><span class="nx">runBatch</span><span class="p">();</span>
+</span><span id="__span-0-32"><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-33"><span class="w">      </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;EncoderHostWrapper object is not valid&quot;</span><span class="p">);</span>
+</span><span id="__span-0-34"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-35"><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-36"><span class="w">    </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Watch folder was not created&quot;</span><span class="p">);</span>
+</span><span id="__span-0-37"><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-0-38"><span class="p">}</span>
+</span></code></pre></div>
 <hr />
 <h3 id="watchfolderremoveallwatchfolders">WatchFolder.removeAllWatchFolders()<a class="headerlink" href="#watchfolderremoveallwatchfolders" title="Permanent link">&para;</a></h3>
 <p><code>app.getWatchFolder().removeAllWatchFolders()</code></p>
@@ -845,28 +845,28 @@
 <h4 id="returns_1">Returns<a class="headerlink" href="#returns_1" title="Permanent link">&para;</a></h4>
 <p>Boolean</p>
 <h4 id="example_1">Example<a class="headerlink" href="#example_1" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">folder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\watchFolder&quot;</span><span class="p">;</span>
-<span class="kd">var</span><span class="w"> </span><span class="nx">preset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\HighQuality720HD.epr&quot;</span><span class="p">;</span>
-<span class="kd">var</span><span class="w"> </span><span class="nx">destination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\outputWatchfolder1&quot;</span><span class="p">;</span>
-<span class="kd">var</span><span class="w"> </span><span class="nx">folder2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\watchFolder2&quot;</span><span class="p">;</span>
-<span class="kd">var</span><span class="w"> </span><span class="nx">destination2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\outputWatchfolder2&quot;</span><span class="p">;</span>
-
-<span class="c1">// //sources for mac</span>
-<span class="c1">// var folder = &quot;/Users/Shared/testdata/watchFolder&quot;</span>
-<span class="c1">// var preset = &quot;/Users/Shared/testdata/HighQuality720HD.epr&quot;;</span>
-<span class="c1">// var destination = &quot;/Users/Shared/testdata/outputWatchfolder1&quot;;</span>
-<span class="c1">// var folder2 = &quot;/Users/Shared/testdata/watchFolder2&quot;</span>
-<span class="c1">// var destination2 = &quot;/Users/Shared/testdata/outputWatchfolder2&quot;;</span>
-
-<span class="kd">var</span><span class="w"> </span><span class="nx">watchFolderObj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">getWatchFolder</span><span class="p">();</span>
-<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">watchFolderObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">watchFolder</span><span class="p">.</span><span class="nx">createWatchFolder</span><span class="p">(</span><span class="nx">folder</span><span class="p">,</span><span class="w"> </span><span class="nx">destination</span><span class="p">,</span><span class="w"> </span><span class="nx">preset</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">watchFolder</span><span class="p">.</span><span class="nx">createWatchFolder</span><span class="p">(</span><span class="nx">folder2</span><span class="p">,</span><span class="w"> </span><span class="nx">destination2</span><span class="p">,</span><span class="w"> </span><span class="nx">preset</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">watchFolderObj</span><span class="p">.</span><span class="nx">removeAllWatchFolders</span><span class="p">();</span>
-<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Watch folder object is not valid&quot;</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-1-1"><span class="kd">var</span><span class="w"> </span><span class="nx">folder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\watchFolder&quot;</span><span class="p">;</span>
+</span><span id="__span-1-2"><span class="kd">var</span><span class="w"> </span><span class="nx">preset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\HighQuality720HD.epr&quot;</span><span class="p">;</span>
+</span><span id="__span-1-3"><span class="kd">var</span><span class="w"> </span><span class="nx">destination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\outputWatchfolder1&quot;</span><span class="p">;</span>
+</span><span id="__span-1-4"><span class="kd">var</span><span class="w"> </span><span class="nx">folder2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\watchFolder2&quot;</span><span class="p">;</span>
+</span><span id="__span-1-5"><span class="kd">var</span><span class="w"> </span><span class="nx">destination2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\\testdata\\outputWatchfolder2&quot;</span><span class="p">;</span>
+</span><span id="__span-1-6">
+</span><span id="__span-1-7"><span class="c1">// //sources for mac</span>
+</span><span id="__span-1-8"><span class="c1">// var folder = &quot;/Users/Shared/testdata/watchFolder&quot;</span>
+</span><span id="__span-1-9"><span class="c1">// var preset = &quot;/Users/Shared/testdata/HighQuality720HD.epr&quot;;</span>
+</span><span id="__span-1-10"><span class="c1">// var destination = &quot;/Users/Shared/testdata/outputWatchfolder1&quot;;</span>
+</span><span id="__span-1-11"><span class="c1">// var folder2 = &quot;/Users/Shared/testdata/watchFolder2&quot;</span>
+</span><span id="__span-1-12"><span class="c1">// var destination2 = &quot;/Users/Shared/testdata/outputWatchfolder2&quot;;</span>
+</span><span id="__span-1-13">
+</span><span id="__span-1-14"><span class="kd">var</span><span class="w"> </span><span class="nx">watchFolderObj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">getWatchFolder</span><span class="p">();</span>
+</span><span id="__span-1-15"><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">watchFolderObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-16"><span class="w">  </span><span class="nx">watchFolder</span><span class="p">.</span><span class="nx">createWatchFolder</span><span class="p">(</span><span class="nx">folder</span><span class="p">,</span><span class="w"> </span><span class="nx">destination</span><span class="p">,</span><span class="w"> </span><span class="nx">preset</span><span class="p">);</span>
+</span><span id="__span-1-17"><span class="w">  </span><span class="nx">watchFolder</span><span class="p">.</span><span class="nx">createWatchFolder</span><span class="p">(</span><span class="nx">folder2</span><span class="p">,</span><span class="w"> </span><span class="nx">destination2</span><span class="p">,</span><span class="w"> </span><span class="nx">preset</span><span class="p">);</span>
+</span><span id="__span-1-18"><span class="w">  </span><span class="nx">watchFolderObj</span><span class="p">.</span><span class="nx">removeAllWatchFolders</span><span class="p">();</span>
+</span><span id="__span-1-19"><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-20"><span class="w">  </span><span class="nx">$</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s2">&quot;Watch folder object is not valid&quot;</span><span class="p">);</span>
+</span><span id="__span-1-21"><span class="p">}</span>
+</span></code></pre></div>
 <hr />
 <h2 id="events">Events<a class="headerlink" href="#events" title="Permanent link">&para;</a></h2>
 <h3 id="onencodecomplete">onEncodeComplete<a class="headerlink" href="#onencodecomplete" title="Permanent link">&para;</a></h3>
@@ -978,7 +978,7 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["announce.dismiss", "content.action.edit", "content.action.view", "search.highlight", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["announce.dismiss", "content.action.edit", "content.action.view", "content.code.copy", "search.highlight", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
       <script src="../../assets/javascripts/bundle.f1b6f286.min.js"></script>
