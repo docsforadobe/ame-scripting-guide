@@ -228,13 +228,21 @@ Export the source with the provided preset.
 
 #### Parameters
 
-|      Parameter      |  Type   |                                                                                         Description                                                                                          |
-| ------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `sourcePath`        | String  | Media path or Premiere Pro project path (In case of a Premiere Pro project, the last sequence will be used).                                                                                 |
-| `outputPath`        | String  | If `outputPath` is empty, then the output file location will be generated based on the source location.                                                                                      |
-| `presetsPath`       | String  | Multiple preset paths can be provided separated via a <code>&#124;</code> (e.g. <code>"path1&#124;path2&#124;path3"</code>)                                                                  |
-| `matchSource`       | Boolean | Optional. Default value is `false`.                                                                                                                                                          |
-| `writeFramesToDisk` | Boolean | Optional. Default value is `false`. `true` writes five frames at 0%, 25%, 50%, 75% and 100% of the full duration.<br />Known issue: Currently it only works with parallel encoding disabled. |
++---------------------+---------+-----------------------------------------------------------------------------------------------------------------------------+
+|      Parameter      |  Type   |                                                         Description                                                         |
++=====================+=========+=============================================================================================================================+
+| `sourcePath`        | String  | Media path or Premiere Pro project path (In case of a Premiere Pro project, the last sequence will be used).                |
++---------------------+---------+-----------------------------------------------------------------------------------------------------------------------------+
+| `outputPath`        | String  | If `outputPath` is empty, then the output file location will be generated based on the source location.                     |
++---------------------+---------+-----------------------------------------------------------------------------------------------------------------------------+
+| `presetsPath`       | String  | Multiple preset paths can be provided separated via a <code>&#124;</code> (e.g. <code>"path1&#124;path2&#124;path3"</code>) |
++---------------------+---------+-----------------------------------------------------------------------------------------------------------------------------+
+| `matchSource`       | Boolean | Optional. Default value is `false`.                                                                                         |
++---------------------+---------+-----------------------------------------------------------------------------------------------------------------------------+
+| `writeFramesToDisk` | Boolean | Optional. Default value is `false`. `true` writes five frames at 0%, 25%, 50%, 75% and 100% of the full duration.           |
+|                     |         |                                                                                                                             |
+|                     |         | Known issue: Currently it only works with parallel encoding disabled.                                                       |
++---------------------+---------+-----------------------------------------------------------------------------------------------------------------------------+
 
 #### Returns
 
@@ -387,16 +395,27 @@ Export the Premiere Pro sequence with the provided preset.
 
 #### Parameters
 
-|       Parameter        |  Type   |                                                                                         Description                                                                                          |
-| ---------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `projectPath`          | String  | Premiere Pro project path.                                                                                                                                                                   |
-| `outputPath`           | String  | If `outputPath` is empty, then the output file location will be generated based on the source location.                                                                                      |
-| `presetsPath`          | String  | Multiple preset paths can be provided separated via a <code>&#124;</code> (e.g. <code>"path1&#124;path2&#124;path3"</code>)                                                                  |
-| `matchSource`          | Boolean | Optional. Default value is `false`.                                                                                                                                                          |
-| `writeFramesToDisk`    | Boolean | Optional. Default value is `false`. `true` writes five frames at 0%, 25%, 50%, 75% and 100% of the full duration.<br />Known issue: Currently it only works with parallel encoding disabled. |
-| `leadingFramesToTrim`  | Integer | Optional. Default value is `0`.                                                                                                                                                              |
-| `trailingFramesToTrim` | Integer | Optional. Default value is `0`.                                                                                                                                                              |
-| `sequenceName`         | String  | Optional. If sequence name is empty, then we use the last sequence of the project.                                                                                                           |
++------------------------+---------+-----------------------------------------------------------------------------------------------------------------------------+
+|       Parameter        |  Type   |                                                         Description                                                         |
++========================+=========+=============================================================================================================================+
+| `projectPath`          | String  | Premiere Pro project path.                                                                                                  |
++------------------------+---------+-----------------------------------------------------------------------------------------------------------------------------+
+| `outputPath`           | String  | If `outputPath` is empty, then the output file location will be generated based on the source location.                     |
++------------------------+---------+-----------------------------------------------------------------------------------------------------------------------------+
+| `presetsPath`          | String  | Multiple preset paths can be provided separated via a <code>&#124;</code> (e.g. <code>"path1&#124;path2&#124;path3"</code>) |
++------------------------+---------+-----------------------------------------------------------------------------------------------------------------------------+
+| `matchSource`          | Boolean | Optional. Default value is `false`.                                                                                         |
++------------------------+---------+-----------------------------------------------------------------------------------------------------------------------------+
+| `writeFramesToDisk`    | Boolean | Optional. Default value is `false`. `true` writes five frames at 0%, 25%, 50%, 75% and 100% of the full duration.           |
+|                        |         |                                                                                                                             |
+|                        |         | Known issue: Currently it only works with parallel encoding disabled.                                                       |
++------------------------+---------+-----------------------------------------------------------------------------------------------------------------------------+
+| `leadingFramesToTrim`  | Integer | Optional. Default value is `0`.                                                                                             |
++------------------------+---------+-----------------------------------------------------------------------------------------------------------------------------+
+| `trailingFramesToTrim` | Integer | Optional. Default value is `0`.                                                                                             |
++------------------------+---------+-----------------------------------------------------------------------------------------------------------------------------+
+| `sequenceName`         | String  | Optional. If sequence name is empty, then we use the last sequence of the project.                                          |
++------------------------+---------+-----------------------------------------------------------------------------------------------------------------------------+
 
 #### Returns
 
@@ -517,15 +536,25 @@ Smart render the source with the provided preset.
 
 #### Parameters
 
-|       Parameter        |  Type   |                                                                                         Description                                                                                          |
-| ---------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `sourcePath`           | String  | Media path or Premiere Pro project path (In case of a Premiere Pro project the last sequence will be used).                                                                                  |
-| `outputPath`           | String  | If outputPath is empty, then the output file location will be generated based on the source location.                                                                                        |
-| `presetsPath`          | String  | Multiple preset paths can be provided separated via a <code>&#124;</code> (e.g. <code>"path1&#124;path2&#124;path3"</code>)                                                                  |
-| `matchSource`          | Boolean | Optional. Default value is `false`.                                                                                                                                                          |
-| `writeFramesToDisk`    | Boolean | Optional. Default value is `false`. `true` writes five frames at 0%, 25%, 50%, 75% and 100% of the full duration.<br />Known issue: Currently it only works with parallel encoding disabled. |
-| `leadingFramesToTrim`  | Integer | Optional. Default value is `0`.                                                                                                                                                              |
-| `trailingFramesToTrim` | Integer | Optional. Default value is `0`.                                                                                                                                                              |
++------------------------+---------+-----------------------------------------------------------------------------------------------------------------------------+
+|       Parameter        |  Type   |                                                         Description                                                         |
++========================+=========+=============================================================================================================================+
+| `sourcePath`           | String  | Media path or Premiere Pro project path (In case of a Premiere Pro project the last sequence will be used).                 |
++------------------------+---------+-----------------------------------------------------------------------------------------------------------------------------+
+| `outputPath`           | String  | If outputPath is empty, then the output file location will be generated based on the source location.                       |
++------------------------+---------+-----------------------------------------------------------------------------------------------------------------------------+
+| `presetsPath`          | String  | Multiple preset paths can be provided separated via a <code>&#124;</code> (e.g. <code>"path1&#124;path2&#124;path3"</code>) |
++------------------------+---------+-----------------------------------------------------------------------------------------------------------------------------+
+| `matchSource`          | Boolean | Optional. Default value is `false`.                                                                                         |
++------------------------+---------+-----------------------------------------------------------------------------------------------------------------------------+
+| `writeFramesToDisk`    | Boolean | Optional. Default value is `false`. `true` writes five frames at 0%, 25%, 50%, 75% and 100% of the full duration.           |
+|                        |         |                                                                                                                             |
+|                        |         | Known issue: Currently it only works with parallel encoding disabled.                                                       |
++------------------------+---------+-----------------------------------------------------------------------------------------------------------------------------+
+| `leadingFramesToTrim`  | Integer | Optional. Default value is `0`.                                                                                             |
++------------------------+---------+-----------------------------------------------------------------------------------------------------------------------------+
+| `trailingFramesToTrim` | Integer | Optional. Default value is `0`.                                                                                             |
++------------------------+---------+-----------------------------------------------------------------------------------------------------------------------------+
 
 #### Returns
 

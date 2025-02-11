@@ -1,13 +1,13 @@
 # EncoderWrapper Object
 
 `app.getFrontend().addDLToBatch(...)`
-<br/>
+
 `app.getFrontend().addFileToBatch(...)`
-<br/>
+
 `app.getFrontend().addTeamProjectsItemToBatch(...)`
-<br/>
+
 `app.getFrontend().exportItem(...)`
-<br/>
+
 `app.getFrontend().stitchFiles(...)`
 
 Queue item object to set encode properties
